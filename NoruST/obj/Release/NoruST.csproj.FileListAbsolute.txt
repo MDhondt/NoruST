@@ -1,0 +1,117 @@
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\NoruST.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\NoruST.pdb
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\NoruST.dll.manifest
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\NoruST.vsto
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\MathNet.Numerics.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Excel.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.v4.0.Framework.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.VisualStudio.Tools.Applications.Runtime.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\MathNet.Numerics.xml
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.v4.0.Framework.xml
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.VisualStudio.Tools.Applications.Runtime.xml
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.xml
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Excel.xml
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.csprojResolveAssemblyReference.cache
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.BoxWhiskerPlotForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.ConfidenceIntervalMeanAndStandardDeviationForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.CorrelationCovarianceForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.DataSetManagerForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.DiscriminantAnalysisForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.DummyForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.TimeSeriesGraphForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.HistogramForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.LagForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.OneVariableSummaryForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.ForecastForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.RunsTestForRandomnessForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.RegressionForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.SampleSizeEstimationForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.LogisticRegressionForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Forms.ScatterplotForm.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Properties.Resources.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.Ribbon.resources
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.csproj.GenerateResource.Cache
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.dll
+W:\Masterproef (Stat-tools in Excel)\NoruST\NoruST\obj\Release\NoruST.pdb
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\NoruST.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\NoruST.pdb
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\NoruST.dll.manifest
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\NoruST.vsto
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\MathNet.Numerics.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Excel.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.v4.0.Framework.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.VisualStudio.Tools.Applications.Runtime.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\MathNet.Numerics.xml
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.v4.0.Framework.xml
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.VisualStudio.Tools.Applications.Runtime.xml
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.xml
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Excel.xml
+C:\Users\Frederik\Desktop\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.csprojResolveAssemblyReference.cache
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.BoxWhiskerPlotForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.ConfidenceIntervalMeanAndStandardDeviationForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.CorrelationCovarianceForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.DataSetManagerForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.DiscriminantAnalysisForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.DummyForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.TimeSeriesGraphForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.HistogramForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.LagForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.OneVariableSummaryForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.ForecastForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.RunsTestForRandomnessForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.RegressionForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.SampleSizeEstimationForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.LogisticRegressionForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Forms.ScatterplotForm.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Properties.Resources.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.Ribbon.resources
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.csproj.GenerateResource.Cache
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.dll
+C:\Users\Frederik\Desktop\NoruST\NoruST\obj\Release\NoruST.pdb
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\NoruST.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\NoruST.pdb
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\NoruST.dll.manifest
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\NoruST.vsto
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\MathNet.Numerics.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Excel.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.v4.0.Framework.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.VisualStudio.Tools.Applications.Runtime.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\MathNet.Numerics.xml
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.v4.0.Framework.xml
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.VisualStudio.Tools.Applications.Runtime.xml
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.xml
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Excel.xml
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.csprojResolveAssemblyReference.cache
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.BoxWhiskerPlotForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.ConfidenceIntervalMeanAndStandardDeviationForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.CorrelationCovarianceForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.DataSetManagerForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.DiscriminantAnalysisForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.DummyForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.TimeSeriesGraphForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.HistogramForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.LagForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.OneVariableSummaryForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.ForecastForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.RunsTestForRandomnessForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.RegressionForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.SampleSizeEstimationForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.LogisticRegressionForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Forms.ScatterplotForm.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Properties.Resources.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.Ribbon.resources
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.csproj.GenerateResource.Cache
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.dll
+C:\Users\Maarten\Documents\Visual Studio 2015\Projects\NoruST\NoruST\obj\Release\NoruST.pdb
