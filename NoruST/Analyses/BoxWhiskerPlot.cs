@@ -31,7 +31,7 @@ namespace NoruST.Analyses
        public bool CreateChart(DataSet dataSet, List<bool> doInclude)
         {
             // Print the Summary Statistics to the sheet.
-            var summary = new OneVariableSummary();
+            OneVariableSummary summary = new OneVariableSummary();
             if (!summary.Print(dataSet, doInclude, new SummaryStatisticsBool(boxWhiskerPlot: true), sheetName: "Box-Whisker Plot")) return false;
 
             // Create the Box-Whisker Plot.
