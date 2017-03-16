@@ -16,12 +16,6 @@ namespace NoruST.Analyses
     {
         #region Public Methods
 
-        /// <summary>
-        /// Create a new <see cref="Chart"/> and add it to a new <see cref="_Worksheet"/> in the same <see cref="Workbook"/>.
-        /// </summary>
-        /// <param name="dataSet">The <see cref="DataSet"/> source for the <see cref="Chart"/>.</param>   
-        /// <param name="doIncludeCategory">A <see cref="List{T}"/> of <see cref="bool"/>s that corresponds to which <see cref="Models.Data"/> in the <see cref="DataSet.DataList"/> should be included as the category.</param>
-        /// <param name="doIncludeValue">A <see cref="List{T}"/> of <see cref="bool"/>s that corresponds to which <see cref="Models.Data"/> in the <see cref="DataSet.DataList"/> should be included as the value.</param>
         public bool CreateChart(DataSet dataSet, List<bool> doIncludeCategory, List<bool> doIncludeValue)
         {
             // Print the Summary Statistics to the sheet.
