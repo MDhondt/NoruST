@@ -28,12 +28,7 @@ namespace NoruST.Analyses
             return true;
         }
 
-        /// <summary>
-        /// Create a new <see cref="Chart"/> and add it to a new <see cref="_Worksheet"/> in the same <see cref="Workbook"/>.
-        /// </summary>
-        /// <param name="dataSet">The <see cref="DataSet"/> source for the <see cref="Chart"/>.</param>
-        /// <param name="doInclude">A <see cref="List{T}"/> of <see cref="bool"/>s that corresponds to which <see cref="Models.Data"/> in the <see cref="DataSet.DataList"/> should be included.</param>
-        public bool CreateChart(DataSet dataSet, List<bool> doInclude)
+       public bool CreateChart(DataSet dataSet, List<bool> doInclude)
         {
             // Print the Summary Statistics to the sheet.
             var summary = new OneVariableSummary();
