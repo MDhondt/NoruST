@@ -1,53 +1,21 @@
-﻿using NoruST.Data;
+﻿using System.Windows.Forms;
+using NoruST.Data;
+using NoruST.Presenters;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>The Lag Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 14, 2016</para>
-    /// </summary>
-    public partial class LagForm : ExtendedForm
+    public partial class LagForm : Form
     {
-        #region Constructors
+        private LagPresenter presenter;
 
-        /// <summary>
-        /// Constructor of the <see cref="LagForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
         public LagForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, dgvDataSet, btnOk, btnCancel);
         }
 
-        #endregion
-
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="System.Windows.Forms.ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
+        public void setPresenter(LagPresenter lagPresenter)
         {
-            // Create a data table and add the required columns.
-            CreateDataTable(DataTableColumn.Editable);
-
-            // Update the view with new data.
-            UpdateDataTable(DefaultCheck.Numeric);
+            this.presenter = lagPresenter;
         }
-
-        /// <summary>
-        /// This adds extra functionality to the Ok <see cref="System.Windows.Forms.Button"/>
-        /// </summary>
-        public override bool OkButtonClick()
-        {
-            return new DummyLag().AddLag(SelectedDataSet, DoInclude, (int)nudLag.Value);
-        }
-
-        #endregion
     }
 }

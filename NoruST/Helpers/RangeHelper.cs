@@ -3,46 +3,8 @@ using Microsoft.Office.Interop.Excel;
 
 namespace NoruST
 {
-    /// <summary>
-    /// <para>RangeHelper.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 18, 2016</para>
-    /// </summary>
     public static class RangeHelper
     {
-        /// <summary>
-        /// Get the last row number of a <see cref="Range"/>.
-        /// </summary>
-        /// <param name="range">The <see cref="Range"/>.</param>
-        /// <returns>The number of the last row.</returns>
-        public static int GetLastRow(this Range range)
-        {
-            return range.Row + range.Rows.Count - 1;
-        }
-
-        /// <summary>
-        /// Get the last column number of a <see cref="Range"/>.
-        /// </summary>
-        /// <param name="range">The <see cref="Range"/>.</param>
-        /// <returns>The number of the last column.</returns>
-        public static int GetLastColumn(this Range range)
-        {
-            return range.Column + range.Columns.Count - 1;
-        }
-
-        /// <summary>
-        /// Check a given range for missing data and expand it if missing data is found.
-        /// </summary>
-        /// <param name="sheet">The active <see cref="_Worksheet"/>.</param>
-        /// <param name="range">The initial selected range.</param>
-        /// <param name="foundFirstRow">(Optional) Indication if the first row of the data set is found.</param>
-        /// <param name="foundFirstColumn">(Optional) Indication if the first column of the data set is found.</param>
-        /// <param name="foundLastRow">(Optional) Indication if the last row of the data set is found.</param>
-        /// <param name="foundLastColumn">(Optional) Indication if the last column of the data set is found.</param>
-        /// <returns>A new range of cells with no missing data.</returns>
         public static Range ExpandSelection(this Range range, _Worksheet sheet, bool foundFirstRow = false, bool foundFirstColumn = false, bool foundLastRow = false, bool foundLastColumn = false)
         {
             // Check for invalid arguments.

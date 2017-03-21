@@ -31,7 +31,7 @@ namespace NoruST.Models
         {
             // The DataSet name in Excel and functions.
             Name = ((Name)range.Name).Name;
-            var function = Globals.ThisAddIn.Application.WorksheetFunction;
+            var function = Globals.ExcelAddIn.Application.WorksheetFunction;
 
             // Base
             if (doCalculate.Mean || doCalculate.BoxWhiskerPlot || doCalculate.MeanConfidenceInterval || doCalculate.StandardDeviationConfidenceInterval) Mean = "AVERAGE(" + Name + ")";
@@ -51,7 +51,7 @@ namespace NoruST.Models
                 Mode = "MODE.SNGL(" + Name + ")";
                 try
                 {
-                    Globals.ThisAddIn.Application.WorksheetFunction.Mode_Sngl(range);
+                    Globals.ExcelAddIn.Application.WorksheetFunction.Mode_Sngl(range);
                     HasMode = true;
                 }
                 catch

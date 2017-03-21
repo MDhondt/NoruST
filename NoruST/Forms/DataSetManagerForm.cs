@@ -1,206 +1,136 @@
 ﻿using System;
 using System.Windows.Forms;
 using NoruST.Data;
+using NoruST.Domain;
+using static System.Windows.Forms.DialogResult;
+using static System.Windows.Forms.MessageBoxButtons;
+using static System.Windows.Forms.MessageBoxIcon;
+using static NoruST.Domain.RangeLayout;
+using Microsoft.Office.Interop.Excel;
+using NoruST.Presenters;
+using ListBox = System.Windows.Forms.ListBox;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>DataSet Manager Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 16, 2016</para>
-    /// </summary>
-    public partial class DataSetManagerForm : ExtendedForm
+    public partial class DataSetManagerForm : Form
     {
-        #region Constructors
+        private const string formTitle = "NoruST - Data Set Manager";
 
-        /// <summary>
-        /// Constructor of the <see cref="DataSetManagerForm"/> <see cref="Form"/>.
-        /// </summary>
+        private DataSetManagerPresenter presenter;
+        private SelectRangeForm selectRangeForm;
+
         public DataSetManagerForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, dgvDataSet, null, btnClose, true);
         }
 
-        #endregion
-
-        #region Interaction Methods
-
-        /// <summary>
-        /// Fired when the New <see cref="Button"/> is pressed.
-        /// </summary>
-        private void btnNew_Click(object sender, EventArgs e)
+        public void setPresenter(DataSetManagerPresenter presenter)
         {
-            // Create a new DataSet.
-            DataSetManager.NewDataSet();
+            this.presenter = presenter;
+            bindModelToView();
+            selectDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// Fired when the Delete <see cref="Button"/> is pressed.
-        /// </summary>
-        private void btnDeleteDataSet_Click(object sender, EventArgs e)
+        private DataSet selectedDataSet()
         {
-            // Remove the selected DataSet from the List.
-            SelectedDataSet.RemoveNamedRanges();
-            Globals.ThisAddIn.DataSets.Remove(SelectedDataSet);
+            return (DataSet) uiListBox_DataSets.SelectedItem;
+        }
 
-            // Reload the DataSource and update the view based on how many DataSets are in the List.
-            lstDataSets.DataSource = null;
-            lstDataSets.DataSource = Globals.ThisAddIn.DataSets;
-            if (Globals.ThisAddIn.DataSets.Count > 0)
-                lstDataSets.SelectedIndex = 0;
-            else
+        private void bindModelToView()
+        {
+            uiListBox_DataSets.DataSource = presenter.getModel().getDataSets();
+            uiListBox_DataSets.DisplayMember = "name";
+            uiListBox_DataSets.SelectedIndexChanged += (obj, eventArgs) =>
             {
-                RemoveEventHandlers();
-                txtName.Text = "";
-                rdbColumns.Checked = true;
-                chkHasHeaders.Checked = true;
-                dgvDataSet.DataSource = null;
-                AddEventHandlers();
+                if (presenter.getModel().getDataSets().Count == 0)
+                {
+                    uiDataGridView_Variables.DataSource = null;
+                    uiTextBox_DataSetName.DataBindings.Clear();
+                    uiTextBox_DataSetName.Text = "";
+                    uiTextBox_DataSetRange.DataBindings.Clear();
+                    uiTextBox_DataSetRange.Text = "";
+                    rdbColumns.Checked = true;
+                }
+                else if (selectedDataSet() == null) return;
+                else
+                {
+                    uiDataGridViewColumn_VariableName.DataPropertyName = "name";
+                    uiDataGridViewColumn_VariableRange.DataPropertyName = "Range";
+                    uiDataGridView_Variables.DataSource = selectedDataSet().getVariables();
+                    uiTextBox_DataSetName.DataBindings.Clear();
+                    uiTextBox_DataSetName.DataBindings.Add("Text", selectedDataSet(), "Name");
+                    uiTextBox_DataSetName.DataBindings[0].DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+                    uiTextBox_DataSetRange.DataBindings.Clear();
+                    uiTextBox_DataSetRange.DataBindings.Add("Text", selectedDataSet(), "Range");
+                    uiTextBox_DataSetRange.DataBindings[0].DataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+                    if (selectedDataSet().getRangeLayout() == COLUMNS)
+                        rdbColumns.Checked = true;
+                    else
+                        rdbRows.Checked = true;
+                }
+            };
+        }
+
+        public void selectDataSet(DataSet dataSet)
+        {
+            uiListBox_DataSets.ClearSelected();
+            uiListBox_DataSets.SelectedItem = dataSet;
+        }
+
+        public void rangeSelected(string range)
+        {
+            uiTextBox_DataSetRange.Text = range;
+        }
+
+        public static bool ignoreIntersection(DataSet dataSet)
+        {
+            string message = "De geselecteerde range maakt reeds deel uit van data set '" + dataSet.Name +"'." +
+                             Environment.NewLine + Environment.NewLine + 
+                             "Wilt U van de huidige selectie een nieuwe data set maken?";
+            DialogResult dialogResult = MessageBox.Show(message, formTitle, YesNo, Warning);
+            return dialogResult != Yes;
+        }
+
+        public static bool addNewDataSet(Range range)
+        {
+            string message = "Wilt U de range " + range.Address(true, true) + " toevoegen als data set?";
+            DialogResult dialogResult = MessageBox.Show(message, formTitle, YesNo, Question);
+            return dialogResult == Yes;
+        }
+
+        private void uiButton_Range_Click(object sender, EventArgs e)
+        {
+            selectRangeForm = selectRangeForm.createAndOrShowForm();
+            selectRangeForm.setPresenter(presenter);
+        }
+
+        private void uiButton_Close_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void uiRadioButton_Columns_Rows_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton changedRadioButton = sender as RadioButton;
+            if (changedRadioButton != null && changedRadioButton.Checked)
+            {
+                presenter.setRangeLayoutFor(selectedDataSet(), rdbColumns.Checked ? COLUMNS : ROWS);
             }
         }
 
-        /// <summary>
-        /// Fired when the <see cref="TextBox.Text"/> for the name <see cref="TextBox"/> value changes.
-        /// </summary>
-        private void txtName_TextChanged(object sender, EventArgs e)
+        private void uiCheckBox_HasHeaders_CheckedChanged(object sender, EventArgs e)
         {
-            // If the selected DataSet is not null, update its name with the new one.
-            if (SelectedDataSet != null)
-                SelectedDataSet.Name = txtName.Text;
+            presenter.setVariableNamesInFirstRowOrColumn(selectedDataSet(), chkHasHeaders.Checked);
         }
 
-        /// <summary>
-        /// Fired when the <see cref="CheckBox.Checked"/> for the header <see cref="CheckBox"/> changes from true to false or vice versa.
-        /// </summary>
-        private void chkHasHeaders_CheckedChanged(object sender, EventArgs e)
+        private void uiButton_Delete_Click(object sender, EventArgs e)
         {
-            // Update the list of data so the changes take effect.
-            if (SelectedDataSet.FirstIsName != chkHasHeaders.Checked)
-                SelectedDataSet.UpdateDataList(SelectedDataSet.Layout, chkHasHeaders.Checked);
-
-            // Make the first column editable if the check box isn't checked and vice versa.
-            SetColumnReadOnly(ColVarName, chkHasHeaders.Checked);
-
-            // Update the view with new data.
-            UpdateDataTable();
+            presenter.deleteDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// Fired when the <see cref="RadioButton.Checked"/> for either the column and row <see cref="RadioButton"/> changes from true to false or vice versa.
-        /// </summary>
-        private void rdbColumns_rdbRows_CheckedChanged(object sender, EventArgs e)
+        private void uiButton_New_Click(object sender, EventArgs e)
         {
-            // Check if the sender is a RadioButton, not null and checked.
-            var rb = sender as RadioButton;
-            if (rb != null && !rb.Checked) return;
-
-            // Update the DataList with the new arguments.
-            SelectedDataSet.UpdateDataList(rdbColumns.Checked ? NoruST.Layout.Columns : NoruST.Layout.Rows, SelectedDataSet.FirstIsName);
-
-            // Update the view with new data.
-            UpdateDataTable();
+            presenter.addNewDataSet();
         }
-
-        /// <summary>
-        /// Fired when a value in a <see cref="DataGridViewCell"/> for the visualization of the DataSet <see cref="DataGridView"/> changes.
-        /// </summary>
-        private void dgvDataSet_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            // Verify that each cell value is not null or an empty string.
-            for (var row = 0; row < dgvDataSet.Rows.Count; row++)
-                if (dgvDataSet.Rows[row].Cells[ColVarName].Value != null && dgvDataSet.Rows[row].Cells[ColVarName].Value.ToString().Length != 0)
-                    // Only the Variable Name column is editable so this is the one that needs to be updated.
-                    SelectedDataSet.DataList[row].SetName(dgvDataSet.Rows[row].Cells[ColVarName].Value.ToString());
-
-            // Update the view with new data.
-            UpdateDataTable();
-        }
-
-        /// <summary>
-        /// Fired when the Undo <see cref="Button"/> is pressed.
-        /// </summary>
-        private void btnUndo_Click(object sender, EventArgs e)
-        {
-            // Save the current SelectedIndex.
-            var selectedIndex = lstDataSets.SelectedIndex;
-
-            // Reload the DataSource from the backup.
-            lstDataSets.DataSource = null;
-            foreach (var dataSet in Globals.ThisAddIn.DataSets)
-                dataSet.RemoveNamedRanges();
-            Globals.ThisAddIn.DataSets.Clear();
-            foreach (var dataSet in BackupDataSet)
-                Globals.ThisAddIn.DataSets.Add(dataSet.DeepClone());
-            lstDataSets.DataSource = Globals.ThisAddIn.DataSets;
-
-            // Set the SelectedIndex back to the saved one if possible.
-            if (BackupDataSet.Count >= selectedIndex)
-                lstDataSets.SelectedIndex = selectedIndex != -1 ? selectedIndex : 0;
-        }
-
-        #endregion
-
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
-        {
-            // Set the DataSet name in the TextBox.
-            txtName.Text = SelectedDataSet.Name;
-
-            // Create a data table and add the required columns.
-            CreateDataTable(varName: SelectedDataSet.FirstIsName ? DataTableColumn.ReadOnly : DataTableColumn.Editable);
-
-            // Update the view so it represents the content of the selected DataSet. Therefore EventHandlers have to ne first removed and added back afterwards to prevent Event chaining.
-            RemoveEventHandlers();
-            chkHasHeaders.Checked = SelectedDataSet.FirstIsName;
-            if (SelectedDataSet.Layout == NoruST.Layout.Columns)
-                rdbColumns.Checked = true;
-            else
-                rdbRows.Checked = true;
-            AddEventHandlers();
-
-            // Update the view with new data.
-            UpdateDataTable();
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        /// Remove EventHandlers.
-        /// </summary>
-        private void RemoveEventHandlers()
-        {
-            chkHasHeaders.CheckedChanged -= chkHasHeaders_CheckedChanged;
-            rdbColumns.CheckedChanged -= rdbColumns_rdbRows_CheckedChanged;
-            rdbRows.CheckedChanged -= rdbColumns_rdbRows_CheckedChanged;
-        }
-
-        /// <summary>
-        /// Add EventHandlers.
-        /// </summary>
-        private void AddEventHandlers()
-        {
-            chkHasHeaders.CheckedChanged += chkHasHeaders_CheckedChanged;
-            rdbColumns.CheckedChanged += rdbColumns_rdbRows_CheckedChanged;
-            rdbRows.CheckedChanged += rdbColumns_rdbRows_CheckedChanged;
-        }
-
-        #endregion
-
-        #region Properties
-
-        public DataSetManager DataSetManager { get; set; }
-
-        #endregion
     }
 }

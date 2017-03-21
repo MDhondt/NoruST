@@ -25,7 +25,7 @@ namespace NoruST.Analyses
     {
         #region Fields
 
-        private readonly WorksheetFunction _functions = Globals.ThisAddIn.Application.WorksheetFunction;
+        private readonly WorksheetFunction _functions = Globals.ExcelAddIn.Application.WorksheetFunction;
 
         #endregion
 

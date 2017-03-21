@@ -63,10 +63,40 @@ namespace NoruST.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap scatter_plot_512 {
+        internal static System.Drawing.Bitmap data_set_manager_image {
             get {
-                object obj = ResourceManager.GetObject("scatter_plot-512", resourceCulture);
+                object obj = ResourceManager.GetObject("data_set_manager_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap data_utilities_image {
+            get {
+                object obj = ResourceManager.GetObject("data_utilities_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap range_image {
+            get {
+                object obj = ResourceManager.GetObject("range_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon statistics_icon {
+            get {
+                object obj = ResourceManager.GetObject("statistics_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

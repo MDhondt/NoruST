@@ -20,7 +20,7 @@ namespace NoruST
         public static Series Add(this SeriesCollection seriesCollection)
         {
             // Add the series to the provided collection of series with a temp range and clear the name.
-            var sheet = (Worksheet) Globals.ThisAddIn.Application.ActiveSheet;
+            var sheet = (Worksheet) Globals.ExcelAddIn.Application.ActiveSheet;
             var series = seriesCollection.Add(sheet.Range["A1:A2"]);
             series.Name = "";
 

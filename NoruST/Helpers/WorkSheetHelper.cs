@@ -23,10 +23,10 @@ namespace NoruST
         {
             // Check if a worksheet is provided to add the new one after. If that is not the case, use the source sheet.
             if (after == null)
-                after = Globals.ThisAddIn.DataSets.Count == 0 ? Globals.ThisAddIn.Application.ActiveWorkbook.Sheets[1] : Globals.ThisAddIn.DataSets[0].Sheet;
+                after = Globals.ExcelAddIn.DataSets.Count == 0 ? Globals.ExcelAddIn.Application.ActiveWorkbook.Sheets[1] : Globals.ExcelAddIn.DataSets[0].Sheet;
 
             // Add the new sheet to the workbook.
-            var sheet = (Worksheet)Globals.ThisAddIn.Application.Worksheets.Add(After: after);
+            var sheet = (Worksheet)Globals.ExcelAddIn.Application.Worksheets.Add(After: after);
 
             // If a name is provided, also rename the sheet.
             if (!string.IsNullOrEmpty(name))

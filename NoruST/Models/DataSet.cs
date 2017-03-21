@@ -53,7 +53,7 @@ namespace NoruST.Models
         /// </summary>
         /// <param name="sheet">The <see cref="Worksheet"/> on which the <see cref="DataSet"/> is located.</param>
         /// <param name="range">The <see cref="Microsoft.Office.Interop.Excel.Range"/> of the <see cref="DataSet"/>.</param>
-        public DataSet(_Worksheet sheet, Range range) : this(sheet, range, "Data Set #" + (Globals.ThisAddIn.DataSets.Count + 1), Layout.Columns, true) { }
+        public DataSet(_Worksheet sheet, Range range) : this(sheet, range, "Data Set #" + (Globals.ExcelAddIn.DataSets.Count + 1), Layout.Columns, true) { }
 
         /// <summary>
         /// Constructor of the <see cref="DataSet"/> class.
@@ -97,7 +97,7 @@ namespace NoruST.Models
 
             // Remove the named ranges from the workbook.
             foreach (var data in DataList)
-                Globals.ThisAddIn.Application.ActiveWorkbook.Names.Item(data.RangeName.Name).Delete();
+                Globals.ExcelAddIn.Application.ActiveWorkbook.Names.Item(data.RangeName.Name).Delete();
 
             // Clear the current list of date.
             DataList.Clear();

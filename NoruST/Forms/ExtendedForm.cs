@@ -5,18 +5,8 @@ using System.Data;
 using System.Windows.Forms;
 using DataSet = NoruST.Models.DataSet;
 
-// ReSharper disable AssignNullToNotNullAttribute
-
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>Extended Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 21, 2016</para>
-    /// </summary>
     public class ExtendedForm : Form
     {
         #region Fields
@@ -129,7 +119,7 @@ namespace NoruST.Forms
             if (_dataSetList != null)
             {
                 _dataSetList.DataSource = null;
-                _dataSetList.DataSource = Globals.ThisAddIn.DataSets;
+                _dataSetList.DataSource = Globals.ExcelAddIn.DataSets;
             }
 
             // Check if a backup has to be taken.
@@ -138,7 +128,7 @@ namespace NoruST.Forms
 
             // Take the backup.
             BackupDataSet = new List<DataSet>();
-            foreach (var dataSet in Globals.ThisAddIn.DataSets)
+            foreach (var dataSet in Globals.ExcelAddIn.DataSets)
                 BackupDataSet.Add(dataSet.DeepClone());
         }
 

@@ -34,7 +34,7 @@ namespace NoruST.Analyses
         public bool Print(DataSet dataSet, List<bool> doIncludeX, List<bool> doIncludeY)
         {
             // declare function to use function of excel
-            var functions = Globals.ThisAddIn.Application.WorksheetFunction;
+            var functions = Globals.ExcelAddIn.Application.WorksheetFunction;
 
 
             var valuesArraysX = new List<Models.Data>();

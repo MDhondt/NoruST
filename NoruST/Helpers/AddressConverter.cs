@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using System;
+using Microsoft.Office.Interop.Excel;
 
 namespace NoruST
 {
@@ -22,7 +23,14 @@ namespace NoruST
         /// <returns>The address of the range (e.g., "A1:C7", "$A1:C$7", "$A$1:$C$7").</returns>
         public static string Address(this Range range, bool absoluteRow = false, bool absoluteColumn = false, bool external = false)
         {
-            return range.AddressLocal[absoluteRow, absoluteColumn, XlReferenceStyle.xlA1, external];
+            try
+            {
+                return range.AddressLocal[absoluteRow, absoluteColumn, XlReferenceStyle.xlA1, external];
+            }
+            catch (Exception exception)
+            {
+                return "";
+            }
         }
 
         /// <summary>
@@ -35,7 +43,7 @@ namespace NoruST
         /// <returns>The address of the cell (e.g., "A1:C7", "$A1:C$7", "$A$1:$C$7").</returns>
         public static string CellAddress(int row, int column, bool absoluteRow = true, bool absoluteColumn = true)
         {
-            var sheet = (Worksheet)Globals.ThisAddIn.Application.ActiveSheet;
+            var sheet = (Worksheet)Globals.ExcelAddIn.Application.ActiveSheet;
 
             return sheet.Cells[row, column].Address(absoluteRow, absoluteColumn);
         }

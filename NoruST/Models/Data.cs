@@ -73,7 +73,7 @@ namespace NoruST.Models
 
             // Remove the named range from the workbook.
             if (RangeName != null)
-                Globals.ThisAddIn.Application.ActiveWorkbook.Names.Item(RangeName.Name).Delete();
+                Globals.ExcelAddIn.Application.ActiveWorkbook.Names.Item(RangeName.Name).Delete();
 
             // Update the current one.
             Name = name;
@@ -89,7 +89,7 @@ namespace NoruST.Models
             try
             {
                 if (RangeName != null)
-                    Globals.ThisAddIn.Application.ActiveWorkbook.Names.Item(RangeName.Name).Delete();
+                    Globals.ExcelAddIn.Application.ActiveWorkbook.Names.Item(RangeName.Name).Delete();
             }
             catch
             {

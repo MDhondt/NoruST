@@ -39,7 +39,7 @@ namespace NoruST.Analyses
                 return false;
             }
 
-            var functions = Globals.ThisAddIn.Application.WorksheetFunction;
+            var functions = Globals.ExcelAddIn.Application.WorksheetFunction;
             var sheet = WorksheetHelper.NewWorksheet("Runs Test");
             var valuesArrays = new List<Models.Data>();
 
