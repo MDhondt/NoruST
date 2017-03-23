@@ -85,6 +85,11 @@ namespace NoruST.Domain
             return variables;
         }
 
+        public int rangeSize()
+        {
+            return rangeLayout == COLUMNS ? variables[0].getRange().Rows.Count : variables[0].getRange().Columns.Count;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {

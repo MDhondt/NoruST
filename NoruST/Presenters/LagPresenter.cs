@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NoruST.Forms;
 using NoruST.Models;
+using DataSet = NoruST.Domain.DataSet;
 
 namespace NoruST.Presenters
 {
@@ -24,6 +26,11 @@ namespace NoruST.Presenters
         {
             view = view.createAndOrShowForm();
             view.setPresenter(this);
+        }
+
+        public BindingList<DataSet> dataSets()
+        {
+            return dataSetPresenter.getModel().getDataSets();
         }
     }
 }

@@ -17,5 +17,10 @@ namespace NoruST.Domain
             this.worksheet = worksheet;
             this.range = range;
         }
+
+        public Range getRange()
+        {
+            return range;
+        }
     }
 }

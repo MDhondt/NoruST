@@ -30,16 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LagForm));
             this.btnOk = new System.Windows.Forms.Button();
-            this.dgvDataSet = new System.Windows.Forms.DataGridView();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.uiDataGridView_Variables = new System.Windows.Forms.DataGridView();
+            this.uiDataGridViewColumn_CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.uiDataGridViewColumn_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiDataGridViewColumn_Range = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiButton_Cancel = new System.Windows.Forms.Button();
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.uiComboBox_DataSets = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).BeginInit();
+            this.uiNumericUpDown_Lag = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).BeginInit();
             this.tlpForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiNumericUpDown_Lag)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
@@ -52,31 +55,59 @@
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
-            // dgvDataSet
+            // uiDataGridView_Variables
             // 
-            this.dgvDataSet.AllowUserToAddRows = false;
-            this.dgvDataSet.AllowUserToDeleteRows = false;
-            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvDataSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tlpForm.SetColumnSpan(this.dgvDataSet, 4);
-            this.dgvDataSet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDataSet.Location = new System.Drawing.Point(3, 30);
-            this.dgvDataSet.MinimumSize = new System.Drawing.Size(300, 0);
-            this.dgvDataSet.Name = "dgvDataSet";
-            this.dgvDataSet.RowHeadersVisible = false;
-            this.dgvDataSet.Size = new System.Drawing.Size(378, 297);
-            this.dgvDataSet.TabIndex = 14;
+            this.uiDataGridView_Variables.AllowUserToAddRows = false;
+            this.uiDataGridView_Variables.AllowUserToDeleteRows = false;
+            this.uiDataGridView_Variables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.uiDataGridView_Variables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.uiDataGridView_Variables.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.uiDataGridViewColumn_CheckBox,
+            this.uiDataGridViewColumn_Name,
+            this.uiDataGridViewColumn_Range});
+            this.tlpForm.SetColumnSpan(this.uiDataGridView_Variables, 4);
+            this.uiDataGridView_Variables.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiDataGridView_Variables.Location = new System.Drawing.Point(3, 30);
+            this.uiDataGridView_Variables.MinimumSize = new System.Drawing.Size(300, 0);
+            this.uiDataGridView_Variables.Name = "uiDataGridView_Variables";
+            this.uiDataGridView_Variables.RowHeadersVisible = false;
+            this.uiDataGridView_Variables.Size = new System.Drawing.Size(378, 297);
+            this.uiDataGridView_Variables.TabIndex = 14;
+            this.uiDataGridView_Variables.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView_Variables_CellValueChanged);
             // 
-            // btnCancel
+            // uiDataGridViewColumn_CheckBox
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(306, 333);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 25);
-            this.btnCancel.TabIndex = 16;
-            this.btnCancel.Text = "Annuleren";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.uiDataGridViewColumn_CheckBox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.uiDataGridViewColumn_CheckBox.HeaderText = "Lag";
+            this.uiDataGridViewColumn_CheckBox.Name = "uiDataGridViewColumn_CheckBox";
+            this.uiDataGridViewColumn_CheckBox.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.uiDataGridViewColumn_CheckBox.Width = 31;
+            // 
+            // uiDataGridViewColumn_Name
+            // 
+            this.uiDataGridViewColumn_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.uiDataGridViewColumn_Name.HeaderText = "Variabele";
+            this.uiDataGridViewColumn_Name.Name = "uiDataGridViewColumn_Name";
+            this.uiDataGridViewColumn_Name.ReadOnly = true;
+            // 
+            // uiDataGridViewColumn_Range
+            // 
+            this.uiDataGridViewColumn_Range.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.uiDataGridViewColumn_Range.HeaderText = "Range";
+            this.uiDataGridViewColumn_Range.Name = "uiDataGridViewColumn_Range";
+            this.uiDataGridViewColumn_Range.ReadOnly = true;
+            // 
+            // uiButton_Cancel
+            // 
+            this.uiButton_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.uiButton_Cancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiButton_Cancel.Location = new System.Drawing.Point(306, 333);
+            this.uiButton_Cancel.Name = "uiButton_Cancel";
+            this.uiButton_Cancel.Size = new System.Drawing.Size(75, 25);
+            this.uiButton_Cancel.TabIndex = 16;
+            this.uiButton_Cancel.Text = "Annuleren";
+            this.uiButton_Cancel.UseVisualStyleBackColor = true;
+            this.uiButton_Cancel.Click += new System.EventHandler(this.uiButton_Cancel_Click);
             // 
             // tlpForm
             // 
@@ -87,13 +118,13 @@
             this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpForm.Controls.Add(this.dgvDataSet, 0, 1);
+            this.tlpForm.Controls.Add(this.uiDataGridView_Variables, 0, 1);
             this.tlpForm.Controls.Add(this.btnOk, 2, 2);
-            this.tlpForm.Controls.Add(this.btnCancel, 3, 2);
-            this.tlpForm.Controls.Add(this.comboBox1, 1, 0);
+            this.tlpForm.Controls.Add(this.uiButton_Cancel, 3, 2);
+            this.tlpForm.Controls.Add(this.uiComboBox_DataSets, 1, 0);
             this.tlpForm.Controls.Add(this.label2, 0, 0);
             this.tlpForm.Controls.Add(this.label1, 0, 2);
-            this.tlpForm.Controls.Add(this.numericUpDown1, 1, 2);
+            this.tlpForm.Controls.Add(this.uiNumericUpDown_Lag, 1, 2);
             this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpForm.Location = new System.Drawing.Point(0, 0);
             this.tlpForm.Name = "tlpForm";
@@ -104,16 +135,16 @@
             this.tlpForm.Size = new System.Drawing.Size(384, 361);
             this.tlpForm.TabIndex = 20;
             // 
-            // comboBox1
+            // uiComboBox_DataSets
             // 
-            this.tlpForm.SetColumnSpan(this.comboBox1, 3);
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(64, 3);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(317, 21);
-            this.comboBox1.TabIndex = 19;
+            this.tlpForm.SetColumnSpan(this.uiComboBox_DataSets, 3);
+            this.uiComboBox_DataSets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiComboBox_DataSets.FormattingEnabled = true;
+            this.uiComboBox_DataSets.Location = new System.Drawing.Point(64, 3);
+            this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
+            this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
+            this.uiComboBox_DataSets.Size = new System.Drawing.Size(317, 21);
+            this.uiComboBox_DataSets.TabIndex = 19;
             // 
             // label2
             // 
@@ -143,21 +174,31 @@
             this.label1.Text = "Aantal lags";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // numericUpDown1
+            // uiNumericUpDown_Lag
             // 
-            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.numericUpDown1.Location = new System.Drawing.Point(64, 335);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDown1.TabIndex = 22;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.uiNumericUpDown_Lag.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.uiNumericUpDown_Lag.Location = new System.Drawing.Point(64, 335);
+            this.uiNumericUpDown_Lag.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.uiNumericUpDown_Lag.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.uiNumericUpDown_Lag.Name = "uiNumericUpDown_Lag";
+            this.uiNumericUpDown_Lag.Size = new System.Drawing.Size(50, 20);
+            this.uiNumericUpDown_Lag.TabIndex = 22;
+            this.uiNumericUpDown_Lag.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.uiNumericUpDown_Lag.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // LagForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
+            this.CancelButton = this.uiButton_Cancel;
             this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -166,10 +207,10 @@
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "LagForm";
             this.Text = "NoruST - Lag";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).EndInit();
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiNumericUpDown_Lag)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,12 +219,15 @@
         #endregion
 
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.DataGridView dgvDataSet;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridView uiDataGridView_Variables;
+        private System.Windows.Forms.Button uiButton_Cancel;
         private System.Windows.Forms.TableLayoutPanel tlpForm;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox uiComboBox_DataSets;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown uiNumericUpDown_Lag;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn uiDataGridViewColumn_CheckBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uiDataGridViewColumn_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uiDataGridViewColumn_Range;
     }
 }
