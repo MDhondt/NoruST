@@ -45,9 +45,13 @@ namespace NoruST
             btnTimeSeriesGraph.Click += delegate { timeSeriesGraphForm = timeSeriesGraphForm.createAndOrShowForm(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessForm = runsTestForRandomnessForm.createAndOrShowForm(); };
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
-            btnRegression.Click += delegate { regressionForm = regressionForm.createAndOrShowForm(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
+        }
+
+        private void btnConfidenceIntervalMeanAndStandardDeviation_Click(object sender, RibbonControlEventArgs e)
+        {
+
         }
     }
 }
