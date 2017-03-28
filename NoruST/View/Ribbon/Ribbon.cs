@@ -24,6 +24,8 @@ namespace NoruST
         private RegressionForm regressionForm;
         private LogisticRegressionForm logisticRegressionForm;
         private DiscriminantAnalysisForm discriminantAnalysisForm;
+        private XRChartForm xRChartForm;
+        private PChartForm pChartForm;
 
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
@@ -47,6 +49,8 @@ namespace NoruST
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
+            btnXRChart.Click += delegate { xRChartForm = xRChartForm.createAndOrShowForm(); };
+            btnPChart.Click += delegate { pChartForm = pChartForm.createAndOrShowForm(); };
         }
 
         private void btnConfidenceIntervalMeanAndStandardDeviation_Click(object sender, RibbonControlEventArgs e)

@@ -248,6 +248,18 @@
     <Compile Include="Forms\ExtendedForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\PChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PChartForm.Designer.cs">
+      <DependentUpon>PChartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\XRChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\XRChartForm.Designer.cs">
+      <DependentUpon>XRChartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SelectRangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -389,6 +401,9 @@
     <EmbeddedResource Include="Forms\ScatterplotForm.resx">
       <DependentUpon>ScatterplotForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\XRChartForm.resx">
+      <DependentUpon>XRChartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -466,7 +481,7 @@
     <ManifestKeyFile>NoruST_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>247A719B2CA4217289B407172773BDF3C5637597</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BCD31EE1FE3ABBA27C47BFB94A5D56EBBA33299F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
