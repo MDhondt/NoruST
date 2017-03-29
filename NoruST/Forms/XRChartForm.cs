@@ -16,25 +16,18 @@ namespace NoruST.Forms
         {
             InitializeComponent();
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void ObservationsInRange_CheckedChanged(object sender, EventArgs e)
         {
-
+            uiTextBox_StartIndex.Visible = rdbObservationsInRange.Checked;
+            uiTextBox_StopIndex.Visible = rdbObservationsInRange.Checked;
+            lblStartIndex.Visible = rdbObservationsInRange.Checked;
+            lblStopIndex.Visible = rdbObservationsInRange.Checked;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            groupBox1.Visible = radioButton2.Checked;
+            this.Close();
         }
     }
+
 }
