@@ -24,9 +24,9 @@ namespace NoruST.Forms
             lblStopIndex.Visible = rdbObservationsInRange.Checked;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Cancelbutton_clicked(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 
