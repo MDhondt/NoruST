@@ -118,16 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="data_mining_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Coal-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="data_set_manager2_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Data Recovery-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="data_set_manager_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\data_set_manager.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="data_utilities2_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Data Configuration-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="data_utilities_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\data_utilities.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="data_viewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Detective-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quality_control_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Good Quality-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="range_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\range.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="regression_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scatter Plot-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="simple_statistics_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Statistics-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="statistical_inference_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mind Map-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="statistics_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\statistics.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="time_series_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Time Span-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

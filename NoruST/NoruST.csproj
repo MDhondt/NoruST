@@ -470,6 +470,33 @@
   <ItemGroup>
     <None Include="Resources\data_utilities.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coal-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data Configuration-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data Recovery-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Good Quality-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Time Span-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scatter Plot-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Statistics-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mind Map-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detective-40.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

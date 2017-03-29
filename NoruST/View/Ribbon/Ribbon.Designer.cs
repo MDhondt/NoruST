@@ -36,12 +36,12 @@
         {
             this.tabNoruST = this.Factory.CreateRibbonTab();
             this.grpData = this.Factory.CreateRibbonGroup();
-            this.btnDataSetManager = this.Factory.CreateRibbonButton();
+            this.grpAnalysis = this.Factory.CreateRibbonGroup();
             this.btnDataViewer = this.Factory.CreateRibbonButton();
+            this.btnDataSetManager = this.Factory.CreateRibbonButton();
             this.btnDataUtilities = this.Factory.CreateRibbonMenu();
             this.btnDummy = this.Factory.CreateRibbonButton();
             this.btnLag = this.Factory.CreateRibbonButton();
-            this.grpAnalysis = this.Factory.CreateRibbonGroup();
             this.menuSimpleStatistics = this.Factory.CreateRibbonMenu();
             this.btnOneVariableSummary = this.Factory.CreateRibbonButton();
             this.btnHistogram = this.Factory.CreateRibbonButton();
@@ -68,6 +68,11 @@
             this.btnXRChart = this.Factory.CreateRibbonButton();
             this.btnPChart = this.Factory.CreateRibbonButton();
             this.btnProcessCapability = this.Factory.CreateRibbonButton();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
+            this.separator2 = this.Factory.CreateRibbonSeparator();
+            this.separator3 = this.Factory.CreateRibbonSeparator();
+            this.separator4 = this.Factory.CreateRibbonSeparator();
+            this.separator5 = this.Factory.CreateRibbonSeparator();
             this.tabNoruST.SuspendLayout();
             this.grpData.SuspendLayout();
             this.grpAnalysis.SuspendLayout();
@@ -88,26 +93,43 @@
             this.grpData.Label = "Data";
             this.grpData.Name = "grpData";
             // 
-            // btnDataSetManager
+            // grpAnalysis
             // 
-            this.btnDataSetManager.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btnDataSetManager.Image = global::NoruST.Properties.Resources.data_set_manager_image;
-            this.btnDataSetManager.Label = "Data Set Manager";
-            this.btnDataSetManager.Name = "btnDataSetManager";
-            this.btnDataSetManager.ShowImage = true;
+            this.grpAnalysis.Items.Add(this.menuSimpleStatistics);
+            this.grpAnalysis.Items.Add(this.separator1);
+            this.grpAnalysis.Items.Add(this.menuStatisticalInference);
+            this.grpAnalysis.Items.Add(this.separator2);
+            this.grpAnalysis.Items.Add(this.menuRegression);
+            this.grpAnalysis.Items.Add(this.separator3);
+            this.grpAnalysis.Items.Add(this.menuDatamining);
+            this.grpAnalysis.Items.Add(this.separator4);
+            this.grpAnalysis.Items.Add(this.menuTimeseries);
+            this.grpAnalysis.Items.Add(this.separator5);
+            this.grpAnalysis.Items.Add(this.menuStatisticalProcessControl);
+            this.grpAnalysis.Label = "Analysis";
+            this.grpAnalysis.Name = "grpAnalysis";
             // 
             // btnDataViewer
             // 
             this.btnDataViewer.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btnDataViewer.Image = global::NoruST.Properties.Resources.data_viewer;
             this.btnDataViewer.Label = "Data Viewer";
             this.btnDataViewer.Name = "btnDataViewer";
             this.btnDataViewer.ShowImage = true;
             this.btnDataViewer.Visible = false;
             // 
+            // btnDataSetManager
+            // 
+            this.btnDataSetManager.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btnDataSetManager.Image = global::NoruST.Properties.Resources.data_set_manager2_image;
+            this.btnDataSetManager.Label = "Data Set Manager";
+            this.btnDataSetManager.Name = "btnDataSetManager";
+            this.btnDataSetManager.ShowImage = true;
+            // 
             // btnDataUtilities
             // 
             this.btnDataUtilities.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btnDataUtilities.Image = global::NoruST.Properties.Resources.data_utilities_image;
+            this.btnDataUtilities.Image = global::NoruST.Properties.Resources.data_utilities2_image;
             this.btnDataUtilities.Items.Add(this.btnDummy);
             this.btnDataUtilities.Items.Add(this.btnLag);
             this.btnDataUtilities.Label = "Data Utilities";
@@ -126,20 +148,10 @@
             this.btnLag.Name = "btnLag";
             this.btnLag.ShowImage = true;
             // 
-            // grpAnalysis
-            // 
-            this.grpAnalysis.Items.Add(this.menuSimpleStatistics);
-            this.grpAnalysis.Items.Add(this.menuStatisticalInference);
-            this.grpAnalysis.Items.Add(this.menuRegression);
-            this.grpAnalysis.Items.Add(this.menuDatamining);
-            this.grpAnalysis.Items.Add(this.menuTimeseries);
-            this.grpAnalysis.Items.Add(this.menuStatisticalProcessControl);
-            this.grpAnalysis.Label = "Analysis";
-            this.grpAnalysis.Name = "grpAnalysis";
-            // 
             // menuSimpleStatistics
             // 
             this.menuSimpleStatistics.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.menuSimpleStatistics.Image = global::NoruST.Properties.Resources.simple_statistics_image;
             this.menuSimpleStatistics.Items.Add(this.btnOneVariableSummary);
             this.menuSimpleStatistics.Items.Add(this.btnHistogram);
             this.menuSimpleStatistics.Items.Add(this.btnScatterplot);
@@ -189,6 +201,7 @@
             // menuStatisticalInference
             // 
             this.menuStatisticalInference.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.menuStatisticalInference.Image = global::NoruST.Properties.Resources.statistical_inference_image;
             this.menuStatisticalInference.Items.Add(this.btnCorrelationAndCovariance);
             this.menuStatisticalInference.Items.Add(this.btnInteractionplot);
             this.menuStatisticalInference.Items.Add(this.btnTestForNormality);
@@ -217,6 +230,7 @@
             // menuRegression
             // 
             this.menuRegression.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.menuRegression.Image = global::NoruST.Properties.Resources.regression_image;
             this.menuRegression.Items.Add(this.btnAnova);
             this.menuRegression.Items.Add(this.btnInteraction);
             this.menuRegression.Items.Add(this.btnWhiteTest);
@@ -245,6 +259,7 @@
             // menuDatamining
             // 
             this.menuDatamining.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.menuDatamining.Image = global::NoruST.Properties.Resources.data_mining_image;
             this.menuDatamining.Items.Add(this.btnLogisticRegression);
             this.menuDatamining.Items.Add(this.btnDiscriminantAnalysis);
             this.menuDatamining.Label = "Datamining";
@@ -266,6 +281,7 @@
             // menuTimeseries
             // 
             this.menuTimeseries.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.menuTimeseries.Image = global::NoruST.Properties.Resources.time_series_image;
             this.menuTimeseries.Items.Add(this.btnTimeSeriesGraph);
             this.menuTimeseries.Items.Add(this.btnRunsTestForRandomness);
             this.menuTimeseries.Items.Add(this.btnForecast);
@@ -294,10 +310,11 @@
             // menuStatisticalProcessControl
             // 
             this.menuStatisticalProcessControl.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.menuStatisticalProcessControl.Image = global::NoruST.Properties.Resources.quality_control_image;
             this.menuStatisticalProcessControl.Items.Add(this.btnXRChart);
             this.menuStatisticalProcessControl.Items.Add(this.btnPChart);
             this.menuStatisticalProcessControl.Items.Add(this.btnProcessCapability);
-            this.menuStatisticalProcessControl.Label = "Statistical Process Control";
+            this.menuStatisticalProcessControl.Label = "Quality Control";
             this.menuStatisticalProcessControl.Name = "menuStatisticalProcessControl";
             this.menuStatisticalProcessControl.ShowImage = true;
             // 
@@ -318,6 +335,26 @@
             this.btnProcessCapability.Label = "Process Capability";
             this.btnProcessCapability.Name = "btnProcessCapability";
             this.btnProcessCapability.ShowImage = true;
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
+            // 
+            // separator2
+            // 
+            this.separator2.Name = "separator2";
+            // 
+            // separator3
+            // 
+            this.separator3.Name = "separator3";
+            // 
+            // separator4
+            // 
+            this.separator4.Name = "separator4";
+            // 
+            // separator5
+            // 
+            this.separator5.Name = "separator5";
             // 
             // Ribbon
             // 
@@ -371,6 +408,11 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnTimeSeriesGraph;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRunsTestForRandomness;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnForecast;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator4;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator5;
     }
 
     partial class ThisRibbonCollection
