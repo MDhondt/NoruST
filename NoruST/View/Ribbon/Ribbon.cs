@@ -10,6 +10,7 @@ namespace NoruST
 
         private DataSetManagerPresenter dataSetManagerPresenter;
         private LagPresenter lagPresenter;
+        private XRChartPresenter xrChartPresenter;
         private DummyForm dummyForm;
         private OneVariableSummaryForm oneVariableSummaryForm;
         private CorrelationCovarianceForm correlationCovarianceForm;
@@ -32,6 +33,7 @@ namespace NoruST
             // Initialize the required classes to work.
             dataSetManagerPresenter = new DataSetManagerPresenter();
             lagPresenter = new LagPresenter(dataSetManagerPresenter);
+            xrChartPresenter = new XRChartPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -49,7 +51,7 @@ namespace NoruST
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
-            btnXRChart.Click += delegate { xRChartForm = xRChartForm.createAndOrShowForm(); };
+            btnXRChart.Click += delegate { xrChartPresenter.openView(); };
             btnPChart.Click += delegate { pChartForm = pChartForm.createAndOrShowForm(); };
         }
 

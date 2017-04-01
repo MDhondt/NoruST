@@ -44,16 +44,16 @@
             this.rdbObservationsInRange = new System.Windows.Forms.RadioButton();
             this.rdbAllObservations = new System.Windows.Forms.RadioButton();
             this.ui_ComboBox_SelectDataSets = new System.Windows.Forms.ComboBox();
+            this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -205,11 +205,16 @@
             // 
             // ui_ComboBox_SelectDataSets
             // 
+            this.ui_ComboBox_SelectDataSets.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ui_ComboBox_SelectDataSets.FormattingEnabled = true;
             this.ui_ComboBox_SelectDataSets.Location = new System.Drawing.Point(116, 23);
             this.ui_ComboBox_SelectDataSets.Name = "ui_ComboBox_SelectDataSets";
             this.ui_ComboBox_SelectDataSets.Size = new System.Drawing.Size(300, 21);
             this.ui_ComboBox_SelectDataSets.TabIndex = 7;
+            // 
+            // variableBindingSource
+            // 
+            this.variableBindingSource.DataSource = typeof(NoruST.Domain.Variable);
             // 
             // label2
             // 
@@ -232,6 +237,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(410, 133);
             this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -245,10 +251,6 @@
             this.rangeDataGridViewTextBoxColumn.HeaderText = "Range";
             this.rangeDataGridViewTextBoxColumn.Name = "rangeDataGridViewTextBoxColumn";
             this.rangeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // variableBindingSource
-            // 
-            this.variableBindingSource.DataSource = typeof(NoruST.Domain.Variable);
             // 
             // groupBox3
             // 
@@ -278,8 +280,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);

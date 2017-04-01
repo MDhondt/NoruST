@@ -32,10 +32,10 @@
     <IsWebBootstrapper>False</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>C:\Users\Maarten\Desktop\</PublishUrl>
+    <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.13</ApplicationVersion>
+    <ApplicationVersion>1.0.0.16</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -198,6 +198,7 @@
     <Compile Include="Analyses\OneVariableSummary.cs" />
     <Compile Include="Analyses\Scatterplot.cs" />
     <Compile Include="Analyses\TimeSeriesGraph.cs" />
+    <Compile Include="Analyses\XRChart.cs" />
     <Compile Include="Controls\PercentageNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -345,8 +346,10 @@
     <Compile Include="Models\DataSet.cs" />
     <Compile Include="Enums\Layout.cs" />
     <Compile Include="Models\SummaryStatisticsBool.cs" />
+    <Compile Include="Models\XRChartModel.cs" />
     <Compile Include="Presenters\DataSetManagerPresenter.cs" />
     <Compile Include="Presenters\LagPresenter.cs" />
+    <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -508,7 +511,7 @@
     <ManifestKeyFile>NoruST_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>BCD31EE1FE3ABBA27C47BFB94A5D56EBBA33299F</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BBEE316FA4D408B6C30896B270554380D0F31F84</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -529,7 +532,7 @@
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Excel" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Excel" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\Excel\InstallRoot\Path#excel.exe" DebugInfoCommandLine="/x" AddItemTemplatesGuid="{51063C3A-E220-4D12-8922-BDA915ACD783}" />
         <Host Name="Excel" GeneratedCodeNamespace="NoruST" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="ExcelAddIn.cs" CanonicalName="AddIn" PublishedHash="2C027C4AA1D12A2032B174FE7AC9A2F7A44C6BA8" CanActivate="false" IconIndex="1" Blueprint="ExcelAddIn.Designer.xml" GeneratedCode="ExcelAddIn.Designer.cs" />
+          <HostItem Name="ThisAddIn" Code="ExcelAddIn.cs" CanonicalName="AddIn" PublishedHash="5E66C7B2CAFDC5C1667242A760F2EAE85AB04FBC" CanActivate="false" IconIndex="1" Blueprint="ExcelAddIn.Designer.xml" GeneratedCode="ExcelAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>
     </VisualStudio>
