@@ -3,24 +3,8 @@ using Microsoft.Office.Interop.Excel;
 
 namespace NoruST
 {
-    /// <summary>
-    /// <para>Address Converter.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Mar 16, 2016</para>
-    /// </summary>
     public static class AddressConverter
     {
-        /// <summary>
-        /// Converts any <see cref="Range"/> to an address (e.g., "A1:C7", "$A1:C$7", "$A$1:$C$7").
-        /// </summary>
-        /// <param name="range">The range you want to get the address from.</param>
-        /// <param name="absoluteRow">(Optional) Set to true if the row should be absolute.</param>
-        /// <param name="absoluteColumn">(Optional) Set to true if the column should be absolute.</param>
-        /// <param name="external">(Optional) Set to true to return an external reference.</param>
-        /// <returns>The address of the range (e.g., "A1:C7", "$A1:C$7", "$A$1:$C$7").</returns>
         public static string Address(this Range range, bool absoluteRow = false, bool absoluteColumn = false, bool external = false)
         {
             try
@@ -33,19 +17,83 @@ namespace NoruST
             }
         }
 
-        /// <summary>
-        /// Converts any combination of row and column to an address (e.g., "A1:C7", "$A1:C$7", "$A$1:$C$7").
-        /// </summary>
-        /// <param name="row">The number of the row.</param>
-        /// <param name="column">The number of the column.</param>
-        /// <param name="absoluteRow">(Optional) Set to false if the row should not be absolute.</param>
-        /// <param name="absoluteColumn">(optional) Set to false if the column should not be absolute.</param>
-        /// <returns>The address of the cell (e.g., "A1:C7", "$A1:C$7", "$A$1:$C$7").</returns>
         public static string CellAddress(int row, int column, bool absoluteRow = true, bool absoluteColumn = true)
         {
-            var sheet = (Worksheet)Globals.ExcelAddIn.Application.ActiveSheet;
+            Worksheet sheet = (Worksheet)Globals.ExcelAddIn.Application.ActiveSheet;
 
             return sheet.Cells[row, column].Address(absoluteRow, absoluteColumn);
+        }
+
+        public static Range shiftRangeByColumns(this Range range, int numberOfColumnsToShift)
+        {
+            Worksheet sheet = (Worksheet)Globals.ExcelAddIn.Application.ActiveSheet;
+            return sheet.Range[
+                sheet.Cells[
+                    range.Row, 
+                    range.Column + numberOfColumnsToShift], 
+                sheet.Cells[
+                    range.Row + range.Rows.Count - 1, 
+                    range.Column + numberOfColumnsToShift + range.Columns.Count - 1]];
+        }
+
+        public static Range shiftRangeByRows(this Range range, int numberOfRowsToShift)
+        {
+            Worksheet sheet = (Worksheet)Globals.ExcelAddIn.Application.ActiveSheet;
+            return sheet.Range[
+                sheet.Cells[
+                    range.Row + numberOfRowsToShift,
+                    range.Column],
+                sheet.Cells[
+                    range.Row + numberOfRowsToShift + range.Rows.Count - 1,
+                    range.Column + range.Columns.Count - 1]];
+        }
+
+        public static Range extendRangeByColumns(this Range range, int numberOfColumnsToExtend, bool right = true)
+        {
+            Worksheet sheet = (Worksheet)Globals.ExcelAddIn.Application.ActiveSheet;
+            return right
+                ? sheet.Range[
+                    sheet.Cells[
+                        range.Row,
+                        range.Column],
+                    sheet.Cells[
+                        range.Row + range.Rows.Count - 1,
+                        range.Column + numberOfColumnsToExtend + range.Columns.Count - 1]]
+                : sheet.Range[
+                    sheet.Cells[
+                        range.Row,
+                        range.Column + range.Columns.Count - 1],
+                    sheet.Cells[
+                        range.Row + range.Rows.Count - 1,
+                        range.Column - numberOfColumnsToExtend]];
+
+        }
+
+        public static Range extendRangeByRows(this Range range, int numberOfRowsToExtend, bool down = true)
+        {
+            Worksheet sheet = (Worksheet)Globals.ExcelAddIn.Application.ActiveSheet;
+            return down
+                ? sheet.Range[
+                    sheet.Cells[
+                        range.Row,
+                        range.Column],
+                    sheet.Cells[
+                        range.Row + numberOfRowsToExtend + range.Rows.Count - 1,
+                        range.Column + range.Columns.Count - 1]]
+                : sheet.Range[
+                    sheet.Cells[
+                        range.Row + range.Rows.Count - 1,
+                        range.Column],
+                    sheet.Cells[
+                        range.Row - numberOfRowsToExtend,
+                        range.Column + range.Columns.Count - 1]];
+
+        }
+
+        public static Range first(this Range range)
+        {
+            Worksheet sheet = (Worksheet)Globals.ExcelAddIn.Application.ActiveSheet;
+            return sheet.Cells[range.Row, range.Column];
         }
     }
 }
