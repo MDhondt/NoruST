@@ -69,7 +69,7 @@ namespace NoruST.Forms
             this.gbxDataSet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbxDataSet.Location = new System.Drawing.Point(3, 78);
             this.gbxDataSet.Name = "gbxDataSet";
-            this.gbxDataSet.Size = new System.Drawing.Size(378, 249);
+            this.gbxDataSet.Size = new System.Drawing.Size(378, 250);
             this.gbxDataSet.TabIndex = 1;
             this.gbxDataSet.TabStop = false;
             this.gbxDataSet.Text = "Data Set";
@@ -103,7 +103,7 @@ namespace NoruST.Forms
             this.tlpDataSet.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDataSet.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpDataSet.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpDataSet.Size = new System.Drawing.Size(372, 230);
+            this.tlpDataSet.Size = new System.Drawing.Size(372, 231);
             this.tlpDataSet.TabIndex = 7;
             // 
             // uiDataGridView_Variables
@@ -120,7 +120,7 @@ namespace NoruST.Forms
             this.uiDataGridView_Variables.Location = new System.Drawing.Point(3, 81);
             this.uiDataGridView_Variables.Name = "uiDataGridView_Variables";
             this.uiDataGridView_Variables.RowHeadersVisible = false;
-            this.uiDataGridView_Variables.Size = new System.Drawing.Size(366, 146);
+            this.uiDataGridView_Variables.Size = new System.Drawing.Size(366, 147);
             this.uiDataGridView_Variables.TabIndex = 0;
             // 
             // uiDataGridViewColumn_VariableName
@@ -243,7 +243,7 @@ namespace NoruST.Forms
             // 
             this.uiButton_Close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.uiButton_Close.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiButton_Close.Location = new System.Drawing.Point(300, 333);
+            this.uiButton_Close.Location = new System.Drawing.Point(300, 334);
             this.uiButton_Close.Name = "uiButton_Close";
             this.uiButton_Close.Size = new System.Drawing.Size(81, 25);
             this.uiButton_Close.TabIndex = 5;
@@ -270,7 +270,7 @@ namespace NoruST.Forms
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.Size = new System.Drawing.Size(384, 361);
+            this.tlpForm.Size = new System.Drawing.Size(384, 362);
             this.tlpForm.TabIndex = 8;
             // 
             // uiListBox_DataSets
@@ -332,7 +332,7 @@ namespace NoruST.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.uiButton_Close;
-            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.ClientSize = new System.Drawing.Size(384, 362);
             this.Controls.Add(this.tlpForm);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

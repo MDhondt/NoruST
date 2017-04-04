@@ -176,7 +176,6 @@
             this.rdbPreviousData.Name = "rdbPreviousData";
             this.rdbPreviousData.Size = new System.Drawing.Size(90, 17);
             this.rdbPreviousData.TabIndex = 2;
-            this.rdbPreviousData.TabStop = true;
             this.rdbPreviousData.Text = "Previous data";
             this.rdbPreviousData.UseVisualStyleBackColor = true;
             // 
@@ -187,7 +186,6 @@
             this.rdbObservationsInRange.Name = "rdbObservationsInRange";
             this.rdbObservationsInRange.Size = new System.Drawing.Size(128, 17);
             this.rdbObservationsInRange.TabIndex = 1;
-            this.rdbObservationsInRange.TabStop = true;
             this.rdbObservationsInRange.Text = "Observations in range";
             this.rdbObservationsInRange.UseVisualStyleBackColor = true;
             this.rdbObservationsInRange.CheckedChanged += new System.EventHandler(this.ObservationsInRange_CheckedChanged);
@@ -195,6 +193,7 @@
             // rdbAllObservations
             // 
             this.rdbAllObservations.AutoSize = true;
+            this.rdbAllObservations.Checked = true;
             this.rdbAllObservations.Location = new System.Drawing.Point(17, 19);
             this.rdbAllObservations.Name = "rdbAllObservations";
             this.rdbAllObservations.Size = new System.Drawing.Size(101, 17);

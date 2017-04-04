@@ -9,16 +9,21 @@ using System.Windows.Forms;
 using NoruST.Forms;
 using NoruST.Presenters;
 using NoruST.Domain;
+using static System.Windows.Forms.DialogResult;
+using static System.Windows.Forms.MessageBoxButtons;
+using static System.Windows.Forms.MessageBoxIcon;
 
 namespace NoruST.Forms
 {
     public partial class XRChartForm : Form
     {
         private XRChartPresenter presenter;
+        private const string formTitle = "NoruST - XRChart";
 
         public XRChartForm()
         {
             InitializeComponent();
+
         }
 
         public void setPresenter(XRChartPresenter XRChartPresenter)
@@ -55,6 +60,7 @@ namespace NoruST.Forms
         private void Cancelbutton_clicked(object sender, EventArgs e)
         {
             Close();
+            presenter.checkInput(Rchart.Checked, Xbar.Checked, rdbAllObservations.Checked, rdbObservationsInRange.Checked, rdbPreviousData.Checked, selectedDataSet());
         }
 
         private void ObservationsInRange_CheckedChanged(object sender, EventArgs e)
@@ -70,6 +76,12 @@ namespace NoruST.Forms
         {
 
         }
+
+        private void OkButtonClick(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
 
