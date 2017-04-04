@@ -141,18 +141,18 @@ namespace NoruST.Forms
             this.lblName.Location = new System.Drawing.Point(3, 3);
             this.lblName.Margin = new System.Windows.Forms.Padding(3);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(45, 20);
+            this.lblName.Size = new System.Drawing.Size(51, 20);
             this.lblName.TabIndex = 5;
-            this.lblName.Text = "Naam:";
+            this.lblName.Text = "Name:";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiTextBox_DataSetName
             // 
             this.tlpDataSet.SetColumnSpan(this.uiTextBox_DataSetName, 5);
             this.uiTextBox_DataSetName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBox_DataSetName.Location = new System.Drawing.Point(54, 3);
+            this.uiTextBox_DataSetName.Location = new System.Drawing.Point(60, 3);
             this.uiTextBox_DataSetName.Name = "uiTextBox_DataSetName";
-            this.uiTextBox_DataSetName.Size = new System.Drawing.Size(315, 20);
+            this.uiTextBox_DataSetName.Size = new System.Drawing.Size(309, 20);
             this.uiTextBox_DataSetName.TabIndex = 6;
             // 
             // lblDataIn
@@ -162,32 +162,32 @@ namespace NoruST.Forms
             this.lblDataIn.Location = new System.Drawing.Point(3, 58);
             this.lblDataIn.Margin = new System.Windows.Forms.Padding(3);
             this.lblDataIn.Name = "lblDataIn";
-            this.lblDataIn.Size = new System.Drawing.Size(45, 17);
+            this.lblDataIn.Size = new System.Drawing.Size(51, 17);
             this.lblDataIn.TabIndex = 2;
-            this.lblDataIn.Text = "Data in:";
+            this.lblDataIn.Text = "Data are:";
             this.lblDataIn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // rdbColumns
             // 
             this.rdbColumns.AutoSize = true;
             this.rdbColumns.Checked = true;
-            this.rdbColumns.Location = new System.Drawing.Point(54, 58);
+            this.rdbColumns.Location = new System.Drawing.Point(60, 58);
             this.rdbColumns.Name = "rdbColumns";
-            this.rdbColumns.Size = new System.Drawing.Size(74, 17);
+            this.rdbColumns.Size = new System.Drawing.Size(65, 17);
             this.rdbColumns.TabIndex = 2;
             this.rdbColumns.TabStop = true;
-            this.rdbColumns.Text = "Kolommen";
+            this.rdbColumns.Text = "Columns";
             this.rdbColumns.UseVisualStyleBackColor = true;
             this.rdbColumns.CheckedChanged += new System.EventHandler(this.uiRadioButton_Columns_Rows_CheckedChanged);
             // 
             // rdbRows
             // 
             this.rdbRows.AutoSize = true;
-            this.rdbRows.Location = new System.Drawing.Point(134, 58);
+            this.rdbRows.Location = new System.Drawing.Point(131, 58);
             this.rdbRows.Name = "rdbRows";
-            this.rdbRows.Size = new System.Drawing.Size(49, 17);
+            this.rdbRows.Size = new System.Drawing.Size(52, 17);
             this.rdbRows.TabIndex = 3;
-            this.rdbRows.Text = "Rijen";
+            this.rdbRows.Text = "Rows";
             this.rdbRows.UseVisualStyleBackColor = true;
             this.rdbRows.CheckedChanged += new System.EventHandler(this.uiRadioButton_Columns_Rows_CheckedChanged);
             // 
@@ -198,12 +198,12 @@ namespace NoruST.Forms
             this.chkHasHeaders.Checked = true;
             this.chkHasHeaders.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tlpDataSet.SetColumnSpan(this.chkHasHeaders, 2);
-            this.chkHasHeaders.Location = new System.Drawing.Point(240, 58);
+            this.chkHasHeaders.Location = new System.Drawing.Point(250, 58);
             this.chkHasHeaders.Name = "chkHasHeaders";
-            this.chkHasHeaders.Size = new System.Drawing.Size(129, 17);
+            this.chkHasHeaders.Size = new System.Drawing.Size(119, 17);
             this.chkHasHeaders.TabIndex = 4;
             this.chkHasHeaders.TabStop = false;
-            this.chkHasHeaders.Text = "Range bevat headers";
+            this.chkHasHeaders.Text = "Range has headers";
             this.chkHasHeaders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkHasHeaders.UseVisualStyleBackColor = true;
             this.chkHasHeaders.CheckedChanged += new System.EventHandler(this.uiCheckBox_HasHeaders_CheckedChanged);
@@ -215,7 +215,7 @@ namespace NoruST.Forms
             this.lblRange.Location = new System.Drawing.Point(3, 29);
             this.lblRange.Margin = new System.Windows.Forms.Padding(3);
             this.lblRange.Name = "lblRange";
-            this.lblRange.Size = new System.Drawing.Size(45, 23);
+            this.lblRange.Size = new System.Drawing.Size(51, 23);
             this.lblRange.TabIndex = 7;
             this.lblRange.Text = "Range: ";
             this.lblRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -234,9 +234,9 @@ namespace NoruST.Forms
             // 
             this.tlpDataSet.SetColumnSpan(this.uiTextBox_DataSetRange, 4);
             this.uiTextBox_DataSetRange.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTextBox_DataSetRange.Location = new System.Drawing.Point(54, 29);
+            this.uiTextBox_DataSetRange.Location = new System.Drawing.Point(60, 29);
             this.uiTextBox_DataSetRange.Name = "uiTextBox_DataSetRange";
-            this.uiTextBox_DataSetRange.Size = new System.Drawing.Size(285, 20);
+            this.uiTextBox_DataSetRange.Size = new System.Drawing.Size(279, 20);
             this.uiTextBox_DataSetRange.TabIndex = 9;
             // 
             // uiButton_Close
@@ -247,7 +247,7 @@ namespace NoruST.Forms
             this.uiButton_Close.Name = "uiButton_Close";
             this.uiButton_Close.Size = new System.Drawing.Size(81, 25);
             this.uiButton_Close.TabIndex = 5;
-            this.uiButton_Close.Text = "Sluiten";
+            this.uiButton_Close.Text = "Close";
             this.uiButton_Close.UseVisualStyleBackColor = true;
             this.uiButton_Close.Click += new System.EventHandler(this.uiButton_Close_Click);
             // 
@@ -308,7 +308,7 @@ namespace NoruST.Forms
             this.uiButton_Delete.Name = "uiButton_Delete";
             this.uiButton_Delete.Size = new System.Drawing.Size(75, 29);
             this.uiButton_Delete.TabIndex = 9;
-            this.uiButton_Delete.Text = "Verwijder";
+            this.uiButton_Delete.Text = "Remove";
             this.uiButton_Delete.UseVisualStyleBackColor = true;
             this.uiButton_Delete.Click += new System.EventHandler(this.uiButton_Delete_Click);
             // 
@@ -319,7 +319,7 @@ namespace NoruST.Forms
             this.uiButton_New.Name = "uiButton_New";
             this.uiButton_New.Size = new System.Drawing.Size(75, 28);
             this.uiButton_New.TabIndex = 10;
-            this.uiButton_New.Text = "Nieuw";
+            this.uiButton_New.Text = "New";
             this.uiButton_New.UseVisualStyleBackColor = true;
             this.uiButton_New.Click += new System.EventHandler(this.uiButton_New_Click);
             // 

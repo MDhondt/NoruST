@@ -511,7 +511,11 @@
     <ManifestKeyFile>NoruST_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
+<<<<<<< Updated upstream
     <ManifestCertificateThumbprint>BBEE316FA4D408B6C30896B270554380D0F31F84</ManifestCertificateThumbprint>
+=======
+    <ManifestCertificateThumbprint>247A719B2CA4217289B407172773BDF3C5637597</ManifestCertificateThumbprint>
+>>>>>>> Stashed changes
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

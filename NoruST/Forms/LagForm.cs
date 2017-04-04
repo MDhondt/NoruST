@@ -26,19 +26,32 @@ namespace NoruST.Forms
         {
             uiComboBox_DataSets.DataSource = presenter.dataSets();
             uiComboBox_DataSets.DisplayMember = "name";
-            uiDataGridViewColumn_Name.DataPropertyName = "name";
-            uiDataGridViewColumn_Range.DataPropertyName = "Range";
             uiComboBox_DataSets.SelectedIndexChanged += (obj, eventArgs) =>
             {
                 if (selectedDataSet() == null) return;
-                uiDataGridView_Variables.DataSource = selectedDataSet().getVariables();
+                uiComboBox_Variables.DataSource = selectedDataSet().getVariables();
+                uiComboBox_Variables.DisplayMember = "name";
                 uiNumericUpDown_Lag.Maximum = selectedDataSet().rangeSize() - 1;
+                presenter.getModel().dataSet = selectedDataSet();
+                presenter.getModel().numberOfLags = (int)uiNumericUpDown_Lag.Value;
             };
+            uiComboBox_Variables.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedVariable() == null) return;
+                presenter.getModel().variable = selectedVariable();
+            };
+            uiNumericUpDown_Lag.ValueChanged +=
+                (obj, eventArgs) => presenter.getModel().numberOfLags = (int)uiNumericUpDown_Lag.Value;
         }
 
         private DataSet selectedDataSet()
         {
             return (DataSet)uiComboBox_DataSets.SelectedItem;
+        }
+
+        private Variable selectedVariable()
+        {
+            return (Variable) uiComboBox_Variables.SelectedItem;
         }
 
         public void selectDataSet(DataSet dataSet)
@@ -52,19 +65,10 @@ namespace NoruST.Forms
             Close();
         }
 
-        private void uiDataGridView_Variables_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            var columnIndex = 0;
-            if (uiDataGridView_Variables.Rows.Count == 0 || e.ColumnIndex != columnIndex) return;
-            var isChecked = (bool)uiDataGridView_Variables.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-            if (!isChecked) return;
-            foreach (DataGridViewRow row in uiDataGridView_Variables.Rows)
-            {
-                if (row.Index != e.RowIndex)
-                {
-                    row.Cells[columnIndex].Value = false;
-                }
-            }
+            presenter.createLags();
+            Close();
         }
     }
 }

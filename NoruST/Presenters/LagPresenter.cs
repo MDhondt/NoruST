@@ -22,6 +22,11 @@ namespace NoruST.Presenters
             this.model = new LagModel();
         }
 
+        public LagModel getModel()
+        {
+            return model;
+        }
+
         public void openView()
         {
             view = view.createAndOrShowForm();
@@ -31,6 +36,11 @@ namespace NoruST.Presenters
         public BindingList<DataSet> dataSets()
         {
             return dataSetPresenter.getModel().getDataSets();
+        }
+
+        public void createLags()
+        {
+            model.dataSet.addLags(model.variable, model.numberOfLags);
         }
     }
 }
