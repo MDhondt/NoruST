@@ -38,43 +38,65 @@ namespace NoruST.Presenters
             return dataSetPresenter.getModel().getDataSets();
         }
 
-        public void checkInput(bool RChecked, bool XChecked, bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet)
+        public void checkInput(bool RChecked, bool XChecked, bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet, string uiTextBox_StopIndex, string uiTextBox_StartIndex)
         {
-            if ((RChecked || XChecked) && (rdbAllObservations || rdbObservationsInRange || rdbPreviousData) && (dataSet != null))
+            int startindex = Convert.ToInt16(uiTextBox_StartIndex);
+            int stopindex = Convert.ToInt16(uiTextBox_StopIndex);
+
+            if ((RChecked || XChecked) && (rdbAllObservations || rdbObservationsInRange || rdbPreviousData))
             {
-                generateChart(RChecked, XChecked, rdbAllObservations, rdbObservationsInRange, rdbPreviousData, dataSet);
+
+                if (RChecked && XChecked)
+                {
+                    offset = 300;
+                }
+                else offset = 0;
+
+                _Worksheet sheet = WorksheetHelper.NewWorksheet("XR Chart");
+                if (XChecked)
+                {
+                    calculateXChart();
+                    generateXChart(rdbAllObservations, rdbObservationsInRange, rdbPreviousData, dataSet, sheet);
+                }
+                if (RChecked)
+                {
+                    generateRChart(rdbAllObservations, rdbObservationsInRange, rdbPreviousData, dataSet, offset, sheet);
+                }
             }
             else
-                MessageBox.Show("Please complete all fields on the form to generate XRChart", "XR-Chart error");
+                MessageBox.Show("Please complete all fields on the form to generate X/R-Chart", "XR-Chart error");
         }
 
-        public void generateChart(bool RChecked, bool XChecked, bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet)
+        private void calculateXChart()
         {
-            var sheet = WorksheetHelper.NewWorksheet("XR Chart");
-            if (RChecked && XChecked)
-            {
-                offset = 300;
-            }
-            else offset = 0;
 
-            if (XChecked) {
+        }
+
+        private void generateXChart(bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet, _Worksheet sheet)
+        {
+            sheet.Cells[1][1] = 1;
                 var Xcharts = (ChartObjects)sheet.ChartObjects();
-                var chartObject = Xcharts.Add(100, 50, 400, 300);
-                var Xchart = chartObject.Chart;
-                Xchart.ChartType = XlChartType.xlXYScatter;
-                Xchart.ChartWizard(Source: dataSets(), Title: "X-Chart " + dataSet.Name, HasLegend: true);
-                var seriesCollection = (SeriesCollection)Xchart.SeriesCollection();
-            }
-            if (RChecked)
-            {
+                var XchartObject = Xcharts.Add(100, 50, 400, 300);
+                var Xchart = XchartObject.Chart;
+                Xchart.ChartType = XlChartType.xlLineMarkers;
+                Xchart.ChartWizard(Title: "X-Chart " + dataSet.Name, HasLegend: true);
+                var XseriesCollection = (SeriesCollection)Xchart.SeriesCollection();
+                var xseries = XseriesCollection.Add();
+                xseries.Values(model.subsampleAverages(dataSet));
+                xseries.XValues(model.dataSet.getVariables());
+        }
+
+        private void generateRChart(bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet, int offset, _Worksheet sheet)
+        {
                 var Rcharts = (ChartObjects)sheet.ChartObjects();
                 var RchartObject = Rcharts.Add(100, 50 + offset, 400, 300);
                 var Rchart = RchartObject.Chart;
-                Rchart.ChartType = XlChartType.xlXYScatter;
-                Rchart.ChartWizard(Source: dataSets(), Title: "R-Chart " + dataSet.Name, HasLegend: true);
-                var seriesCollection = (SeriesCollection)Rchart.SeriesCollection();
-            }
-            
+                Rchart.ChartType = XlChartType.xlLineMarkers;
+                Rchart.ChartWizard(Title: "R-Chart " + dataSet.Name, HasLegend: true);
+                var RseriesCollection = (SeriesCollection)Rchart.SeriesCollection();
+                var rseries = RseriesCollection.Add();
+                rseries.Values(model.subsampleAverages(dataSet));
+                rseries.XValues(model.dataSet.getVariables());
         }
     }
 }

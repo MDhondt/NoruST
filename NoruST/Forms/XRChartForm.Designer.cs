@@ -34,7 +34,7 @@
             this.ui_Button_Cancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ui_Button_Ok = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblStopIndex = new System.Windows.Forms.Label();
             this.lblStartIndex = new System.Windows.Forms.Label();
@@ -62,9 +62,9 @@
             this.Xbar.AutoSize = true;
             this.Xbar.Location = new System.Drawing.Point(312, 50);
             this.Xbar.Name = "Xbar";
-            this.Xbar.Size = new System.Drawing.Size(57, 17);
+            this.Xbar.Size = new System.Drawing.Size(67, 17);
             this.Xbar.TabIndex = 0;
-            this.Xbar.Text = "X - bar";
+            this.Xbar.Text = "X - Chart";
             this.Xbar.UseVisualStyleBackColor = true;
             // 
             // Rchart
@@ -108,14 +108,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Select one or more graphs";
             // 
-            // ui_Button_Ok
+            // btnOk
             // 
-            this.ui_Button_Ok.Location = new System.Drawing.Point(267, 397);
-            this.ui_Button_Ok.Name = "ui_Button_Ok";
-            this.ui_Button_Ok.Size = new System.Drawing.Size(75, 23);
-            this.ui_Button_Ok.TabIndex = 5;
-            this.ui_Button_Ok.Text = "Ok";
-            this.ui_Button_Ok.UseVisualStyleBackColor = true;
+            this.btnOk.Location = new System.Drawing.Point(267, 397);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 5;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.uiButton_Ok_Click);
             // 
             // groupBox2
             // 
@@ -156,17 +157,21 @@
             // uiTextBox_StopIndex
             // 
             this.uiTextBox_StopIndex.Location = new System.Drawing.Point(302, 64);
+            this.uiTextBox_StopIndex.MaxLength = 5;
             this.uiTextBox_StopIndex.Name = "uiTextBox_StopIndex";
             this.uiTextBox_StopIndex.Size = new System.Drawing.Size(91, 20);
             this.uiTextBox_StopIndex.TabIndex = 4;
+            this.uiTextBox_StopIndex.Text = "0";
             this.uiTextBox_StopIndex.Visible = false;
             // 
             // uiTextBox_StartIndex
             // 
             this.uiTextBox_StartIndex.Location = new System.Drawing.Point(302, 21);
+            this.uiTextBox_StartIndex.MaxLength = 5;
             this.uiTextBox_StartIndex.Name = "uiTextBox_StartIndex";
             this.uiTextBox_StartIndex.Size = new System.Drawing.Size(91, 20);
             this.uiTextBox_StartIndex.TabIndex = 3;
+            this.uiTextBox_StartIndex.Text = "0";
             this.uiTextBox_StartIndex.Visible = false;
             // 
             // rdbPreviousData
@@ -226,6 +231,10 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -249,7 +258,6 @@
             this.rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
             this.rangeDataGridViewTextBoxColumn.HeaderText = "Range";
             this.rangeDataGridViewTextBoxColumn.Name = "rangeDataGridViewTextBoxColumn";
-            this.rangeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // groupBox3
             // 
@@ -270,7 +278,7 @@
             this.ClientSize = new System.Drawing.Size(447, 426);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.ui_Button_Ok);
+            this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ui_Button_Cancel);
             this.Name = "XRChartForm";
@@ -293,7 +301,7 @@
         private System.Windows.Forms.CheckBox Rchart;
         private System.Windows.Forms.Button ui_Button_Cancel;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button ui_Button_Ok;
+        private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rdbAllObservations;

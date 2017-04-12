@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NoruST.Forms;
 using NoruST.Presenters;
 using NoruST.Domain;
-using static System.Windows.Forms.DialogResult;
-using static System.Windows.Forms.MessageBoxButtons;
-using static System.Windows.Forms.MessageBoxIcon;
+
 
 namespace NoruST.Forms
 {
@@ -60,7 +52,6 @@ namespace NoruST.Forms
         private void Cancelbutton_clicked(object sender, EventArgs e)
         {
             Close();
-            presenter.checkInput(Rchart.Checked, Xbar.Checked, rdbAllObservations.Checked, rdbObservationsInRange.Checked, rdbPreviousData.Checked, selectedDataSet());
         }
 
         private void ObservationsInRange_CheckedChanged(object sender, EventArgs e)
@@ -69,19 +60,20 @@ namespace NoruST.Forms
             uiTextBox_StopIndex.Visible = rdbObservationsInRange.Checked;
             lblStartIndex.Visible = rdbObservationsInRange.Checked;
             lblStopIndex.Visible = rdbObservationsInRange.Checked;
+            uiTextBox_StartIndex.Text = "0";
+            uiTextBox_StopIndex.Text = "0";
         }
-      
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void OkButtonClick(object sender, EventArgs e)
+        private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            
+            presenter.checkInput(Rchart.Checked, Xbar.Checked, rdbAllObservations.Checked, rdbObservationsInRange.Checked, rdbPreviousData.Checked, selectedDataSet(), uiTextBox_StopIndex.Text, uiTextBox_StartIndex.Text);
         }
-
     }
 }
 
