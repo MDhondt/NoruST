@@ -258,6 +258,7 @@
             this.rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
             this.rangeDataGridViewTextBoxColumn.HeaderText = "Range";
             this.rangeDataGridViewTextBoxColumn.Name = "rangeDataGridViewTextBoxColumn";
+            this.rangeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // groupBox3
             // 

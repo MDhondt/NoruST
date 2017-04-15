@@ -72,7 +72,11 @@ namespace NoruST.Forms
 
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            presenter.checkInput(Rchart.Checked, Xbar.Checked, rdbAllObservations.Checked, rdbObservationsInRange.Checked, rdbPreviousData.Checked, selectedDataSet(), uiTextBox_StopIndex.Text, uiTextBox_StartIndex.Text);
+            bool inputOk = presenter.checkInput(Rchart.Checked, Xbar.Checked, rdbAllObservations.Checked, rdbObservationsInRange.Checked, rdbPreviousData.Checked, selectedDataSet(), uiTextBox_StopIndex.Text, uiTextBox_StartIndex.Text);
+            if (inputOk)
+            {
+                Close();
+            }
         }
     }
 }

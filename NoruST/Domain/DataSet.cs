@@ -118,6 +118,16 @@ namespace NoruST.Domain
             recalculateVariables();
         }
 
+        public int amountOfVariables()
+        {
+            return variables.Count();
+        }
+
+        public bool variableInColumns()
+        {
+            return rangeLayout == COLUMNS;
+        }
+
         #region PropertyChangeEventHandlerStuff
 
         public string Range
