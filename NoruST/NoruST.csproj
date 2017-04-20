@@ -35,7 +35,7 @@
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.144</ApplicationVersion>
+    <ApplicationVersion>1.0.0.170</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -346,9 +346,11 @@
     <Compile Include="Models\DataSet.cs" />
     <Compile Include="Enums\Layout.cs" />
     <Compile Include="Models\SummaryStatisticsBool.cs" />
+    <Compile Include="Models\PChartModel.cs" />
     <Compile Include="Models\XRChartModel.cs" />
     <Compile Include="Presenters\DataSetManagerPresenter.cs" />
     <Compile Include="Presenters\LagPresenter.cs" />
+    <Compile Include="Presenters\PChartPresenter.cs" />
     <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -370,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DummyForm.resx">
       <DependentUpon>DummyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PChartForm.resx">
+      <DependentUpon>PChartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectRangeForm.resx">
       <DependentUpon>SelectRangeForm.cs</DependentUpon>

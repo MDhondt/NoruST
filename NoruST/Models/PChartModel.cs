@@ -8,7 +8,7 @@ using NoruST.Domain;
 
 namespace NoruST.Models
 {
-    class XRChartModel
+    class PChartModel
     {
         public BindingList<float> averages = new BindingList<float>();
         public BindingList<Variable> variables = new BindingList<Variable>();

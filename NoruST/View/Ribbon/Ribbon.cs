@@ -11,6 +11,7 @@ namespace NoruST
         private DataSetManagerPresenter dataSetManagerPresenter;
         private LagPresenter lagPresenter;
         private XRChartPresenter xrChartPresenter;
+        private PChartPresenter pChartPresenter;
         private DummyForm dummyForm;
         private OneVariableSummaryForm oneVariableSummaryForm;
         private CorrelationCovarianceForm correlationCovarianceForm;
@@ -34,6 +35,7 @@ namespace NoruST
             dataSetManagerPresenter = new DataSetManagerPresenter();
             lagPresenter = new LagPresenter(dataSetManagerPresenter);
             xrChartPresenter = new XRChartPresenter(dataSetManagerPresenter);
+            pChartPresenter = new PChartPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -52,7 +54,7 @@ namespace NoruST
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
             btnXRChart.Click += delegate { xrChartPresenter.openView(); };
-            btnPChart.Click += delegate { pChartForm = pChartForm.createAndOrShowForm(); };
+            btnPChart.Click += delegate { pChartPresenter.openView(); };
         }
 
         private void btnConfidenceIntervalMeanAndStandardDeviation_Click(object sender, RibbonControlEventArgs e)

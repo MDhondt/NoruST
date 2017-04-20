@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ui_ComboBox_SelectDataSet = new System.Windows.Forms.ComboBox();
+            this.ui_ComboBox_SelectDataSets = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,13 +52,13 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ui_ComboBox_SelectDataSet
+            // ui_ComboBox_SelectDataSets
             // 
-            this.ui_ComboBox_SelectDataSet.FormattingEnabled = true;
-            this.ui_ComboBox_SelectDataSet.Location = new System.Drawing.Point(169, 25);
-            this.ui_ComboBox_SelectDataSet.Name = "ui_ComboBox_SelectDataSet";
-            this.ui_ComboBox_SelectDataSet.Size = new System.Drawing.Size(277, 21);
-            this.ui_ComboBox_SelectDataSet.TabIndex = 0;
+            this.ui_ComboBox_SelectDataSets.FormattingEnabled = true;
+            this.ui_ComboBox_SelectDataSets.Location = new System.Drawing.Point(169, 25);
+            this.ui_ComboBox_SelectDataSets.Name = "ui_ComboBox_SelectDataSets";
+            this.ui_ComboBox_SelectDataSets.Size = new System.Drawing.Size(277, 21);
+            this.ui_ComboBox_SelectDataSets.TabIndex = 0;
             // 
             // label1
             // 
@@ -117,12 +117,13 @@
             this.btn_Ok.TabIndex = 4;
             this.btn_Ok.Text = "Ok";
             this.btn_Ok.UseVisualStyleBackColor = true;
+            this.btn_Ok.Click += new System.EventHandler(this.uiButton_Ok_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.ui_ComboBox_SelectDataSet);
+            this.groupBox1.Controls.Add(this.ui_ComboBox_SelectDataSets);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(452, 198);
@@ -172,6 +173,7 @@
             this.ui_TextBox_StopIndex.Name = "ui_TextBox_StopIndex";
             this.ui_TextBox_StopIndex.Size = new System.Drawing.Size(100, 20);
             this.ui_TextBox_StopIndex.TabIndex = 4;
+            this.ui_TextBox_StopIndex.Text = "0";
             this.ui_TextBox_StopIndex.Visible = false;
             // 
             // ui_TextBox_StartIndex
@@ -180,6 +182,7 @@
             this.ui_TextBox_StartIndex.Name = "ui_TextBox_StartIndex";
             this.ui_TextBox_StartIndex.Size = new System.Drawing.Size(100, 20);
             this.ui_TextBox_StartIndex.TabIndex = 3;
+            this.ui_TextBox_StartIndex.Text = "0";
             this.ui_TextBox_StartIndex.Visible = false;
             // 
             // ui_RadioButton_PreviousData
@@ -189,7 +192,6 @@
             this.ui_RadioButton_PreviousData.Name = "ui_RadioButton_PreviousData";
             this.ui_RadioButton_PreviousData.Size = new System.Drawing.Size(90, 17);
             this.ui_RadioButton_PreviousData.TabIndex = 2;
-            this.ui_RadioButton_PreviousData.TabStop = true;
             this.ui_RadioButton_PreviousData.Text = "Previous data";
             this.ui_RadioButton_PreviousData.UseVisualStyleBackColor = true;
             // 
@@ -200,7 +202,6 @@
             this.ui_RadioButton_ObservationsInRange.Name = "ui_RadioButton_ObservationsInRange";
             this.ui_RadioButton_ObservationsInRange.Size = new System.Drawing.Size(128, 17);
             this.ui_RadioButton_ObservationsInRange.TabIndex = 1;
-            this.ui_RadioButton_ObservationsInRange.TabStop = true;
             this.ui_RadioButton_ObservationsInRange.Text = "Observations in range";
             this.ui_RadioButton_ObservationsInRange.UseVisualStyleBackColor = true;
             this.ui_RadioButton_ObservationsInRange.CheckedChanged += new System.EventHandler(this.RB_Observationsinrange_CheckedChanged);
@@ -208,6 +209,7 @@
             // ui_RadioButton_AllObservations
             // 
             this.ui_RadioButton_AllObservations.AutoSize = true;
+            this.ui_RadioButton_AllObservations.Checked = true;
             this.ui_RadioButton_AllObservations.Location = new System.Drawing.Point(7, 20);
             this.ui_RadioButton_AllObservations.Name = "ui_RadioButton_AllObservations";
             this.ui_RadioButton_AllObservations.Size = new System.Drawing.Size(101, 17);
@@ -239,7 +241,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox ui_ComboBox_SelectDataSet;
+        private System.Windows.Forms.ComboBox ui_ComboBox_SelectDataSets;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
