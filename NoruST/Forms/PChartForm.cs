@@ -46,7 +46,11 @@ namespace NoruST.Forms
 
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            Close();
+            bool inputOk = presenter.checkInput(ui_RadioButton_AllObservations.Checked, ui_RadioButton_ObservationsInRange.Checked, ui_RadioButton_PreviousData.Checked, selectedDataSet(), ui_TextBox_StopIndex.Text, ui_TextBox_StartIndex.Text);
+            if (inputOk)
+            {
+                Close();
+            }
         }
 
         private void RB_Observationsinrange_CheckedChanged(object sender, EventArgs e)

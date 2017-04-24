@@ -38,86 +38,32 @@ namespace NoruST.Presenters
             return dataSetPresenter.getModel().getDataSets();
         }
 
-        public bool checkInput(bool RChecked, bool XChecked, bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet, string uiTextBox_StopIndex, string uiTextBox_StartIndex)
+        public bool checkInput(bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet, string uiTextBox_StopIndex, string uiTextBox_StartIndex)
         {
             int startindex = Convert.ToInt16(uiTextBox_StartIndex);
             int stopindex = Convert.ToInt16(uiTextBox_StopIndex);
 
-            if ((RChecked || XChecked) && (rdbAllObservations || rdbObservationsInRange || rdbPreviousData) && (dataSet != null) && (startindex <= stopindex))
+            if ((rdbAllObservations || rdbObservationsInRange || rdbPreviousData) && (dataSet != null) && (startindex <= stopindex))
             {
                 
-                if (RChecked && XChecked)
-                {
-                    offset = 300;
-                }
-                else offset = 0;
-
-                if (rdbAllObservations)
+                if (rdbAllObservations || rdbPreviousData)
                 {
                     startindex = 0;
                     stopindex = dataSet.amountOfVariables();
                 }
+      
+                _Worksheet sheet = WorksheetHelper.NewWorksheet("P Chart");
 
-                _Worksheet sheet = WorksheetHelper.NewWorksheet("XR Chart");
-                if (XChecked)
-                {
-                    generateXChart(startindex, stopindex, dataSet, sheet);
-                }
-
-                if (RChecked)
-                {
-                    generateRChart(startindex, stopindex, dataSet, offset, sheet);
-                }
+                generatePChart(startindex, stopindex, dataSet, sheet);
+                
                 return true;
             }
             else
-                MessageBox.Show("Please correct all fields to generate X/R-Chart", "XR-Chart error");
+                MessageBox.Show("Please correct all fields to generate P-Chart", "P-Chart error");
                 return false;
         }
 
-        private double[] loadData(DataSet dataSet)
-        {
-            double[,] cellValues = new double[dataSet.amountOfVariables(), dataSet.rangeSize() + 1];
-            cellValues = dataSet.getRange().Value as double[,];
-            double[] avgArray = new double[dataSet.amountOfVariables()];  
-
-            if (dataSet.variableInColumns())
-            {
-                for (var k = 0; k < dataSet.amountOfVariables(); k++)
-                {
-                    double sum = 0;
-                    for(var l = 0; l < dataSet.rangeSize(); l++)
-                    {
-                        sum = sum + Convert.ToDouble(cellValues[l, k]);
-                    }
-                    avgArray[k] = sum/dataSet.rangeSize();
-                }
-            }
-
-            if (!dataSet.variableInColumns())
-            {
-                for (var k = 0; k < dataSet.amountOfVariables(); k++)
-                {
-                    double sum = 0;
-                    for (var l = 0; l < dataSet.rangeSize(); l++)
-                    {
-                        sum = sum + Convert.ToDouble(cellValues[k, l]);
-                    }
-                    avgArray[k] = sum/dataSet.rangeSize();
-                }
-            }
-            return avgArray;
-        }
-
-        //private void calculateXChart(double[,] cellValues, int stopindex, int startindex, DataSet dataSet)
-        //{
-        //    for(int x = startindex; x < stopindex; x++)
-        //    {
-        //       cellValues.s
-        //    }
-        //}
-
-        private void generateXChart(int startindex, int stopindex, DataSet dataSet, _Worksheet sheet)
+        private void generatePChart(int startindex, int stopindex, DataSet dataSet, _Worksheet sheet)
         {
             int index = 0;
             int row = 1;
@@ -134,35 +80,22 @@ namespace NoruST.Presenters
                 sheet.Cells[row, column] = index;
                 sheet.Cells[row, column + 1] = dataSet.getVariables()[index].name;
                 sheet.Cells[row, column + 2] = "=AVERAGE("+ dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
-                ArrayIndex[index] = index;
+                var cellValue = (double)(sheet.Cells[row, column + 2] as Range).Value;
+                averages[index-startindex] = cellValue;
+                ArrayIndex[index-startindex] = index;
             }
 
-            MessageBox.Show("sum variables positie 1 " + loadData(dataSet));
-
                 var Xcharts = (ChartObjects)sheet.ChartObjects();
-                var XchartObject = Xcharts.Add(250, 50, 400, 300);
+                var XchartObject = Xcharts.Add(340, 20, 550, 300);
                 var Xchart = XchartObject.Chart;
                 Xchart.ChartType = XlChartType.xlLineMarkers;
-                Xchart.ChartWizard(Title: "X-Chart " + dataSet.Name, HasLegend: true);
+                Xchart.ChartWizard(Title: "P-Chart " + dataSet.Name, HasLegend: true);
                 var XseriesCollection = (SeriesCollection)Xchart.SeriesCollection();
                 var xseries = XseriesCollection.NewSeries();
-                xseries.Name = ("Observation Averages");
+                xseries.Name = ("Proportion");
                 xseries.XValues = ArrayIndex;
-                xseries.Values = loadData(dataSet);
+                xseries.Values = averages;
            
-        }
-
-        private void generateRChart(int startindex, int stopindex, DataSet dataSet, int offset, _Worksheet sheet)
-        {
-                var Rcharts = (ChartObjects)sheet.ChartObjects();
-                var RchartObject = Rcharts.Add(250, 50 + offset, 400, 300);
-                var Rchart = RchartObject.Chart;
-                Rchart.ChartType = XlChartType.xlLineMarkers;
-                Rchart.ChartWizard(Title: "R-Chart " + dataSet.Name, HasLegend: true);
-                var RseriesCollection = (SeriesCollection)Rchart.SeriesCollection();
-                var rseries = RseriesCollection.Add();
-                //rseries.Values(model.subsampleAverages(dataSet));
-                //rseries.XValues(model.dataSet.getVariables());
         }
     }
 }

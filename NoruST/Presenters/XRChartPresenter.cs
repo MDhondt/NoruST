@@ -52,11 +52,12 @@ namespace NoruST.Presenters
                 }
                 else offset = 0;
 
-                if (rdbAllObservations)
+                if (rdbAllObservations || rdbPreviousData)
                 {
                     startindex = 0;
                     stopindex = dataSet.amountOfVariables();
                 }
+
                 _Worksheet sheet = WorksheetHelper.NewWorksheet("XR Chart");
                 
                 generateXRChart(startindex, stopindex, dataSet, offset, sheet, XChecked, RChecked);
@@ -196,11 +197,11 @@ namespace NoruST.Presenters
                 sheet.Cells[row, column + 3] = "=MAX(" + dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
                 sheet.Cells[row, column + 4] = "=MIN(" + dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
                 sheet.Cells[row, column + 5] = (double)(sheet.Cells[row, column + 3] as Range).Value - (double)(sheet.Cells[row, column + 4] as Range).Value;
-                ArrayIndex[index] = index;
+                ArrayIndex[index-startindex] = index;
                 var cellValue = (double)(sheet.Cells[row, column + 2] as Range).Value;
-                averages[index] = cellValue;
+                averages[index-startindex] = cellValue;
                 cellValue = (double)(sheet.Cells[row, column + 5] as Range).Value;
-                Rvalues[index] = cellValue;
+                Rvalues[index-startindex] = cellValue;
             }
 
             if (dataSet.getVariableNamesInFirstRowOrColumn())
@@ -216,12 +217,12 @@ namespace NoruST.Presenters
 
             for (index = startindex; index < stopindex; index++)
             {
-                averageOfAverages[index] = averages.Average();
-                xChartUpperControlLimit[index] = averages.Average() + (xControlLimitFactor * Rvalues.Average());
-                xChartLowerControlLimit[index] = averages.Average() - (xControlLimitFactor * Rvalues.Average());
-                averageOfRvalues[index] = Rvalues.Average();
-                rChartUpperControlLimit[index] = Rvalues.Average() * rControlLimitFactor1;
-                rChartLowerControlLimit[index] = Rvalues.Average() * rControlLimitFactor2;
+                averageOfAverages[index-startindex] = averages.Average();
+                xChartUpperControlLimit[index-startindex] = averages.Average() + (xControlLimitFactor * Rvalues.Average());
+                xChartLowerControlLimit[index-startindex] = averages.Average() - (xControlLimitFactor * Rvalues.Average());
+                averageOfRvalues[index-startindex] = Rvalues.Average();
+                rChartUpperControlLimit[index-startindex] = Rvalues.Average() * rControlLimitFactor2;
+                rChartLowerControlLimit[index-startindex] = Rvalues.Average() * rControlLimitFactor1;
             }
 
             if (xChecked)
