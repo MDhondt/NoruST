@@ -140,7 +140,7 @@ namespace NoruST.Presenters
                 var Xcharts = (ChartObjects)sheet.ChartObjects();
                 var XchartObject = Xcharts.Add(340, 20, 550, 300);
                 var Xchart = XchartObject.Chart;
-                Xchart.ChartType = XlChartType.xlLineMarkers;
+                Xchart.ChartType = XlChartType.xlXYScatterLinesNoMarkers;
                 Xchart.ChartWizard(Title: "X-Chart " + dataSet.Name, HasLegend: true);
                 var XseriesCollection = (SeriesCollection)Xchart.SeriesCollection();
                 var avgseries = XseriesCollection.NewSeries();
@@ -160,7 +160,7 @@ namespace NoruST.Presenters
                 var Rcharts = (ChartObjects)sheet.ChartObjects();
                 var RchartObject = Rcharts.Add(340, 20 + offset, 550, 300);
                 var Rchart = RchartObject.Chart;
-                Rchart.ChartType = XlChartType.xlLineMarkers;
+                Rchart.ChartType = XlChartType.xlXYScatterLinesNoMarkers;
                 Rchart.ChartWizard(Title: "R-Chart " + dataSet.Name, HasLegend: true);
                 var RseriesCollection = (SeriesCollection)Rchart.SeriesCollection();
                 var rSeries = RseriesCollection.NewSeries();

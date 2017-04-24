@@ -68,34 +68,61 @@ namespace NoruST.Presenters
             int index = 0;
             int row = 1;
             int column = 1;
-            double[] averages = new double[stopindex - startindex];
-            int[] ArrayIndex = new int[stopindex-startindex];
+            double[] pValues = new double[dataSet.amountOfVariables()];
+            double[] averageOfPValues = new double[dataSet.amountOfVariables()];
+            double[] pValuesInRange = new double[stopindex - startindex];
+            double[] pChartUpperControlLimit = new double[dataSet.amountOfVariables()];
+            double[] pChartLowerControlLimit = new double[dataSet.amountOfVariables()];
+            int[] ArrayIndex = new int[dataSet.amountOfVariables()];
             sheet.Cells[row, column] = "Index";
             sheet.Cells[row, column + 1] = "Observation";
             sheet.Cells[row, column + 2] = "Average";
             
-            for(index = startindex; index < stopindex; index ++)
+            for(index = 0; index < dataSet.amountOfVariables(); index ++)
             {
                 row++;
                 sheet.Cells[row, column] = index;
                 sheet.Cells[row, column + 1] = dataSet.getVariables()[index].name;
                 sheet.Cells[row, column + 2] = "=AVERAGE("+ dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
                 var cellValue = (double)(sheet.Cells[row, column + 2] as Range).Value;
-                averages[index-startindex] = cellValue;
-                ArrayIndex[index-startindex] = index;
+                if (cellValue < -214682680) cellValue = 0; // if cellValue is the result of a division by 0, set value to 0
+                pValues[index] = cellValue;
+                ArrayIndex[index] = index;
+            }
+
+            for (index = startindex; index < stopindex; index++)
+            {
+                pValuesInRange[index - startindex] = pValues[index];
+            }
+
+            double pChartCorrection = 3 * Math.Sqrt((pValuesInRange.Average() * (1 - pValuesInRange.Average()) / dataSet.rangeSize()));
+
+            for (index = 0; index < dataSet.amountOfVariables(); index++)
+            {
+                averageOfPValues[index] = pValues.Average();
+                pChartUpperControlLimit[index] = pValues.Average() + pChartCorrection;
+                pChartLowerControlLimit[index] = pValues.Average() - pChartCorrection;
             }
 
                 var Xcharts = (ChartObjects)sheet.ChartObjects();
                 var XchartObject = Xcharts.Add(340, 20, 550, 300);
                 var Xchart = XchartObject.Chart;
-                Xchart.ChartType = XlChartType.xlLineMarkers;
+                Xchart.ChartType = XlChartType.xlXYScatterLinesNoMarkers;
                 Xchart.ChartWizard(Title: "P-Chart " + dataSet.Name, HasLegend: true);
                 var XseriesCollection = (SeriesCollection)Xchart.SeriesCollection();
-                var xseries = XseriesCollection.NewSeries();
-                xseries.Name = ("Proportion");
-                xseries.XValues = ArrayIndex;
-                xseries.Values = averages;
-           
+                var pseries = XseriesCollection.NewSeries();
+                var CLseries = XseriesCollection.NewSeries();
+                var UCLseries = XseriesCollection.NewSeries();
+                var LCLseries = XseriesCollection.NewSeries();
+                pseries.Name = ("Proportion");
+                CLseries.Name = ("Center line");
+                UCLseries.Name = ("UCL");
+                LCLseries.Name = ("LCL");
+                pseries.XValues = ArrayIndex;
+                pseries.Values = pValues;
+                CLseries.Values = averageOfPValues;
+                UCLseries.Values = pChartUpperControlLimit;
+                LCLseries.Values = pChartLowerControlLimit;
         }
     }
 }
