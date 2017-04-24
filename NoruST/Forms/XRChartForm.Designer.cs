@@ -29,11 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Xbar = new System.Windows.Forms.CheckBox();
-            this.Rchart = new System.Windows.Forms.CheckBox();
             this.ui_Button_Cancel = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblStopIndex = new System.Windows.Forms.Label();
@@ -50,32 +46,11 @@
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Xbar
-            // 
-            this.Xbar.AutoSize = true;
-            this.Xbar.Location = new System.Drawing.Point(312, 50);
-            this.Xbar.Name = "Xbar";
-            this.Xbar.Size = new System.Drawing.Size(67, 17);
-            this.Xbar.TabIndex = 0;
-            this.Xbar.Text = "X - Chart";
-            this.Xbar.UseVisualStyleBackColor = true;
-            // 
-            // Rchart
-            // 
-            this.Rchart.AutoSize = true;
-            this.Rchart.Location = new System.Drawing.Point(312, 16);
-            this.Rchart.Name = "Rchart";
-            this.Rchart.Size = new System.Drawing.Size(68, 17);
-            this.Rchart.TabIndex = 1;
-            this.Rchart.Text = "R - Chart";
-            this.Rchart.UseVisualStyleBackColor = true;
             // 
             // ui_Button_Cancel
             // 
@@ -86,27 +61,6 @@
             this.ui_Button_Cancel.Text = "Cancel";
             this.ui_Button_Cancel.UseVisualStyleBackColor = true;
             this.ui_Button_Cancel.Click += new System.EventHandler(this.Cancelbutton_clicked);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.Rchart);
-            this.groupBox1.Controls.Add(this.Xbar);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(422, 73);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Chart type";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Select one or more graphs";
             // 
             // btnOk
             // 
@@ -243,7 +197,7 @@
             this.dataGridView1.DataSource = this.variableBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(6, 55);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(410, 133);
+            this.dataGridView1.Size = new System.Drawing.Size(410, 212);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -265,9 +219,9 @@
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.ui_ComboBox_SelectDataSets);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 91);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(422, 194);
+            this.groupBox3.Size = new System.Drawing.Size(422, 273);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dataset";
@@ -280,12 +234,9 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ui_Button_Cancel);
             this.Name = "XRChartForm";
             this.Text = "X/R Chart";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).EndInit();
@@ -297,13 +248,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox Xbar;
-        private System.Windows.Forms.CheckBox Rchart;
         private System.Windows.Forms.Button ui_Button_Cancel;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rdbAllObservations;
         private System.Windows.Forms.RadioButton rdbPreviousData;
