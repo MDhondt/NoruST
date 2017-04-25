@@ -95,7 +95,9 @@ namespace NoruST.Presenters
                 pValuesInRange[index - startindex] = pValues[index];
             }
 
-            double pChartCorrection = 3 * Math.Sqrt((pValuesInRange.Average() * (1 - pValuesInRange.Average()) / dataSet.rangeSize()));
+            double pChartCorrection = Math.Pow(((pValuesInRange.Average() * (1 - pValuesInRange.Average())) / dataSet.rangeSize()), (0.3333333));
+
+            MessageBox.Show("PChart correctie afwijking van Center line " + pChartCorrection); // monitor deze waarde, is nog te groot, vermoeden dat .Pow niet correct is
 
             for (index = 0; index < dataSet.amountOfVariables(); index++)
             {
