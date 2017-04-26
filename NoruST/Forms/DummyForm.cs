@@ -1,53 +1,75 @@
-﻿using NoruST.Data;
+﻿using System;
+using System.Windows.Forms;
+using NoruST.Data;
+using NoruST.Domain;
+using NoruST.Presenters;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>The Dummy Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 14, 2016</para>
-    /// </summary>
-    public partial class DummyForm : ExtendedForm
+    public partial class DummyForm : Form
     {
-        #region Constructors
+        private DummyPresenter presenter;
 
-        /// <summary>
-        /// Constructor of the <see cref="DummyForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
         public DummyForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, dgvDataSet, btnOk, btnCancel);
         }
 
-        #endregion
-
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="System.Windows.Forms.ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
+        public void setPresenter(DummyPresenter dummyPresenter)
         {
-            // Create a data table and add the required columns.
-            CreateDataTable(DataTableColumn.Editable);
-
-            // Update the view with new data.
-            UpdateDataTable(DefaultCheck.Nonnumeric);
+            this.presenter = dummyPresenter;
+            bindModelToView();
+            selectDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// This adds extra functionality to the Ok <see cref="System.Windows.Forms.Button"/>
-        /// </summary>
-        public override bool OkButtonClick()
+        private void bindModelToView()
         {
-            return new DummyLag().AddDummies(SelectedDataSet, DoInclude);
+            uiComboBox_DataSets.DataSource = presenter.dataSets();
+            uiComboBox_DataSets.DisplayMember = "name";
+            uiComboBox_DataSets.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedDataSet() == null) return;
+                uiComboBox_Variables.DataSource = selectedDataSet().getVariables();
+                uiComboBox_Variables.DisplayMember = "name";
+                presenter.getModel().dataSet = selectedDataSet();
+            };
+            uiComboBox_Variables.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedVariable() == null) return;
+                presenter.getModel().variable = selectedVariable();
+            };
+            uiComboBoxCondition.SelectedValueChanged +=
+                (obj, eventArgs) => presenter.getModel().condition = uiComboBoxCondition.SelectedIndex;
+            uiTextBoxCondition.TextChanged +=
+                (obj, eventArgs) => presenter.getModel().conditionValue = uiTextBoxCondition.Text;
         }
 
-        #endregion
+        private DataSet selectedDataSet()
+        {
+            return (DataSet)uiComboBox_DataSets.SelectedItem;
+        }
+
+        private Variable selectedVariable()
+        {
+            return (Variable)uiComboBox_Variables.SelectedItem;
+        }
+
+        public void selectDataSet(DataSet dataSet)
+        {
+            uiComboBox_DataSets.SelectedItem = null;
+            uiComboBox_DataSets.SelectedItem = dataSet;
+        }
+
+        private void uiButton_Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void uiButton_Ok_Click(object sender, EventArgs e)
+        {
+            presenter.createDummy();
+            Close();
+        }
+
     }
 }

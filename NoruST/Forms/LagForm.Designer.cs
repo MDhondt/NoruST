@@ -32,12 +32,12 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.uiButton_Cancel = new System.Windows.Forms.Button();
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
-            this.uiComboBox_DataSets = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.uiNumericUpDown_Lag = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.uiComboBox_Variables = new System.Windows.Forms.ComboBox();
+            this.lblVariable = new System.Windows.Forms.Label();
+            this.lblDataSet = new System.Windows.Forms.Label();
+            this.lblNbOfLags = new System.Windows.Forms.Label();
+            this.uiNumericUpDown_Lag = new System.Windows.Forms.NumericUpDown();
+            this.uiComboBox_DataSets = new System.Windows.Forms.ComboBox();
             this.tlpForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiNumericUpDown_Lag)).BeginInit();
             this.SuspendLayout();
@@ -75,10 +75,10 @@
             this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpForm.Controls.Add(this.uiComboBox_Variables, 1, 1);
-            this.tlpForm.Controls.Add(this.label3, 0, 1);
+            this.tlpForm.Controls.Add(this.lblVariable, 0, 1);
             this.tlpForm.Controls.Add(this.uiComboBox_DataSets, 1, 0);
-            this.tlpForm.Controls.Add(this.label2, 0, 0);
-            this.tlpForm.Controls.Add(this.label1, 0, 2);
+            this.tlpForm.Controls.Add(this.lblDataSet, 0, 0);
+            this.tlpForm.Controls.Add(this.lblNbOfLags, 0, 2);
             this.tlpForm.Controls.Add(this.uiNumericUpDown_Lag, 1, 2);
             this.tlpForm.Controls.Add(this.btnOk, 2, 3);
             this.tlpForm.Controls.Add(this.uiButton_Cancel, 3, 3);
@@ -93,44 +93,58 @@
             this.tlpForm.Size = new System.Drawing.Size(309, 116);
             this.tlpForm.TabIndex = 20;
             // 
-            // uiComboBox_DataSets
+            // uiComboBox_Variables
             // 
-            this.tlpForm.SetColumnSpan(this.uiComboBox_DataSets, 3);
-            this.uiComboBox_DataSets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiComboBox_DataSets.FormattingEnabled = true;
-            this.uiComboBox_DataSets.Location = new System.Drawing.Point(87, 3);
-            this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
-            this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
-            this.uiComboBox_DataSets.Size = new System.Drawing.Size(219, 21);
-            this.uiComboBox_DataSets.TabIndex = 19;
+            this.tlpForm.SetColumnSpan(this.uiComboBox_Variables, 3);
+            this.uiComboBox_Variables.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiComboBox_Variables.FormattingEnabled = true;
+            this.uiComboBox_Variables.Location = new System.Drawing.Point(87, 30);
+            this.uiComboBox_Variables.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
+            this.uiComboBox_Variables.Name = "uiComboBox_Variables";
+            this.uiComboBox_Variables.Size = new System.Drawing.Size(219, 21);
+            this.uiComboBox_Variables.TabIndex = 24;
             // 
-            // label2
+            // lblVariable
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblVariable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 27);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Data set";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblVariable.AutoSize = true;
+            this.lblVariable.Location = new System.Drawing.Point(0, 27);
+            this.lblVariable.Margin = new System.Windows.Forms.Padding(0);
+            this.lblVariable.Name = "lblVariable";
+            this.lblVariable.Size = new System.Drawing.Size(82, 27);
+            this.lblVariable.TabIndex = 23;
+            this.lblVariable.Text = "Variable";
+            this.lblVariable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // lblDataSet
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblDataSet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 30);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Number of Lags";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDataSet.AutoSize = true;
+            this.lblDataSet.Location = new System.Drawing.Point(0, 0);
+            this.lblDataSet.Margin = new System.Windows.Forms.Padding(0);
+            this.lblDataSet.Name = "lblDataSet";
+            this.lblDataSet.Size = new System.Drawing.Size(82, 27);
+            this.lblDataSet.TabIndex = 20;
+            this.lblDataSet.Text = "Data set";
+            this.lblDataSet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblNbOfLags
+            // 
+            this.lblNbOfLags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNbOfLags.AutoSize = true;
+            this.lblNbOfLags.Location = new System.Drawing.Point(0, 54);
+            this.lblNbOfLags.Margin = new System.Windows.Forms.Padding(0);
+            this.lblNbOfLags.Name = "lblNbOfLags";
+            this.lblNbOfLags.Size = new System.Drawing.Size(82, 30);
+            this.lblNbOfLags.TabIndex = 21;
+            this.lblNbOfLags.Text = "Number of Lags";
+            this.lblNbOfLags.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiNumericUpDown_Lag
             // 
@@ -152,30 +166,16 @@
             0,
             0});
             // 
-            // label3
+            // uiComboBox_DataSets
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 27);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 27);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Variable";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiComboBox_Variables
-            // 
-            this.tlpForm.SetColumnSpan(this.uiComboBox_Variables, 3);
-            this.uiComboBox_Variables.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiComboBox_Variables.FormattingEnabled = true;
-            this.uiComboBox_Variables.Location = new System.Drawing.Point(87, 30);
-            this.uiComboBox_Variables.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
-            this.uiComboBox_Variables.Name = "uiComboBox_Variables";
-            this.uiComboBox_Variables.Size = new System.Drawing.Size(219, 21);
-            this.uiComboBox_Variables.TabIndex = 24;
+            this.tlpForm.SetColumnSpan(this.uiComboBox_DataSets, 3);
+            this.uiComboBox_DataSets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiComboBox_DataSets.FormattingEnabled = true;
+            this.uiComboBox_DataSets.Location = new System.Drawing.Point(87, 3);
+            this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
+            this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
+            this.uiComboBox_DataSets.Size = new System.Drawing.Size(219, 21);
+            this.uiComboBox_DataSets.TabIndex = 19;
             // 
             // LagForm
             // 
@@ -205,11 +205,11 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button uiButton_Cancel;
         private System.Windows.Forms.TableLayoutPanel tlpForm;
-        private System.Windows.Forms.ComboBox uiComboBox_DataSets;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDataSet;
+        private System.Windows.Forms.Label lblNbOfLags;
         private System.Windows.Forms.NumericUpDown uiNumericUpDown_Lag;
         private System.Windows.Forms.ComboBox uiComboBox_Variables;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblVariable;
+        private System.Windows.Forms.ComboBox uiComboBox_DataSets;
     }
 }

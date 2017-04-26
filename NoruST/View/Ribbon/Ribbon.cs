@@ -12,7 +12,7 @@ namespace NoruST
         private LagPresenter lagPresenter;
         private XRChartPresenter xrChartPresenter;
         private PChartPresenter pChartPresenter;
-        private DummyForm dummyForm;
+        private DummyPresenter dummyPresenter;
         private OneVariableSummaryForm oneVariableSummaryForm;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramForm histogramForm;
@@ -26,8 +26,6 @@ namespace NoruST
         private RegressionForm regressionForm;
         private LogisticRegressionForm logisticRegressionForm;
         private DiscriminantAnalysisForm discriminantAnalysisForm;
-        private XRChartForm xRChartForm;
-        private PChartForm pChartForm;
 
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
@@ -36,11 +34,12 @@ namespace NoruST
             lagPresenter = new LagPresenter(dataSetManagerPresenter);
             xrChartPresenter = new XRChartPresenter(dataSetManagerPresenter);
             pChartPresenter = new PChartPresenter(dataSetManagerPresenter);
+            dummyPresenter = new DummyPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
             btnLag.Click += delegate { lagPresenter.openView(); };
-            btnDummy.Click += delegate { dummyForm = dummyForm.createAndOrShowForm(); };
+            btnDummy.Click += delegate { dummyPresenter.openView(); };
             btnOneVariableSummary.Click += delegate { oneVariableSummaryForm = oneVariableSummaryForm.createAndOrShowForm(); };
             btnCorrelationAndCovariance.Click += delegate { correlationCovarianceForm = correlationCovarianceForm.createAndOrShowForm(); };
             btnHistogram.Click += delegate { histogramForm = histogramForm.createAndOrShowForm(); };
@@ -55,11 +54,6 @@ namespace NoruST
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
             btnXRChart.Click += delegate { xrChartPresenter.openView(); };
             btnPChart.Click += delegate { pChartPresenter.openView(); };
-        }
-
-        private void btnConfidenceIntervalMeanAndStandardDeviation_Click(object sender, RibbonControlEventArgs e)
-        {
-
         }
     }
 }

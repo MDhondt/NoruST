@@ -71,17 +71,6 @@ namespace NoruST.Domain
 
         public void addLags(Variable variable, int numberOfLags)
         {
-            //int offsetRows = rangeLayout == COLUMNS ? variableNamesInFirstRowOrColumn ? -1 : 0 : 1;
-            //int offsetColumns = rangeLayout == ROWS ? variableNamesInFirstRowOrColumn ? -1 : 0 : 1;
-            //int shiftRows = rangeLayout == COLUMNS ? range.Rows.Count : range.Rows.Count + 1;
-            //int shiftColumns = rangeLayout == ROWS ? range.Columns.Count : range.Columns.Count + 1;
-
-            //variable.getRange().Copy();
-            //variable.getRange().Offset[offsetRows, offsetColumns].Insert(xlShiftToRight, xlFormatFromLeftOrAbove);
-            //Globals.ExcelAddIn.Application.CutCopyMode = XlCutCopyMode.xlCopy;
-
-            //range = range.Resize[shiftRows, shiftColumns];
-
             for (int i = 1; i <= numberOfLags; i++)
             {
                 Range source = rangeLayout == COLUMNS
@@ -118,14 +107,60 @@ namespace NoruST.Domain
             recalculateVariables();
         }
 
+        public void addDummy(Variable variable, int condition, string conditionValueString)
+        {
+            if (condition < 0 || condition > 4) return;
+            double conditionValue;
+            if (!Double.TryParse(conditionValueString, out conditionValue)) return;
+            Range source = variable.getRange();
+            Range destination = rangeLayout == COLUMNS
+                ? variable.getRange().shiftRangeByColumns(variables.Count - variables.IndexOf(variable))
+                : variable.getRange().shiftRangeByRows(variables.Count - variables.IndexOf(variable));
+
+            for (int i = 0; i < (rangeLayout == COLUMNS ? variable.getRange().Rows.Count : variable.getRange().Columns.Count); i++)
+            {
+                int sourceRow = rangeLayout == COLUMNS ? source.Row + i : source.Row;
+                int sourceColumn = rangeLayout == COLUMNS ? source.Column : source.Column + i;
+                int destinationRow = rangeLayout == COLUMNS ? destination.Row + i : destination.Row;
+                int destinationColumn = rangeLayout == COLUMNS ? destination.Column : destination.Column + i;
+                double sourceValue = Double.Parse(((Range) worksheet.Cells[sourceRow, sourceColumn]).Value2.ToString());
+                int res = -1;
+                switch (condition)
+                {
+                    case 0: res = sourceValue < conditionValue ? 1 : 0; break;
+                    case 1: res = sourceValue <= conditionValue ? 1 : 0; break;
+                    case 2: res = sourceValue == conditionValue ? 1 : 0; break;
+                    case 3: res = sourceValue >= conditionValue ? 1 : 0; break;
+                    case 4: res = sourceValue > conditionValue ? 1 : 0; break;
+                }
+                worksheet.Cells[destinationRow, destinationColumn] = res;
+            }
+
+            if (!variableNamesInFirstRowOrColumn) return;
+            Range headerLocation = rangeLayout == COLUMNS
+                ? variable.getRange().first().shiftRangeByRows(-1).shiftRangeByColumns(variables.Count - variables.IndexOf(variable))
+                : variable.getRange().first().shiftRangeByColumns(-1).shiftRangeByRows(variables.Count - variables.IndexOf(variable));
+            string headerText = variable.name;
+            switch (condition)
+            {
+                case 0: headerText += " < "; break;
+                case 1: headerText += " <= ";break;
+                case 2: headerText += " = "; break;
+                case 3: headerText += " => "; break;
+                case 4: headerText += " > "; break;
+            }
+            headerText += conditionValueString;
+            headerLocation.Value = headerText;
+
+            range = rangeLayout == COLUMNS
+                ? range.Resize[range.Rows.Count, range.Columns.Count + 1]
+                : range.Resize[range.Rows.Count + 1, range.Columns.Count];
+            recalculateVariables();
+        }
+
         public int amountOfVariables()
         {
             return variables.Count();
-        }
-
-        public bool variableInColumns()
-        {
-            return rangeLayout == COLUMNS;
         }
 
         #region PropertyChangeEventHandlerStuff
