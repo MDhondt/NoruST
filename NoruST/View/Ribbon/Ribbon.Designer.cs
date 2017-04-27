@@ -53,7 +53,6 @@
             this.menuStatisticalInference = this.Factory.CreateRibbonMenu();
             this.btnCorrelationAndCovariance = this.Factory.CreateRibbonButton();
             this.btnInteractionplot = this.Factory.CreateRibbonButton();
-            this.btnTestForNormality = this.Factory.CreateRibbonButton();
             this.separator2 = this.Factory.CreateRibbonSeparator();
             this.menuRegression = this.Factory.CreateRibbonMenu();
             this.btnAnova = this.Factory.CreateRibbonButton();
@@ -73,6 +72,8 @@
             this.btnXRChart = this.Factory.CreateRibbonButton();
             this.btnPChart = this.Factory.CreateRibbonButton();
             this.btnProcessCapability = this.Factory.CreateRibbonButton();
+            this.menuNormalityTests = this.Factory.CreateRibbonMenu();
+            this.separator6 = this.Factory.CreateRibbonSeparator();
             this.tabNoruST.SuspendLayout();
             this.grpData.SuspendLayout();
             this.grpAnalysis.SuspendLayout();
@@ -139,6 +140,8 @@
             this.grpAnalysis.Items.Add(this.menuStatisticalInference);
             this.grpAnalysis.Items.Add(this.separator2);
             this.grpAnalysis.Items.Add(this.menuRegression);
+            this.grpAnalysis.Items.Add(this.separator6);
+            this.grpAnalysis.Items.Add(this.menuNormalityTests);
             this.grpAnalysis.Items.Add(this.separator3);
             this.grpAnalysis.Items.Add(this.menuDatamining);
             this.grpAnalysis.Items.Add(this.separator4);
@@ -206,9 +209,8 @@
             // 
             this.menuStatisticalInference.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.menuStatisticalInference.Image = global::NoruST.Properties.Resources.statistical_inference_image;
-            this.menuStatisticalInference.Items.Add(this.btnCorrelationAndCovariance);
+            this.menuStatisticalInference.Items.Add(this.btnAnova);
             this.menuStatisticalInference.Items.Add(this.btnInteractionplot);
-            this.menuStatisticalInference.Items.Add(this.btnTestForNormality);
             this.menuStatisticalInference.Label = "Statistical Inference";
             this.menuStatisticalInference.Name = "menuStatisticalInference";
             this.menuStatisticalInference.ShowImage = true;
@@ -225,12 +227,6 @@
             this.btnInteractionplot.Name = "btnInteractionplot";
             this.btnInteractionplot.ShowImage = true;
             // 
-            // btnTestForNormality
-            // 
-            this.btnTestForNormality.Label = "Test for Normality";
-            this.btnTestForNormality.Name = "btnTestForNormality";
-            this.btnTestForNormality.ShowImage = true;
-            // 
             // separator2
             // 
             this.separator2.Name = "separator2";
@@ -239,7 +235,7 @@
             // 
             this.menuRegression.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.menuRegression.Image = global::NoruST.Properties.Resources.regression_image;
-            this.menuRegression.Items.Add(this.btnAnova);
+            this.menuRegression.Items.Add(this.btnCorrelationAndCovariance);
             this.menuRegression.Items.Add(this.btnInteraction);
             this.menuRegression.Items.Add(this.btnWhiteTest);
             this.menuRegression.Label = "Regression";
@@ -356,6 +352,18 @@
             this.btnProcessCapability.Name = "btnProcessCapability";
             this.btnProcessCapability.ShowImage = true;
             // 
+            // menuNormalityTests
+            // 
+            this.menuNormalityTests.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.menuNormalityTests.Label = "Normality Tests";
+            this.menuNormalityTests.Name = "menuNormalityTests";
+            this.menuNormalityTests.ShowImage = true;
+            this.menuNormalityTests.Visible = false;
+            // 
+            // separator6
+            // 
+            this.separator6.Name = "separator6";
+            // 
             // Ribbon
             // 
             this.Name = "Ribbon";
@@ -399,7 +407,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnConfidenceIntervalMeanAndStandardDeviation;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSampleSizeEstimation;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnInteractionplot;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnTestForNormality;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnAnova;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnInteraction;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnWhiteTest;
@@ -413,6 +420,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator3;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator4;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator5;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator6;
+        internal Microsoft.Office.Tools.Ribbon.RibbonMenu menuNormalityTests;
     }
 
     partial class ThisRibbonCollection
