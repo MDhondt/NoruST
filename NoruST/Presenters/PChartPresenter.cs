@@ -43,15 +43,20 @@ namespace NoruST.Presenters
             int startindex = Convert.ToInt16(uiTextBox_StartIndex);
             int stopindex = Convert.ToInt16(uiTextBox_StopIndex);
 
-            if ((rdbAllObservations || rdbObservationsInRange || rdbPreviousData) && (dataSet != null) && (startindex <= stopindex))
+            if ((rdbAllObservations || rdbObservationsInRange || rdbPreviousData) && (dataSet != null) && (startindex <= stopindex) && (startindex >= 0 && stopindex >= 0))
             {
                 
                 if (rdbAllObservations || rdbPreviousData)
                 {
                     startindex = 0;
-                    stopindex = dataSet.amountOfVariables();
+                    stopindex = dataSet.amountOfVariables()-1;
                 }
-      
+
+                if (rdbObservationsInRange && stopindex >= dataSet.amountOfVariables())
+                {
+                    stopindex = dataSet.amountOfVariables() - 1;
+                }
+
                 _Worksheet sheet = WorksheetHelper.NewWorksheet("P Chart");
 
                 generatePChart(startindex, stopindex, dataSet, sheet);
@@ -70,7 +75,7 @@ namespace NoruST.Presenters
             int column = 1;
             double[] pValues = new double[dataSet.amountOfVariables()];
             double[] averageOfPValues = new double[dataSet.amountOfVariables()];
-            double[] pValuesInRange = new double[stopindex - startindex];
+            double[] pValuesInRange = new double[stopindex - startindex+1];
             double[] pChartUpperControlLimit = new double[dataSet.amountOfVariables()];
             double[] pChartLowerControlLimit = new double[dataSet.amountOfVariables()];
             int[] ArrayIndex = new int[dataSet.amountOfVariables()];
@@ -90,18 +95,16 @@ namespace NoruST.Presenters
                 ArrayIndex[index] = index;
             }
 
-            for (index = startindex; index < stopindex; index++)
+            for (index = startindex; index <= stopindex; index++)
             {
                 pValuesInRange[index - startindex] = pValues[index];
             }
 
             double pChartCorrection = Math.Pow(((pValuesInRange.Average() * (1 - pValuesInRange.Average())) / dataSet.rangeSize()), (0.3333333));
 
-            MessageBox.Show("PChart correctie afwijking van Center line " + pChartCorrection); // monitor deze waarde, is nog te groot, vermoeden dat .Pow niet correct is
-
             for (index = 0; index < dataSet.amountOfVariables(); index++)
             {
-                averageOfPValues[index] = pValues.Average();
+                averageOfPValues[index] = pValuesInRange.Average();
                 pChartUpperControlLimit[index] = pValues.Average() + pChartCorrection;
                 pChartLowerControlLimit[index] = pValues.Average() - pChartCorrection;
             }
