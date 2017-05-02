@@ -7,20 +7,20 @@ using NoruST.Domain;
 
 namespace NoruST.Forms
 {
-    public partial class TimeSeriesGraphForm : Form
+    public partial class ProcessCapabilityForm : Form
     {
-        private TimeSeriesGraphPresenter presenter;
-        private const string formTitle = "NoruST - Time Series Graph";
+        private ProcessCapabilityPresenter presenter;
+        private const string formTitle = "NoruST - Process Capability";
 
-        public TimeSeriesGraphForm()
+        public ProcessCapabilityForm()
         {
             InitializeComponent();
 
         }
 
-        public void setPresenter(TimeSeriesGraphPresenter TimeSeriesGraphPresenter)
+        public void setPresenter(ProcessCapabilityPresenter ProcessCapabilityPresenter)
         {
-            this.presenter = TimeSeriesGraphPresenter;
+            this.presenter = ProcessCapabilityPresenter;
             bindModelToView();
             selectDataSet(selectedDataSet());
         }
@@ -29,12 +29,12 @@ namespace NoruST.Forms
         {
             ui_ComboBox_SelectDataSets.DataSource = presenter.dataSets();
             ui_ComboBox_SelectDataSets.DisplayMember = "name";
-            nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
+            //nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            //rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
             ui_ComboBox_SelectDataSets.SelectedIndexChanged += (obj, eventArgs) =>
             {
                 if (selectedDataSet() == null) return;
-                dataGridView1.DataSource = selectedDataSet().getVariables();
+                //dataGridView1.DataSource = selectedDataSet().getVariables();
             };
         }
 
@@ -54,6 +54,12 @@ namespace NoruST.Forms
             Close();
         }
 
+        private void ObservationsInRange_CheckedChanged(object sender, EventArgs e)
+        {
+            uiTextBox_UpperLimit.Text = "0";
+            uiTextBox_LowerLimit.Text = "0";
+        }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -62,7 +68,7 @@ namespace NoruST.Forms
 
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            bool inputOk = presenter.checkInput(selectedDataSet());
+            bool inputOk = presenter.checkInput(selectedDataSet(), uiTextBox_LowerLimit.Text, uiTextBox_UpperLimit.Text);
             if (inputOk)
             {
                 Close();

@@ -1,6 +1,6 @@
 ﻿namespace NoruST.Forms
 {
-    partial class TimeSeriesGraphForm
+    partial class ProcessCapabilityForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,21 +32,22 @@
             this.ui_Button_Cancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblLowerLimit = new System.Windows.Forms.Label();
+            this.lblUpperLimit = new System.Windows.Forms.Label();
+            this.uiTextBox_LowerLimit = new System.Windows.Forms.TextBox();
+            this.uiTextBox_UpperLimit = new System.Windows.Forms.TextBox();
             this.ui_ComboBox_SelectDataSets = new System.Windows.Forms.ComboBox();
             this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // ui_Button_Cancel
             // 
-            this.ui_Button_Cancel.Location = new System.Drawing.Point(348, 397);
+            this.ui_Button_Cancel.Location = new System.Drawing.Point(353, 145);
             this.ui_Button_Cancel.Name = "ui_Button_Cancel";
             this.ui_Button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.ui_Button_Cancel.TabIndex = 3;
@@ -56,7 +57,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(267, 397);
+            this.btnOk.Location = new System.Drawing.Point(272, 145);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 5;
@@ -66,12 +67,52 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(12, 291);
+            this.groupBox2.Controls.Add(this.lblLowerLimit);
+            this.groupBox2.Controls.Add(this.lblUpperLimit);
+            this.groupBox2.Controls.Add(this.uiTextBox_LowerLimit);
+            this.groupBox2.Controls.Add(this.uiTextBox_UpperLimit);
+            this.groupBox2.Location = new System.Drawing.Point(13, 77);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(422, 100);
+            this.groupBox2.Size = new System.Drawing.Size(422, 62);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Control limits based on";
+            this.groupBox2.Text = "Specification Limits";
+            // 
+            // lblLowerLimit
+            // 
+            this.lblLowerLimit.AutoSize = true;
+            this.lblLowerLimit.Location = new System.Drawing.Point(13, 27);
+            this.lblLowerLimit.Name = "lblLowerLimit";
+            this.lblLowerLimit.Size = new System.Drawing.Size(60, 13);
+            this.lblLowerLimit.TabIndex = 3;
+            this.lblLowerLimit.Text = "Lower Limit";
+            // 
+            // lblUpperLimit
+            // 
+            this.lblUpperLimit.AutoSize = true;
+            this.lblUpperLimit.Location = new System.Drawing.Point(224, 30);
+            this.lblUpperLimit.Name = "lblUpperLimit";
+            this.lblUpperLimit.Size = new System.Drawing.Size(60, 13);
+            this.lblUpperLimit.TabIndex = 5;
+            this.lblUpperLimit.Text = "Upper Limit";
+            // 
+            // uiTextBox_LowerLimit
+            // 
+            this.uiTextBox_LowerLimit.Location = new System.Drawing.Point(98, 24);
+            this.uiTextBox_LowerLimit.MaxLength = 8;
+            this.uiTextBox_LowerLimit.Name = "uiTextBox_LowerLimit";
+            this.uiTextBox_LowerLimit.Size = new System.Drawing.Size(91, 20);
+            this.uiTextBox_LowerLimit.TabIndex = 4;
+            this.uiTextBox_LowerLimit.Text = "0";
+            // 
+            // uiTextBox_UpperLimit
+            // 
+            this.uiTextBox_UpperLimit.Location = new System.Drawing.Point(288, 27);
+            this.uiTextBox_UpperLimit.MaxLength = 8;
+            this.uiTextBox_UpperLimit.Name = "uiTextBox_UpperLimit";
+            this.uiTextBox_UpperLimit.Size = new System.Drawing.Size(91, 20);
+            this.uiTextBox_UpperLimit.TabIndex = 6;
+            this.uiTextBox_UpperLimit.Text = "0";
             // 
             // ui_ComboBox_SelectDataSets
             // 
@@ -95,62 +136,32 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Select Dataset";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn,
-            this.rangeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.variableBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 55);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(410, 212);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // rangeDataGridViewTextBoxColumn
-            // 
-            this.rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
-            this.rangeDataGridViewTextBoxColumn.HeaderText = "Range";
-            this.rangeDataGridViewTextBoxColumn.Name = "rangeDataGridViewTextBoxColumn";
-            this.rangeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.ui_ComboBox_SelectDataSets);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(422, 273);
+            this.groupBox3.Size = new System.Drawing.Size(422, 59);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dataset";
             // 
-            // TimeSeriesGraphForm
+            // ProcessCapabilityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 426);
+            this.ClientSize = new System.Drawing.Size(447, 180);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.ui_Button_Cancel);
-            this.Name = "TimeSeriesGraphForm";
-            this.Text = "Time Series Graph";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "ProcessCapabilityForm";
+            this.Text = "Process Capability";
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -161,11 +172,12 @@
         private System.Windows.Forms.Button ui_Button_Cancel;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblUpperLimit;
+        private System.Windows.Forms.TextBox uiTextBox_LowerLimit;
+        private System.Windows.Forms.TextBox uiTextBox_UpperLimit;
+        private System.Windows.Forms.Label lblLowerLimit;
         private System.Windows.Forms.ComboBox ui_ComboBox_SelectDataSets;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rangeDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource variableBindingSource;
         private System.Windows.Forms.GroupBox groupBox3;
     }

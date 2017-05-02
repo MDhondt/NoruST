@@ -14,17 +14,17 @@ using Microsoft.Office.Interop.Excel;
 
 namespace NoruST.Presenters
 {
-    public class XRChartPresenter
+    public class TimeSeriesGraphPresenter
     {
-        private XRChartForm view;
-        private XRChartModel model;
+        private TimeSeriesGraphForm view;
+        private TimeSeriesGraphModel model;
         private DataSetManagerPresenter dataSetPresenter;
         private int offset;
 
-        public XRChartPresenter(DataSetManagerPresenter dataSetPresenter)
+        public TimeSeriesGraphPresenter(DataSetManagerPresenter dataSetPresenter)
         {
             this.dataSetPresenter = dataSetPresenter;
-            this.model = new XRChartModel();
+            this.model = new TimeSeriesGraphModel();
         }
 
         public void openView()
@@ -38,30 +38,15 @@ namespace NoruST.Presenters
             return dataSetPresenter.getModel().getDataSets();
         }
 
-        public bool checkInput(bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet, string uiTextBox_StopIndex, string uiTextBox_StartIndex)
+        public bool checkInput(DataSet dataSet)
         {
-            int startindex = Convert.ToInt16(uiTextBox_StartIndex);
-            int stopindex = Convert.ToInt16(uiTextBox_StopIndex);
-
-            if ((rdbAllObservations || rdbObservationsInRange || rdbPreviousData) && (dataSet != null) && (startindex <= stopindex) && (startindex >= 0 && stopindex >= 0))
+            
+            if ((dataSet != null))
             {
-
                 offset = 320;
-
-                if (rdbAllObservations || rdbPreviousData)
-                {
-                    startindex = 0;
-                    stopindex = dataSet.amountOfVariables()-1;
-                }
+                _Worksheet sheet = WorksheetHelper.NewWorksheet("Time Series Graph");
                 
-                if (rdbObservationsInRange && stopindex >= dataSet.amountOfVariables())
-                {
-                    stopindex = dataSet.amountOfVariables()-1;
-                }
-
-                _Worksheet sheet = WorksheetHelper.NewWorksheet("XR Chart");
-                
-                generateXRChart(startindex, stopindex, dataSet, offset, sheet);
+                //generateXRChart(startindex, stopindex, dataSet, offset, sheet);
              
                 return true;
             }

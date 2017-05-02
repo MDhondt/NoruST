@@ -12,6 +12,8 @@ namespace NoruST
         private XRChartPresenter xrChartPresenter;
         private PChartPresenter pChartPresenter;
         private DummyPresenter dummyPresenter;
+        private ProcessCapabilityPresenter processCapabilityPresenter;
+        private TimeSeriesGraphPresenter timeSeriesGraphPresenter;
         private OneVariableSummaryPresenter oneVariableSummaryPresenter;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramForm histogramForm;
@@ -34,6 +36,8 @@ namespace NoruST
             xrChartPresenter = new XRChartPresenter(dataSetManagerPresenter);
             pChartPresenter = new PChartPresenter(dataSetManagerPresenter);
             dummyPresenter = new DummyPresenter(dataSetManagerPresenter);
+            processCapabilityPresenter = new ProcessCapabilityPresenter(dataSetManagerPresenter);
+            timeSeriesGraphPresenter = new TimeSeriesGraphPresenter(dataSetManagerPresenter);
             oneVariableSummaryPresenter = new OneVariableSummaryPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
@@ -47,13 +51,14 @@ namespace NoruST
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotForm = boxWhiskerPlotForm.createAndOrShowForm(); };
             btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeSelectionForm = sampleSizeSelectionForm.createAndOrShowForm(); };
-            btnTimeSeriesGraph.Click += delegate { timeSeriesGraphForm = timeSeriesGraphForm.createAndOrShowForm(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessForm = runsTestForRandomnessForm.createAndOrShowForm(); };
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
             btnXRChart.Click += delegate { xrChartPresenter.openView(); };
             btnPChart.Click += delegate { pChartPresenter.openView(); };
+            btnProcessCapability.Click += delegate { processCapabilityPresenter.openView(); };
+            btnTimeSeriesGraph.Click += delegate { timeSeriesGraphPresenter.openView(); };
         }
     }
 }

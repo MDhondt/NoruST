@@ -35,7 +35,7 @@
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.196</ApplicationVersion>
+    <ApplicationVersion>1.0.0.224</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -254,6 +254,18 @@
     <Compile Include="Forms\PChartForm.Designer.cs">
       <DependentUpon>PChartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProcessCapabilityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProcessCapabilityForm.Designer.cs">
+      <DependentUpon>ProcessCapabilityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TimeSeriesGraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TimeSeriesGraphForm.Designer.cs">
+      <DependentUpon>TimeSeriesGraphForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\XRChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,12 +277,6 @@
     </Compile>
     <Compile Include="Forms\SelectRangeForm.Designer.cs">
       <DependentUpon>SelectRangeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\TimeSeriesGraphForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TimeSeriesGraphForm.Designer.cs">
-      <DependentUpon>TimeSeriesGraphForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Helpers\DataTableColumn.cs" />
     <Compile Include="Forms\HistogramForm.cs">
@@ -348,12 +354,16 @@
     <Compile Include="Enums\Layout.cs" />
     <Compile Include="Models\SummaryStatisticsBool.cs" />
     <Compile Include="Models\PChartModel.cs" />
+    <Compile Include="Models\ProcessCapabilityModel.cs" />
+    <Compile Include="Models\TimeSeriesGraphModel.cs" />
     <Compile Include="Models\XRChartModel.cs" />
     <Compile Include="Presenters\DataSetManagerPresenter.cs" />
     <Compile Include="Presenters\DummyPresenter.cs" />
     <Compile Include="Presenters\LagPresenter.cs" />
     <Compile Include="Presenters\OneVariableSummaryPresenter.cs" />
     <Compile Include="Presenters\PChartPresenter.cs" />
+    <Compile Include="Presenters\ProcessCapabilityPresenter.cs" />
+    <Compile Include="Presenters\TimeSeriesGraphPresenter.cs" />
     <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -382,9 +392,6 @@
     <EmbeddedResource Include="Forms\SelectRangeForm.resx">
       <DependentUpon>SelectRangeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TimeSeriesGraphForm.resx">
-      <DependentUpon>TimeSeriesGraphForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HistogramForm.resx">
       <DependentUpon>HistogramForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -412,6 +419,12 @@
     <EmbeddedResource Include="Forms\ScatterplotForm.resx">
       <DependentUpon>ScatterplotForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProcessCapabilityForm.resx">
+      <DependentUpon>ProcessCapabilityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TimeSeriesGraphForm.resx">
+      <DependentUpon>TimeSeriesGraphForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\XRChartForm.resx">
       <DependentUpon>XRChartForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -428,6 +441,7 @@
     <EmbeddedResource Include="View\Ribbon\Ribbon.resx">
       <DependentUpon>Ribbon.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="NoruST_1_TemporaryKey.pfx" />
     <None Include="NoruST_Key.snk" />
     <None Include="NoruST_TemporaryKey.pfx" />
     <None Include="packages.config" />
@@ -514,10 +528,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>NoruST_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>NoruST_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>87736A39E1BA86E63847901BF990527118AE6CAE</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>D151C23CF83D772E19347C01A730439AE0F6F134</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
