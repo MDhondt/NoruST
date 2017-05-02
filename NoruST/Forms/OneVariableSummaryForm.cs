@@ -1,56 +1,107 @@
-﻿using NoruST.Analyses;
-using NoruST.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using NoruST.Domain;
+using NoruST.Presenters;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>The One-Variable Summary Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 20, 2016</para>
-    /// </summary>
     public partial class OneVariableSummaryForm : ExtendedForm
     {
-        #region Constructors
+        private OneVariableSummaryPresenter presenter;
 
-        /// <summary>
-        /// Constructor of the <see cref="OneVariableSummaryForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
         public OneVariableSummaryForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, chkPerCategorie, dgvDataSet, chkCheckAllOptions, tlpOptions, btnOk, btnCancel);
         }
 
-        #endregion
-
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="System.Windows.Forms.ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
+        public void setPresenter(OneVariableSummaryPresenter presenter)
         {
-            // Create a data table and add the required columns.
-            CreateDataTable(DataTableColumn.Editable);
-
-            // Update the view with new data.
-            UpdateDataTable(DefaultCheck.Numeric);
+            this.presenter = presenter;
+            bindModelToView();
+            selectDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// This adds extra functionality to the Ok <see cref="System.Windows.Forms.Button"/>
-        /// </summary>
-        public override bool OkButtonClick()
+        private void bindModelToView()
         {
-            var doCalculate = new SummaryStatisticsBool(chkMean.Checked, chkVariance.Checked, chkStandardDeviation.Checked, chkMinimum.Checked, chkQuartile1.Checked, chkMedian.Checked, chkQuartile3.Checked, chkMaximum.Checked, chkInterquartileRange.Checked, chkSkewness.Checked, chkKurtosis.Checked, chkMeanAbsoluteDeviation.Checked, chkMode.Checked, chkRange.Checked, chkCount.Checked, chkSum.Checked, chkOutliers.Checked);
-
-            return chkPerCategorie.Checked ? new OneVariableSummary().Print(SelectedDataSet, DoIncludeX, DoIncludeY, doCalculate) : new OneVariableSummary().Print(SelectedDataSet, DoInclude, doCalculate);
+            uiComboBox_DataSets.DataSource = presenter.dataSets();
+            uiComboBox_DataSets.DisplayMember = "name";
+            uiComboBox_DataSets.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedDataSet() == null) return;
+                uiDataGridView_Variables.DataSource = selectedDataSet().getVariables();
+                uiDataGridViewColumn_VariableCheck.Width = 30;
+                uiDataGridView_Variables.Columns[1].ReadOnly = true;
+                uiDataGridView_Variables.Columns[2].ReadOnly = true;
+                chkCount.DataBindings.Add("Checked", presenter.getModel(), "count");
+                chkFirstQuartile.DataBindings.Add("Checked", presenter.getModel(), "firstQuartile");
+                chkInterquartileRange.DataBindings.Add("Checked", presenter.getModel(), "interquartileRange");
+                chkKurtosis.DataBindings.Add("Checked", presenter.getModel(), "kurtosis");
+                chkMaximum.DataBindings.Add("Checked", presenter.getModel(), "maximum");
+                chkMean.DataBindings.Add("Checked", presenter.getModel(), "mean");
+                chkMeanAbsDev.DataBindings.Add("Checked", presenter.getModel(), "meanAbsDeviation");
+                chkMedian.DataBindings.Add("Checked", presenter.getModel(), "median");
+                chkMinimum.DataBindings.Add("Checked", presenter.getModel(), "minimum");
+                chkMode.DataBindings.Add("Checked", presenter.getModel(), "mode");
+                chkRange.DataBindings.Add("Checked", presenter.getModel(), "range");
+                chkSkewness.DataBindings.Add("Checked", presenter.getModel(), "skewness");
+                chkStandardDev.DataBindings.Add("Checked", presenter.getModel(), "standardDeviation");
+                chkSum.DataBindings.Add("Checked", presenter.getModel(), "sum");
+                chkThirdQuartile.DataBindings.Add("Checked", presenter.getModel(), "thirdQuartile");
+                chkVariance.DataBindings.Add("Checked", presenter.getModel(), "variance");
+            };
         }
 
-        #endregion
+
+        private DataSet selectedDataSet()
+        {
+            return (DataSet)uiComboBox_DataSets.SelectedItem;
+        }
+
+        public void selectDataSet(DataSet dataSet)
+        {
+            uiComboBox_DataSets.SelectedItem = null;
+            uiComboBox_DataSets.SelectedItem = dataSet;
+        }
+
+        private void chkAll_CheckedChanged(object sender, System.EventArgs e)
+        {
+            chkCount.Checked = presenter.getModel().count = chkAll.Checked;
+            chkFirstQuartile.Checked = presenter.getModel().firstQuartile = chkAll.Checked;
+            chkInterquartileRange.Checked = presenter.getModel().interquartileRange = chkAll.Checked;
+            chkKurtosis.Checked = presenter.getModel().kurtosis = chkAll.Checked;
+            chkMaximum.Checked = presenter.getModel().maximum = chkAll.Checked;
+            chkMean.Checked = presenter.getModel().mean = chkAll.Checked;
+            chkMeanAbsDev.Checked = presenter.getModel().meanAbsDeviation = chkAll.Checked;
+            chkMedian.Checked = presenter.getModel().median = chkAll.Checked;
+            chkMinimum.Checked = presenter.getModel().minimum = chkAll.Checked;
+            chkMode.Checked = presenter.getModel().mode = chkAll.Checked;
+            chkRange.Checked = presenter.getModel().range = chkAll.Checked;
+            chkSkewness.Checked = presenter.getModel().skewness = chkAll.Checked;
+            chkStandardDev.Checked = presenter.getModel().standardDeviation = chkAll.Checked;
+            chkSum.Checked = presenter.getModel().sum = chkAll.Checked;
+            chkThirdQuartile.Checked = presenter.getModel().thirdQuartile = chkAll.Checked;
+            chkVariance.Checked = presenter.getModel().variance = chkAll.Checked;
+        }
+
+        private void uiButton_Cancel_Click(object sender, System.EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnOk_Click(object sender, System.EventArgs e)
+        {
+            List<Variable> variables = new List<Variable>();
+            foreach (DataGridViewRow row in uiDataGridView_Variables.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheck.Name].Value) == true)
+                {
+                    variables.Add((Variable)row.DataBoundItem);
+                }
+            }
+            presenter.createSummaryStatistics(selectedDataSet(), variables);
+            Close();
+        }
     }
 }

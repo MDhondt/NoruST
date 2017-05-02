@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using NoruST.Data;
 using NoruST.Domain;
 using NoruST.Presenters;
 

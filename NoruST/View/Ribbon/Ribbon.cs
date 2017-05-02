@@ -1,5 +1,4 @@
 ﻿using Microsoft.Office.Tools.Ribbon;
-using NoruST.Data;
 using NoruST.Forms;
 using NoruST.Presenters;
 
@@ -13,7 +12,7 @@ namespace NoruST
         private XRChartPresenter xrChartPresenter;
         private PChartPresenter pChartPresenter;
         private DummyPresenter dummyPresenter;
-        private OneVariableSummaryForm oneVariableSummaryForm;
+        private OneVariableSummaryPresenter oneVariableSummaryPresenter;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramForm histogramForm;
         private ScatterplotForm scatterplotForm;
@@ -35,12 +34,13 @@ namespace NoruST
             xrChartPresenter = new XRChartPresenter(dataSetManagerPresenter);
             pChartPresenter = new PChartPresenter(dataSetManagerPresenter);
             dummyPresenter = new DummyPresenter(dataSetManagerPresenter);
+            oneVariableSummaryPresenter = new OneVariableSummaryPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
             btnLag.Click += delegate { lagPresenter.openView(); };
             btnDummy.Click += delegate { dummyPresenter.openView(); };
-            btnOneVariableSummary.Click += delegate { oneVariableSummaryForm = oneVariableSummaryForm.createAndOrShowForm(); };
+            btnOneVariableSummary.Click += delegate { oneVariableSummaryPresenter.openView(); };
             btnCorrelationAndCovariance.Click += delegate { correlationCovarianceForm = correlationCovarianceForm.createAndOrShowForm(); };
             btnHistogram.Click += delegate { histogramForm = histogramForm.createAndOrShowForm(); };
             btnScatterplot.Click += delegate { scatterplotForm = scatterplotForm.createAndOrShowForm(); };

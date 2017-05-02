@@ -34,10 +34,10 @@
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.uiComboBox_Variables = new System.Windows.Forms.ComboBox();
             this.lblVariable = new System.Windows.Forms.Label();
+            this.uiComboBox_DataSets = new System.Windows.Forms.ComboBox();
             this.lblDataSet = new System.Windows.Forms.Label();
             this.lblNbOfLags = new System.Windows.Forms.Label();
             this.uiNumericUpDown_Lag = new System.Windows.Forms.NumericUpDown();
-            this.uiComboBox_DataSets = new System.Windows.Forms.ComboBox();
             this.tlpForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiNumericUpDown_Lag)).BeginInit();
             this.SuspendLayout();
@@ -118,6 +118,17 @@
             this.lblVariable.Text = "Variable";
             this.lblVariable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // uiComboBox_DataSets
+            // 
+            this.tlpForm.SetColumnSpan(this.uiComboBox_DataSets, 3);
+            this.uiComboBox_DataSets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiComboBox_DataSets.FormattingEnabled = true;
+            this.uiComboBox_DataSets.Location = new System.Drawing.Point(87, 3);
+            this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
+            this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
+            this.uiComboBox_DataSets.Size = new System.Drawing.Size(219, 21);
+            this.uiComboBox_DataSets.TabIndex = 19;
+            // 
             // lblDataSet
             // 
             this.lblDataSet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -165,17 +176,6 @@
             0,
             0,
             0});
-            // 
-            // uiComboBox_DataSets
-            // 
-            this.tlpForm.SetColumnSpan(this.uiComboBox_DataSets, 3);
-            this.uiComboBox_DataSets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiComboBox_DataSets.FormattingEnabled = true;
-            this.uiComboBox_DataSets.Location = new System.Drawing.Point(87, 3);
-            this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
-            this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
-            this.uiComboBox_DataSets.Size = new System.Drawing.Size(219, 21);
-            this.uiComboBox_DataSets.TabIndex = 19;
             // 
             // LagForm
             // 

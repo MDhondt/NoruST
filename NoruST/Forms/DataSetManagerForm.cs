@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using NoruST.Data;
 using NoruST.Domain;
 using static System.Windows.Forms.DialogResult;
 using static System.Windows.Forms.MessageBoxButtons;
@@ -8,7 +7,6 @@ using static System.Windows.Forms.MessageBoxIcon;
 using static NoruST.Domain.RangeLayout;
 using Microsoft.Office.Interop.Excel;
 using NoruST.Presenters;
-using ListBox = System.Windows.Forms.ListBox;
 
 namespace NoruST.Forms
 {
