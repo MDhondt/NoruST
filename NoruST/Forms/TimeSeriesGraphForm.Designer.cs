@@ -28,194 +28,145 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvDataSet = new System.Windows.Forms.DataGridView();
-            this.grpOptions = new System.Windows.Forms.GroupBox();
-            this.tlpOptions = new System.Windows.Forms.TableLayoutPanel();
-            this.lstDataSets = new System.Windows.Forms.ListBox();
+            this.components = new System.ComponentModel.Container();
+            this.ui_Button_Cancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.chkLabels = new System.Windows.Forms.CheckBox();
-            this.cbxLabels = new System.Windows.Forms.ComboBox();
-            this.chkCheckAllOptions = new System.Windows.Forms.CheckBox();
-            this.tlpForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).BeginInit();
-            this.grpOptions.SuspendLayout();
-            this.tlpOptions.SuspendLayout();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ui_ComboBox_SelectDataSets = new System.Windows.Forms.ComboBox();
+            this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tlpForm
+            // ui_Button_Cancel
             // 
-            this.tlpForm.AutoSize = true;
-            this.tlpForm.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpForm.ColumnCount = 3;
-            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpForm.Controls.Add(this.dgvDataSet, 0, 1);
-            this.tlpForm.Controls.Add(this.grpOptions, 0, 2);
-            this.tlpForm.Controls.Add(this.lstDataSets, 0, 0);
-            this.tlpForm.Controls.Add(this.btnOk, 1, 3);
-            this.tlpForm.Controls.Add(this.btnCancel, 2, 3);
-            this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Name = "tlpForm";
-            this.tlpForm.RowCount = 4;
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpForm.Size = new System.Drawing.Size(384, 361);
-            this.tlpForm.TabIndex = 22;
-            // 
-            // dgvDataSet
-            // 
-            this.dgvDataSet.AllowUserToAddRows = false;
-            this.dgvDataSet.AllowUserToDeleteRows = false;
-            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvDataSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tlpForm.SetColumnSpan(this.dgvDataSet, 3);
-            this.dgvDataSet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDataSet.Location = new System.Drawing.Point(3, 78);
-            this.dgvDataSet.MinimumSize = new System.Drawing.Size(300, 0);
-            this.dgvDataSet.Name = "dgvDataSet";
-            this.dgvDataSet.RowHeadersVisible = false;
-            this.dgvDataSet.Size = new System.Drawing.Size(378, 192);
-            this.dgvDataSet.TabIndex = 14;
-            // 
-            // grpOptions
-            // 
-            this.grpOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpOptions.AutoSize = true;
-            this.grpOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpForm.SetColumnSpan(this.grpOptions, 3);
-            this.grpOptions.Controls.Add(this.chkCheckAllOptions);
-            this.grpOptions.Controls.Add(this.tlpOptions);
-            this.grpOptions.Location = new System.Drawing.Point(3, 276);
-            this.grpOptions.Name = "grpOptions";
-            this.grpOptions.Size = new System.Drawing.Size(378, 51);
-            this.grpOptions.TabIndex = 18;
-            this.grpOptions.TabStop = false;
-            // 
-            // tlpOptions
-            // 
-            this.tlpOptions.AutoSize = true;
-            this.tlpOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpOptions.ColumnCount = 3;
-            this.tlpOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpOptions.Controls.Add(this.cbxLabels, 1, 0);
-            this.tlpOptions.Controls.Add(this.chkLabels, 0, 0);
-            this.tlpOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpOptions.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.tlpOptions.Location = new System.Drawing.Point(3, 16);
-            this.tlpOptions.Name = "tlpOptions";
-            this.tlpOptions.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.tlpOptions.RowCount = 3;
-            this.tlpOptions.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpOptions.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpOptions.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpOptions.Size = new System.Drawing.Size(372, 32);
-            this.tlpOptions.TabIndex = 32;
-            // 
-            // lstDataSets
-            // 
-            this.tlpForm.SetColumnSpan(this.lstDataSets, 3);
-            this.lstDataSets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstDataSets.FormattingEnabled = true;
-            this.lstDataSets.Location = new System.Drawing.Point(3, 3);
-            this.lstDataSets.Name = "lstDataSets";
-            this.lstDataSets.Size = new System.Drawing.Size(378, 69);
-            this.lstDataSets.TabIndex = 15;
+            this.ui_Button_Cancel.Location = new System.Drawing.Point(348, 397);
+            this.ui_Button_Cancel.Name = "ui_Button_Cancel";
+            this.ui_Button_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.ui_Button_Cancel.TabIndex = 3;
+            this.ui_Button_Cancel.Text = "Cancel";
+            this.ui_Button_Cancel.UseVisualStyleBackColor = true;
+            this.ui_Button_Cancel.Click += new System.EventHandler(this.Cancelbutton_clicked);
             // 
             // btnOk
             // 
-            this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOk.Location = new System.Drawing.Point(225, 333);
+            this.btnOk.Location = new System.Drawing.Point(267, 397);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 25);
-            this.btnOk.TabIndex = 17;
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 5;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.uiButton_Ok_Click);
             // 
-            // btnCancel
+            // groupBox2
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(306, 333);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 25);
-            this.btnCancel.TabIndex = 16;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.groupBox2.Location = new System.Drawing.Point(12, 291);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(422, 100);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Control limits based on";
             // 
-            // chkLabels
+            // ui_ComboBox_SelectDataSets
             // 
-            this.chkLabels.AutoSize = true;
-            this.chkLabels.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkLabels.Location = new System.Drawing.Point(3, 8);
-            this.chkLabels.Name = "chkLabels";
-            this.chkLabels.Size = new System.Drawing.Size(57, 21);
-            this.chkLabels.TabIndex = 25;
-            this.chkLabels.Text = "Labels";
-            this.chkLabels.UseVisualStyleBackColor = true;
+            this.ui_ComboBox_SelectDataSets.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ui_ComboBox_SelectDataSets.FormattingEnabled = true;
+            this.ui_ComboBox_SelectDataSets.Location = new System.Drawing.Point(116, 23);
+            this.ui_ComboBox_SelectDataSets.Name = "ui_ComboBox_SelectDataSets";
+            this.ui_ComboBox_SelectDataSets.Size = new System.Drawing.Size(300, 21);
+            this.ui_ComboBox_SelectDataSets.TabIndex = 7;
             // 
-            // cbxLabels
+            // variableBindingSource
             // 
-            this.cbxLabels.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxLabels.FormattingEnabled = true;
-            this.cbxLabels.Location = new System.Drawing.Point(66, 8);
-            this.cbxLabels.Name = "cbxLabels";
-            this.cbxLabels.Size = new System.Drawing.Size(100, 21);
-            this.cbxLabels.TabIndex = 27;
+            this.variableBindingSource.DataSource = typeof(NoruST.Domain.Variable);
             // 
-            // chkCheckAllOptions
+            // label2
             // 
-            this.chkCheckAllOptions.AutoSize = true;
-            this.chkCheckAllOptions.Checked = true;
-            this.chkCheckAllOptions.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCheckAllOptions.Location = new System.Drawing.Point(6, 0);
-            this.chkCheckAllOptions.Name = "chkCheckAllOptions";
-            this.chkCheckAllOptions.Size = new System.Drawing.Size(62, 17);
-            this.chkCheckAllOptions.TabIndex = 35;
-            this.chkCheckAllOptions.Text = "Options";
-            this.chkCheckAllOptions.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Select Dataset";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.rangeDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.variableBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 55);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(410, 212);
+            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // rangeDataGridViewTextBoxColumn
+            // 
+            this.rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
+            this.rangeDataGridViewTextBoxColumn.HeaderText = "Range";
+            this.rangeDataGridViewTextBoxColumn.Name = "rangeDataGridViewTextBoxColumn";
+            this.rangeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Controls.Add(this.ui_ComboBox_SelectDataSets);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(422, 273);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Dataset";
             // 
             // TimeSeriesGraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 361);
-            this.Controls.Add(this.tlpForm);
-            this.MinimumSize = new System.Drawing.Size(400, 400);
+            this.ClientSize = new System.Drawing.Size(447, 426);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.ui_Button_Cancel);
             this.Name = "TimeSeriesGraphForm";
-            this.Text = "NoruST - Runs Test for Randomness";
-            this.tlpForm.ResumeLayout(false);
-            this.tlpForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).EndInit();
-            this.grpOptions.ResumeLayout(false);
-            this.grpOptions.PerformLayout();
-            this.tlpOptions.ResumeLayout(false);
-            this.tlpOptions.PerformLayout();
+            this.Text = "Time Series Graph";
+            ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tlpForm;
-        private System.Windows.Forms.DataGridView dgvDataSet;
-        private System.Windows.Forms.GroupBox grpOptions;
-        private System.Windows.Forms.TableLayoutPanel tlpOptions;
-        private System.Windows.Forms.ListBox lstDataSets;
+        private System.Windows.Forms.Button ui_Button_Cancel;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.CheckBox chkLabels;
-        private System.Windows.Forms.ComboBox cbxLabels;
-        private System.Windows.Forms.CheckBox chkCheckAllOptions;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox ui_ComboBox_SelectDataSets;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rangeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource variableBindingSource;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

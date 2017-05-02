@@ -14,6 +14,7 @@ namespace NoruST
         private PChartPresenter pChartPresenter;
         private DummyPresenter dummyPresenter;
         private ProcessCapabilityPresenter processCapabilityPresenter;
+        private TimeSeriesGraphPresenter timeSeriesGraphPresenter;
         private OneVariableSummaryForm oneVariableSummaryForm;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramForm histogramForm;
@@ -37,6 +38,7 @@ namespace NoruST
             pChartPresenter = new PChartPresenter(dataSetManagerPresenter);
             dummyPresenter = new DummyPresenter(dataSetManagerPresenter);
             processCapabilityPresenter = new ProcessCapabilityPresenter(dataSetManagerPresenter);
+            timeSeriesGraphPresenter = new TimeSeriesGraphPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -49,7 +51,6 @@ namespace NoruST
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotForm = boxWhiskerPlotForm.createAndOrShowForm(); };
             btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeSelectionForm = sampleSizeSelectionForm.createAndOrShowForm(); };
-            btnTimeSeriesGraph.Click += delegate { timeSeriesGraphForm = timeSeriesGraphForm.createAndOrShowForm(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessForm = runsTestForRandomnessForm.createAndOrShowForm(); };
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
@@ -57,6 +58,7 @@ namespace NoruST
             btnXRChart.Click += delegate { xrChartPresenter.openView(); };
             btnPChart.Click += delegate { pChartPresenter.openView(); };
             btnProcessCapability.Click += delegate { processCapabilityPresenter.openView(); };
+            btnTimeSeriesGraph.Click += delegate { timeSeriesGraphPresenter.openView(); };
         }
     }
 }
