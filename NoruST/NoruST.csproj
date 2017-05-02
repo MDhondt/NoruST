@@ -35,7 +35,7 @@
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.217</ApplicationVersion>
+    <ApplicationVersion>1.0.0.221</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -255,6 +255,12 @@
     <Compile Include="Forms\PChartForm.Designer.cs">
       <DependentUpon>PChartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProcessCapabilityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProcessCapabilityForm.Designer.cs">
+      <DependentUpon>ProcessCapabilityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\XRChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,11 +354,13 @@
     <Compile Include="Enums\Layout.cs" />
     <Compile Include="Models\SummaryStatisticsBool.cs" />
     <Compile Include="Models\PChartModel.cs" />
+    <Compile Include="Models\ProcessCapabilityModel.cs" />
     <Compile Include="Models\XRChartModel.cs" />
     <Compile Include="Presenters\DataSetManagerPresenter.cs" />
     <Compile Include="Presenters\DummyPresenter.cs" />
     <Compile Include="Presenters\LagPresenter.cs" />
     <Compile Include="Presenters\PChartPresenter.cs" />
+    <Compile Include="Presenters\ProcessCapabilityPresenter.cs" />
     <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -410,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ScatterplotForm.resx">
       <DependentUpon>ScatterplotForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProcessCapabilityForm.resx">
+      <DependentUpon>ProcessCapabilityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\XRChartForm.resx">
       <DependentUpon>XRChartForm.cs</DependentUpon>

@@ -13,6 +13,7 @@ namespace NoruST
         private XRChartPresenter xrChartPresenter;
         private PChartPresenter pChartPresenter;
         private DummyPresenter dummyPresenter;
+        private ProcessCapabilityPresenter processCapabilityPresenter;
         private OneVariableSummaryForm oneVariableSummaryForm;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramForm histogramForm;
@@ -35,6 +36,7 @@ namespace NoruST
             xrChartPresenter = new XRChartPresenter(dataSetManagerPresenter);
             pChartPresenter = new PChartPresenter(dataSetManagerPresenter);
             dummyPresenter = new DummyPresenter(dataSetManagerPresenter);
+            processCapabilityPresenter = new ProcessCapabilityPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -54,6 +56,7 @@ namespace NoruST
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
             btnXRChart.Click += delegate { xrChartPresenter.openView(); };
             btnPChart.Click += delegate { pChartPresenter.openView(); };
+            btnProcessCapability.Click += delegate { processCapabilityPresenter.openView(); };
         }
     }
 }
