@@ -94,7 +94,7 @@ namespace NoruST.Forms
             List<Variable> variables = new List<Variable>();
             foreach (DataGridViewRow row in uiDataGridView_Variables.Rows)
             {
-                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheck.Name].Value) == true)
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheck.Name].Value))
                 {
                     variables.Add((Variable)row.DataBoundItem);
                 }

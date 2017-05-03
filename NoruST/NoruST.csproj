@@ -365,6 +365,7 @@
     <Compile Include="Presenters\OneVariableSummaryPresenter.cs" />
     <Compile Include="Presenters\PChartPresenter.cs" />
     <Compile Include="Presenters\ProcessCapabilityPresenter.cs" />
+    <Compile Include="Presenters\ScatterPlotPresenter.cs" />
     <Compile Include="Presenters\TimeSeriesGraphPresenter.cs" />
     <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

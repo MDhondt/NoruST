@@ -17,7 +17,7 @@ namespace NoruST
         private OneVariableSummaryPresenter oneVariableSummaryPresenter;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramPresenter histogramPresenter;
-        private ScatterplotForm scatterplotForm;
+        private ScatterPlotPresenter scatterPlotPresenter;
         private BoxWhiskerPlotForm boxWhiskerPlotForm;
         private ConfidenceIntervalMeanAndStandardDeviationForm confidenceIntervalMeanAndStandardDeviationForm;
         private SampleSizeEstimationForm sampleSizeSelectionForm;
@@ -40,6 +40,7 @@ namespace NoruST
             timeSeriesGraphPresenter = new TimeSeriesGraphPresenter(dataSetManagerPresenter);
             oneVariableSummaryPresenter = new OneVariableSummaryPresenter(dataSetManagerPresenter);
             histogramPresenter = new HistogramPresenter(dataSetManagerPresenter);
+            scatterPlotPresenter = new ScatterPlotPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -48,7 +49,7 @@ namespace NoruST
             btnOneVariableSummary.Click += delegate { oneVariableSummaryPresenter.openView(); };
             btnCorrelationAndCovariance.Click += delegate { correlationCovarianceForm = correlationCovarianceForm.createAndOrShowForm(); };
             btnHistogram.Click += delegate { histogramPresenter.openView(); };
-            btnScatterplot.Click += delegate { scatterplotForm = scatterplotForm.createAndOrShowForm(); };
+            btnScatterplot.Click += delegate { scatterPlotPresenter.openView(); };
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotForm = boxWhiskerPlotForm.createAndOrShowForm(); };
             btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeSelectionForm = sampleSizeSelectionForm.createAndOrShowForm(); };
