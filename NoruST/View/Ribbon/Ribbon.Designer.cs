@@ -51,14 +51,16 @@
             this.btnSampleSizeEstimation = this.Factory.CreateRibbonButton();
             this.separator1 = this.Factory.CreateRibbonSeparator();
             this.menuStatisticalInference = this.Factory.CreateRibbonMenu();
-            this.btnCorrelationAndCovariance = this.Factory.CreateRibbonButton();
+            this.btnAnova = this.Factory.CreateRibbonButton();
             this.btnInteractionplot = this.Factory.CreateRibbonButton();
             this.separator2 = this.Factory.CreateRibbonSeparator();
             this.menuRegression = this.Factory.CreateRibbonMenu();
-            this.btnAnova = this.Factory.CreateRibbonButton();
+            this.btnCorrelationAndCovariance = this.Factory.CreateRibbonButton();
             this.btnInteraction = this.Factory.CreateRibbonButton();
             this.btnWhiteTest = this.Factory.CreateRibbonButton();
-            this.separator3 = this.Factory.CreateRibbonSeparator();
+            this.btnSimpleRegression = this.Factory.CreateRibbonButton();
+            this.separator6 = this.Factory.CreateRibbonSeparator();
+            this.menuNormalityTests = this.Factory.CreateRibbonMenu();
             this.menuDatamining = this.Factory.CreateRibbonMenu();
             this.btnLogisticRegression = this.Factory.CreateRibbonButton();
             this.btnDiscriminantAnalysis = this.Factory.CreateRibbonButton();
@@ -72,8 +74,6 @@
             this.btnXRChart = this.Factory.CreateRibbonButton();
             this.btnPChart = this.Factory.CreateRibbonButton();
             this.btnProcessCapability = this.Factory.CreateRibbonButton();
-            this.menuNormalityTests = this.Factory.CreateRibbonMenu();
-            this.separator6 = this.Factory.CreateRibbonSeparator();
             this.tabNoruST.SuspendLayout();
             this.grpData.SuspendLayout();
             this.grpAnalysis.SuspendLayout();
@@ -142,7 +142,6 @@
             this.grpAnalysis.Items.Add(this.menuRegression);
             this.grpAnalysis.Items.Add(this.separator6);
             this.grpAnalysis.Items.Add(this.menuNormalityTests);
-            this.grpAnalysis.Items.Add(this.separator3);
             this.grpAnalysis.Items.Add(this.menuDatamining);
             this.grpAnalysis.Items.Add(this.separator4);
             this.grpAnalysis.Items.Add(this.menuTimeseries);
@@ -215,11 +214,11 @@
             this.menuStatisticalInference.Name = "menuStatisticalInference";
             this.menuStatisticalInference.ShowImage = true;
             // 
-            // btnCorrelationAndCovariance
+            // btnAnova
             // 
-            this.btnCorrelationAndCovariance.Label = "Correlation and Covariance";
-            this.btnCorrelationAndCovariance.Name = "btnCorrelationAndCovariance";
-            this.btnCorrelationAndCovariance.ShowImage = true;
+            this.btnAnova.Label = "Anova";
+            this.btnAnova.Name = "btnAnova";
+            this.btnAnova.ShowImage = true;
             // 
             // btnInteractionplot
             // 
@@ -238,15 +237,16 @@
             this.menuRegression.Items.Add(this.btnCorrelationAndCovariance);
             this.menuRegression.Items.Add(this.btnInteraction);
             this.menuRegression.Items.Add(this.btnWhiteTest);
+            this.menuRegression.Items.Add(this.btnSimpleRegression);
             this.menuRegression.Label = "Regression";
             this.menuRegression.Name = "menuRegression";
             this.menuRegression.ShowImage = true;
             // 
-            // btnAnova
+            // btnCorrelationAndCovariance
             // 
-            this.btnAnova.Label = "Anova";
-            this.btnAnova.Name = "btnAnova";
-            this.btnAnova.ShowImage = true;
+            this.btnCorrelationAndCovariance.Label = "Correlation and Covariance";
+            this.btnCorrelationAndCovariance.Name = "btnCorrelationAndCovariance";
+            this.btnCorrelationAndCovariance.ShowImage = true;
             // 
             // btnInteraction
             // 
@@ -260,9 +260,23 @@
             this.btnWhiteTest.Name = "btnWhiteTest";
             this.btnWhiteTest.ShowImage = true;
             // 
-            // separator3
+            // btnSimpleRegression
             // 
-            this.separator3.Name = "separator3";
+            this.btnSimpleRegression.Label = "Simple Regression";
+            this.btnSimpleRegression.Name = "btnSimpleRegression";
+            this.btnSimpleRegression.ShowImage = true;
+            // 
+            // separator6
+            // 
+            this.separator6.Name = "separator6";
+            // 
+            // menuNormalityTests
+            // 
+            this.menuNormalityTests.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.menuNormalityTests.Label = "Normality Tests";
+            this.menuNormalityTests.Name = "menuNormalityTests";
+            this.menuNormalityTests.ShowImage = true;
+            this.menuNormalityTests.Visible = false;
             // 
             // menuDatamining
             // 
@@ -352,18 +366,6 @@
             this.btnProcessCapability.Name = "btnProcessCapability";
             this.btnProcessCapability.ShowImage = true;
             // 
-            // menuNormalityTests
-            // 
-            this.menuNormalityTests.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.menuNormalityTests.Label = "Normality Tests";
-            this.menuNormalityTests.Name = "menuNormalityTests";
-            this.menuNormalityTests.ShowImage = true;
-            this.menuNormalityTests.Visible = false;
-            // 
-            // separator6
-            // 
-            this.separator6.Name = "separator6";
-            // 
             // Ribbon
             // 
             this.Name = "Ribbon";
@@ -417,11 +419,11 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnForecast;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator3;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator4;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator5;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator6;
         internal Microsoft.Office.Tools.Ribbon.RibbonMenu menuNormalityTests;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSimpleRegression;
     }
 
     partial class ThisRibbonCollection

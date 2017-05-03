@@ -59,6 +59,7 @@ namespace NoruST
             btnPChart.Click += delegate { pChartPresenter.openView(); };
             btnProcessCapability.Click += delegate { processCapabilityPresenter.openView(); };
             btnTimeSeriesGraph.Click += delegate { timeSeriesGraphPresenter.openView(); };
+            btnSimpleRegression.Click += delegate { regressionForm = regressionForm.createAndOrShowForm(); };
         }
     }
 }
