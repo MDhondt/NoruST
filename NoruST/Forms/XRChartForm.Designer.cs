@@ -40,21 +40,25 @@
             this.rdbObservationsInRange = new System.Windows.Forms.RadioButton();
             this.rdbAllObservations = new System.Windows.Forms.RadioButton();
             this.ui_ComboBox_SelectDataSets = new System.Windows.Forms.ComboBox();
-            this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbPlotAllObservations = new System.Windows.Forms.RadioButton();
+            this.rdbPlotOnlyObservationsWithin = new System.Windows.Forms.RadioButton();
+            this.uiTextbox_PlotStartIndex = new System.Windows.Forms.TextBox();
+            this.uiTextbox_PlotStopIndex = new System.Windows.Forms.TextBox();
+            this.lblPlotStartIndex = new System.Windows.Forms.Label();
+            this.lblPlotStopIndex = new System.Windows.Forms.Label();
+            this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ui_Button_Cancel
             // 
-            this.ui_Button_Cancel.Location = new System.Drawing.Point(348, 397);
+            this.ui_Button_Cancel.Location = new System.Drawing.Point(353, 274);
             this.ui_Button_Cancel.Name = "ui_Button_Cancel";
             this.ui_Button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.ui_Button_Cancel.TabIndex = 3;
@@ -64,7 +68,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(267, 397);
+            this.btnOk.Location = new System.Drawing.Point(272, 274);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 5;
@@ -81,7 +85,7 @@
             this.groupBox2.Controls.Add(this.rdbPreviousData);
             this.groupBox2.Controls.Add(this.rdbObservationsInRange);
             this.groupBox2.Controls.Add(this.rdbAllObservations);
-            this.groupBox2.Location = new System.Drawing.Point(12, 291);
+            this.groupBox2.Location = new System.Drawing.Point(13, 168);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(422, 100);
             this.groupBox2.TabIndex = 6;
@@ -137,6 +141,7 @@
             this.rdbPreviousData.TabIndex = 2;
             this.rdbPreviousData.Text = "Previous data";
             this.rdbPreviousData.UseVisualStyleBackColor = true;
+            this.rdbPreviousData.Visible = false;
             // 
             // rdbObservationsInRange
             // 
@@ -170,10 +175,6 @@
             this.ui_ComboBox_SelectDataSets.Size = new System.Drawing.Size(300, 21);
             this.ui_ComboBox_SelectDataSets.TabIndex = 7;
             // 
-            // variableBindingSource
-            // 
-            this.variableBindingSource.DataSource = typeof(NoruST.Domain.Variable);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -183,54 +184,101 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Select Dataset";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn,
-            this.rangeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.variableBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 55);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(410, 212);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // rangeDataGridViewTextBoxColumn
-            // 
-            this.rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
-            this.rangeDataGridViewTextBoxColumn.HeaderText = "Range";
-            this.rangeDataGridViewTextBoxColumn.Name = "rangeDataGridViewTextBoxColumn";
-            this.rangeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.ui_ComboBox_SelectDataSets);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(422, 273);
+            this.groupBox3.Size = new System.Drawing.Size(422, 55);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dataset";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblPlotStopIndex);
+            this.groupBox1.Controls.Add(this.lblPlotStartIndex);
+            this.groupBox1.Controls.Add(this.uiTextbox_PlotStopIndex);
+            this.groupBox1.Controls.Add(this.uiTextbox_PlotStartIndex);
+            this.groupBox1.Controls.Add(this.rdbPlotOnlyObservationsWithin);
+            this.groupBox1.Controls.Add(this.rdbPlotAllObservations);
+            this.groupBox1.Location = new System.Drawing.Point(12, 73);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(422, 89);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Observations";
+            // 
+            // rdbPlotAllObservations
+            // 
+            this.rdbPlotAllObservations.AutoSize = true;
+            this.rdbPlotAllObservations.Location = new System.Drawing.Point(17, 19);
+            this.rdbPlotAllObservations.Name = "rdbPlotAllObservations";
+            this.rdbPlotAllObservations.Size = new System.Drawing.Size(119, 17);
+            this.rdbPlotAllObservations.TabIndex = 0;
+            this.rdbPlotAllObservations.TabStop = true;
+            this.rdbPlotAllObservations.Text = "Plot all observations";
+            this.rdbPlotAllObservations.UseVisualStyleBackColor = true;
+            // 
+            // rdbPlotOnlyObservationsWithin
+            // 
+            this.rdbPlotOnlyObservationsWithin.AutoSize = true;
+            this.rdbPlotOnlyObservationsWithin.Location = new System.Drawing.Point(17, 54);
+            this.rdbPlotOnlyObservationsWithin.Name = "rdbPlotOnlyObservationsWithin";
+            this.rdbPlotOnlyObservationsWithin.Size = new System.Drawing.Size(170, 17);
+            this.rdbPlotOnlyObservationsWithin.TabIndex = 1;
+            this.rdbPlotOnlyObservationsWithin.TabStop = true;
+            this.rdbPlotOnlyObservationsWithin.Text = "Plot only those within the limits:";
+            this.rdbPlotOnlyObservationsWithin.UseVisualStyleBackColor = true;
+            this.rdbPlotOnlyObservationsWithin.CheckedChanged += new System.EventHandler(this.rdbPlotOnlyObservationsWithin_CheckedChanged);
+            // 
+            // uiTextbox_PlotStartIndex
+            // 
+            this.uiTextbox_PlotStartIndex.Location = new System.Drawing.Point(303, 16);
+            this.uiTextbox_PlotStartIndex.Name = "uiTextbox_PlotStartIndex";
+            this.uiTextbox_PlotStartIndex.Size = new System.Drawing.Size(91, 20);
+            this.uiTextbox_PlotStartIndex.TabIndex = 2;
+            this.uiTextbox_PlotStartIndex.Visible = false;
+            // 
+            // uiTextbox_PlotStopIndex
+            // 
+            this.uiTextbox_PlotStopIndex.Location = new System.Drawing.Point(303, 54);
+            this.uiTextbox_PlotStopIndex.Name = "uiTextbox_PlotStopIndex";
+            this.uiTextbox_PlotStopIndex.Size = new System.Drawing.Size(91, 20);
+            this.uiTextbox_PlotStopIndex.TabIndex = 3;
+            this.uiTextbox_PlotStopIndex.Visible = false;
+            // 
+            // lblPlotStartIndex
+            // 
+            this.lblPlotStartIndex.AutoSize = true;
+            this.lblPlotStartIndex.Location = new System.Drawing.Point(218, 21);
+            this.lblPlotStartIndex.Name = "lblPlotStartIndex";
+            this.lblPlotStartIndex.Size = new System.Drawing.Size(58, 13);
+            this.lblPlotStartIndex.TabIndex = 4;
+            this.lblPlotStartIndex.Text = "Start Index";
+            this.lblPlotStartIndex.Visible = false;
+            // 
+            // lblPlotStopIndex
+            // 
+            this.lblPlotStopIndex.AutoSize = true;
+            this.lblPlotStopIndex.Location = new System.Drawing.Point(218, 58);
+            this.lblPlotStopIndex.Name = "lblPlotStopIndex";
+            this.lblPlotStopIndex.Size = new System.Drawing.Size(58, 13);
+            this.lblPlotStopIndex.TabIndex = 5;
+            this.lblPlotStopIndex.Text = "Stop Index";
+            this.lblPlotStopIndex.Visible = false;
+            // 
+            // variableBindingSource
+            // 
+            this.variableBindingSource.DataSource = typeof(NoruST.Domain.Variable);
             // 
             // XRChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 426);
+            this.ClientSize = new System.Drawing.Size(447, 308);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnOk);
@@ -239,10 +287,11 @@
             this.Text = "X/R Chart";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -260,10 +309,14 @@
         private System.Windows.Forms.Label lblStopIndex;
         private System.Windows.Forms.ComboBox ui_ComboBox_SelectDataSets;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rangeDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource variableBindingSource;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblPlotStopIndex;
+        private System.Windows.Forms.Label lblPlotStartIndex;
+        private System.Windows.Forms.TextBox uiTextbox_PlotStopIndex;
+        private System.Windows.Forms.TextBox uiTextbox_PlotStartIndex;
+        private System.Windows.Forms.RadioButton rdbPlotOnlyObservationsWithin;
+        private System.Windows.Forms.RadioButton rdbPlotAllObservations;
     }
 }

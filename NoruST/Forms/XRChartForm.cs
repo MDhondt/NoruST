@@ -29,12 +29,12 @@ namespace NoruST.Forms
         {
             ui_ComboBox_SelectDataSets.DataSource = presenter.dataSets();
             ui_ComboBox_SelectDataSets.DisplayMember = "name";
-            nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
+            //nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            //rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
             ui_ComboBox_SelectDataSets.SelectedIndexChanged += (obj, eventArgs) =>
             {
                 if (selectedDataSet() == null) return;
-                dataGridView1.DataSource = selectedDataSet().getVariables();
+                //dataGridView1.DataSource = selectedDataSet().getVariables();
             };
         }
 
@@ -77,6 +77,16 @@ namespace NoruST.Forms
             {
                 Close();
             }
+        }
+
+        private void rdbPlotOnlyObservationsWithin_CheckedChanged(object sender, EventArgs e)
+        {
+            uiTextbox_PlotStartIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            uiTextbox_PlotStopIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            lblPlotStartIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            lblPlotStopIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            uiTextbox_PlotStartIndex.Text = "0";
+            uiTextbox_PlotStopIndex.Text = "0";
         }
     }
 }
