@@ -16,7 +16,7 @@ namespace NoruST
         private TimeSeriesGraphPresenter timeSeriesGraphPresenter;
         private OneVariableSummaryPresenter oneVariableSummaryPresenter;
         private CorrelationCovarianceForm correlationCovarianceForm;
-        private HistogramForm histogramForm;
+        private HistogramPresenter histogramPresenter;
         private ScatterplotForm scatterplotForm;
         private BoxWhiskerPlotForm boxWhiskerPlotForm;
         private ConfidenceIntervalMeanAndStandardDeviationForm confidenceIntervalMeanAndStandardDeviationForm;
@@ -39,6 +39,7 @@ namespace NoruST
             processCapabilityPresenter = new ProcessCapabilityPresenter(dataSetManagerPresenter);
             timeSeriesGraphPresenter = new TimeSeriesGraphPresenter(dataSetManagerPresenter);
             oneVariableSummaryPresenter = new OneVariableSummaryPresenter(dataSetManagerPresenter);
+            histogramPresenter = new HistogramPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -46,7 +47,7 @@ namespace NoruST
             btnDummy.Click += delegate { dummyPresenter.openView(); };
             btnOneVariableSummary.Click += delegate { oneVariableSummaryPresenter.openView(); };
             btnCorrelationAndCovariance.Click += delegate { correlationCovarianceForm = correlationCovarianceForm.createAndOrShowForm(); };
-            btnHistogram.Click += delegate { histogramForm = histogramForm.createAndOrShowForm(); };
+            btnHistogram.Click += delegate { histogramPresenter.openView(); };
             btnScatterplot.Click += delegate { scatterplotForm = scatterplotForm.createAndOrShowForm(); };
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotForm = boxWhiskerPlotForm.createAndOrShowForm(); };
             btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };

@@ -7,7 +7,7 @@ using NoruST.Presenters;
 
 namespace NoruST.Forms
 {
-    public partial class OneVariableSummaryForm : ExtendedForm
+    public partial class OneVariableSummaryForm : Form
     {
         private OneVariableSummaryPresenter presenter;
 
@@ -52,7 +52,6 @@ namespace NoruST.Forms
                 chkVariance.DataBindings.Add("Checked", presenter.getModel(), "variance");
             };
         }
-
 
         private DataSet selectedDataSet()
         {
@@ -100,7 +99,7 @@ namespace NoruST.Forms
                     variables.Add((Variable)row.DataBoundItem);
                 }
             }
-            presenter.createSummaryStatistics(selectedDataSet(), variables);
+            presenter.createSummaryStatistics(variables);
             Close();
         }
     }

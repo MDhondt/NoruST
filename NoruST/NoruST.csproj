@@ -342,6 +342,7 @@
     <Compile Include="Models\DataManagerModel.cs" />
     <Compile Include="Models\DataSetManagerModel.cs" />
     <Compile Include="Models\DummyModel.cs" />
+    <Compile Include="Models\HistogramModel.cs" />
     <Compile Include="Models\LagModel.cs" />
     <Compile Include="Models\OneVariableSummaryModel.cs" />
     <Compile Include="Models\SummaryStatistics.cs" />
@@ -359,6 +360,7 @@
     <Compile Include="Models\XRChartModel.cs" />
     <Compile Include="Presenters\DataSetManagerPresenter.cs" />
     <Compile Include="Presenters\DummyPresenter.cs" />
+    <Compile Include="Presenters\HistogramPresenter.cs" />
     <Compile Include="Presenters\LagPresenter.cs" />
     <Compile Include="Presenters\OneVariableSummaryPresenter.cs" />
     <Compile Include="Presenters\PChartPresenter.cs" />

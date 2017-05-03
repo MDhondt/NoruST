@@ -40,7 +40,7 @@ namespace NoruST.Presenters
             return dataSetPresenter.getModel().getDataSets();
         }
 
-        public void createSummaryStatistics(DataSet dataSet, List<Variable> variables)
+        public void createSummaryStatistics(List<Variable> variables)
         {
           if (variables.Count == 0) return;
             _Worksheet worksheet = WorksheetHelper.NewWorksheet("One-Variable Summary");
