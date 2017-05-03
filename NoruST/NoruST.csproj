@@ -529,10 +529,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>NoruST_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>NoruST_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>BCD31EE1FE3ABBA27C47BFB94A5D56EBBA33299F</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>87736A39E1BA86E63847901BF990527118AE6CAE</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
