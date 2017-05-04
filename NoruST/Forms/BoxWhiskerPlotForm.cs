@@ -1,53 +1,71 @@
-﻿using NoruST.Analyses;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using NoruST.Analyses;
+using NoruST.Domain;
+using NoruST.Presenters;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>The Box - Whisker Plot Form.</para>
-    /// <para>Version: 3.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 18, 2016</para>
-    /// </summary>
-    public partial class BoxWhiskerPlotForm : ExtendedForm
+    public partial class BoxWhiskerPlotForm : Form
     {
-        #region Constructors
 
-        /// <summary>
-        /// Constructor of the <see cref="BoxWhiskerPlotForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
+        private BoxWhiskerPlotPresenter presenter;
+
         public BoxWhiskerPlotForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, chkPerCategorie, dgvDataSet, btnOk, btnCancel);
         }
 
-        #endregion
-
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="System.Windows.Forms.ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
+        public void setPresenter(BoxWhiskerPlotPresenter presenter)
         {
-            // Create a data table and add the required columns.
-            CreateDataTable(DataTableColumn.Editable);
-
-            // Update the view with new data.
-            UpdateDataTable(DefaultCheck.Numeric);
+            this.presenter = presenter;
+            bindModelToView();
+            selectDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// This adds extra functionality to the Ok<see cref="System.Windows.Forms.Button"/>.
-        /// </summary>
-        public override bool OkButtonClick()
+        private void bindModelToView()
         {
-            return chkPerCategorie.Checked ? new BoxWhiskerPlot().CreateChart(SelectedDataSet, DoIncludeX, DoIncludeY) : new BoxWhiskerPlot().CreateChart(SelectedDataSet, DoInclude);
+            uiComboBox_DataSets.DataSource = presenter.dataSets();
+            uiComboBox_DataSets.DisplayMember = "name";
+            uiComboBox_DataSets.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedDataSet() == null) return;
+                uiDataGridView_Variables.DataSource = selectedDataSet().getVariables();
+                uiDataGridViewColumn_VariableCheck.Width = 30;
+                uiDataGridView_Variables.Columns[1].ReadOnly = true;
+                uiDataGridView_Variables.Columns[2].ReadOnly = true;
+            };
         }
 
-        #endregion
+        private DataSet selectedDataSet()
+        {
+            return (DataSet)uiComboBox_DataSets.SelectedItem;
+        }
+
+        public void selectDataSet(DataSet dataSet)
+        {
+            uiComboBox_DataSets.SelectedItem = null;
+            uiComboBox_DataSets.SelectedItem = dataSet;
+        }
+
+        private void btnOk_Click(object sender, System.EventArgs e)
+        {
+            List<Variable> variables = new List<Variable>();
+            foreach (DataGridViewRow row in uiDataGridView_Variables.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheck.Name].Value) == true)
+                {
+                    variables.Add((Variable)row.DataBoundItem);
+                }
+            }
+            presenter.createBoxWhiskerPlot(variables);
+            Close();
+        }
+
+        private void uiButton_Cancel_Click(object sender, System.EventArgs e)
+        {
+            Close();
+        }
     }
 }

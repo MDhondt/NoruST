@@ -43,6 +43,11 @@ namespace NoruST
             return Application.ActiveSheet;
         }
 
+        public void evaluate(string formula)
+        {
+            Application.Evaluate(formula);
+        }
+
         public Range getCurrentSelectionRange()
         {
             return getActiveWorksheet().Cells.Application.Selection;

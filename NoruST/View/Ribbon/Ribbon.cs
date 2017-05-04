@@ -18,7 +18,7 @@ namespace NoruST
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramPresenter histogramPresenter;
         private ScatterPlotPresenter scatterPlotPresenter;
-        private BoxWhiskerPlotForm boxWhiskerPlotForm;
+        private BoxWhiskerPlotPresenter boxWhiskerPlotPresenter;
         private ConfidenceIntervalMeanAndStandardDeviationForm confidenceIntervalMeanAndStandardDeviationForm;
         private SampleSizeEstimationForm sampleSizeSelectionForm;
         private TimeSeriesGraphForm timeSeriesGraphForm;
@@ -41,6 +41,7 @@ namespace NoruST
             oneVariableSummaryPresenter = new OneVariableSummaryPresenter(dataSetManagerPresenter);
             histogramPresenter = new HistogramPresenter(dataSetManagerPresenter);
             scatterPlotPresenter = new ScatterPlotPresenter(dataSetManagerPresenter);
+            boxWhiskerPlotPresenter = new BoxWhiskerPlotPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -50,7 +51,7 @@ namespace NoruST
             btnCorrelationAndCovariance.Click += delegate { correlationCovarianceForm = correlationCovarianceForm.createAndOrShowForm(); };
             btnHistogram.Click += delegate { histogramPresenter.openView(); };
             btnScatterplot.Click += delegate { scatterPlotPresenter.openView(); };
-            btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotForm = boxWhiskerPlotForm.createAndOrShowForm(); };
+            btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotPresenter.openView(); };
             btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeSelectionForm = sampleSizeSelectionForm.createAndOrShowForm(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessForm = runsTestForRandomnessForm.createAndOrShowForm(); };
