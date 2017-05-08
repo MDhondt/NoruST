@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RunsTestForRandomnessForm));
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.dgvDataSet = new System.Windows.Forms.DataGridView();
             this.grpCutoffValue = new System.Windows.Forms.GroupBox();
@@ -67,7 +68,7 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpForm.Size = new System.Drawing.Size(384, 361);
+            this.tlpForm.Size = new System.Drawing.Size(384, 362);
             this.tlpForm.TabIndex = 22;
             // 
             // dgvDataSet
@@ -82,7 +83,7 @@
             this.dgvDataSet.MinimumSize = new System.Drawing.Size(300, 0);
             this.dgvDataSet.Name = "dgvDataSet";
             this.dgvDataSet.RowHeadersVisible = false;
-            this.dgvDataSet.Size = new System.Drawing.Size(378, 147);
+            this.dgvDataSet.Size = new System.Drawing.Size(378, 148);
             this.dgvDataSet.TabIndex = 14;
             // 
             // grpCutoffValue
@@ -93,7 +94,7 @@
             this.grpCutoffValue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpForm.SetColumnSpan(this.grpCutoffValue, 3);
             this.grpCutoffValue.Controls.Add(this.tlpOptions);
-            this.grpCutoffValue.Location = new System.Drawing.Point(3, 231);
+            this.grpCutoffValue.Location = new System.Drawing.Point(3, 232);
             this.grpCutoffValue.Name = "grpCutoffValue";
             this.grpCutoffValue.Size = new System.Drawing.Size(378, 96);
             this.grpCutoffValue.TabIndex = 18;
@@ -181,7 +182,7 @@
             // btnOk
             // 
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOk.Location = new System.Drawing.Point(225, 333);
+            this.btnOk.Location = new System.Drawing.Point(225, 334);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 17;
@@ -192,7 +193,7 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(306, 333);
+            this.btnCancel.Location = new System.Drawing.Point(306, 334);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 25);
             this.btnCancel.TabIndex = 16;
@@ -203,10 +204,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.ClientSize = new System.Drawing.Size(384, 362);
             this.Controls.Add(this.tlpForm);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "RunsTestForRandomnessForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NoruST - Runs Test for Randomness";
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();

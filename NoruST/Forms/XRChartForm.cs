@@ -65,14 +65,9 @@ namespace NoruST.Forms
         }
 
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            bool inputOk = presenter.checkInput(rdbAllObservations.Checked, rdbObservationsInRange.Checked, rdbPreviousData.Checked, selectedDataSet(), uiTextBox_StopIndex.Text, uiTextBox_StartIndex.Text);
+            bool inputOk = presenter.checkInput(rdbAllObservations.Checked, rdbObservationsInRange.Checked, selectedDataSet(), uiTextBox_StopIndex.Text, uiTextBox_StartIndex.Text, rdbPlotAllObservations.Checked, rdbPlotOnlyObservationsWithin.Checked, uiTextbox_PlotStopIndex.Text, uiTextbox_PlotStartIndex.Text);
             if (inputOk)
             {
                 Close();

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using NoruST.Forms;
 using NoruST.Presenters;
 using NoruST.Domain;
-
+using System.Collections.Generic;
 
 namespace NoruST.Forms
 {
@@ -29,12 +29,13 @@ namespace NoruST.Forms
         {
             ui_ComboBox_SelectDataSets.DataSource = presenter.dataSets();
             ui_ComboBox_SelectDataSets.DisplayMember = "name";
-            nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
             ui_ComboBox_SelectDataSets.SelectedIndexChanged += (obj, eventArgs) =>
             {
                 if (selectedDataSet() == null) return;
                 dataGridView1.DataSource = selectedDataSet().getVariables();
+                uiDataGridViewColumn_Checked.Width = 30;
+                dataGridView1.Columns[1].ReadOnly = true;
+                dataGridView1.Columns[2].ReadOnly = true;
             };
         }
 
@@ -62,7 +63,16 @@ namespace NoruST.Forms
 
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            bool inputOk = presenter.checkInput(selectedDataSet(), rdbPlotAllObservations.Checked, rdbPlotOnlyObservationsWithin.Checked, uiTextbox_PlotStartIndex.Text, uiTextbox_PlotStopIndex.Text);
+            List<Variable> variables = new List<Variable>();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_Checked.Name].Value) == true)
+                {
+                    variables.Add((Variable)row.DataBoundItem);
+                }
+            }
+
+            bool inputOk = presenter.checkInput(variables, selectedDataSet(), rdbPlotAllObservations.Checked, rdbPlotOnlyObservationsWithin.Checked, uiTextbox_PlotStartIndex.Text, uiTextbox_PlotStopIndex.Text);
             if (inputOk)
             {
                 Close();
@@ -83,6 +93,7 @@ namespace NoruST.Forms
             uiTextbox_PlotStopIndex.Text = "0";
             uiTextbox_PlotStartIndex.Text = "0";
         }
+
     } 
 }
 

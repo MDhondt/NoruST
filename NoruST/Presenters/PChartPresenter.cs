@@ -38,15 +38,18 @@ namespace NoruST.Presenters
             return dataSetPresenter.getModel().getDataSets();
         }
 
-        public bool checkInput(bool rdbAllObservations, bool rdbObservationsInRange, bool rdbPreviousData, DataSet dataSet, string uiTextBox_StopIndex, string uiTextBox_StartIndex)
+        public bool checkInput(bool rdbAllObservations, bool rdbObservationsInRange, DataSet dataSet, string uiTextBox_StopIndex, string uiTextBox_StartIndex, bool rdbPlotAllObservations, bool rdbPlotRange, string uiTextbox_PlotStopIndex, string uiTextbox_PlotStartIndex)
         {
             int startindex = Convert.ToInt16(uiTextBox_StartIndex);
             int stopindex = Convert.ToInt16(uiTextBox_StopIndex);
 
-            if ((rdbAllObservations || rdbObservationsInRange || rdbPreviousData) && (dataSet != null) && (startindex <= stopindex) && (startindex >= 0 && stopindex >= 0))
+            int plotstartindex = Convert.ToInt16(uiTextbox_PlotStartIndex);
+            int plotstopindex = Convert.ToInt16(uiTextbox_PlotStopIndex);
+
+            if ((rdbAllObservations || rdbObservationsInRange) && (dataSet != null) && (startindex <= stopindex) && (startindex >= 0 && stopindex >= 0) && (plotstartindex <= plotstopindex) && (plotstartindex >= 0 && plotstopindex >= 0))
             {
                 
-                if (rdbAllObservations || rdbPreviousData)
+                if (rdbAllObservations)
                 {
                     startindex = 0;
                     stopindex = dataSet.amountOfVariables()-1;
@@ -57,9 +60,20 @@ namespace NoruST.Presenters
                     stopindex = dataSet.amountOfVariables() - 1;
                 }
 
+                if (rdbPlotAllObservations)
+                {
+                    plotstartindex = 0;
+                    plotstopindex = dataSet.amountOfVariables() - 1;
+                }
+
+                if (rdbPlotRange && plotstopindex >= dataSet.amountOfVariables())
+                {
+                    plotstopindex = dataSet.amountOfVariables() - 1;
+                }
+
                 _Worksheet sheet = WorksheetHelper.NewWorksheet("P Chart");
 
-                generatePChart(startindex, stopindex, dataSet, sheet);
+                generatePChart(startindex, stopindex, dataSet, sheet, plotstartindex, plotstopindex);
                 
                 return true;
             }
@@ -68,7 +82,7 @@ namespace NoruST.Presenters
                 return false;
         }
 
-        private void generatePChart(int startindex, int stopindex, DataSet dataSet, _Worksheet sheet)
+        private void generatePChart(int startindex, int stopindex, DataSet dataSet, _Worksheet sheet, int plotstartindex, int plotstopindex)
         {
             int index = 0;
             int row = 1;
@@ -78,7 +92,7 @@ namespace NoruST.Presenters
             double[] pValuesInRange = new double[stopindex - startindex+1];
             double[] pChartUpperControlLimit = new double[dataSet.amountOfVariables()];
             double[] pChartLowerControlLimit = new double[dataSet.amountOfVariables()];
-            int[] ArrayIndex = new int[dataSet.amountOfVariables()];
+            
             sheet.Cells[row, column] = "Index";
             sheet.Cells[row, column + 1] = "Observation";
             sheet.Cells[row, column + 2] = "Average";
@@ -92,8 +106,14 @@ namespace NoruST.Presenters
                 var cellValue = (double)(sheet.Cells[row, column + 2] as Range).Value;
                 if (cellValue < -214682680) cellValue = 0; // if cellValue is the result of a division by 0, set value to 0
                 pValues[index] = cellValue;
-                ArrayIndex[index] = index;
+                if(cellValue > 1)
+                {
+                    MessageBox.Show("Cannot generate P-Chart; Data in "+ dataSet.Name + " contains samples greater than 1");
+                    return;
+                }
             }
+
+
 
             for (index = startindex; index <= stopindex; index++)
             {
@@ -109,10 +129,27 @@ namespace NoruST.Presenters
                 pChartLowerControlLimit[index] = pValues.Average() - pChartCorrection;
             }
 
+            // new arrays for subsets of existing arrays but within limits
+
+            double[] plotpValues = new double[plotstopindex - plotstartindex + 1];
+            double[] plotaverageOfPValues = new double[plotstopindex - plotstartindex + 1];
+            double[] plotpChartUpperControlLimit = new double[plotstopindex - plotstartindex + 1];
+            double[] plotpChartLowerControlLimit = new double[plotstopindex - plotstartindex + 1];
+            int[] ArrayIndex = new int[plotstopindex - plotstartindex + 1];
+
+            for (int i = plotstartindex; i <= plotstopindex; i++)
+            {
+                plotpValues[i - plotstartindex] = pValues[i];
+                plotaverageOfPValues[i - plotstartindex] = averageOfPValues[i];
+                plotpChartLowerControlLimit[i - plotstartindex] = pChartLowerControlLimit[i];
+                plotpChartUpperControlLimit[i - plotstartindex] = pChartUpperControlLimit[i];
+                ArrayIndex[i - plotstartindex] = i;
+            }
+
                 var Xcharts = (ChartObjects)sheet.ChartObjects();
                 var XchartObject = Xcharts.Add(340, 20, 550, 300);
                 var Xchart = XchartObject.Chart;
-                Xchart.ChartType = XlChartType.xlXYScatterLinesNoMarkers;
+                Xchart.ChartType = XlChartType.xlXYScatterLines;
                 Xchart.ChartWizard(Title: "P-Chart " + dataSet.Name, HasLegend: true);
                 var XseriesCollection = (SeriesCollection)Xchart.SeriesCollection();
                 var pseries = XseriesCollection.NewSeries();
@@ -123,11 +160,14 @@ namespace NoruST.Presenters
                 CLseries.Name = ("Center line");
                 UCLseries.Name = ("UCL");
                 LCLseries.Name = ("LCL");
+                pseries.Values = plotpValues;
+                CLseries.Values = plotaverageOfPValues;
+                UCLseries.Values = plotpChartUpperControlLimit;
+                LCLseries.Values = plotpChartLowerControlLimit;
                 pseries.XValues = ArrayIndex;
-                pseries.Values = pValues;
-                CLseries.Values = averageOfPValues;
-                UCLseries.Values = pChartUpperControlLimit;
-                LCLseries.Values = pChartLowerControlLimit;
+                CLseries.XValues = ArrayIndex;
+                UCLseries.XValues = ArrayIndex;
+                LCLseries.XValues = ArrayIndex;
         }
     }
 }

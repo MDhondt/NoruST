@@ -46,32 +46,51 @@ namespace NoruST.Forms
 
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            bool inputOk = presenter.checkInput(ui_RadioButton_AllObservations.Checked, ui_RadioButton_ObservationsInRange.Checked, ui_RadioButton_PreviousData.Checked, selectedDataSet(), ui_TextBox_StopIndex.Text, ui_TextBox_StartIndex.Text);
+            bool inputOk = presenter.checkInput(rdbAllObservations.Checked, rdbObservationsInRange.Checked, selectedDataSet(), uiTextBox_StopIndex.Text, uiTextBox_StartIndex.Text,  rdbPlotAllObservations.Checked, rdbPlotOnlyObservationsWithin.Checked, uiTextbox_PlotStopIndex.Text, uiTextbox_PlotStartIndex.Text);
             if (inputOk)
             {
                 Close();
             }
         }
 
-        private void RB_Observationsinrange_CheckedChanged(object sender, EventArgs e)
-        {
-            ui_TextBox_StartIndex.Visible = ui_RadioButton_ObservationsInRange.Checked;
-            ui_TextBox_StopIndex.Visible = ui_RadioButton_ObservationsInRange.Checked;
-            lblStartIndex.Visible = ui_RadioButton_ObservationsInRange.Checked;
-            lblStopIndex.Visible = ui_RadioButton_ObservationsInRange.Checked;
-        }
+
 
         private void bindModelToView()
         {
             ui_ComboBox_SelectDataSets.DataSource = presenter.dataSets();
             ui_ComboBox_SelectDataSets.DisplayMember = "name";
-            nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
+            //nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            //rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
             ui_ComboBox_SelectDataSets.SelectedIndexChanged += (obj, eventArgs) =>
             {
                 if (selectedDataSet() == null) return;
-                dataGridView1.DataSource = selectedDataSet().getVariables();
+                //dataGridView1.DataSource = selectedDataSet().getVariables();
             };
+        }
+
+        private void rdbAllObservations_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void rdbObservationsInRange_CheckedChanged(object sender, EventArgs e)
+        {
+            uiTextBox_StartIndex.Visible = rdbObservationsInRange.Checked;
+            uiTextBox_StopIndex.Visible = rdbObservationsInRange.Checked;
+            lblStartIndex.Visible = rdbObservationsInRange.Checked;
+            lblStopIndex.Visible = rdbObservationsInRange.Checked;
+            uiTextBox_StartIndex.Text = "0";
+            uiTextBox_StopIndex.Text = "0";
+        }
+
+        private void rdbPlotOnlyObservationsWithin_CheckedChanged(object sender, EventArgs e)
+        {
+            uiTextbox_PlotStartIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            uiTextbox_PlotStopIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            lblPlotStartIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            lblPlotStopIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            uiTextbox_PlotStartIndex.Text = "0";
+            uiTextbox_PlotStopIndex.Text = "0";
         }
     }
 }
