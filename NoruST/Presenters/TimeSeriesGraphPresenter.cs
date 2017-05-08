@@ -37,31 +37,13 @@ namespace NoruST.Presenters
             return dataSetPresenter.getModel().getDataSets();
         }
 
-        public bool checkInput(List<Variable> variables, DataSet dataSet, bool allObservations, bool observationsRange, string uiTextBox_StartIndex, string uiTextBox_StopIndex)
+        public bool checkInput(List<Variable> variablesX, List<Variable> variablesY, DataSet dataSet)
         {
 
-            int startindex = Convert.ToInt16(uiTextBox_StartIndex);
-            int stopindex = Convert.ToInt16(uiTextBox_StopIndex);
-
-            if ((dataSet != null) && (allObservations || observationsRange) && (startindex <= stopindex) && (startindex >= 0 && stopindex >= 0))
+            if (dataSet != null)
             {
-
-                if (allObservations)
-                {
-                    startindex = 0;
-                    stopindex = dataSet.amountOfVariables() - 1;
-                }
-
-                if (observationsRange && stopindex >= dataSet.amountOfVariables())
-                {
-                    stopindex = dataSet.amountOfVariables() - 1;
-                }
-
                 _Worksheet sheet = WorksheetHelper.NewWorksheet("Time Series Graph");
-                foreach (Variable variable in variables)
-                {
-                    generateChart(startindex, stopindex, variable, sheet);
-                }
+                generateChart(variablesX, variablesY, sheet, dataSet);
                 return true;
             }
             else
@@ -70,20 +52,31 @@ namespace NoruST.Presenters
         }
 
 
-        public void generateChart(int startindex, int stopindex, Variable variable, _Worksheet sheet)
+        public void generateChart(List<Variable> variablesX, List<Variable> variablesY, _Worksheet sheet, DataSet dataSet)
         {
+            int offsetY = 0;
+            foreach (Variable variableX in variablesX)
+            {
+                int offsetX = 0;
 
+                foreach (Variable variableY in variablesY)
+                {
+                    var charts = (ChartObjects)sheet.ChartObjects();
+                    var chartObject = charts.Add(offsetX * 450, offsetY * 250, 450, 250);
+                    var chart = chartObject.Chart;
+                    chart.ChartType = XlChartType.xlXYScatterLinesNoMarkers;
+                    chart.ChartWizard(Title: "Time Series " + dataSet.getName() + " - " + variableX.name + " vs " + variableY.name, HasLegend: false);
+                    var seriesCollection = (SeriesCollection)chart.SeriesCollection();
+                    var series = seriesCollection.Add();
+                    series.Values = variableY.getRange();
+                    series.XValues = variableX.getRange();
+                    series.MarkerStyle = XlMarkerStyle.xlMarkerStyleCircle;
 
-            //var Xcharts = (ChartObjects)sheet.ChartObjects();
-            //    var XchartObject = Xcharts.Add(340, 20, 550, 300);
-            //    var Xchart = XchartObject.Chart;
-            //    Xchart.ChartType = XlChartType.xlXYScatterLinesNoMarkers;
-            //    Xchart.ChartWizard(Title: "Time Series Graph " + dataSet.Name, HasLegend: true);
-            //    var XseriesCollection = (SeriesCollection)Xchart.SeriesCollection();
-            //    var valueseries = XseriesCollection.NewSeries();
-            //    valueseries.Name = ("Observations");
-            //    valueseries.Values = values;
-            //    valueseries.XValues = Index;
+                    offsetX++;
+                }
+
+                offsetY++;
             }
+        }
     }
 }

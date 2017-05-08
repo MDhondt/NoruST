@@ -32,10 +32,11 @@ namespace NoruST.Forms
             ui_ComboBox_SelectDataSets.SelectedIndexChanged += (obj, eventArgs) =>
             {
                 if (selectedDataSet() == null) return;
-                dataGridView1.DataSource = selectedDataSet().getVariables();
-                uiDataGridViewColumn_Checked.Width = 30;
-                dataGridView1.Columns[1].ReadOnly = true;
-                dataGridView1.Columns[2].ReadOnly = true;
+                uiDataGridView_Variables.DataSource = selectedDataSet().getVariables();
+                uiDataGridViewColumn_VariableCheckX.Width = 20;
+                uiDataGridViewColumn_VariableCheckY.Width = 20;
+                uiDataGridView_Variables.Columns[2].ReadOnly = true;
+                uiDataGridView_Variables.Columns[3].ReadOnly = true;
             };
         }
 
@@ -63,35 +64,24 @@ namespace NoruST.Forms
 
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            List<Variable> variables = new List<Variable>();
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            List<Variable> variablesX = new List<Variable>();
+            List<Variable> variablesY = new List<Variable>();
+            foreach (DataGridViewRow row in uiDataGridView_Variables.Rows)
             {
-                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_Checked.Name].Value) == true)
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheckX.Name].Value))
                 {
-                    variables.Add((Variable)row.DataBoundItem);
+                    variablesX.Add((Variable)row.DataBoundItem);
+                }
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheckY.Name].Value))
+                {
+                    variablesY.Add((Variable)row.DataBoundItem);
                 }
             }
-
-            bool inputOk = presenter.checkInput(variables, selectedDataSet(), rdbPlotAllObservations.Checked, rdbPlotOnlyObservationsWithin.Checked, uiTextbox_PlotStartIndex.Text, uiTextbox_PlotStopIndex.Text);
-            if (inputOk)
-            {
-                Close();
-            }
-        }
-
-        private void rdbPlotAllObservations_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void rdbPlotOnlyObservationsWithin_CheckedChanged(object sender, EventArgs e)
-        {
-            lblPlotStartIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
-            lblPlotStopIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
-            uiTextbox_PlotStartIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
-            uiTextbox_PlotStopIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
-            uiTextbox_PlotStopIndex.Text = "0";
-            uiTextbox_PlotStartIndex.Text = "0";
+           bool inputOk = presenter.checkInput(variablesX, variablesY, selectedDataSet());
+           if (inputOk)
+           {
+               Close();
+           }
         }
 
     } 

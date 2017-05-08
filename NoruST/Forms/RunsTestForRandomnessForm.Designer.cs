@@ -208,6 +208,8 @@
             this.Controls.Add(this.tlpForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "RunsTestForRandomnessForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
