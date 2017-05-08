@@ -35,7 +35,7 @@
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.251</ApplicationVersion>
+    <ApplicationVersion>1.0.0.256</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -356,6 +356,7 @@
     <Compile Include="Models\SummaryStatisticsBool.cs" />
     <Compile Include="Models\PChartModel.cs" />
     <Compile Include="Models\ProcessCapabilityModel.cs" />
+    <Compile Include="Models\RunsTestForRandomnessModel.cs" />
     <Compile Include="Models\TimeSeriesGraphModel.cs" />
     <Compile Include="Models\XRChartModel.cs" />
     <Compile Include="Presenters\BoxWhiskerPlotPresenter.cs" />
@@ -367,6 +368,7 @@
     <Compile Include="Presenters\PChartPresenter.cs" />
     <Compile Include="Presenters\ProcessCapabilityPresenter.cs" />
     <Compile Include="Presenters\ScatterPlotPresenter.cs" />
+    <Compile Include="Presenters\RunTestForRandomnessPresenter.cs" />
     <Compile Include="Presenters\TimeSeriesGraphPresenter.cs" />
     <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

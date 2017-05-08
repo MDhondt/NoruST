@@ -15,6 +15,7 @@ namespace NoruST
         private ProcessCapabilityPresenter processCapabilityPresenter;
         private TimeSeriesGraphPresenter timeSeriesGraphPresenter;
         private OneVariableSummaryPresenter oneVariableSummaryPresenter;
+        private RunsTestForRandomnessPresenter runsTestForRandomnessPresenter;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramPresenter histogramPresenter;
         private ScatterPlotPresenter scatterPlotPresenter;
@@ -42,6 +43,7 @@ namespace NoruST
             histogramPresenter = new HistogramPresenter(dataSetManagerPresenter);
             scatterPlotPresenter = new ScatterPlotPresenter(dataSetManagerPresenter);
             boxWhiskerPlotPresenter = new BoxWhiskerPlotPresenter(dataSetManagerPresenter);
+            runsTestForRandomnessPresenter = new RunsTestForRandomnessPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -54,7 +56,7 @@ namespace NoruST
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotPresenter.openView(); };
             btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeSelectionForm = sampleSizeSelectionForm.createAndOrShowForm(); };
-            btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessForm = runsTestForRandomnessForm.createAndOrShowForm(); };
+            btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessPresenter.openView(); };
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };

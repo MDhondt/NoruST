@@ -3,31 +3,12 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using NoruST.Models;
 
-// ReSharper disable LocalizableElement
-// ReSharper disable LoopCanBeConvertedToQuery
-
 namespace NoruST.Analyses
 {
-    /// <summary>
-    /// <para>Runs Test for Randomness.</para>
-    /// <para>Version: 0.1</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Thomas Van Rompaey</para>
-    /// <para>Edited by: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 25, 2016</para>
-    /// </summary>
-    /// <remarks>This function is not yet finished or working like it does in the example. There is a lot that can be improved upon but the limited time we had was the problem.</remarks>
+
     public class RunsTestForRandomness
     {
-        /// <summary>
-        /// Print the Runs Test for Randomness to a new <see cref="Microsoft.Office.Interop.Excel._Worksheet"/>.
-        /// </summary>
-        /// <param name="dataSet">The <see cref="DataSet"/> which needs it Correlation and/or Covariance printed.</param>
-        /// <param name="doInclude">A <see cref="List{T}"/> of <see cref="bool"/>s that corresponds to which <see cref="Models.Data"/> in the <see cref="DataSet.DataList"/> should be included.</param>
-        /// <param name="doCalculate">A collection of <see cref="bool"/>s that indicate which summary statistic has to be calculated.</param>
-        /// <param name="customCutoff">The custom cutoff value.</param>
-        /// <returns>A <see cref="bool"/> that indicates if the print was successful or not.</returns>
+
         public bool Print(DataSet dataSet, List<bool> doInclude, SummaryStatisticsBool doCalculate, string customCutoff)
         {
             // Check if the margin of error and the estimates are numbers.

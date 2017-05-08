@@ -1,55 +1,58 @@
-﻿using NoruST.Analyses;
-using NoruST.Models;
+﻿using System;
+using System.Windows.Forms;
+using NoruST.Forms;
+using NoruST.Presenters;
+using NoruST.Domain;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>Runs Test for Randomness Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Thomas Van Rompaey</para>
-    /// <para>Edited by: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 24, 2016</para>
-    /// </summary>
-    public partial class RunsTestForRandomnessForm : ExtendedForm
+    public partial class RunsTestForRandomnessForm : Form
     {
-        #region Constructors
+        private RunsTestForRandomnessPresenter presenter;
+        private const string formTitle = "NoruST - Runs Test";
 
-        /// <summary>
-        /// Constructor of the <see cref="RunsTestForRandomnessForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
         public RunsTestForRandomnessForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, dgvDataSet, btnOk, btnCancel);
         }
 
-        #endregion
-
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="System.Windows.Forms.ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
+        public void setPresenter(RunsTestForRandomnessPresenter RunsTestForRandomnessPresenter)
         {
-            // Create a data table and add the required columns.
-            CreateDataTable(DataTableColumn.Editable);
-
-            // Update the view with new data.
-            UpdateDataTable(DefaultCheck.Numeric);
+            this.presenter = RunsTestForRandomnessPresenter;
+            bindModelToView();
+            selectDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// This adds extra functionality to the Ok <see cref="System.Windows.Forms.Button"/>
-        /// </summary>
-        public override bool OkButtonClick()
+        private void bindModelToView()
         {
-            return new RunsTestForRandomness().Print(SelectedDataSet, DoInclude, new SummaryStatisticsBool(rdbMeanOfData.Checked, median: rdbMedianOfData.Checked, customCutoffValue: rdbCustomCutoffValue.Checked), txtCustomCutoffValue.Text);
+            uiComboBox_DataSets.DataSource = presenter.dataSets();
+            uiComboBox_DataSets.DisplayMember = "name";
+            uiComboBox_DataSets.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedDataSet() == null) return;
+                uiDataGridView_Variables.DataSource = selectedDataSet().getVariables();
+            };
         }
 
-        #endregion
+        private DataSet selectedDataSet()
+        {
+            return (DataSet)uiComboBox_DataSets.SelectedItem;
+        }
+
+        public void selectDataSet(DataSet dataSet)
+        {
+            uiComboBox_DataSets.SelectedItem = null;
+            uiComboBox_DataSets.SelectedItem = dataSet;
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            //return presenter.Print(selectedDataSet, DoInclude, new SummaryStatisticsBool(rdbMeanOfData.Checked, median: rdbMedianOfData.Checked, customCutoffValue: rdbCustomCutoffValue.Checked), txtCustomCutoffValue.Text);
+        }
+
+        private void ui_Button_Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

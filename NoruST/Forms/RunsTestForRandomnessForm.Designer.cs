@@ -29,198 +29,178 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RunsTestForRandomnessForm));
-            this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvDataSet = new System.Windows.Forms.DataGridView();
-            this.grpCutoffValue = new System.Windows.Forms.GroupBox();
-            this.tlpOptions = new System.Windows.Forms.TableLayoutPanel();
-            this.rdbCustomCutoffValue = new System.Windows.Forms.RadioButton();
-            this.rdbMeanOfData = new System.Windows.Forms.RadioButton();
-            this.rdbMedianOfData = new System.Windows.Forms.RadioButton();
-            this.txtCustomCutoffValue = new System.Windows.Forms.TextBox();
-            this.lstDataSets = new System.Windows.Forms.ListBox();
+            this.uiDataGridView_Variables = new System.Windows.Forms.DataGridView();
+            this.uiDataGridViewColumn_VariableCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lblVariable = new System.Windows.Forms.Label();
+            this.uiComboBox_DataSets = new System.Windows.Forms.ComboBox();
+            this.lblDataSet = new System.Windows.Forms.Label();
+            this.uiTextBox_StopIndex = new System.Windows.Forms.TextBox();
+            this.rdbObservationsInRange = new System.Windows.Forms.RadioButton();
+            this.rdbAllObservations = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.tlpForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).BeginInit();
-            this.grpCutoffValue.SuspendLayout();
-            this.tlpOptions.SuspendLayout();
+            this.ui_Button_Cancel = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tlpForm
+            // uiDataGridView_Variables
             // 
-            this.tlpForm.AutoSize = true;
-            this.tlpForm.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpForm.ColumnCount = 3;
-            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpForm.Controls.Add(this.dgvDataSet, 0, 1);
-            this.tlpForm.Controls.Add(this.grpCutoffValue, 0, 2);
-            this.tlpForm.Controls.Add(this.lstDataSets, 0, 0);
-            this.tlpForm.Controls.Add(this.btnOk, 1, 3);
-            this.tlpForm.Controls.Add(this.btnCancel, 2, 3);
-            this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Name = "tlpForm";
-            this.tlpForm.RowCount = 4;
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpForm.Size = new System.Drawing.Size(384, 362);
-            this.tlpForm.TabIndex = 22;
+            this.uiDataGridView_Variables.AllowUserToAddRows = false;
+            this.uiDataGridView_Variables.AllowUserToDeleteRows = false;
+            this.uiDataGridView_Variables.AllowUserToResizeColumns = false;
+            this.uiDataGridView_Variables.AllowUserToResizeRows = false;
+            this.uiDataGridView_Variables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.uiDataGridView_Variables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.uiDataGridView_Variables.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.uiDataGridViewColumn_VariableCheck});
+            this.uiDataGridView_Variables.Location = new System.Drawing.Point(65, 37);
+            this.uiDataGridView_Variables.Name = "uiDataGridView_Variables";
+            this.uiDataGridView_Variables.RowHeadersVisible = false;
+            this.uiDataGridView_Variables.Size = new System.Drawing.Size(307, 132);
+            this.uiDataGridView_Variables.TabIndex = 32;
             // 
-            // dgvDataSet
+            // uiDataGridViewColumn_VariableCheck
             // 
-            this.dgvDataSet.AllowUserToAddRows = false;
-            this.dgvDataSet.AllowUserToDeleteRows = false;
-            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvDataSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tlpForm.SetColumnSpan(this.dgvDataSet, 3);
-            this.dgvDataSet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDataSet.Location = new System.Drawing.Point(3, 78);
-            this.dgvDataSet.MinimumSize = new System.Drawing.Size(300, 0);
-            this.dgvDataSet.Name = "dgvDataSet";
-            this.dgvDataSet.RowHeadersVisible = false;
-            this.dgvDataSet.Size = new System.Drawing.Size(378, 148);
-            this.dgvDataSet.TabIndex = 14;
+            this.uiDataGridViewColumn_VariableCheck.HeaderText = "";
+            this.uiDataGridViewColumn_VariableCheck.Name = "uiDataGridViewColumn_VariableCheck";
+            this.uiDataGridViewColumn_VariableCheck.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // grpCutoffValue
+            // lblVariable
             // 
-            this.grpCutoffValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblVariable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpCutoffValue.AutoSize = true;
-            this.grpCutoffValue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpForm.SetColumnSpan(this.grpCutoffValue, 3);
-            this.grpCutoffValue.Controls.Add(this.tlpOptions);
-            this.grpCutoffValue.Location = new System.Drawing.Point(3, 232);
-            this.grpCutoffValue.Name = "grpCutoffValue";
-            this.grpCutoffValue.Size = new System.Drawing.Size(378, 96);
-            this.grpCutoffValue.TabIndex = 18;
-            this.grpCutoffValue.TabStop = false;
-            this.grpCutoffValue.Text = "Cutoff Value";
+            this.lblVariable.AutoSize = true;
+            this.lblVariable.Location = new System.Drawing.Point(5, 38);
+            this.lblVariable.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVariable.Name = "lblVariable";
+            this.lblVariable.Size = new System.Drawing.Size(30, 13);
+            this.lblVariable.TabIndex = 31;
+            this.lblVariable.Text = "Data";
+            this.lblVariable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tlpOptions
+            // uiComboBox_DataSets
             // 
-            this.tlpOptions.AutoSize = true;
-            this.tlpOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpOptions.ColumnCount = 3;
-            this.tlpOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpOptions.Controls.Add(this.rdbCustomCutoffValue, 0, 2);
-            this.tlpOptions.Controls.Add(this.rdbMeanOfData, 0, 0);
-            this.tlpOptions.Controls.Add(this.rdbMedianOfData, 0, 1);
-            this.tlpOptions.Controls.Add(this.txtCustomCutoffValue, 1, 2);
-            this.tlpOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpOptions.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.tlpOptions.Location = new System.Drawing.Point(3, 16);
-            this.tlpOptions.Name = "tlpOptions";
-            this.tlpOptions.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.tlpOptions.RowCount = 3;
-            this.tlpOptions.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpOptions.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpOptions.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpOptions.Size = new System.Drawing.Size(372, 77);
-            this.tlpOptions.TabIndex = 32;
+            this.uiComboBox_DataSets.FormattingEnabled = true;
+            this.uiComboBox_DataSets.Location = new System.Drawing.Point(65, 3);
+            this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
+            this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
+            this.uiComboBox_DataSets.Size = new System.Drawing.Size(307, 21);
+            this.uiComboBox_DataSets.TabIndex = 30;
             // 
-            // rdbCustomCutoffValue
+            // lblDataSet
             // 
-            this.rdbCustomCutoffValue.AutoSize = true;
-            this.rdbCustomCutoffValue.Location = new System.Drawing.Point(3, 54);
-            this.rdbCustomCutoffValue.Name = "rdbCustomCutoffValue";
-            this.rdbCustomCutoffValue.Size = new System.Drawing.Size(121, 17);
-            this.rdbCustomCutoffValue.TabIndex = 22;
-            this.rdbCustomCutoffValue.TabStop = true;
-            this.rdbCustomCutoffValue.Text = "Custom Cutoff Value";
-            this.rdbCustomCutoffValue.UseVisualStyleBackColor = true;
-            this.rdbCustomCutoffValue.Visible = false;
+            this.lblDataSet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDataSet.AutoSize = true;
+            this.lblDataSet.Location = new System.Drawing.Point(5, 5);
+            this.lblDataSet.Margin = new System.Windows.Forms.Padding(5);
+            this.lblDataSet.Name = "lblDataSet";
+            this.lblDataSet.Size = new System.Drawing.Size(47, 13);
+            this.lblDataSet.TabIndex = 29;
+            this.lblDataSet.Text = "Data set";
+            this.lblDataSet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // rdbMeanOfData
+            // uiTextBox_StopIndex
             // 
-            this.rdbMeanOfData.AutoSize = true;
-            this.rdbMeanOfData.Checked = true;
-            this.rdbMeanOfData.Location = new System.Drawing.Point(3, 8);
-            this.rdbMeanOfData.Name = "rdbMeanOfData";
-            this.rdbMeanOfData.Size = new System.Drawing.Size(90, 17);
-            this.rdbMeanOfData.TabIndex = 23;
-            this.rdbMeanOfData.TabStop = true;
-            this.rdbMeanOfData.Text = "Mean of Data";
-            this.rdbMeanOfData.UseVisualStyleBackColor = true;
+            this.uiTextBox_StopIndex.Location = new System.Drawing.Point(104, 66);
+            this.uiTextBox_StopIndex.MaxLength = 5;
+            this.uiTextBox_StopIndex.Name = "uiTextBox_StopIndex";
+            this.uiTextBox_StopIndex.Size = new System.Drawing.Size(67, 20);
+            this.uiTextBox_StopIndex.TabIndex = 35;
+            this.uiTextBox_StopIndex.Text = "0";
+            this.uiTextBox_StopIndex.Visible = false;
             // 
-            // rdbMedianOfData
+            // rdbObservationsInRange
             // 
-            this.rdbMedianOfData.AutoSize = true;
-            this.rdbMedianOfData.Location = new System.Drawing.Point(3, 31);
-            this.rdbMedianOfData.Name = "rdbMedianOfData";
-            this.rdbMedianOfData.Size = new System.Drawing.Size(98, 17);
-            this.rdbMedianOfData.TabIndex = 24;
-            this.rdbMedianOfData.Text = "Median of Data";
-            this.rdbMedianOfData.UseVisualStyleBackColor = true;
+            this.rdbObservationsInRange.AutoSize = true;
+            this.rdbObservationsInRange.Location = new System.Drawing.Point(6, 45);
+            this.rdbObservationsInRange.Name = "rdbObservationsInRange";
+            this.rdbObservationsInRange.Size = new System.Drawing.Size(60, 17);
+            this.rdbObservationsInRange.TabIndex = 34;
+            this.rdbObservationsInRange.Text = "Median";
+            this.rdbObservationsInRange.UseVisualStyleBackColor = true;
             // 
-            // txtCustomCutoffValue
+            // rdbAllObservations
             // 
-            this.txtCustomCutoffValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCustomCutoffValue.Location = new System.Drawing.Point(130, 54);
-            this.txtCustomCutoffValue.Name = "txtCustomCutoffValue";
-            this.txtCustomCutoffValue.Size = new System.Drawing.Size(50, 20);
-            this.txtCustomCutoffValue.TabIndex = 25;
-            this.txtCustomCutoffValue.Text = "0";
-            this.txtCustomCutoffValue.Visible = false;
+            this.rdbAllObservations.AutoSize = true;
+            this.rdbAllObservations.Checked = true;
+            this.rdbAllObservations.Location = new System.Drawing.Point(6, 21);
+            this.rdbAllObservations.Name = "rdbAllObservations";
+            this.rdbAllObservations.Size = new System.Drawing.Size(52, 17);
+            this.rdbAllObservations.TabIndex = 33;
+            this.rdbAllObservations.TabStop = true;
+            this.rdbAllObservations.Text = "Mean";
+            this.rdbAllObservations.UseVisualStyleBackColor = true;
             // 
-            // lstDataSets
+            // radioButton1
             // 
-            this.tlpForm.SetColumnSpan(this.lstDataSets, 3);
-            this.lstDataSets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstDataSets.FormattingEnabled = true;
-            this.lstDataSets.Location = new System.Drawing.Point(3, 3);
-            this.lstDataSets.Name = "lstDataSets";
-            this.lstDataSets.Size = new System.Drawing.Size(378, 69);
-            this.lstDataSets.TabIndex = 15;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 68);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(89, 17);
+            this.radioButton1.TabIndex = 36;
+            this.radioButton1.Text = "Custom value";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.uiTextBox_StopIndex);
+            this.groupBox2.Controls.Add(this.rdbAllObservations);
+            this.groupBox2.Controls.Add(this.rdbObservationsInRange);
+            this.groupBox2.Location = new System.Drawing.Point(12, 175);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(360, 91);
+            this.groupBox2.TabIndex = 37;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cutoff Value";
             // 
             // btnOk
             // 
-            this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOk.Location = new System.Drawing.Point(225, 334);
+            this.btnOk.Location = new System.Drawing.Point(216, 272);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 25);
-            this.btnOk.TabIndex = 17;
+            this.btnOk.Size = new System.Drawing.Size(75, 21);
+            this.btnOk.TabIndex = 39;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // btnCancel
+            // ui_Button_Cancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(306, 334);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 25);
-            this.btnCancel.TabIndex = 16;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.ui_Button_Cancel.Location = new System.Drawing.Point(297, 272);
+            this.ui_Button_Cancel.Name = "ui_Button_Cancel";
+            this.ui_Button_Cancel.Size = new System.Drawing.Size(75, 21);
+            this.ui_Button_Cancel.TabIndex = 38;
+            this.ui_Button_Cancel.Text = "Cancel";
+            this.ui_Button_Cancel.UseVisualStyleBackColor = true;
+            this.ui_Button_Cancel.Click += new System.EventHandler(this.ui_Button_Cancel_Click);
             // 
             // RunsTestForRandomnessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 362);
-            this.Controls.Add(this.tlpForm);
+            this.ClientSize = new System.Drawing.Size(384, 302);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.ui_Button_Cancel);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.uiDataGridView_Variables);
+            this.Controls.Add(this.lblVariable);
+            this.Controls.Add(this.uiComboBox_DataSets);
+            this.Controls.Add(this.lblDataSet);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(400, 400);
+            this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "RunsTestForRandomnessForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NoruST - Runs Test for Randomness";
-            this.tlpForm.ResumeLayout(false);
-            this.tlpForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).EndInit();
-            this.grpCutoffValue.ResumeLayout(false);
-            this.grpCutoffValue.PerformLayout();
-            this.tlpOptions.ResumeLayout(false);
-            this.tlpOptions.PerformLayout();
+            this.Text = "Runs Test for Randomness";
+            ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,16 +208,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tlpForm;
-        private System.Windows.Forms.DataGridView dgvDataSet;
-        private System.Windows.Forms.GroupBox grpCutoffValue;
-        private System.Windows.Forms.TableLayoutPanel tlpOptions;
-        private System.Windows.Forms.ListBox lstDataSets;
+        private System.Windows.Forms.DataGridView uiDataGridView_Variables;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn uiDataGridViewColumn_VariableCheck;
+        private System.Windows.Forms.Label lblVariable;
+        private System.Windows.Forms.ComboBox uiComboBox_DataSets;
+        private System.Windows.Forms.Label lblDataSet;
+        private System.Windows.Forms.TextBox uiTextBox_StopIndex;
+        private System.Windows.Forms.RadioButton rdbObservationsInRange;
+        private System.Windows.Forms.RadioButton rdbAllObservations;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.RadioButton rdbCustomCutoffValue;
-        private System.Windows.Forms.RadioButton rdbMeanOfData;
-        private System.Windows.Forms.RadioButton rdbMedianOfData;
-        private System.Windows.Forms.TextBox txtCustomCutoffValue;
+        private System.Windows.Forms.Button ui_Button_Cancel;
     }
 }
