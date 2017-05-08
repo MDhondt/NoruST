@@ -7,7 +7,7 @@ using NoruST.Presenters;
 
 namespace NoruST.Forms
 {
-    public partial class OneVariableSummaryForm : ExtendedForm
+    public partial class OneVariableSummaryForm : Form
     {
         private OneVariableSummaryPresenter presenter;
 
@@ -53,7 +53,6 @@ namespace NoruST.Forms
             };
         }
 
-
         private DataSet selectedDataSet()
         {
             return (DataSet)uiComboBox_DataSets.SelectedItem;
@@ -95,12 +94,12 @@ namespace NoruST.Forms
             List<Variable> variables = new List<Variable>();
             foreach (DataGridViewRow row in uiDataGridView_Variables.Rows)
             {
-                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheck.Name].Value) == true)
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheck.Name].Value))
                 {
                     variables.Add((Variable)row.DataBoundItem);
                 }
             }
-            presenter.createSummaryStatistics(selectedDataSet(), variables);
+            presenter.createSummaryStatistics(variables);
             Close();
         }
     }

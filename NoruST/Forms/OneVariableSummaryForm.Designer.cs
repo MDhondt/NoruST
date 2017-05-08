@@ -405,7 +405,9 @@
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(510, 800);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(510, 485);
             this.Name = "OneVariableSummaryForm";
             this.Text = "NoruST - One-Variable Summary";

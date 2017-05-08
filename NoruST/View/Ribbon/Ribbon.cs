@@ -16,9 +16,9 @@ namespace NoruST
         private TimeSeriesGraphPresenter timeSeriesGraphPresenter;
         private OneVariableSummaryPresenter oneVariableSummaryPresenter;
         private CorrelationCovarianceForm correlationCovarianceForm;
-        private HistogramForm histogramForm;
-        private ScatterplotForm scatterplotForm;
-        private BoxWhiskerPlotForm boxWhiskerPlotForm;
+        private HistogramPresenter histogramPresenter;
+        private ScatterPlotPresenter scatterPlotPresenter;
+        private BoxWhiskerPlotPresenter boxWhiskerPlotPresenter;
         private ConfidenceIntervalMeanAndStandardDeviationForm confidenceIntervalMeanAndStandardDeviationForm;
         private SampleSizeEstimationForm sampleSizeSelectionForm;
         private TimeSeriesGraphForm timeSeriesGraphForm;
@@ -39,6 +39,9 @@ namespace NoruST
             processCapabilityPresenter = new ProcessCapabilityPresenter(dataSetManagerPresenter);
             timeSeriesGraphPresenter = new TimeSeriesGraphPresenter(dataSetManagerPresenter);
             oneVariableSummaryPresenter = new OneVariableSummaryPresenter(dataSetManagerPresenter);
+            histogramPresenter = new HistogramPresenter(dataSetManagerPresenter);
+            scatterPlotPresenter = new ScatterPlotPresenter(dataSetManagerPresenter);
+            boxWhiskerPlotPresenter = new BoxWhiskerPlotPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -46,9 +49,9 @@ namespace NoruST
             btnDummy.Click += delegate { dummyPresenter.openView(); };
             btnOneVariableSummary.Click += delegate { oneVariableSummaryPresenter.openView(); };
             btnCorrelationAndCovariance.Click += delegate { correlationCovarianceForm = correlationCovarianceForm.createAndOrShowForm(); };
-            btnHistogram.Click += delegate { histogramForm = histogramForm.createAndOrShowForm(); };
-            btnScatterplot.Click += delegate { scatterplotForm = scatterplotForm.createAndOrShowForm(); };
-            btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotForm = boxWhiskerPlotForm.createAndOrShowForm(); };
+            btnHistogram.Click += delegate { histogramPresenter.openView(); };
+            btnScatterplot.Click += delegate { scatterPlotPresenter.openView(); };
+            btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotPresenter.openView(); };
             btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeSelectionForm = sampleSizeSelectionForm.createAndOrShowForm(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessForm = runsTestForRandomnessForm.createAndOrShowForm(); };

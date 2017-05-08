@@ -1,53 +1,76 @@
-﻿using NoruST.Analyses;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using NoruST.Analyses;
+using NoruST.Domain;
+using NoruST.Presenters;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>Scatterplot Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 17, 2016</para>
-    /// </summary>
-    public partial class ScatterplotForm : ExtendedForm
+    public partial class ScatterplotForm : Form
     {
-        #region Constructors
+        private ScatterPlotPresenter presenter;
 
-        /// <summary>
-        /// Constructor of the <see cref="ScatterplotForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
         public ScatterplotForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, dgvDataSet, btnOk, btnCancel);
         }
 
-        #endregion
-
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="System.Windows.Forms.ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
+        public void setPresenter(ScatterPlotPresenter presenter)
         {
-            // Create a data table and add the required columns.
-            CreateDataTable(xy: DataTableColumn.Editable);
-
-            // Update the view with new data.
-            UpdateDataTable(checkX: DefaultCheck.Numeric, checkY: DefaultCheck.Numeric);
+            this.presenter = presenter;
+            bindModelToView();
+            selectDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// This adds extra functionality to the Ok <see cref="System.Windows.Forms.Button"/>
-        /// </summary>
-        public override bool OkButtonClick()
+        private void bindModelToView()
         {
-            return new Scatterplot().CreateChart(SelectedDataSet, DoIncludeX, DoIncludeY);
+            uiComboBox_DataSets.DataSource = presenter.dataSets();
+            uiComboBox_DataSets.DisplayMember = "name";
+            uiComboBox_DataSets.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedDataSet() == null) return;
+                uiDataGridView_Variables.DataSource = selectedDataSet().getVariables();
+                uiDataGridViewColumn_VariableCheckX.Width = 20;
+                uiDataGridViewColumn_VariableCheckY.Width = 20;
+                uiDataGridView_Variables.Columns[2].ReadOnly = true;
+                uiDataGridView_Variables.Columns[3].ReadOnly = true;
+            };
         }
 
-        #endregion
+        private DataSet selectedDataSet()
+        {
+            return (DataSet)uiComboBox_DataSets.SelectedItem;
+        }
+
+        public void selectDataSet(DataSet dataSet)
+        {
+            uiComboBox_DataSets.SelectedItem = null;
+            uiComboBox_DataSets.SelectedItem = dataSet;
+        }
+
+        private void btnOk_Click(object sender, System.EventArgs e)
+        {
+            List<Variable> variablesX = new List<Variable>();
+            List<Variable> variablesY = new List<Variable>();
+            foreach (DataGridViewRow row in uiDataGridView_Variables.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheckX.Name].Value))
+                {
+                    variablesX.Add((Variable)row.DataBoundItem);
+                }
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheckY.Name].Value))
+                {
+                    variablesY.Add((Variable)row.DataBoundItem);
+                }
+            }
+            presenter.createScatterPlot(variablesX, variablesY);
+            Close();
+        }
+
+        private void uiButton_Cancel_Click(object sender, System.EventArgs e)
+        {
+            Close();
+        }
     }
 }

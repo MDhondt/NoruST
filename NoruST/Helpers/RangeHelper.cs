@@ -59,5 +59,11 @@ namespace NoruST
             return range;
         }
 
+        public static double[,] To2DDoubleArray(this Range range)
+        {
+            double[,] values = new double[range.Rows.Count,range.Columns.Count];
+            Array.Copy(range.Value2, values, range.Columns.Count * range.Rows.Count);
+            return values;
+        }
     }
 }

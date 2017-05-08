@@ -35,7 +35,7 @@
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.228</ApplicationVersion>
+    <ApplicationVersion>1.0.0.224</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -342,6 +342,7 @@
     <Compile Include="Models\DataManagerModel.cs" />
     <Compile Include="Models\DataSetManagerModel.cs" />
     <Compile Include="Models\DummyModel.cs" />
+    <Compile Include="Models\HistogramModel.cs" />
     <Compile Include="Models\LagModel.cs" />
     <Compile Include="Models\OneVariableSummaryModel.cs" />
     <Compile Include="Models\SummaryStatistics.cs" />
@@ -357,12 +358,15 @@
     <Compile Include="Models\ProcessCapabilityModel.cs" />
     <Compile Include="Models\TimeSeriesGraphModel.cs" />
     <Compile Include="Models\XRChartModel.cs" />
+    <Compile Include="Presenters\BoxWhiskerPlotPresenter.cs" />
     <Compile Include="Presenters\DataSetManagerPresenter.cs" />
     <Compile Include="Presenters\DummyPresenter.cs" />
+    <Compile Include="Presenters\HistogramPresenter.cs" />
     <Compile Include="Presenters\LagPresenter.cs" />
     <Compile Include="Presenters\OneVariableSummaryPresenter.cs" />
     <Compile Include="Presenters\PChartPresenter.cs" />
     <Compile Include="Presenters\ProcessCapabilityPresenter.cs" />
+    <Compile Include="Presenters\ScatterPlotPresenter.cs" />
     <Compile Include="Presenters\TimeSeriesGraphPresenter.cs" />
     <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -529,10 +533,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>NoruST_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>NoruST_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D151C23CF83D772E19347C01A730439AE0F6F134</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>87736A39E1BA86E63847901BF990527118AE6CAE</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
