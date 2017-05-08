@@ -62,12 +62,27 @@ namespace NoruST.Forms
 
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
-            bool inputOk = presenter.checkInput(selectedDataSet());
+            bool inputOk = presenter.checkInput(selectedDataSet(), rdbPlotAllObservations.Checked, rdbPlotOnlyObservationsWithin.Checked, uiTextbox_PlotStartIndex.Text, uiTextbox_PlotStopIndex.Text);
             if (inputOk)
             {
                 Close();
             }
         }
-    }
+
+        private void rdbPlotAllObservations_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void rdbPlotOnlyObservationsWithin_CheckedChanged(object sender, EventArgs e)
+        {
+            lblPlotStartIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            lblPlotStopIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            uiTextbox_PlotStartIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            uiTextbox_PlotStopIndex.Visible = rdbPlotOnlyObservationsWithin.Checked;
+            uiTextbox_PlotStopIndex.Text = "0";
+            uiTextbox_PlotStartIndex.Text = "0";
+        }
+    } 
 }
 

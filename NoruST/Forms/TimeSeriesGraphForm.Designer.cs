@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.ui_Button_Cancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ui_ComboBox_SelectDataSets = new System.Windows.Forms.ComboBox();
             this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
@@ -39,14 +38,22 @@
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblPlotStopIndex = new System.Windows.Forms.Label();
+            this.lblPlotStartIndex = new System.Windows.Forms.Label();
+            this.uiTextbox_PlotStopIndex = new System.Windows.Forms.TextBox();
+            this.uiTextbox_PlotStartIndex = new System.Windows.Forms.TextBox();
+            this.rdbPlotOnlyObservationsWithin = new System.Windows.Forms.RadioButton();
+            this.rdbPlotAllObservations = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ui_Button_Cancel
             // 
-            this.ui_Button_Cancel.Location = new System.Drawing.Point(348, 397);
+            this.ui_Button_Cancel.Location = new System.Drawing.Point(348, 405);
             this.ui_Button_Cancel.Name = "ui_Button_Cancel";
             this.ui_Button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.ui_Button_Cancel.TabIndex = 3;
@@ -56,22 +63,13 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(267, 397);
+            this.btnOk.Location = new System.Drawing.Point(267, 405);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 5;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.uiButton_Ok_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(12, 291);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(422, 100);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Control limits based on";
             // 
             // ui_ComboBox_SelectDataSets
             // 
@@ -138,13 +136,90 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dataset";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblPlotStopIndex);
+            this.groupBox1.Controls.Add(this.lblPlotStartIndex);
+            this.groupBox1.Controls.Add(this.uiTextbox_PlotStopIndex);
+            this.groupBox1.Controls.Add(this.uiTextbox_PlotStartIndex);
+            this.groupBox1.Controls.Add(this.rdbPlotOnlyObservationsWithin);
+            this.groupBox1.Controls.Add(this.rdbPlotAllObservations);
+            this.groupBox1.Location = new System.Drawing.Point(12, 294);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(422, 89);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Observations";
+            // 
+            // lblPlotStopIndex
+            // 
+            this.lblPlotStopIndex.AutoSize = true;
+            this.lblPlotStopIndex.Location = new System.Drawing.Point(218, 58);
+            this.lblPlotStopIndex.Name = "lblPlotStopIndex";
+            this.lblPlotStopIndex.Size = new System.Drawing.Size(58, 13);
+            this.lblPlotStopIndex.TabIndex = 5;
+            this.lblPlotStopIndex.Text = "Stop Index";
+            this.lblPlotStopIndex.Visible = false;
+            // 
+            // lblPlotStartIndex
+            // 
+            this.lblPlotStartIndex.AutoSize = true;
+            this.lblPlotStartIndex.Location = new System.Drawing.Point(218, 21);
+            this.lblPlotStartIndex.Name = "lblPlotStartIndex";
+            this.lblPlotStartIndex.Size = new System.Drawing.Size(58, 13);
+            this.lblPlotStartIndex.TabIndex = 4;
+            this.lblPlotStartIndex.Text = "Start Index";
+            this.lblPlotStartIndex.Visible = false;
+            // 
+            // uiTextbox_PlotStopIndex
+            // 
+            this.uiTextbox_PlotStopIndex.Location = new System.Drawing.Point(303, 54);
+            this.uiTextbox_PlotStopIndex.Name = "uiTextbox_PlotStopIndex";
+            this.uiTextbox_PlotStopIndex.Size = new System.Drawing.Size(91, 20);
+            this.uiTextbox_PlotStopIndex.TabIndex = 3;
+            this.uiTextbox_PlotStopIndex.Text = "0";
+            this.uiTextbox_PlotStopIndex.Visible = false;
+            // 
+            // uiTextbox_PlotStartIndex
+            // 
+            this.uiTextbox_PlotStartIndex.Location = new System.Drawing.Point(303, 16);
+            this.uiTextbox_PlotStartIndex.Name = "uiTextbox_PlotStartIndex";
+            this.uiTextbox_PlotStartIndex.Size = new System.Drawing.Size(91, 20);
+            this.uiTextbox_PlotStartIndex.TabIndex = 2;
+            this.uiTextbox_PlotStartIndex.Text = "0";
+            this.uiTextbox_PlotStartIndex.Visible = false;
+            // 
+            // rdbPlotOnlyObservationsWithin
+            // 
+            this.rdbPlotOnlyObservationsWithin.AutoSize = true;
+            this.rdbPlotOnlyObservationsWithin.Location = new System.Drawing.Point(17, 54);
+            this.rdbPlotOnlyObservationsWithin.Name = "rdbPlotOnlyObservationsWithin";
+            this.rdbPlotOnlyObservationsWithin.Size = new System.Drawing.Size(170, 17);
+            this.rdbPlotOnlyObservationsWithin.TabIndex = 1;
+            this.rdbPlotOnlyObservationsWithin.Text = "Plot only those within the limits:";
+            this.rdbPlotOnlyObservationsWithin.UseVisualStyleBackColor = true;
+            this.rdbPlotOnlyObservationsWithin.CheckedChanged += new System.EventHandler(this.rdbPlotOnlyObservationsWithin_CheckedChanged);
+            // 
+            // rdbPlotAllObservations
+            // 
+            this.rdbPlotAllObservations.AutoSize = true;
+            this.rdbPlotAllObservations.Checked = true;
+            this.rdbPlotAllObservations.Location = new System.Drawing.Point(17, 19);
+            this.rdbPlotAllObservations.Name = "rdbPlotAllObservations";
+            this.rdbPlotAllObservations.Size = new System.Drawing.Size(119, 17);
+            this.rdbPlotAllObservations.TabIndex = 0;
+            this.rdbPlotAllObservations.TabStop = true;
+            this.rdbPlotAllObservations.Text = "Plot all observations";
+            this.rdbPlotAllObservations.UseVisualStyleBackColor = true;
+            this.rdbPlotAllObservations.CheckedChanged += new System.EventHandler(this.rdbPlotAllObservations_CheckedChanged);
+            // 
             // TimeSeriesGraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 426);
+            this.ClientSize = new System.Drawing.Size(447, 445);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.ui_Button_Cancel);
             this.Name = "TimeSeriesGraphForm";
@@ -153,6 +228,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -160,7 +237,6 @@
         #endregion
         private System.Windows.Forms.Button ui_Button_Cancel;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox ui_ComboBox_SelectDataSets;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -168,5 +244,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rangeDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource variableBindingSource;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblPlotStopIndex;
+        private System.Windows.Forms.Label lblPlotStartIndex;
+        private System.Windows.Forms.TextBox uiTextbox_PlotStopIndex;
+        private System.Windows.Forms.TextBox uiTextbox_PlotStartIndex;
+        private System.Windows.Forms.RadioButton rdbPlotOnlyObservationsWithin;
+        private System.Windows.Forms.RadioButton rdbPlotAllObservations;
     }
 }
