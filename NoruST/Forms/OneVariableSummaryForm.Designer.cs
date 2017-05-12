@@ -84,16 +84,16 @@
             this.tlpForm.RowCount = 4;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.Size = new System.Drawing.Size(494, 446);
+            this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpForm.Size = new System.Drawing.Size(584, 336);
             this.tlpForm.TabIndex = 20;
             // 
             // uiButton_Cancel
             // 
             this.uiButton_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.uiButton_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uiButton_Cancel.Location = new System.Drawing.Point(416, 418);
+            this.uiButton_Cancel.Location = new System.Drawing.Point(506, 308);
             this.uiButton_Cancel.Name = "uiButton_Cancel";
             this.uiButton_Cancel.Size = new System.Drawing.Size(75, 25);
             this.uiButton_Cancel.TabIndex = 29;
@@ -104,7 +104,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(335, 418);
+            this.btnOk.Location = new System.Drawing.Point(425, 308);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 28;
@@ -117,7 +117,7 @@
             this.lblOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOptions.AutoSize = true;
-            this.lblOptions.Location = new System.Drawing.Point(5, 170);
+            this.lblOptions.Location = new System.Drawing.Point(5, 174);
             this.lblOptions.Margin = new System.Windows.Forms.Padding(5);
             this.lblOptions.Name = "lblOptions";
             this.lblOptions.Size = new System.Drawing.Size(50, 13);
@@ -133,7 +133,7 @@
             this.uiComboBox_DataSets.Location = new System.Drawing.Point(65, 3);
             this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
-            this.uiComboBox_DataSets.Size = new System.Drawing.Size(426, 21);
+            this.uiComboBox_DataSets.Size = new System.Drawing.Size(516, 21);
             this.uiComboBox_DataSets.TabIndex = 25;
             // 
             // lblVariable
@@ -178,7 +178,7 @@
             this.uiDataGridView_Variables.Location = new System.Drawing.Point(63, 30);
             this.uiDataGridView_Variables.Name = "uiDataGridView_Variables";
             this.uiDataGridView_Variables.RowHeadersVisible = false;
-            this.uiDataGridView_Variables.Size = new System.Drawing.Size(428, 132);
+            this.uiDataGridView_Variables.Size = new System.Drawing.Size(518, 136);
             this.uiDataGridView_Variables.TabIndex = 26;
             // 
             // uiDataGridViewColumn_VariableCheck
@@ -189,47 +189,50 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.chkInterquartileRange, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.chkMode, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.chkThirdQuartile, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.chkMeanAbsDev, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.chkFirstQuartile, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.chkMedian, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.chkSum, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.chkKurtosis, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.chkCount, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.chkSkewness, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.chkRange, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.chkStandardDev, 0, 3);
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tlpForm.SetColumnSpan(this.tableLayoutPanel1, 3);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.chkSum, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.chkKurtosis, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.chkMaximum, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.chkVariance, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.chkMinimum, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.chkMean, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.chkAll, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chkStandardDev, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chkRange, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chkSkewness, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.chkCount, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.chkMedian, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.chkMeanAbsDev, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.chkFirstQuartile, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.chkThirdQuartile, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.chkInterquartileRange, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.chkMode, 3, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(63, 168);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(63, 172);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(266, 244);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(518, 130);
             this.tableLayoutPanel1.TabIndex = 30;
             // 
             // chkInterquartileRange
             // 
             this.chkInterquartileRange.AutoSize = true;
-            this.chkInterquartileRange.Location = new System.Drawing.Point(136, 207);
+            this.chkInterquartileRange.Location = new System.Drawing.Point(132, 95);
             this.chkInterquartileRange.Name = "chkInterquartileRange";
             this.chkInterquartileRange.Size = new System.Drawing.Size(116, 17);
             this.chkInterquartileRange.TabIndex = 16;
@@ -239,7 +242,7 @@
             // chkMode
             // 
             this.chkMode.AutoSize = true;
-            this.chkMode.Location = new System.Drawing.Point(3, 207);
+            this.chkMode.Location = new System.Drawing.Point(390, 95);
             this.chkMode.Name = "chkMode";
             this.chkMode.Size = new System.Drawing.Size(53, 17);
             this.chkMode.TabIndex = 15;
@@ -249,7 +252,7 @@
             // chkThirdQuartile
             // 
             this.chkThirdQuartile.AutoSize = true;
-            this.chkThirdQuartile.Location = new System.Drawing.Point(136, 184);
+            this.chkThirdQuartile.Location = new System.Drawing.Point(261, 95);
             this.chkThirdQuartile.Name = "chkThirdQuartile";
             this.chkThirdQuartile.Size = new System.Drawing.Size(89, 17);
             this.chkThirdQuartile.TabIndex = 14;
@@ -259,7 +262,7 @@
             // chkMeanAbsDev
             // 
             this.chkMeanAbsDev.AutoSize = true;
-            this.chkMeanAbsDev.Location = new System.Drawing.Point(3, 184);
+            this.chkMeanAbsDev.Location = new System.Drawing.Point(390, 72);
             this.chkMeanAbsDev.Name = "chkMeanAbsDev";
             this.chkMeanAbsDev.Size = new System.Drawing.Size(125, 17);
             this.chkMeanAbsDev.TabIndex = 13;
@@ -269,7 +272,7 @@
             // chkFirstQuartile
             // 
             this.chkFirstQuartile.AutoSize = true;
-            this.chkFirstQuartile.Location = new System.Drawing.Point(136, 161);
+            this.chkFirstQuartile.Location = new System.Drawing.Point(3, 95);
             this.chkFirstQuartile.Name = "chkFirstQuartile";
             this.chkFirstQuartile.Size = new System.Drawing.Size(84, 17);
             this.chkFirstQuartile.TabIndex = 12;
@@ -279,7 +282,7 @@
             // chkMedian
             // 
             this.chkMedian.AutoSize = true;
-            this.chkMedian.Location = new System.Drawing.Point(3, 161);
+            this.chkMedian.Location = new System.Drawing.Point(261, 72);
             this.chkMedian.Name = "chkMedian";
             this.chkMedian.Size = new System.Drawing.Size(61, 17);
             this.chkMedian.TabIndex = 11;
@@ -289,7 +292,7 @@
             // chkSum
             // 
             this.chkSum.AutoSize = true;
-            this.chkSum.Location = new System.Drawing.Point(136, 118);
+            this.chkSum.Location = new System.Drawing.Point(132, 72);
             this.chkSum.Name = "chkSum";
             this.chkSum.Size = new System.Drawing.Size(47, 17);
             this.chkSum.TabIndex = 10;
@@ -299,7 +302,7 @@
             // chkKurtosis
             // 
             this.chkKurtosis.AutoSize = true;
-            this.chkKurtosis.Location = new System.Drawing.Point(3, 118);
+            this.chkKurtosis.Location = new System.Drawing.Point(3, 72);
             this.chkKurtosis.Name = "chkKurtosis";
             this.chkKurtosis.Size = new System.Drawing.Size(63, 17);
             this.chkKurtosis.TabIndex = 9;
@@ -309,7 +312,7 @@
             // chkCount
             // 
             this.chkCount.AutoSize = true;
-            this.chkCount.Location = new System.Drawing.Point(136, 95);
+            this.chkCount.Location = new System.Drawing.Point(390, 49);
             this.chkCount.Name = "chkCount";
             this.chkCount.Size = new System.Drawing.Size(54, 17);
             this.chkCount.TabIndex = 8;
@@ -319,7 +322,7 @@
             // chkSkewness
             // 
             this.chkSkewness.AutoSize = true;
-            this.chkSkewness.Location = new System.Drawing.Point(3, 95);
+            this.chkSkewness.Location = new System.Drawing.Point(261, 49);
             this.chkSkewness.Name = "chkSkewness";
             this.chkSkewness.Size = new System.Drawing.Size(75, 17);
             this.chkSkewness.TabIndex = 7;
@@ -329,7 +332,7 @@
             // chkRange
             // 
             this.chkRange.AutoSize = true;
-            this.chkRange.Location = new System.Drawing.Point(136, 72);
+            this.chkRange.Location = new System.Drawing.Point(390, 26);
             this.chkRange.Name = "chkRange";
             this.chkRange.Size = new System.Drawing.Size(58, 17);
             this.chkRange.TabIndex = 6;
@@ -339,7 +342,7 @@
             // chkStandardDev
             // 
             this.chkStandardDev.AutoSize = true;
-            this.chkStandardDev.Location = new System.Drawing.Point(3, 72);
+            this.chkStandardDev.Location = new System.Drawing.Point(261, 26);
             this.chkStandardDev.Name = "chkStandardDev";
             this.chkStandardDev.Size = new System.Drawing.Size(117, 17);
             this.chkStandardDev.TabIndex = 5;
@@ -349,7 +352,7 @@
             // chkMaximum
             // 
             this.chkMaximum.AutoSize = true;
-            this.chkMaximum.Location = new System.Drawing.Point(136, 49);
+            this.chkMaximum.Location = new System.Drawing.Point(132, 49);
             this.chkMaximum.Name = "chkMaximum";
             this.chkMaximum.Size = new System.Drawing.Size(70, 17);
             this.chkMaximum.TabIndex = 4;
@@ -369,7 +372,7 @@
             // chkMinimum
             // 
             this.chkMinimum.AutoSize = true;
-            this.chkMinimum.Location = new System.Drawing.Point(136, 26);
+            this.chkMinimum.Location = new System.Drawing.Point(132, 26);
             this.chkMinimum.Name = "chkMinimum";
             this.chkMinimum.Size = new System.Drawing.Size(67, 17);
             this.chkMinimum.TabIndex = 2;
@@ -401,14 +404,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 446);
+            this.ClientSize = new System.Drawing.Size(584, 336);
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(510, 800);
+            this.MaximumSize = new System.Drawing.Size(600, 800);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(510, 485);
+            this.MinimumSize = new System.Drawing.Size(600, 375);
             this.Name = "OneVariableSummaryForm";
             this.Text = "NoruST - One-Variable Summary";
             this.tlpForm.ResumeLayout(false);

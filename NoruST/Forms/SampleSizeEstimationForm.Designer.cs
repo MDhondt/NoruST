@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SampleSizeEstimationForm));
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
@@ -74,29 +75,31 @@
             this.tlpForm.RowCount = 2;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.Size = new System.Drawing.Size(441, 180);
+            this.tlpForm.Size = new System.Drawing.Size(434, 181);
             this.tlpForm.TabIndex = 0;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(363, 152);
+            this.btnCancel.Location = new System.Drawing.Point(356, 153);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 25);
             this.btnCancel.TabIndex = 19;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOk
             // 
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOk.Location = new System.Drawing.Point(282, 152);
+            this.btnOk.Location = new System.Drawing.Point(275, 153);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 18;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // tlpGroupBoxes
             // 
@@ -113,7 +116,7 @@
             this.tlpGroupBoxes.Name = "tlpGroupBoxes";
             this.tlpGroupBoxes.RowCount = 1;
             this.tlpGroupBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGroupBoxes.Size = new System.Drawing.Size(435, 143);
+            this.tlpGroupBoxes.Size = new System.Drawing.Size(428, 144);
             this.tlpGroupBoxes.TabIndex = 20;
             // 
             // grpEstimate
@@ -124,7 +127,7 @@
             this.grpEstimate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpEstimate.Location = new System.Drawing.Point(3, 3);
             this.grpEstimate.Name = "grpEstimate";
-            this.grpEstimate.Size = new System.Drawing.Size(154, 137);
+            this.grpEstimate.Size = new System.Drawing.Size(154, 138);
             this.grpEstimate.TabIndex = 0;
             this.grpEstimate.TabStop = false;
             this.grpEstimate.Text = "Estimate";
@@ -148,7 +151,7 @@
             this.tlpEstimate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpEstimate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpEstimate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpEstimate.Size = new System.Drawing.Size(148, 118);
+            this.tlpEstimate.Size = new System.Drawing.Size(148, 119);
             this.tlpEstimate.TabIndex = 1;
             // 
             // rdbMean
@@ -163,35 +166,38 @@
             this.rdbMean.TabStop = true;
             this.rdbMean.Text = "Mean";
             this.rdbMean.UseVisualStyleBackColor = true;
-            this.rdbMean.CheckedChanged += new System.EventHandler(this.EstimateCheckedChanged);
+            this.rdbMean.CheckedChanged += new System.EventHandler(this.estimateCheckedChanged);
             // 
             // rdbProportion
             // 
             this.rdbProportion.AutoSize = true;
+            this.rdbProportion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rdbProportion.Location = new System.Drawing.Point(3, 26);
             this.rdbProportion.Name = "rdbProportion";
-            this.rdbProportion.Size = new System.Drawing.Size(73, 17);
+            this.rdbProportion.Size = new System.Drawing.Size(142, 17);
             this.rdbProportion.TabIndex = 1;
             this.rdbProportion.TabStop = true;
             this.rdbProportion.Text = "Proportion";
             this.rdbProportion.UseVisualStyleBackColor = true;
-            this.rdbProportion.CheckedChanged += new System.EventHandler(this.EstimateCheckedChanged);
+            this.rdbProportion.CheckedChanged += new System.EventHandler(this.estimateCheckedChanged);
             // 
             // rdbDifferenceOfMeans
             // 
             this.rdbDifferenceOfMeans.AutoSize = true;
+            this.rdbDifferenceOfMeans.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rdbDifferenceOfMeans.Location = new System.Drawing.Point(3, 49);
             this.rdbDifferenceOfMeans.Name = "rdbDifferenceOfMeans";
-            this.rdbDifferenceOfMeans.Size = new System.Drawing.Size(121, 17);
+            this.rdbDifferenceOfMeans.Size = new System.Drawing.Size(142, 17);
             this.rdbDifferenceOfMeans.TabIndex = 2;
             this.rdbDifferenceOfMeans.TabStop = true;
             this.rdbDifferenceOfMeans.Text = "Difference of Means";
             this.rdbDifferenceOfMeans.UseVisualStyleBackColor = true;
-            this.rdbDifferenceOfMeans.CheckedChanged += new System.EventHandler(this.EstimateCheckedChanged);
+            this.rdbDifferenceOfMeans.CheckedChanged += new System.EventHandler(this.estimateCheckedChanged);
             // 
             // rdbDifferenceOfProportions
             // 
             this.rdbDifferenceOfProportions.AutoSize = true;
+            this.rdbDifferenceOfProportions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rdbDifferenceOfProportions.Location = new System.Drawing.Point(3, 72);
             this.rdbDifferenceOfProportions.Name = "rdbDifferenceOfProportions";
             this.rdbDifferenceOfProportions.Size = new System.Drawing.Size(142, 17);
@@ -199,7 +205,7 @@
             this.rdbDifferenceOfProportions.TabStop = true;
             this.rdbDifferenceOfProportions.Text = "Difference of Proportions";
             this.rdbDifferenceOfProportions.UseVisualStyleBackColor = true;
-            this.rdbDifferenceOfProportions.CheckedChanged += new System.EventHandler(this.EstimateCheckedChanged);
+            this.rdbDifferenceOfProportions.CheckedChanged += new System.EventHandler(this.estimateCheckedChanged);
             // 
             // grpSecifications
             // 
@@ -209,7 +215,7 @@
             this.grpSecifications.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpSecifications.Location = new System.Drawing.Point(163, 3);
             this.grpSecifications.Name = "grpSecifications";
-            this.grpSecifications.Size = new System.Drawing.Size(269, 137);
+            this.grpSecifications.Size = new System.Drawing.Size(262, 138);
             this.grpSecifications.TabIndex = 1;
             this.grpSecifications.TabStop = false;
             this.grpSecifications.Text = "Specifications";
@@ -238,7 +244,7 @@
             this.tlpSpecifications.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpSpecifications.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpSpecifications.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpSpecifications.Size = new System.Drawing.Size(263, 118);
+            this.tlpSpecifications.Size = new System.Drawing.Size(256, 119);
             this.tlpSpecifications.TabIndex = 0;
             // 
             // lblConfidenceLevel
@@ -247,7 +253,7 @@
             this.lblConfidenceLevel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblConfidenceLevel.Location = new System.Drawing.Point(3, 0);
             this.lblConfidenceLevel.Name = "lblConfidenceLevel";
-            this.lblConfidenceLevel.Size = new System.Drawing.Size(201, 26);
+            this.lblConfidenceLevel.Size = new System.Drawing.Size(194, 26);
             this.lblConfidenceLevel.TabIndex = 0;
             this.lblConfidenceLevel.Text = "Confidence Level";
             this.lblConfidenceLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -258,7 +264,7 @@
             this.lblMarginOfError.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMarginOfError.Location = new System.Drawing.Point(3, 26);
             this.lblMarginOfError.Name = "lblMarginOfError";
-            this.lblMarginOfError.Size = new System.Drawing.Size(201, 26);
+            this.lblMarginOfError.Size = new System.Drawing.Size(194, 26);
             this.lblMarginOfError.TabIndex = 1;
             this.lblMarginOfError.Text = "Margin of Error";
             this.lblMarginOfError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -269,7 +275,7 @@
             this.lblEstimate1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblEstimate1.Location = new System.Drawing.Point(3, 52);
             this.lblEstimate1.Name = "lblEstimate1";
-            this.lblEstimate1.Size = new System.Drawing.Size(201, 26);
+            this.lblEstimate1.Size = new System.Drawing.Size(194, 26);
             this.lblEstimate1.TabIndex = 2;
             this.lblEstimate1.Text = "Estimated Standard Deviation";
             this.lblEstimate1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -277,7 +283,7 @@
             // nudConfidenceLevel
             // 
             this.nudConfidenceLevel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nudConfidenceLevel.Location = new System.Drawing.Point(210, 3);
+            this.nudConfidenceLevel.Location = new System.Drawing.Point(203, 3);
             this.nudConfidenceLevel.Name = "nudConfidenceLevel";
             this.nudConfidenceLevel.Size = new System.Drawing.Size(50, 20);
             this.nudConfidenceLevel.TabIndex = 3;
@@ -290,7 +296,7 @@
             // txtEstimate1
             // 
             this.txtEstimate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEstimate1.Location = new System.Drawing.Point(210, 55);
+            this.txtEstimate1.Location = new System.Drawing.Point(203, 55);
             this.txtEstimate1.Name = "txtEstimate1";
             this.txtEstimate1.Size = new System.Drawing.Size(50, 20);
             this.txtEstimate1.TabIndex = 4;
@@ -299,7 +305,7 @@
             // txtMarginOfError
             // 
             this.txtMarginOfError.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMarginOfError.Location = new System.Drawing.Point(210, 29);
+            this.txtMarginOfError.Location = new System.Drawing.Point(203, 29);
             this.txtMarginOfError.Name = "txtMarginOfError";
             this.txtMarginOfError.Size = new System.Drawing.Size(50, 20);
             this.txtMarginOfError.TabIndex = 5;
@@ -311,7 +317,7 @@
             this.lblEstimate2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblEstimate2.Location = new System.Drawing.Point(3, 78);
             this.lblEstimate2.Name = "lblEstimate2";
-            this.lblEstimate2.Size = new System.Drawing.Size(201, 26);
+            this.lblEstimate2.Size = new System.Drawing.Size(194, 26);
             this.lblEstimate2.TabIndex = 6;
             this.lblEstimate2.Text = "Estimated Proportion 2";
             this.lblEstimate2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -320,7 +326,7 @@
             // txtEstimate2
             // 
             this.txtEstimate2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEstimate2.Location = new System.Drawing.Point(210, 81);
+            this.txtEstimate2.Location = new System.Drawing.Point(203, 81);
             this.txtEstimate2.Name = "txtEstimate2";
             this.txtEstimate2.Size = new System.Drawing.Size(50, 20);
             this.txtEstimate2.TabIndex = 7;
@@ -331,8 +337,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 180);
+            this.ClientSize = new System.Drawing.Size(434, 181);
             this.Controls.Add(this.tlpForm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(450, 220);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(450, 220);
             this.Name = "SampleSizeEstimationForm";
             this.Text = "NoruST - Sample Size Estimation";
             this.tlpForm.ResumeLayout(false);

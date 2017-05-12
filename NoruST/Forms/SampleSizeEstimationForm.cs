@@ -1,41 +1,25 @@
-﻿using NoruST.Analyses;
+﻿using System.Windows.Forms;
+using NoruST.Analyses;
 using NoruST.Models;
-
-// ReSharper disable InvertIf
-// ReSharper disable LocalizableElement
+using NoruST.Presenters;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>The Sample Size Estimation Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 24, 2016</para>
-    /// </summary>
-    public partial class SampleSizeEstimationForm : ExtendedForm
+    public partial class SampleSizeEstimationForm : Form
     {
-        #region Constructors
+        private SampleSizeEstimationPresenter presenter;
 
-        /// <summary>
-        /// Constructor of the <see cref="SampleSizeEstimationForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
         public SampleSizeEstimationForm()
         {
             InitializeComponent();
-
-            InitializeView(btnOk, btnCancel);
         }
 
-        #endregion
+        public void setPresenter(SampleSizeEstimationPresenter presenter)
+        {
+            this.presenter = presenter;
+        }
 
-        #region Interaction Methods
-
-        /// <summary>
-        /// Fired when the <see cref="System.Windows.Forms.RadioButton.Checked"/> for the estimate <see cref="System.Windows.Forms.RadioButton"/>s changes from true to false or vice versa.
-        /// </summary>
-        private void EstimateCheckedChanged(object sender, System.EventArgs e)
+        private void estimateCheckedChanged(object sender, System.EventArgs e)
         {
             nudConfidenceLevel.Value = 95;
             txtMarginOfError.Text = "0.1";
@@ -71,20 +55,24 @@ namespace NoruST.Forms
             }
         }
 
-        #endregion
-
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the Ok <see cref="System.Windows.Forms.Button"/>
-        /// </summary>
-        public override bool OkButtonClick()
+        private void btnOk_Click(object sender, System.EventArgs e)
         {
-            var doCalculate = new SummaryStatisticsBool(meanSampleSize: rdbMean.Checked, proportionSampleSize: rdbProportion.Checked, differenceOfMeansSampleSize: rdbDifferenceOfMeans.Checked, differenceOfProportionsSampleSize: rdbDifferenceOfProportions.Checked);
+            presenter.getModel().mean = rdbMean.Checked;
+            presenter.getModel().proportion = rdbProportion.Checked;
+            presenter.getModel().diffMean = rdbDifferenceOfMeans.Checked;
+            presenter.getModel().diffProportion = rdbDifferenceOfProportions.Checked;
+            presenter.getModel().confidenceLevel = (int) nudConfidenceLevel.Value;
+            presenter.getModel().marginOfError = txtMarginOfError.Text;
+            presenter.getModel().estimation1 = txtEstimate1.Text;
+            presenter.getModel().estimation2 = txtEstimate2.Text;
 
-            return new SampleSize().Print(doCalculate, (int)nudConfidenceLevel.Value, txtMarginOfError.Text, txtEstimate1.Text, txtEstimate2.Text);
+            presenter.estimateSampleSize();
+            Hide();
         }
 
-        #endregion
+        private void btnCancel_Click(object sender, System.EventArgs e)
+        {
+            Hide();
+        }
     }
 }

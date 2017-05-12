@@ -20,8 +20,7 @@ namespace NoruST
         private HistogramPresenter histogramPresenter;
         private ScatterPlotPresenter scatterPlotPresenter;
         private BoxWhiskerPlotPresenter boxWhiskerPlotPresenter;
-        private ConfidenceIntervalMeanAndStandardDeviationForm confidenceIntervalMeanAndStandardDeviationForm;
-        private SampleSizeEstimationForm sampleSizeSelectionForm;
+        private SampleSizeEstimationPresenter sampleSizeEstimationPresenter;
         private TimeSeriesGraphForm timeSeriesGraphForm;
         private RunsTestForRandomnessForm runsTestForRandomnessForm;
         private ForecastForm forecastForm;
@@ -43,6 +42,7 @@ namespace NoruST
             histogramPresenter = new HistogramPresenter(dataSetManagerPresenter);
             scatterPlotPresenter = new ScatterPlotPresenter(dataSetManagerPresenter);
             boxWhiskerPlotPresenter = new BoxWhiskerPlotPresenter(dataSetManagerPresenter);
+            sampleSizeEstimationPresenter = new SampleSizeEstimationPresenter(dataSetManagerPresenter);
             runsTestForRandomnessPresenter = new RunsTestForRandomnessPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
@@ -54,8 +54,7 @@ namespace NoruST
             btnHistogram.Click += delegate { histogramPresenter.openView(); };
             btnScatterplot.Click += delegate { scatterPlotPresenter.openView(); };
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotPresenter.openView(); };
-            btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };
-            btnSampleSizeEstimation.Click += delegate { sampleSizeSelectionForm = sampleSizeSelectionForm.createAndOrShowForm(); };
+            btnSampleSizeEstimation.Click += delegate { sampleSizeEstimationPresenter.openView(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessPresenter.openView(); };
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
