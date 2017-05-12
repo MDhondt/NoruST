@@ -69,16 +69,15 @@ namespace NoruST.Presenters
                 if (rdbMean) worksheet.Cells[row++, column] = "=AVERAGE(" + range + ")";
                 if (rdbMedian) worksheet.Cells[row++, column] = "=MEDIAN(" + range + ")";
                 if (rdbCustomValue) worksheet.Cells[row++, column] = CustomCutoffValue;
-                var cutoffValue = (double)worksheet.Cells[row, column].Value;
+                var cutoffValue = (double)worksheet.Cells[row-1, column].Value;
                 int amountOfRuns = calculateRuns(worksheet, selectedDataSet, variable.getRange(), cutoffValue);
                 worksheet.WriteFunction(row++, column, "COUNTIF(" + range + ",\"<\"&" + AddressConverter.CellAddress(row - 2, column) + ")");
                 worksheet.WriteFunction(row++, column, "COUNTIF(" + range + ",\">\"&" + AddressConverter.CellAddress(row - 3, column) + ")");
                 worksheet.Cells[row++, column] = amountOfRuns;
                 worksheet.WriteFunction(row++, column, "(2*" + AddressConverter.CellAddress(row - 4, column) + "*" + AddressConverter.CellAddress(row - 3, column) + ")/(" + AddressConverter.CellAddress(row - 6, column) + ")");
                 worksheet.WriteFunction(row++, column, "SQRT(((" + AddressConverter.CellAddress(row - 2, column) + "-1)*(" + AddressConverter.CellAddress(row - 2, column) + "-2))/" + AddressConverter.CellAddress(row - 7, column) + ")");
-                //worksheet.Cells[row++, column] = "=COUNTIF(" + range + ";" + "" + ">" + cutoff + "" + ")";
-                //var nplus = (double)(worksheet.Cells[row, column] as Range).Value;
-                //worksheet.Cells[row++, column] = (2*nplus*nmin)/ntotal + 1;
+                worksheet.WriteFunction(row++, column, "(" + AddressConverter.CellAddress(row - 4, column) + "-" + AddressConverter.CellAddress(row - 3, column) + ")/" + AddressConverter.CellAddress(row - 2, column));
+                worksheet.WriteFunction(row++, column, "2*(1-NORMSDIST(ABS(" + AddressConverter.CellAddress(row - 2, column) + ")))");
                 ((Range)worksheet.Cells[row, column]).EntireColumn.AutoFit();
                 row = 1;
                 column++;
@@ -88,9 +87,22 @@ namespace NoruST.Presenters
 
         private int calculateRuns(_Worksheet sheet, DataSet dataSet, Range range, double cutoff)
         {
+            int runs = 1;
             double[,] array = RangeHelper.To2DDoubleArray(range);
-            // Hier wil ik mijn die cutoffvalue cellvalue gebruiken maar die komt niet door tot hier..
-            return array.Length;
+            double[] array2 = new double[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                array2[i] = array[i, 0];  
+            }
+            for(int i = 0; i < array.Length-1; i++)
+            {
+                if(Math.Sign(array2[i] - cutoff) != Math.Sign(array2[i+1] - cutoff))
+                {
+                    runs++;
+                }
+            }
+
+            return runs;
         }
     }
 }
