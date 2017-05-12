@@ -336,6 +336,7 @@
     <Compile Include="Models\HistogramModel.cs" />
     <Compile Include="Models\LagModel.cs" />
     <Compile Include="Models\OneVariableSummaryModel.cs" />
+    <Compile Include="Models\SampleSizeEstimationModel.cs" />
     <Compile Include="Models\SummaryStatistics.cs" />
     <Compile Include="Helpers\AddressConverter.cs" />
     <Compile Include="Helpers\AddSeriesCollection.cs" />
@@ -358,6 +359,7 @@
     <Compile Include="Presenters\OneVariableSummaryPresenter.cs" />
     <Compile Include="Presenters\PChartPresenter.cs" />
     <Compile Include="Presenters\ProcessCapabilityPresenter.cs" />
+    <Compile Include="Presenters\SampleSizeEstimationPresenter.cs" />
     <Compile Include="Presenters\ScatterPlotPresenter.cs" />
     <Compile Include="Presenters\RunTestForRandomnessPresenter.cs" />
     <Compile Include="Presenters\TimeSeriesGraphPresenter.cs" />
