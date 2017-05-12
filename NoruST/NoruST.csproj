@@ -186,17 +186,14 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Analyses\BoxWhiskerPlot.cs" />
     <Compile Include="Analyses\CorrelationCovariance.cs" />
     <Compile Include="Analyses\DiscriminantAnalysis.cs" />
     <Compile Include="Analyses\Forecast.cs" />
-    <Compile Include="Analyses\Histogram.cs" />
     <Compile Include="Analyses\LogisticRegression.cs" />
     <Compile Include="Analyses\Regression.cs" />
     <Compile Include="Analyses\RunsTestForRandomness.cs" />
     <Compile Include="Analyses\SampleSize.cs" />
     <Compile Include="Analyses\OneVariableSummary.cs" />
-    <Compile Include="Analyses\Scatterplot.cs" />
     <Compile Include="Analyses\TimeSeriesGraph.cs" />
     <Compile Include="Analyses\XRChart.cs" />
     <Compile Include="Controls\PercentageNumericUpDown.cs">
@@ -214,12 +211,6 @@
     </Compile>
     <Compile Include="Forms\BoxWhiskerPlotForm.Designer.cs">
       <DependentUpon>BoxWhiskerPlotForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ConfidenceIntervalMeanAndStandardDeviationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ConfidenceIntervalMeanAndStandardDeviationForm.Designer.cs">
-      <DependentUpon>ConfidenceIntervalMeanAndStandardDeviationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CorrelationCovarianceForm.cs">
       <SubType>Form</SubType>
@@ -377,9 +368,6 @@
     <EmbeddedResource Include="Forms\BoxWhiskerPlotForm.resx">
       <DependentUpon>BoxWhiskerPlotForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ConfidenceIntervalMeanAndStandardDeviationForm.resx">
-      <DependentUpon>ConfidenceIntervalMeanAndStandardDeviationForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CorrelationCovarianceForm.resx">
       <DependentUpon>CorrelationCovarianceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -535,10 +523,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>NoruST_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>NoruST_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D151C23CF83D772E19347C01A730439AE0F6F134</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>87736A39E1BA86E63847901BF990527118AE6CAE</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

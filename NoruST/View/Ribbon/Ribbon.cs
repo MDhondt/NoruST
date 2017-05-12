@@ -20,7 +20,6 @@ namespace NoruST
         private HistogramPresenter histogramPresenter;
         private ScatterPlotPresenter scatterPlotPresenter;
         private BoxWhiskerPlotPresenter boxWhiskerPlotPresenter;
-        private ConfidenceIntervalMeanAndStandardDeviationForm confidenceIntervalMeanAndStandardDeviationForm;
         private SampleSizeEstimationForm sampleSizeSelectionForm;
         private TimeSeriesGraphForm timeSeriesGraphForm;
         private RunsTestForRandomnessForm runsTestForRandomnessForm;
@@ -54,7 +53,6 @@ namespace NoruST
             btnHistogram.Click += delegate { histogramPresenter.openView(); };
             btnScatterplot.Click += delegate { scatterPlotPresenter.openView(); };
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotPresenter.openView(); };
-            btnConfidenceIntervalMeanAndStandardDeviation.Click += delegate { confidenceIntervalMeanAndStandardDeviationForm = confidenceIntervalMeanAndStandardDeviationForm.createAndOrShowForm(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeSelectionForm = sampleSizeSelectionForm.createAndOrShowForm(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessPresenter.openView(); };
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
