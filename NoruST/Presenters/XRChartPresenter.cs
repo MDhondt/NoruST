@@ -121,7 +121,7 @@ namespace NoruST.Presenters
                 sheet.Cells[row, column + 3] = "=MAX(" + dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
                 sheet.Cells[row, column + 4] = "=MIN(" + dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
                 sheet.Cells[row, column + 5] = (double)(sheet.Cells[row, column + 3] as Range).Value - (double)(sheet.Cells[row, column + 4] as Range).Value;
-                var cellValue = (double)(sheet.Cells[row, column + 2] as Range).Value;
+                var cellValue = (double)sheet.Cells[row, column + 2].Value;
                 if (cellValue < -214682680) cellValue = 0; // if cellValue is the result of a division by 0, set value to 0
                 averages[index] = cellValue;
                 cellValue = (double)(sheet.Cells[row, column + 5] as Range).Value;

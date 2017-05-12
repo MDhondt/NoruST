@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using NoruST.Forms;
 using NoruST.Presenters;
 using NoruST.Domain;
+using System.Collections.Generic;
 
 namespace NoruST.Forms
 {
@@ -45,14 +46,29 @@ namespace NoruST.Forms
             uiComboBox_DataSets.SelectedItem = dataSet;
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-            //return presenter.Print(selectedDataSet, DoInclude, new SummaryStatisticsBool(rdbMeanOfData.Checked, median: rdbMedianOfData.Checked, customCutoffValue: rdbCustomCutoffValue.Checked), txtCustomCutoffValue.Text);
-        }
 
         private void ui_Button_Cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+
+            List<Variable> variables = new List<Variable>();
+            foreach (DataGridViewRow row in uiDataGridView_Variables.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[uiDataGridViewColumn_VariableCheck.Name].Value))
+                {
+                    variables.Add((Variable)row.DataBoundItem);
+                }
+            }
+
+            bool check = presenter.checkInput(variables, selectedDataSet(), rdbMean.Checked, rdbMedian.Checked, rdbCustomValue.Checked, uiTextBox_CustomCutoffValue.Text);
+            if (check)
+            {
+                Close();
+            }
         }
     }
 }

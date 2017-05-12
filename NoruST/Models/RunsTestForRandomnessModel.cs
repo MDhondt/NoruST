@@ -10,6 +10,6 @@ namespace NoruST.Models
 {
     class RunsTestForRandomnessModel
     {
-        
+
     }
 }
