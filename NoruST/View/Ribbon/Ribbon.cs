@@ -16,6 +16,7 @@ namespace NoruST
         private TimeSeriesGraphPresenter timeSeriesGraphPresenter;
         private OneVariableSummaryPresenter oneVariableSummaryPresenter;
         private RunsTestForRandomnessPresenter runsTestForRandomnessPresenter;
+        private ForecastPresenter forecastPresenter;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramPresenter histogramPresenter;
         private ScatterPlotPresenter scatterPlotPresenter;
@@ -44,6 +45,7 @@ namespace NoruST
             boxWhiskerPlotPresenter = new BoxWhiskerPlotPresenter(dataSetManagerPresenter);
             sampleSizeEstimationPresenter = new SampleSizeEstimationPresenter(dataSetManagerPresenter);
             runsTestForRandomnessPresenter = new RunsTestForRandomnessPresenter(dataSetManagerPresenter);
+            forecastPresenter = new ForecastPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -56,7 +58,7 @@ namespace NoruST
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotPresenter.openView(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeEstimationPresenter.openView(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessPresenter.openView(); };
-            btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
+            btnForecast.Click += delegate { forecastPresenter.openView(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
             btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
             btnXRChart.Click += delegate { xrChartPresenter.openView(); };

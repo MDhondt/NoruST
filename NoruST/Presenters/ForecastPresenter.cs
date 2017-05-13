@@ -1,15 +1,26 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NoruST.Forms;
+using NoruST.Models;
+using NoruST.Presenters;
+using NoruST.Domain;
+using DataSet = NoruST.Domain.DataSet;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
-using NoruST.Models;
+using NoruST.Analyses;
 
-
-namespace NoruST.Analyses
+namespace NoruST.Presenters
 {
- public class Forecast
+    public class ForecastPresenter
     {
-        #region Fields
+        private ForecastForm view;
+        private ForecastModel model;
+        private DataSetManagerPresenter dataSetPresenter;
 
         private bool _doOptimizeParameters;
         private int _numberOfForecasts;
@@ -20,48 +31,44 @@ namespace NoruST.Analyses
         private double _trend;
         private double _seasonality;
 
-        #endregion
-
-        public bool Print(DataSet dataSet, List<bool> doInclude, SummaryStatisticsBool doCalculate, bool doOptimizeParameters, bool doUseLabels, int labelsId, int numberOfForecasts, int numberOfHoldouts, int seasonalPeriod, int span, string level, string trend, string seasonality)
+        public ForecastPresenter(DataSetManagerPresenter dataSetPresenter)
         {
-            _doOptimizeParameters = doOptimizeParameters;
-            _numberOfForecasts = numberOfForecasts;
-            _numberOfHoldouts = numberOfHoldouts;
-            _seasonalPeriod = seasonalPeriod;
-            _span = span;
+            this.dataSetPresenter = dataSetPresenter;
+            this.model = new ForecastModel();
+        }
 
-            if (!double.TryParse(level, out _level))
-            {
-                MessageBox.Show("The Level is not a valid number.", "Forecast", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (!double.TryParse(trend, out _trend))
-            {
-                MessageBox.Show("The Trend is not a valid number.", "Forecast", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (!double.TryParse(seasonality, out _seasonality))
-            {
-                MessageBox.Show("The Seasonality is not a valid number.", "Forecast", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+        public void openView()
+        {
+            view = view.createAndOrShowForm();
+            view.setPresenter(this);
+        }
 
-            // Create new lists (reference) for Data and labels
-            var valuesArraysData = new List<Models.Data>();
-            var valuesArraysLabel = new List<Models.Data>();
+        public BindingList<DataSet> dataSets()
+        {
+            return dataSetPresenter.getModel().getDataSets();
+        }
+
+        public bool checkInput(DataSet dataSet, List<Variable> variables, bool rdbMovingAverage, bool rdbSimpleExponentialSmoothing, bool rdbHoltsExponentialSmoothing, bool rdbWintersExponentialSmoothing, bool doOptimizeParameters, int numberOfForecasts, int numberOfHoldouts, int seasonalPeriod, int span, string level, string trend, string seasonality)
+        {
+            if (variables.Count != 0 && double.TryParse(seasonality, out _seasonality) && double.TryParse(trend, out _trend) && double.TryParse(level, out _level))
+            {
+                Print(dataSet, variables, rdbMovingAverage, rdbSimpleExponentialSmoothing, rdbHoltsExponentialSmoothing, rdbWintersExponentialSmoothing, doOptimizeParameters, numberOfForecasts, numberOfHoldouts, seasonalPeriod, span, level, trend, seasonality);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Please correct all fields to generate Forecast");
+                return false;
+            }
+        }
+
+        // vanaf hier copy van oude code
+
+        public void Print(DataSet dataSet, List<Variable> variables, bool rdbMovingAverage, bool rdbSimpleExponentialSmoothing, bool rdbHoltsExponentialSmoothing, bool rdbWintersExponentialSmoothing , bool doOptimizeParameters, int numberOfForecasts, int numberOfHoldouts, int seasonalPeriod, int span, string level, string trend, string seasonality)
+        {
 
             // Create new sheet
             var sheet = WorksheetHelper.NewWorksheet("Forecast");
-
-            // add data to the data list
-            for (var j = 0; j < dataSet.DataList.Count; j++)
-            {
-                if (!doInclude[j]) continue;
-                valuesArraysData.Add(dataSet.DataList[j]);
-            }
-
-            // add labels to labels list
-            valuesArraysLabel.Add(dataSet.DataList[labelsId]);
 
             // variables for writing on sheet and writing of title
             int title = 1;
@@ -74,103 +81,76 @@ namespace NoruST.Analyses
             sheet.Cells[summaryName + 1, 1] = "Mean Absolute Error";
             sheet.Cells[summaryName + 2, 1] = "Root Mean Squared Error";
             sheet.Cells[summaryName + 3, 1] = "Mean Absolute Percentage Error";
-            sheet.Cells[row, 1] = "Label";
-            sheet.Cells[row, 2] = valuesArraysData[0].Name;
+            ((Range)sheet.Cells[row, 1]).EntireColumn.AutoFit();
 
             // variables to count number of forecast, holdouts and data
             var nForecasts = Convert.ToDouble(numberOfForecasts);
             var nHoldouts = Convert.ToDouble(numberOfHoldouts);
-            var nData = Convert.ToDouble(valuesArraysData[0].GetValuesList().Count);
+            var nData = Convert.ToDouble(variables.Count);
 
-            // create array to put in labels
-            string[] arrayLabels = new string[valuesArraysLabel[0].GetValuesList().Count + Convert.ToInt16(nForecasts)];
-
-            // put in labels in array if label box is checked and print out labels in excel
-            if (doUseLabels)
+            row = 1;
+            int column = 2;
+            foreach (Variable variable in variables)
             {
-                for (int i = 0; i < valuesArraysLabel[0].GetValuesList().Count; i++)
+                double[,] array = RangeHelper.To2DDoubleArray(variable.getRange());
+                double[] array2 = new double[array.Length];
+                for (int i = 0; i < array.Length; i++)
                 {
-                    arrayLabels[i] = valuesArraysLabel[0].GetValuesList()[i].ToString() + " ";
-                    sheet.Cells[row + 1 + i, 1] = arrayLabels[i];
+                    array2[i] = array[i, 0];
                 }
-            } // else put in 1, 2, 3, ... and print out labels in excel
-            else
-            {
-                for (int i = 0; i < valuesArraysLabel[0].GetValuesList().Count; i++)
+                sheet.Cells[row++, column] = variable.name;
+                // Plot next figure below the data and the forecast
+                int rowFigure = row + variables.Count + Convert.ToInt16(nForecasts) + 2;
+                // Calculate moving average forecast if box is checked
+                if (rdbMovingAverage)
                 {
-                    arrayLabels[i] = Convert.ToString(i + 1);
-                    sheet.Cells[row + 1 + i, 1] = arrayLabels[i];
+                    EvaluateMovingAverage(array2, row++, sheet);
+                    string name = "Forecast Moving Average: " + variable.name;
+                    var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
+                    var rangeData = sheet.Range[sheet.Cells[row + 1, column + 1], sheet.Cells[row + nData + nForecasts, column + 1]];
+                    var rangeForecast = sheet.Range[sheet.Cells[row + 1, column + 2], sheet.Cells[row + nData + nForecasts, column + 2]];
+                    new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
                 }
+
+                // Calculate exponential smoothing (simple) forecast if box is checked
+                if (rdbSimpleExponentialSmoothing)
+                {
+                    CalculateSimple(array2, row, sheet);
+                    string name = "Forecast Exponential smoothing (Simple): " + variable.name;
+                    var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
+                    var rangeData = sheet.Range[sheet.Cells[row + 1, column + 1], sheet.Cells[row + nData + nForecasts, column + 1]];
+                    var rangeForecast = sheet.Range[sheet.Cells[row + 1, column + 3], sheet.Cells[row + nData + nForecasts, column + 3]];
+                    new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
+                }
+
+
+                // Calculate exponential smoothing (holt) forecast if box is checked
+                if (rdbHoltsExponentialSmoothing)
+                {
+                    CalculateHolt(array2, row, sheet);
+                    string name = "Forecast Exponential smoothing (Holt): " + variable.name;
+                    var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
+                    var rangeData = sheet.Range[sheet.Cells[row + 1, column + 2], sheet.Cells[row + nData + nForecasts, column + 2]];
+                    var rangeForecast = sheet.Range[sheet.Cells[row + 1, column + 4], sheet.Cells[row + nData + nForecasts, column + 4]];
+                    new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
+                }
+
+                // Calculate exponential smoothing (winters) forecast if box is checked
+                if (rdbWintersExponentialSmoothing)
+                {
+                    CalculateWinter(array2, row, sheet);
+                    string name = "Forecast Exponential smoothing (Winter): " + variable.name;
+                    var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
+                    var rangeData = sheet.Range[sheet.Cells[row + 1, column + 2], sheet.Cells[row + nData + nForecasts, column + 2]];
+                    var rangeForecast = sheet.Range[sheet.Cells[row + 1, column + 5], sheet.Cells[row + nData + nForecasts, column + 5]];
+                    new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
+                }
+                column = column + 6;
             }
-
-            // Add labels for forecast and print out labels in excel
-            double differenceLabels = Convert.ToDouble(arrayLabels[arrayLabels.Length - 1 - Convert.ToInt16(nForecasts)]) - Convert.ToDouble(arrayLabels[arrayLabels.Length - 2 - Convert.ToInt16(nForecasts)]);
-            for (int i = 0; i < nForecasts; i++)
-            {
-                int arrayPosition = valuesArraysLabel[0].GetValuesList().Count + i;
-                arrayLabels[arrayPosition] = Convert.ToString(Convert.ToDouble(arrayLabels[arrayPosition - 1]) + differenceLabels);
-                sheet.Cells[row + arrayPosition + 1, 1] = arrayLabels[arrayPosition];
-            }
-
-            // Print out Data in excel
-            for (int i = 0; i < valuesArraysData[0].GetValuesList().Count; i++)
-            {
-                sheet.Cells[row + 1 + i, 2] = valuesArraysData[0].GetValuesList()[i];
-            }
-
-            // Plot next figure below the data and the forecast
-            int rowFigure = row + valuesArraysLabel[0].GetValuesList().Count + Convert.ToInt16(nForecasts) + 2;
-
-            // Calculate moving average forecast if box is checked
-            if (doCalculate.MovingAverage)
-            {
-                EvaluateMovingAverage(valuesArraysData[0].GetValuesArray(), row, sheet);
-                string name = "Forecast Moving Average: " + valuesArraysData[0].Name;
-                var rangeLabels = sheet.Range[sheet.Cells[row + 1, 1], sheet.Cells[row + nData + nForecasts, 1]];
-                var rangeData = sheet.Range[sheet.Cells[row + 1, 2], sheet.Cells[row + nData + nForecasts, 2]];
-                var rangeForecast = sheet.Range[sheet.Cells[row + 1, 3], sheet.Cells[row + nData + nForecasts, 3]];
-                new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
-            }
-
-            // Calculate exponential smoothing (simple) forecast if box is checked
-            if (doCalculate.SimpleExponentialSmoothing)
-            {
-                CalculateSimple(valuesArraysData[0].GetValuesArray(), row, sheet);
-                string name = "Forecast Exponential smoothing (Simple): " + valuesArraysData[0].Name;
-                var rangeLabels = sheet.Range[sheet.Cells[row + 1, 1], sheet.Cells[row + nData + nForecasts, 1]];
-                var rangeData = sheet.Range[sheet.Cells[row + 1, 2], sheet.Cells[row + nData + nForecasts, 2]];
-                var rangeForecast = sheet.Range[sheet.Cells[row + 1, 4], sheet.Cells[row + nData + nForecasts, 4]];
-                new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
-            }
-
-
-            // Calculate exponential smoothing (holt) forecast if box is checked
-            if (doCalculate.HoltsExponentialSmoothing)
-            {
-                CalculateHolt(valuesArraysData[0].GetValuesArray(), row, sheet);
-                string name = "Forecast Exponential smoothing (Holt): " + valuesArraysData[0].Name;
-                var rangeLabels = sheet.Range[sheet.Cells[row + 1, 1], sheet.Cells[row + nData + nForecasts, 1]];
-                var rangeData = sheet.Range[sheet.Cells[row + 1, 2], sheet.Cells[row + nData + nForecasts, 2]];
-                var rangeForecast = sheet.Range[sheet.Cells[row + 1, 5], sheet.Cells[row + nData + nForecasts, 5]];
-                new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
-            }
-
-            // Calculate exponential smoothing (winters) forecast if box is checked
-            if (doCalculate.WintersExponentialSmoothing)
-            {
-                CalculateWinter(valuesArraysData[0].GetValuesArray(), row, sheet);
-                string name = "Forecast Exponential smoothing (Winter): " + valuesArraysData[0].Name;
-                var rangeLabels = sheet.Range[sheet.Cells[row + 1, 1], sheet.Cells[row + nData + nForecasts, 1]];
-                var rangeData = sheet.Range[sheet.Cells[row + 1, 2], sheet.Cells[row + nData + nForecasts, 2]];
-                var rangeForecast = sheet.Range[sheet.Cells[row + 1, 6], sheet.Cells[row + nData + nForecasts, 6]];
-                new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
-            }
-
-            return true;
         }
 
         // Calculates the simple forecast, writes data and return the array to be plotted
-        private void CalculateSimple(dynamic[] data, int row, _Worksheet sheet)
+        private void CalculateSimple(double[] data, int row, _Worksheet sheet)
         {
             double level = Convert.ToDouble(_level);
             if (!_doOptimizeParameters)
@@ -184,7 +164,7 @@ namespace NoruST.Analyses
         }
 
         // Calculates the Winters forecast, writes data and return the array to be plotted
-        private void CalculateWinter(dynamic[] data, int row, _Worksheet sheet)
+        private void CalculateWinter(double[] data, int row, _Worksheet sheet)
         {
             double level = Convert.ToDouble(_level);
             double trend = Convert.ToDouble(_trend);
@@ -199,7 +179,7 @@ namespace NoruST.Analyses
         }
 
         // Calculates the Holt forecast, writes data and return the array to be plotted
-        private void CalculateHolt(dynamic[] data, int row, _Worksheet sheet)
+        private void CalculateHolt(double[] data, int row, _Worksheet sheet)
         {
             double level = Convert.ToDouble(_level);
             double trend = Convert.ToDouble(_trend);
@@ -213,13 +193,13 @@ namespace NoruST.Analyses
 
         }
 
-        private void EvaluateMovingAverage(IReadOnlyList<dynamic> data, int row, _Worksheet sheet)
+        private void EvaluateMovingAverage(double[] data, int row, _Worksheet sheet)
         {
             // parameters needed for loops and calculations
             int span = Convert.ToInt16(_span);
             int nHoldouts = Convert.ToInt16(_numberOfHoldouts);
             int nForecast = Convert.ToInt16(_numberOfForecasts);
-            int nData = Convert.ToInt16(data.Count);
+            int nData = Convert.ToInt16(data.Length);
             int nUsableData = nData - nHoldouts;
 
             // Create new array with usable data
@@ -303,16 +283,16 @@ namespace NoruST.Analyses
             }
         }
 
-        private void EvaluateSimple(double alpha, IReadOnlyList<dynamic> data, int row, _Worksheet sheet, bool writing = false)
+        private void EvaluateSimple(double alpha, double[] data, int row, _Worksheet sheet, bool writing = false)
         {
             // parameters needed for loops and calculations
             int nHoldouts = Convert.ToInt16(_numberOfHoldouts);
             int nForecast = Convert.ToInt16(_numberOfForecasts);
-            int nData = Convert.ToInt16(data.Count);
+            int nData = Convert.ToInt16(data.Length);
             int nUsableData = nData - nHoldouts;
 
             // Create new array with usable data
-            float[] usableData = new float[nData - nHoldouts];
+            double[] usableData = new double[nData - nHoldouts];
             for (int i = 0; i < nUsableData; i++)
             {
                 usableData[i] = data[i];
@@ -406,16 +386,16 @@ namespace NoruST.Analyses
             }
         }
 
-        private void EvaluateHolt(double alpha, double beta, IReadOnlyList<dynamic> data, int row, _Worksheet sheet, bool writing = false)
+        private void EvaluateHolt(double alpha, double beta, double[] data, int row, _Worksheet sheet, bool writing = false)
         {
             // parameters needed for loops and calculations
             int nHoldouts = Convert.ToInt16(_numberOfHoldouts);
             int nForecast = Convert.ToInt16(_numberOfForecasts);
-            int nData = Convert.ToInt16(data.Count);
+            int nData = Convert.ToInt16(data.Length);
             int nUsableData = nData - nHoldouts;
 
             // Create new array with usable data
-            float[] usableData = new float[nData - nHoldouts];
+            double[] usableData = new double[nData - nHoldouts];
             for (int i = 0; i < nUsableData; i++)
             {
                 usableData[i] = data[i];
@@ -522,18 +502,18 @@ namespace NoruST.Analyses
             }
         }
 
-        private void EvaluateWinters(double alpha, double beta, double gamma, IReadOnlyList<dynamic> data, int row, _Worksheet sheet, bool writing = false)
+        private void EvaluateWinters(double alpha, double beta, double gamma, double[] data, int row, _Worksheet sheet, bool writing = false)
         {
             // parameters needed for loops and calculations
             int nHoldouts = Convert.ToInt16(_numberOfHoldouts);
             int nForecast = Convert.ToInt16(_numberOfForecasts);
             int nSeasons = Convert.ToInt16(_seasonalPeriod);
-            int nData = Convert.ToInt16(data.Count);
+            int nData = Convert.ToInt16(data.Length);
             int nUsableData = nData - nHoldouts;
             int nCycle = nUsableData / nSeasons;
 
             // Create new array with usable data
-            float[] usableData = new float[nData - nHoldouts];
+            double[] usableData = new double[nData - nHoldouts];
             for (int i = 0; i < nUsableData; i++)
             {
                 usableData[i] = data[i];
@@ -708,4 +688,9 @@ namespace NoruST.Analyses
             throw new NotImplementedException();
         }
     }
+
+
+
+
 }
+

@@ -35,7 +35,7 @@
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.335</ApplicationVersion>
+    <ApplicationVersion>1.0.0.348</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -239,6 +239,12 @@
     <Compile Include="Forms\ExtendedForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\ForecastForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ForecastForm.Designer.cs">
+      <DependentUpon>ForecastForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,12 +293,6 @@
     </Compile>
     <Compile Include="Forms\OneVariableSummaryForm.Designer.cs">
       <DependentUpon>OneVariableSummaryForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ForecastForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ForecastForm.Designer.cs">
-      <DependentUpon>ForecastForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RunsTestForRandomnessForm.cs">
       <SubType>Form</SubType>
@@ -350,6 +350,7 @@
     <Compile Include="Models\ProcessCapabilityModel.cs" />
     <Compile Include="Models\RunsTestForRandomnessModel.cs" />
     <Compile Include="Models\TimeSeriesGraphModel.cs" />
+    <Compile Include="Models\ForecastModel.cs" />
     <Compile Include="Models\XRChartModel.cs" />
     <Compile Include="Presenters\BoxWhiskerPlotPresenter.cs" />
     <Compile Include="Presenters\DataSetManagerPresenter.cs" />
@@ -362,6 +363,7 @@
     <Compile Include="Presenters\SampleSizeEstimationPresenter.cs" />
     <Compile Include="Presenters\ScatterPlotPresenter.cs" />
     <Compile Include="Presenters\RunTestForRandomnessPresenter.cs" />
+    <Compile Include="Presenters\ForecastPresenter.cs" />
     <Compile Include="Presenters\TimeSeriesGraphPresenter.cs" />
     <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -382,6 +384,9 @@
     <EmbeddedResource Include="Forms\DummyForm.resx">
       <DependentUpon>DummyForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ForecastForm.resx">
+      <DependentUpon>ForecastForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PChartForm.resx">
       <DependentUpon>PChartForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -396,9 +401,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OneVariableSummaryForm.resx">
       <DependentUpon>OneVariableSummaryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ForecastForm.resx">
-      <DependentUpon>ForecastForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RunsTestForRandomnessForm.resx">
       <DependentUpon>RunsTestForRandomnessForm.cs</DependentUpon>
