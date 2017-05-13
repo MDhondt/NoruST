@@ -21,6 +21,7 @@ namespace NoruST
         private ScatterPlotPresenter scatterPlotPresenter;
         private BoxWhiskerPlotPresenter boxWhiskerPlotPresenter;
         private SampleSizeEstimationPresenter sampleSizeEstimationPresenter;
+        private OneWayAnovaPresenter oneWayAnovaPresenter;
         private TimeSeriesGraphForm timeSeriesGraphForm;
         private RunsTestForRandomnessForm runsTestForRandomnessForm;
         private ForecastForm forecastForm;
@@ -43,6 +44,7 @@ namespace NoruST
             scatterPlotPresenter = new ScatterPlotPresenter(dataSetManagerPresenter);
             boxWhiskerPlotPresenter = new BoxWhiskerPlotPresenter(dataSetManagerPresenter);
             sampleSizeEstimationPresenter = new SampleSizeEstimationPresenter(dataSetManagerPresenter);
+            oneWayAnovaPresenter = new OneWayAnovaPresenter(dataSetManagerPresenter);
             runsTestForRandomnessPresenter = new RunsTestForRandomnessPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
@@ -55,6 +57,7 @@ namespace NoruST
             btnScatterplot.Click += delegate { scatterPlotPresenter.openView(); };
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotPresenter.openView(); };
             btnSampleSizeEstimation.Click += delegate { sampleSizeEstimationPresenter.openView(); };
+            btnAnova.Click += delegate { oneWayAnovaPresenter.openView(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessPresenter.openView(); };
             btnForecast.Click += delegate { forecastForm = forecastForm.createAndOrShowForm(); };
             btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
