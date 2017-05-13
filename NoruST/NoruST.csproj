@@ -35,7 +35,16 @@
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
+<<<<<<< 52ca18322cd3037cd82512ec4aed02666230de74
     <ApplicationVersion>1.0.0.348</ApplicationVersion>
+=======
+<<<<<<< HEAD
+    <ApplicationVersion>1.0.0.335</ApplicationVersion>
+    <ApplicationVersion>1.0.0.322</ApplicationVersion>
+=======
+    <ApplicationVersion>1.0.0.348</ApplicationVersion>
+>>>>>>> 69e3f2d... Forecast (unfinished buggy version)
+>>>>>>> Forecast (unfinished buggy version)
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -239,11 +248,27 @@
     <Compile Include="Forms\ExtendedForm.cs">
       <SubType>Form</SubType>
     </Compile>
+<<<<<<< 52ca18322cd3037cd82512ec4aed02666230de74
     <Compile Include="Forms\ForecastForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ForecastForm.Designer.cs">
       <DependentUpon>ForecastForm.cs</DependentUpon>
+=======
+<<<<<<< HEAD
+    <Compile Include="Forms\OneWayAnovaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OneWayAnovaForm.Designer.cs">
+      <DependentUpon>OneWayAnovaForm.cs</DependentUpon>
+=======
+    <Compile Include="Forms\ForecastForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ForecastForm.Designer.cs">
+      <DependentUpon>ForecastForm.cs</DependentUpon>
+>>>>>>> 69e3f2d... Forecast (unfinished buggy version)
+>>>>>>> Forecast (unfinished buggy version)
     </Compile>
     <Compile Include="Forms\PChartForm.cs">
       <SubType>Form</SubType>
@@ -384,8 +409,18 @@
     <EmbeddedResource Include="Forms\DummyForm.resx">
       <DependentUpon>DummyForm.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< 52ca18322cd3037cd82512ec4aed02666230de74
     <EmbeddedResource Include="Forms\ForecastForm.resx">
       <DependentUpon>ForecastForm.cs</DependentUpon>
+=======
+<<<<<<< HEAD
+    <EmbeddedResource Include="Forms\OneWayAnovaForm.resx">
+      <DependentUpon>OneWayAnovaForm.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Forms\ForecastForm.resx">
+      <DependentUpon>ForecastForm.cs</DependentUpon>
+>>>>>>> 69e3f2d... Forecast (unfinished buggy version)
+>>>>>>> Forecast (unfinished buggy version)
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PChartForm.resx">
       <DependentUpon>PChartForm.cs</DependentUpon>
