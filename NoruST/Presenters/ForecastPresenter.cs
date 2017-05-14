@@ -66,9 +66,15 @@ namespace NoruST.Presenters
 
         public void Print(DataSet dataSet, List<Variable> variables, bool rdbMovingAverage, bool rdbSimpleExponentialSmoothing, bool rdbHoltsExponentialSmoothing, bool rdbWintersExponentialSmoothing , bool doOptimizeParameters, int numberOfForecasts, int numberOfHoldouts, int seasonalPeriod, int span, string level, string trend, string seasonality)
         {
-
             // Create new sheet
             var sheet = WorksheetHelper.NewWorksheet("Forecast");
+
+            // use variables
+            _doOptimizeParameters = doOptimizeParameters;
+            _numberOfForecasts = numberOfForecasts;
+            _numberOfHoldouts = numberOfHoldouts;
+            _seasonalPeriod = seasonalPeriod;
+            _span = span;
 
             // variables for writing on sheet and writing of title
             int title = 1;
@@ -86,114 +92,124 @@ namespace NoruST.Presenters
             // variables to count number of forecast, holdouts and data
             var nForecasts = Convert.ToDouble(numberOfForecasts);
             var nHoldouts = Convert.ToDouble(numberOfHoldouts);
-            var nData = Convert.ToDouble(variables.Count);
+            var nData = Convert.ToDouble(dataSet.rangeSize());
 
-            row = 1;
+            
             int column = 2;
             foreach (Variable variable in variables)
             {
+                row = 1;
                 double[,] array = RangeHelper.To2DDoubleArray(variable.getRange());
                 double[] array2 = new double[array.Length];
                 for (int i = 0; i < array.Length; i++)
                 {
-                    array2[i] = array[i, 0];
+                        array2[i] = array[i, 0]; // hier moet nog iets komen waardoor het mogelijk wordt om variabelen in rijen te verwerken
                 }
+
+                //Print data
+                column++;
                 sheet.Cells[row++, column] = variable.name;
+                for(int i = 0; i<array2.Length; i++)
+                {
+                    sheet.Cells[row++, column] = array2[i];
+                }
+                row = 1;
+                column++;
                 // Plot next figure below the data and the forecast
                 int rowFigure = row + variables.Count + Convert.ToInt16(nForecasts) + 2;
                 // Calculate moving average forecast if box is checked
                 if (rdbMovingAverage)
                 {
-                    EvaluateMovingAverage(array2, row++, sheet);
+                    EvaluateMovingAverage(array2, row, column, sheet);
                     string name = "Forecast Moving Average: " + variable.name;
-                    var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
-                    var rangeData = sheet.Range[sheet.Cells[row + 1, column + 1], sheet.Cells[row + nData + nForecasts, column + 1]];
-                    var rangeForecast = sheet.Range[sheet.Cells[row + 1, column + 2], sheet.Cells[row + nData + nForecasts, column + 2]];
-                    new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
+                    //var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
+                    var rangeData = sheet.Range[sheet.Cells[row + 2, column - 1], sheet.Cells[row + nData + nForecasts, column - 1]];
+                    var rangeForecast = sheet.Range[sheet.Cells[row + 2, column], sheet.Cells[row + nData + nForecasts, column]];
+                    new TimeSeriesGraph().CreateNewGraph2(sheet, rowFigure, rangeData, rangeForecast, name);
                 }
 
                 // Calculate exponential smoothing (simple) forecast if box is checked
                 if (rdbSimpleExponentialSmoothing)
                 {
-                    CalculateSimple(array2, row, sheet);
+                    CalculateSimple(array2, row, sheet, column);
                     string name = "Forecast Exponential smoothing (Simple): " + variable.name;
-                    var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
-                    var rangeData = sheet.Range[sheet.Cells[row + 1, column + 1], sheet.Cells[row + nData + nForecasts, column + 1]];
-                    var rangeForecast = sheet.Range[sheet.Cells[row + 1, column + 3], sheet.Cells[row + nData + nForecasts, column + 3]];
-                    new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
+                    //var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
+                    var rangeData = sheet.Range[sheet.Cells[row + 2, column -1], sheet.Cells[row + nData + nForecasts, column -1]];
+                    var rangeForecast = sheet.Range[sheet.Cells[row + 2, column + 1], sheet.Cells[row + nData + nForecasts, column + 1]];
+                    new TimeSeriesGraph().CreateNewGraph2(sheet, rowFigure, rangeData, rangeForecast, name);
                 }
 
 
                 // Calculate exponential smoothing (holt) forecast if box is checked
                 if (rdbHoltsExponentialSmoothing)
                 {
-                    CalculateHolt(array2, row, sheet);
+                    CalculateHolt(array2, row, sheet, column);
                     string name = "Forecast Exponential smoothing (Holt): " + variable.name;
-                    var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
-                    var rangeData = sheet.Range[sheet.Cells[row + 1, column + 2], sheet.Cells[row + nData + nForecasts, column + 2]];
-                    var rangeForecast = sheet.Range[sheet.Cells[row + 1, column + 4], sheet.Cells[row + nData + nForecasts, column + 4]];
-                    new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
+                    //var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
+                    var rangeData = sheet.Range[sheet.Cells[row + 2, column -1], sheet.Cells[row + nData + nForecasts, column -1]];
+                    var rangeForecast = sheet.Range[sheet.Cells[row + 2, column + 2], sheet.Cells[row + nData + nForecasts, column + 2]];
+                    new TimeSeriesGraph().CreateNewGraph2(sheet, rowFigure, rangeData, rangeForecast, name);
                 }
 
                 // Calculate exponential smoothing (winters) forecast if box is checked
                 if (rdbWintersExponentialSmoothing)
                 {
-                    CalculateWinter(array2, row, sheet);
+                    CalculateWinter(array2, row, sheet, column);
                     string name = "Forecast Exponential smoothing (Winter): " + variable.name;
-                    var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
-                    var rangeData = sheet.Range[sheet.Cells[row + 1, column + 2], sheet.Cells[row + nData + nForecasts, column + 2]];
-                    var rangeForecast = sheet.Range[sheet.Cells[row + 1, column + 5], sheet.Cells[row + nData + nForecasts, column + 5]];
-                    new TimeSeriesGraph().CreateNewGraph(sheet, rowFigure, rangeData, rangeForecast, rangeLabels, name);
+                    //var rangeLabels = sheet.Range[sheet.Cells[row + 1, column], sheet.Cells[row + nData + nForecasts, column]];
+                    var rangeData = sheet.Range[sheet.Cells[row + 2, column -1], sheet.Cells[row + nData + nForecasts, column -1]];
+                    var rangeForecast = sheet.Range[sheet.Cells[row + 2, column + 3], sheet.Cells[row + nData + nForecasts, column + 3]];
+                    new TimeSeriesGraph().CreateNewGraph2(sheet, rowFigure, rangeData, rangeForecast,  name);
                 }
                 column = column + 6;
             }
         }
 
         // Calculates the simple forecast, writes data and return the array to be plotted
-        private void CalculateSimple(double[] data, int row, _Worksheet sheet)
+        private void CalculateSimple(double[] data, int row, _Worksheet sheet, int column)
         {
             double level = Convert.ToDouble(_level);
             if (!_doOptimizeParameters)
-                EvaluateSimple(level, data, row, sheet, writing: true);
+                EvaluateSimple(level, data, row, column, sheet, writing: true);
             else
             {
-                EvaluateSimple(level, data, row, sheet, writing: true);
+                EvaluateSimple(level, data, row, column, sheet, writing: true);
                 // OptimizeSimple(); // No optimization function available yet
             }
 
         }
 
         // Calculates the Winters forecast, writes data and return the array to be plotted
-        private void CalculateWinter(double[] data, int row, _Worksheet sheet)
+        private void CalculateWinter(double[] data, int row, _Worksheet sheet, int column)
         {
             double level = Convert.ToDouble(_level);
             double trend = Convert.ToDouble(_trend);
             double seasonality = Convert.ToDouble(_seasonality);
             if (!_doOptimizeParameters)
-                EvaluateWinters(level, trend, seasonality, data, row, sheet, writing: true);
+                EvaluateWinters(level, trend, seasonality, data, row, column, sheet, writing: true);
             else
             {
-                EvaluateWinters(level, trend, seasonality, data, row, sheet, writing: true);
+                EvaluateWinters(level, trend, seasonality, data, row, column, sheet, writing: true);
                 //OptimizeWinters(); // No optimization function available yet
             }
         }
 
         // Calculates the Holt forecast, writes data and return the array to be plotted
-        private void CalculateHolt(double[] data, int row, _Worksheet sheet)
+        private void CalculateHolt(double[] data, int row, _Worksheet sheet, int column)
         {
             double level = Convert.ToDouble(_level);
             double trend = Convert.ToDouble(_trend);
             if (!_doOptimizeParameters)
-                EvaluateHolt(level, trend, data, row, sheet, writing: true);
+                EvaluateHolt(level, trend, data, row, column, sheet, writing: true);
             else
             {
-                EvaluateHolt(level, trend, data, row, sheet, writing: true);
+                EvaluateHolt(level, trend, data, row, column, sheet, writing: true);
                 // OptimizeHolt(); // No optimization function available yet
             }
 
         }
 
-        private void EvaluateMovingAverage(double[] data, int row, _Worksheet sheet)
+        private void EvaluateMovingAverage(double[] data, int row, int column, _Worksheet sheet)
         {
             // parameters needed for loops and calculations
             int span = Convert.ToInt16(_span);
@@ -226,7 +242,6 @@ namespace NoruST.Presenters
                 mean = mean / Convert.ToDouble(span);
                 forecast[i - span] = mean;
             }
-
             // Calculate error
             double[] error = new double[nData - span];
             int nError = nData - span;
@@ -261,29 +276,29 @@ namespace NoruST.Presenters
 
             // Write the parameters of the forecast
             sheet.Cells[4, 1] = "span";
-            sheet.Cells[4, 2] = span;
+            sheet.Cells[4, column - 2] = span;
 
             // Write summary of the forecast    
-            sheet.Cells[9, 2] = mae;
-            sheet.Cells[10, 2] = rmse;
-            sheet.Cells[11, 2] = mape;
+            sheet.Cells[9, column - 2] = mae;
+            sheet.Cells[10, column - 2] = rmse;
+            sheet.Cells[11, column - 2] = mape;
 
             // Write forecast
-            sheet.Cells[row, 3] = "Forecast";
+            sheet.Cells[row, column] = "Forecast";
             for (int i = 0; i < nData + nForecast - span; i++)
             {
-                sheet.Cells[row + i + span + 1, 3] = forecast[i];
+                sheet.Cells[row + i + span + 1, column] = forecast[i];
             }
 
             // Write error
-            sheet.Cells[row, 4] = "Error";
+            sheet.Cells[row, column+1] = "Error";
             for (int i = 0; i < nError; i++)
             {
-                sheet.Cells[row + i + span + 1, 4] = error[i];
+                sheet.Cells[row + i + span + 1, column + 1] = error[i];
             }
         }
 
-        private void EvaluateSimple(double alpha, double[] data, int row, _Worksheet sheet, bool writing = false)
+        private void EvaluateSimple(double alpha, double[] data, int row, int column, _Worksheet sheet, bool writing = false)
         {
             // parameters needed for loops and calculations
             int nHoldouts = Convert.ToInt16(_numberOfHoldouts);
@@ -357,36 +372,36 @@ namespace NoruST.Presenters
 
             // Write the parameters of the forecast
             sheet.Cells[4, 1] = "Alpha";
-            sheet.Cells[4, 2] = alpha;
+            sheet.Cells[4, column - 2] = alpha;
 
             // Write summary of the forecast
-            sheet.Cells[9, 2] = mae;
-            sheet.Cells[10, 2] = rmse;
-            sheet.Cells[11, 2] = mape;
+            sheet.Cells[9, column - 2] = mae;
+            sheet.Cells[10, column - 2] = rmse;
+            sheet.Cells[11, column - 2] = mape;
 
             // Write level
-            sheet.Cells[row, 3] = "Level";
+            sheet.Cells[row, column] = "Level";
             for (int i = 0; i < nUsableData; i++)
             {
-                sheet.Cells[row + i + 1, 3] = level[i];
+                sheet.Cells[row + i + 1, column] = level[i];
             }
 
             // Write forecast
-            sheet.Cells[row, 4] = "Forecast";
+            sheet.Cells[row, column+1] = "Forecast";
             for (int i = 0; i < nData + nForecast - 1; i++)
             {
-                sheet.Cells[row + i + 2, 4] = forecast[i];
+                sheet.Cells[row + i + 2, column + 1] = forecast[i];
             }
 
             // Write error
-            sheet.Cells[row, 5] = "Error";
+            sheet.Cells[row, column+2] = "Error";
             for (int i = 0; i < nError; i++)
             {
-                sheet.Cells[row + i + 2, 5] = error[i];
+                sheet.Cells[row + i + 2, column + 2] = error[i];
             }
         }
 
-        private void EvaluateHolt(double alpha, double beta, double[] data, int row, _Worksheet sheet, bool writing = false)
+        private void EvaluateHolt(double alpha, double beta, double[] data, int row, int column, _Worksheet sheet, bool writing = false)
         {
             // parameters needed for loops and calculations
             int nHoldouts = Convert.ToInt16(_numberOfHoldouts);
@@ -464,45 +479,45 @@ namespace NoruST.Presenters
 
             // Write the parameters of the forecast
             sheet.Cells[4, 1] = "Alpha";
-            sheet.Cells[4, 2] = alpha;
+            sheet.Cells[4, column - 2] = alpha;
             sheet.Cells[5, 1] = "Beta";
-            sheet.Cells[5, 2] = beta;
+            sheet.Cells[5, column - 2] = beta;
 
             // Write summary of the forecast
-            sheet.Cells[9, 2] = mae;
-            sheet.Cells[10, 2] = rmse;
-            sheet.Cells[11, 2] = mape;
+            sheet.Cells[9, column - 2] = mae;
+            sheet.Cells[10, column - 2] = rmse;
+            sheet.Cells[11, column - 2] = mape;
 
             // Write level
-            sheet.Cells[row, 3] = "Level";
+            sheet.Cells[row, column] = "Level";
             for (int i = 0; i < nUsableData; i++)
             {
-                sheet.Cells[row + i + 1, 3] = level[i];
+                sheet.Cells[row + i + 1, column] = level[i];
             }
 
             // Write trend
-            sheet.Cells[row, 4] = "Trend";
+            sheet.Cells[row, column+1] = "Trend";
             for (int i = 0; i < nUsableData; i++)
             {
-                sheet.Cells[row + i + 1, 4] = trend[i];
+                sheet.Cells[row + i + 1, column + 1] = trend[i];
             }
 
             // Write forecast
-            sheet.Cells[row, 5] = "Forecast";
+            sheet.Cells[row, column+2] = "Forecast";
             for (int i = 0; i < nData + nForecast - 1; i++)
             {
-                sheet.Cells[row + i + 2, 5] = forecast[i];
+                sheet.Cells[row + i + 2, column + 2] = forecast[i];
             }
 
             // Write errors
-            sheet.Cells[row, 6] = "Error";
+            sheet.Cells[row, column+3] = "Error";
             for (int i = 0; i < nError; i++)
             {
-                sheet.Cells[row + i + 2, 6] = error[i];
+                sheet.Cells[row + i + 2, column + 3] = error[i];
             }
         }
 
-        private void EvaluateWinters(double alpha, double beta, double gamma, double[] data, int row, _Worksheet sheet, bool writing = false)
+        private void EvaluateWinters(double alpha, double beta, double gamma, double[] data, int row, int column, _Worksheet sheet, bool writing = false)
         {
             // parameters needed for loops and calculations
             int nHoldouts = Convert.ToInt16(_numberOfHoldouts);
@@ -623,50 +638,50 @@ namespace NoruST.Presenters
 
             // Write the parameters of the forecast
             sheet.Cells[4, 1] = "Alpha";
-            sheet.Cells[4, 2] = alpha;
+            sheet.Cells[4, column - 2] = alpha;
             sheet.Cells[5, 1] = "Beta";
-            sheet.Cells[5, 2] = beta;
+            sheet.Cells[5, column - 2] = beta;
             sheet.Cells[6, 1] = "Gamma";
-            sheet.Cells[6, 2] = gamma;
+            sheet.Cells[6, column - 2] = gamma;
 
             // Write summary of the forecast
-            sheet.Cells[9, 2] = mae;
-            sheet.Cells[10, 2] = rmse;
-            sheet.Cells[11, 2] = mape;
+            sheet.Cells[9, column - 2] = mae;
+            sheet.Cells[10, column - 2] = rmse;
+            sheet.Cells[11, column - 2] = mape;
 
             // Write level 
-            sheet.Cells[row, 3] = "Level";
+            sheet.Cells[row, column] = "Level";
             for (int i = 0; i < nUsableData; i++)
             {
-                sheet.Cells[row + i + 1, 3] = level[i];
+                sheet.Cells[row + i + 1, column] = level[i];
             }
 
             // Write trend
-            sheet.Cells[row, 4] = "Trend";
+            sheet.Cells[row, column+1] = "Trend";
             for (int i = 0; i < nUsableData; i++)
             {
-                sheet.Cells[row + i + 1, 4] = trend[i];
+                sheet.Cells[row + i + 1, column + 1] = trend[i];
             }
 
             // Write seasonality
-            sheet.Cells[row, 5] = "Seasonality";
+            sheet.Cells[row, column+2] = "Seasonality";
             for (int i = 0; i < nUsableData; i++)
             {
-                sheet.Cells[row + i + 1, 5] = season[i];
+                sheet.Cells[row + i + 1, column + 2] = season[i];
             }
 
             // Write forecast
-            sheet.Cells[row, 6] = "Forecast";
+            sheet.Cells[row, column+3] = "Forecast";
             for (int i = 0; i < nData + nForecast - 1; i++)
             {
-                sheet.Cells[row + i + 2, 6] = forecast[i];
+                sheet.Cells[row + i + 2, column + 3] = forecast[i];
             }
 
             // Write errors
-            sheet.Cells[row, 7] = "Error";
+            sheet.Cells[row, column+4] = "Error";
             for (int i = 0; i < nError; i++)
             {
-                sheet.Cells[row + i + 2, 7] = error[i];
+                sheet.Cells[row + i + 2, column + 4] = error[i];
             }
         }
 

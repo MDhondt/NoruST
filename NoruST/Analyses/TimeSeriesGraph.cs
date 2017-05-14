@@ -125,5 +125,31 @@ namespace NoruST.Analyses
             series2.Values = rangeForecast;
             series1.MarkerStyle = XlMarkerStyle.xlMarkerStyleCircle;
         }
+
+        public void CreateNewGraph2(_Worksheet sheet, int row, Range rangeData, Range rangeForecast, string name)
+        {
+            var charts = (ChartObjects)sheet.ChartObjects(Type.Missing);
+            var chartObject = (ChartObject)charts.Add(10, row * 15, 400, 250);
+            var chart = chartObject.Chart;
+            chart.ChartType = XlChartType.xlLineMarkers;
+            chart.ChartWizard(Title: name, HasLegend: false);
+
+            //var dataArray = (dataList as object) as Array;
+            //var labelArray = (labelList as object) as Array;
+
+            var seriesCollection = (SeriesCollection)chart.SeriesCollection();
+            var series1 = seriesCollection.NewSeries();
+            var series2 = seriesCollection.NewSeries();
+
+            Axis xAxis = (Axis)chart.Axes(XlAxisType.xlCategory, XlAxisGroup.xlPrimary);
+            var yAxis = (Axis)chart.Axes(XlAxisType.xlValue, XlAxisGroup.xlPrimary);
+            //yAxis.HasTitle = true;
+            //yAxis.AxisTitle.Text = "Y-Axis Title text";
+            //yAxis.AxisTitle.Orientation = XlOrientation.xlUpward;
+
+            series1.Values = rangeData;
+            series2.Values = rangeForecast;
+            series1.MarkerStyle = XlMarkerStyle.xlMarkerStyleCircle;
+        }
     }
 }
