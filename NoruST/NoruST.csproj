@@ -34,6 +34,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
+<<<<<<< 1282b44b1923933980c6698808fc97eb13eca2b5
     <TargetCulture>en</TargetCulture>
 <<<<<<< 52ca18322cd3037cd82512ec4aed02666230de74
     <ApplicationVersion>1.0.0.348</ApplicationVersion>
@@ -45,6 +46,10 @@
     <ApplicationVersion>1.0.0.348</ApplicationVersion>
 >>>>>>> 69e3f2d... Forecast (unfinished buggy version)
 >>>>>>> Forecast (unfinished buggy version)
+=======
+    <TargetCulture>en</TargetCulture>
+    <ApplicationVersion>1.0.0.348</ApplicationVersion>
+>>>>>>> fix
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -247,6 +252,7 @@
     </Compile>
     <Compile Include="Forms\ExtendedForm.cs">
       <SubType>Form</SubType>
+<<<<<<< 1282b44b1923933980c6698808fc97eb13eca2b5
     </Compile>
 <<<<<<< 52ca18322cd3037cd82512ec4aed02666230de74
     <Compile Include="Forms\ForecastForm.cs">
@@ -256,19 +262,26 @@
       <DependentUpon>ForecastForm.cs</DependentUpon>
 =======
 <<<<<<< HEAD
+=======
+    </Compile>
+>>>>>>> fix
     <Compile Include="Forms\OneWayAnovaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\OneWayAnovaForm.Designer.cs">
       <DependentUpon>OneWayAnovaForm.cs</DependentUpon>
-=======
+	</Compile>
     <Compile Include="Forms\ForecastForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ForecastForm.Designer.cs">
+<<<<<<< 1282b44b1923933980c6698808fc97eb13eca2b5
       <DependentUpon>ForecastForm.cs</DependentUpon>
 >>>>>>> 69e3f2d... Forecast (unfinished buggy version)
 >>>>>>> Forecast (unfinished buggy version)
+=======
+      <DependentUpon>ForecastForm.cs</DependentUpon>
+>>>>>>> fix
     </Compile>
     <Compile Include="Forms\PChartForm.cs">
       <SubType>Form</SubType>
@@ -408,19 +421,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DummyForm.resx">
       <DependentUpon>DummyForm.cs</DependentUpon>
+<<<<<<< 1282b44b1923933980c6698808fc97eb13eca2b5
     </EmbeddedResource>
 <<<<<<< 52ca18322cd3037cd82512ec4aed02666230de74
     <EmbeddedResource Include="Forms\ForecastForm.resx">
       <DependentUpon>ForecastForm.cs</DependentUpon>
 =======
 <<<<<<< HEAD
+=======
+    </EmbeddedResource>
+>>>>>>> fix
     <EmbeddedResource Include="Forms\OneWayAnovaForm.resx">
       <DependentUpon>OneWayAnovaForm.cs</DependentUpon>
-=======
+	</EmbeddedResource>
     <EmbeddedResource Include="Forms\ForecastForm.resx">
+<<<<<<< 1282b44b1923933980c6698808fc97eb13eca2b5
       <DependentUpon>ForecastForm.cs</DependentUpon>
 >>>>>>> 69e3f2d... Forecast (unfinished buggy version)
 >>>>>>> Forecast (unfinished buggy version)
+=======
+      <DependentUpon>ForecastForm.cs</DependentUpon>
+>>>>>>> fix
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PChartForm.resx">
       <DependentUpon>PChartForm.cs</DependentUpon>
@@ -505,6 +526,7 @@
       <DependentUpon>ExcelAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
+	
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\scatter_plot-512.png" />
