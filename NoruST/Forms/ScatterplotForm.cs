@@ -66,11 +66,13 @@ namespace NoruST.Forms
             }
             presenter.createScatterPlot(variablesX, variablesY);
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
         private void uiButton_Cancel_Click(object sender, System.EventArgs e)
         {
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
     }
 }

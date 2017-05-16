@@ -54,6 +54,7 @@ namespace NoruST.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
         private void btnOk_Click(object sender, EventArgs e)

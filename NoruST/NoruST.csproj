@@ -542,10 +542,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>NoruST_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>NoruST_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D151C23CF83D772E19347C01A730439AE0F6F134</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>87736A39E1BA86E63847901BF990527118AE6CAE</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

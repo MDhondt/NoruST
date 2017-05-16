@@ -64,12 +64,14 @@ namespace NoruST.Forms
             if (check)
             {
                 Close();
+                Globals.ExcelAddIn.Application.ActiveWindow.Activate();
             }
         }
 
         private void btnCancel_Click(object sender, System.EventArgs e)
         {
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
     }
 }

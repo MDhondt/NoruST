@@ -105,6 +105,7 @@ namespace NoruST.Forms
         private void uiButton_Close_Click(object sender, EventArgs e)
         {
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
         private void uiRadioButton_Columns_Rows_CheckedChanged(object sender, EventArgs e)

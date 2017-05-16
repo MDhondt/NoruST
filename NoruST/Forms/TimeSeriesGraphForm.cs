@@ -54,6 +54,7 @@ namespace NoruST.Forms
         private void Cancelbutton_clicked(object sender, EventArgs e)
         {
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
 
@@ -81,7 +82,8 @@ namespace NoruST.Forms
            if (inputOk)
            {
                Close();
-           }
+               Globals.ExcelAddIn.Application.ActiveWindow.Activate();
+            }
         }
 
     } 

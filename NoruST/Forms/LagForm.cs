@@ -62,12 +62,14 @@ namespace NoruST.Forms
         private void uiButton_Cancel_Click(object sender, EventArgs e)
         {
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
         private void uiButton_Ok_Click(object sender, EventArgs e)
         {
             presenter.createLags();
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
     }
 }

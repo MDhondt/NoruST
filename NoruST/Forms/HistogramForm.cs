@@ -62,11 +62,13 @@ namespace NoruST.Forms
             }
             presenter.createHistograms(variables);
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
         private void uiButton_Cancel_Click(object sender, System.EventArgs e)
         {
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
     }
 }

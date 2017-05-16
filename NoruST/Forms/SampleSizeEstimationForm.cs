@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using NoruST.Analyses;
 using NoruST.Models;
 using NoruST.Presenters;
@@ -67,12 +68,16 @@ namespace NoruST.Forms
             presenter.getModel().estimation2 = txtEstimate2.Text;
 
             presenter.estimateSampleSize();
-            Hide();
+            Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
+
+        
 
         private void btnCancel_Click(object sender, System.EventArgs e)
         {
-            Hide();
+            Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
     }
 }

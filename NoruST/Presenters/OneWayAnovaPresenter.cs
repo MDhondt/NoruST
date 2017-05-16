@@ -139,7 +139,7 @@ namespace NoruST.Presenters
                     if (model.scheffe)
                     {
                         sheet.WriteFunction(row, col++, AddressConverter.CellAddress(row, 2, false, false) + "-SQRT((B6-1)*F.INV.RT(1-B7,B6-1,C19))*SQRT(D19*(1/" + AddressConverter.CellAddress(10, i + 2, false, false) + "+1/" + AddressConverter.CellAddress(10, j + 2, false, false) + "))");
-                        sheet.WriteFunction(row, col++, AddressConverter.CellAddress(row, 2, false, false) + "+SQRT((B6-1)*F.INV.RT(1-B7,B6-1,C19))*SQRT(D19*(1/" + AddressConverter.CellAddress(10, i + 2, false, false) + "+1/" + AddressConverter.CellAddress(10, j + 2, false, false) + "))");
+                        sheet.WriteFunction(row, col, AddressConverter.CellAddress(row, 2, false, false) + "+SQRT((B6-1)*F.INV.RT(1-B7,B6-1,C19))*SQRT(D19*(1/" + AddressConverter.CellAddress(10, i + 2, false, false) + "+1/" + AddressConverter.CellAddress(10, j + 2, false, false) + "))");
                     }
                     row++;
                 }
@@ -149,31 +149,31 @@ namespace NoruST.Presenters
             if (model.noCorrection)
             {
                 sheet.Cells[22, col] = "No Correction";
-                sheet.get_Range(AddressConverter.CellAddress(22, col, false, false), AddressConverter.CellAddress(22, col + 1, false, false)).Merge();
+                sheet.Range[AddressConverter.CellAddress(22, col, false, false), AddressConverter.CellAddress(22, col + 1, false, false)].Merge();
                 sheet.Cells[23, col] = "Lower";
                 sheet.Cells[23, col + 1] = "Upper";
-                sheet.get_Range(AddressConverter.CellAddress(23, col, false, false), AddressConverter.CellAddress(23, col + 1, false, false)).Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
-                sheet.get_Range(AddressConverter.CellAddress(24, col, false, false), AddressConverter.CellAddress(23 + c, col, false, false)).Borders[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlDot;
+                sheet.Range[AddressConverter.CellAddress(23, col, false, false), AddressConverter.CellAddress(23, col + 1, false, false)].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
+                sheet.Range[AddressConverter.CellAddress(24, col, false, false), AddressConverter.CellAddress(23 + c, col, false, false)].Borders[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlDot;
                 col += 2;
             }
             if (model.bonferroni)
             {
                 sheet.Cells[22, col] = "Bonferroni";
-                sheet.get_Range(AddressConverter.CellAddress(22, col, false, false), AddressConverter.CellAddress(22, col + 1, false, false)).Merge();
+                sheet.Range[AddressConverter.CellAddress(22, col, false, false), AddressConverter.CellAddress(22, col + 1, false, false)].Merge();
                 sheet.Cells[23, col] = "Lower";
                 sheet.Cells[23, col + 1] = "Upper";
-                sheet.get_Range(AddressConverter.CellAddress(23, col, false, false), AddressConverter.CellAddress(23, col + 1, false, false)).Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
-                sheet.get_Range(AddressConverter.CellAddress(24, col, false, false), AddressConverter.CellAddress(23 + c, col, false, false)).Borders[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlDot;
+                sheet.Range[AddressConverter.CellAddress(23, col, false, false), AddressConverter.CellAddress(23, col + 1, false, false)].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
+                sheet.Range[AddressConverter.CellAddress(24, col, false, false), AddressConverter.CellAddress(23 + c, col, false, false)].Borders[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlDot;
                 col += 2;
             }
             if (model.scheffe)
             {
                 sheet.Cells[22, col] = "Scheffe";
-                sheet.get_Range(AddressConverter.CellAddress(22, col, false, false), AddressConverter.CellAddress(22, col + 1, false, false)).Merge();
+                sheet.Range[AddressConverter.CellAddress(22, col, false, false), AddressConverter.CellAddress(22, col + 1, false, false)].Merge();
                 sheet.Cells[23, col] = "Lower";
                 sheet.Cells[23, col + 1] = "Upper";
-                sheet.get_Range(AddressConverter.CellAddress(23, col, false, false), AddressConverter.CellAddress(23, col + 1, false, false)).Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
-                sheet.get_Range(AddressConverter.CellAddress(24, col, false, false), AddressConverter.CellAddress(23 + c, col, false, false)).Borders[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlDot;
+                sheet.Range[AddressConverter.CellAddress(23, col, false, false), AddressConverter.CellAddress(23, col + 1, false, false)].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
+                sheet.Range[AddressConverter.CellAddress(24, col, false, false), AddressConverter.CellAddress(23 + c, col, false, false)].Borders[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlDot;
             }
 
             ((Range)sheet.Cells[1, 1]).EntireColumn.AutoFit();
@@ -182,18 +182,20 @@ namespace NoruST.Presenters
             ((Range)sheet.Cells[1, 4]).EntireColumn.AutoFit();
             ((Range)sheet.Cells[1, 5]).EntireColumn.AutoFit();
             ((Range)sheet.Cells[1, 6]).EntireColumn.AutoFit();
-            sheet.get_Range("B1", "J200").Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
-            sheet.get_Range("A1", "B1").Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
-            sheet.get_Range("A9", AddressConverter.CellAddress(9, variables.Count + 1, false, false)).Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
-            sheet.get_Range("A17", "F17").Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
-            sheet.get_Range("A23", "B17").Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
-            sheet.get_Range("B3", "B5").NumberFormat = "0.0000";
-            sheet.get_Range("B11", AddressConverter.CellAddress(14, variables.Count + 1, false, false)).NumberFormat = "0.000";
-            sheet.get_Range("B18", "B20").NumberFormat = "0.0000";
-            sheet.get_Range("D18", "E19").NumberFormat = "0.0000";
-            sheet.get_Range("B24", AddressConverter.CellAddress(23+c, 2, false, false)).NumberFormat = "0.0000";
-            sheet.get_Range("C24", AddressConverter.CellAddress(23+c, 8, false, false)).NumberFormat = "0.000000";
-            sheet.get_Range("C24", AddressConverter.CellAddress(23 + c, 8, false, false)).Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+            ((Range)sheet.Cells[1, 7]).EntireColumn.AutoFit();
+            ((Range)sheet.Cells[1, 8]).EntireColumn.AutoFit();
+            sheet.Range["B1", "J200"].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            sheet.Range["A1", "B1"].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
+            sheet.Range["A9", AddressConverter.CellAddress(9, variables.Count + 1, false, false)].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
+            sheet.Range["A17", "F17"].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
+            sheet.Range["A23", "B17"].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
+            sheet.Range["B3", "B5"].NumberFormat = "0.0000";
+            sheet.Range["B11", AddressConverter.CellAddress(14, variables.Count + 1, false, false)].NumberFormat = "0.000";
+            sheet.Range["B18", "B20"].NumberFormat = "0.0000";
+            sheet.Range["D18", "E19"].NumberFormat = "0.0000";
+            sheet.Range["B24", AddressConverter.CellAddress(23+c, 2, false, false)].NumberFormat = "0.0000";
+            sheet.Range["C24", AddressConverter.CellAddress(23+c, 8, false, false)].NumberFormat = "0.000000";
+            sheet.Range["C24", AddressConverter.CellAddress(23 + c, 8, false, false)].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
             Globals.ExcelAddIn.Application.ActiveWindow.DisplayGridlines = false;
         }
     }

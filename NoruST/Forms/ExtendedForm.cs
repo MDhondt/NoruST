@@ -110,10 +110,14 @@ namespace NoruST.Forms
             }
 
             if (_okButton != null)
-                _okButton.Click += (s, e) => { if (OkButtonClick()) Close(); };
+                _okButton.Click += (s, e) => { if (OkButtonClick()) Close();
+                    Globals.ExcelAddIn.Application.ActiveWindow.Activate();
+                };
 
             if (_closeButton != null)
-                _closeButton.Click += (s, e) => { if (CloseButtonClick()) Close(); };
+                _closeButton.Click += (s, e) => { if (CloseButtonClick()) Close();
+                    Globals.ExcelAddIn.Application.ActiveWindow.Activate();
+                };
 
             // Populate the listBox with the available DataSets.
             if (_dataSetList != null)

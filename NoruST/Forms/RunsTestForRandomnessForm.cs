@@ -50,6 +50,7 @@ namespace NoruST.Forms
         private void ui_Button_Cancel_Click(object sender, EventArgs e)
         {
             Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -68,6 +69,7 @@ namespace NoruST.Forms
             if (check)
             {
                 Close();
+                Globals.ExcelAddIn.Application.ActiveWindow.Activate();
             }
         }
     }

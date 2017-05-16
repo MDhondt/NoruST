@@ -50,12 +50,14 @@ namespace NoruST.Forms
             presenter.rangeSelected(uiTextBox_Range.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
         private void uiButton_Cancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
     }
 }
