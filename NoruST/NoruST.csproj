@@ -362,6 +362,7 @@
     <Compile Include="Models\ForecastModel.cs" />
     <Compile Include="Models\XRChartModel.cs" />
     <Compile Include="Presenters\BoxWhiskerPlotPresenter.cs" />
+    <Compile Include="Presenters\CorrelationCovariancePresenter.cs" />
     <Compile Include="Presenters\DataSetManagerPresenter.cs" />
     <Compile Include="Presenters\DummyPresenter.cs" />
     <Compile Include="Presenters\HistogramPresenter.cs" />

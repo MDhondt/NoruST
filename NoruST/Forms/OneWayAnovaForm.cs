@@ -71,12 +71,14 @@ namespace NoruST.Forms
             }
 
             presenter.createOneWayAnova(variables);
-            Hide();
+            Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
 
         private void uiButton_Cancel_Click(object sender, EventArgs e)
         {
-            Hide();
+            Close();
+            Globals.ExcelAddIn.Application.ActiveWindow.Activate();
         }
     }
 }

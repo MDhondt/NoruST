@@ -19,12 +19,12 @@ namespace NoruST
         private ForecastPresenter forecastPresenter;
         private DiscriminantAnalysisPresenter discriminantAnalysisPresenter;
         private LogisticRegressionPresenter logisticRegressionPresenter;
-        private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramPresenter histogramPresenter;
         private ScatterPlotPresenter scatterPlotPresenter;
         private BoxWhiskerPlotPresenter boxWhiskerPlotPresenter;
         private SampleSizeEstimationPresenter sampleSizeEstimationPresenter;
         private OneWayAnovaPresenter oneWayAnovaPresenter;
+        private CorrelationCovariancePresenter correlationCovariancePresenter;
         private TimeSeriesGraphForm timeSeriesGraphForm;
         private RunsTestForRandomnessForm runsTestForRandomnessForm;
         private ForecastForm forecastForm;
@@ -48,6 +48,7 @@ namespace NoruST
             boxWhiskerPlotPresenter = new BoxWhiskerPlotPresenter(dataSetManagerPresenter);
             sampleSizeEstimationPresenter = new SampleSizeEstimationPresenter(dataSetManagerPresenter);
             oneWayAnovaPresenter = new OneWayAnovaPresenter(dataSetManagerPresenter);
+            correlationCovariancePresenter = new CorrelationCovariancePresenter(dataSetManagerPresenter);
             runsTestForRandomnessPresenter = new RunsTestForRandomnessPresenter(dataSetManagerPresenter);
             forecastPresenter = new ForecastPresenter(dataSetManagerPresenter);
             discriminantAnalysisPresenter = new DiscriminantAnalysisPresenter(dataSetManagerPresenter);
@@ -58,7 +59,7 @@ namespace NoruST
             btnLag.Click += delegate { lagPresenter.openView(); };
             btnDummy.Click += delegate { dummyPresenter.openView(); };
             btnOneVariableSummary.Click += delegate { oneVariableSummaryPresenter.openView(); };
-            btnCorrelationAndCovariance.Click += delegate { correlationCovarianceForm = correlationCovarianceForm.createAndOrShowForm(); };
+            btnCorrelationAndCovariance.Click += delegate { correlationCovariancePresenter.openView(); };
             btnHistogram.Click += delegate { histogramPresenter.openView(); };
             btnScatterplot.Click += delegate { scatterPlotPresenter.openView(); };
             btnBoxWhiskerPlot.Click += delegate { boxWhiskerPlotPresenter.openView(); };
