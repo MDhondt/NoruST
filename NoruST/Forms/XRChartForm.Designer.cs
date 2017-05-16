@@ -50,6 +50,7 @@
             this.rdbPlotOnlyObservationsWithin = new System.Windows.Forms.RadioButton();
             this.rdbPlotAllObservations = new System.Windows.Forms.RadioButton();
             this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -58,7 +59,7 @@
             // 
             // ui_Button_Cancel
             // 
-            this.ui_Button_Cancel.Location = new System.Drawing.Point(310, 232);
+            this.ui_Button_Cancel.Location = new System.Drawing.Point(310, 266);
             this.ui_Button_Cancel.Name = "ui_Button_Cancel";
             this.ui_Button_Cancel.Size = new System.Drawing.Size(75, 21);
             this.ui_Button_Cancel.TabIndex = 3;
@@ -68,7 +69,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(229, 232);
+            this.btnOk.Location = new System.Drawing.Point(229, 266);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 21);
             this.btnOk.TabIndex = 5;
@@ -84,7 +85,7 @@
             this.groupBox2.Controls.Add(this.uiTextBox_StartIndex);
             this.groupBox2.Controls.Add(this.rdbObservationsInRange);
             this.groupBox2.Controls.Add(this.rdbAllObservations);
-            this.groupBox2.Location = new System.Drawing.Point(13, 155);
+            this.groupBox2.Location = new System.Drawing.Point(13, 189);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(373, 71);
             this.groupBox2.TabIndex = 6;
@@ -176,7 +177,7 @@
             // 
             this.groupBox3.Controls.Add(this.ui_ComboBox_SelectDataSets);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(12, 46);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(374, 55);
             this.groupBox3.TabIndex = 10;
@@ -191,7 +192,7 @@
             this.groupBox1.Controls.Add(this.uiTextbox_PlotStartIndex);
             this.groupBox1.Controls.Add(this.rdbPlotOnlyObservationsWithin);
             this.groupBox1.Controls.Add(this.rdbPlotAllObservations);
-            this.groupBox1.Location = new System.Drawing.Point(12, 72);
+            this.groupBox1.Location = new System.Drawing.Point(12, 106);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(374, 76);
             this.groupBox1.TabIndex = 11;
@@ -263,11 +264,21 @@
             // 
             this.variableBindingSource.DataSource = typeof(NoruST.Domain.Variable);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(327, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Each group of simultanious subsamples should be saved as variable";
+            // 
             // XRChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 266);
+            this.ClientSize = new System.Drawing.Size(402, 300);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -288,6 +299,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -312,5 +324,6 @@
         private System.Windows.Forms.TextBox uiTextbox_PlotStartIndex;
         private System.Windows.Forms.RadioButton rdbPlotOnlyObservationsWithin;
         private System.Windows.Forms.RadioButton rdbPlotAllObservations;
+        private System.Windows.Forms.Label label1;
     }
 }

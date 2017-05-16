@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiscriminantAnalysisForm));
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.dgvDataSet = new System.Windows.Forms.DataGridView();
+            this.dgv_VariablesX = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgv_VariablesY = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.grpOptions = new System.Windows.Forms.GroupBox();
             this.chkCheckAllOptions = new System.Windows.Forms.CheckBox();
             this.tlpOptions = new System.Windows.Forms.TableLayoutPanel();
@@ -70,7 +73,7 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpForm.Size = new System.Drawing.Size(384, 361);
+            this.tlpForm.Size = new System.Drawing.Size(384, 362);
             this.tlpForm.TabIndex = 21;
             // 
             // dgvDataSet
@@ -79,14 +82,33 @@
             this.dgvDataSet.AllowUserToDeleteRows = false;
             this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvDataSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDataSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_VariablesX,
+            this.dgv_VariablesY});
             this.tlpForm.SetColumnSpan(this.dgvDataSet, 3);
             this.dgvDataSet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDataSet.Location = new System.Drawing.Point(3, 78);
             this.dgvDataSet.MinimumSize = new System.Drawing.Size(300, 0);
             this.dgvDataSet.Name = "dgvDataSet";
             this.dgvDataSet.RowHeadersVisible = false;
-            this.dgvDataSet.Size = new System.Drawing.Size(378, 141);
+            this.dgvDataSet.Size = new System.Drawing.Size(378, 142);
             this.dgvDataSet.TabIndex = 14;
+            // 
+            // dgv_VariablesX
+            // 
+            this.dgv_VariablesX.HeaderText = "X";
+            this.dgv_VariablesX.Name = "dgv_VariablesX";
+            this.dgv_VariablesX.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_VariablesX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgv_VariablesX.Width = 39;
+            // 
+            // dgv_VariablesY
+            // 
+            this.dgv_VariablesY.HeaderText = "Y";
+            this.dgv_VariablesY.Name = "dgv_VariablesY";
+            this.dgv_VariablesY.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_VariablesY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgv_VariablesY.Width = 39;
             // 
             // grpOptions
             // 
@@ -97,7 +119,7 @@
             this.tlpForm.SetColumnSpan(this.grpOptions, 3);
             this.grpOptions.Controls.Add(this.chkCheckAllOptions);
             this.grpOptions.Controls.Add(this.tlpOptions);
-            this.grpOptions.Location = new System.Drawing.Point(3, 225);
+            this.grpOptions.Location = new System.Drawing.Point(3, 226);
             this.grpOptions.Name = "grpOptions";
             this.grpOptions.Size = new System.Drawing.Size(378, 102);
             this.grpOptions.TabIndex = 18;
@@ -216,33 +238,36 @@
             // btnOk
             // 
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOk.Location = new System.Drawing.Point(225, 333);
+            this.btnOk.Location = new System.Drawing.Point(225, 334);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 17;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(306, 333);
+            this.btnCancel.Location = new System.Drawing.Point(306, 334);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 25);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // DiscriminantAnalysisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.ClientSize = new System.Drawing.Size(384, 362);
             this.Controls.Add(this.tlpForm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "DiscriminantAnalysisForm";
-            this.Text = "NoruST - Discriminant Analysis";
+            this.Text = "Discriminant Analysis";
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).EndInit();
@@ -271,5 +296,7 @@
         private System.Windows.Forms.Label lblProbability;
         private System.Windows.Forms.TextBox txtMisclassification0;
         private System.Windows.Forms.TextBox txtMisclassification1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgv_VariablesX;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgv_VariablesY;
     }
 }

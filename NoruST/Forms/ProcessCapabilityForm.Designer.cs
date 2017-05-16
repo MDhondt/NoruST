@@ -41,6 +41,7 @@
             this.variableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variableBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -48,9 +49,9 @@
             // 
             // ui_Button_Cancel
             // 
-            this.ui_Button_Cancel.Location = new System.Drawing.Point(353, 145);
+            this.ui_Button_Cancel.Location = new System.Drawing.Point(281, 176);
             this.ui_Button_Cancel.Name = "ui_Button_Cancel";
-            this.ui_Button_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.ui_Button_Cancel.Size = new System.Drawing.Size(74, 23);
             this.ui_Button_Cancel.TabIndex = 3;
             this.ui_Button_Cancel.Text = "Cancel";
             this.ui_Button_Cancel.UseVisualStyleBackColor = true;
@@ -58,9 +59,9 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(272, 145);
+            this.btnOk.Location = new System.Drawing.Point(200, 176);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.Size = new System.Drawing.Size(74, 23);
             this.btnOk.TabIndex = 5;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -72,9 +73,9 @@
             this.groupBox2.Controls.Add(this.lblUpperLimit);
             this.groupBox2.Controls.Add(this.uiTextBox_LowerLimit);
             this.groupBox2.Controls.Add(this.uiTextBox_UpperLimit);
-            this.groupBox2.Location = new System.Drawing.Point(13, 77);
+            this.groupBox2.Location = new System.Drawing.Point(13, 108);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(422, 62);
+            this.groupBox2.Size = new System.Drawing.Size(356, 62);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Specification Limits";
@@ -91,7 +92,7 @@
             // lblUpperLimit
             // 
             this.lblUpperLimit.AutoSize = true;
-            this.lblUpperLimit.Location = new System.Drawing.Point(224, 30);
+            this.lblUpperLimit.Location = new System.Drawing.Point(206, 27);
             this.lblUpperLimit.Name = "lblUpperLimit";
             this.lblUpperLimit.Size = new System.Drawing.Size(60, 13);
             this.lblUpperLimit.TabIndex = 5;
@@ -102,16 +103,16 @@
             this.uiTextBox_LowerLimit.Location = new System.Drawing.Point(98, 24);
             this.uiTextBox_LowerLimit.MaxLength = 8;
             this.uiTextBox_LowerLimit.Name = "uiTextBox_LowerLimit";
-            this.uiTextBox_LowerLimit.Size = new System.Drawing.Size(91, 20);
+            this.uiTextBox_LowerLimit.Size = new System.Drawing.Size(77, 20);
             this.uiTextBox_LowerLimit.TabIndex = 4;
             this.uiTextBox_LowerLimit.Text = "0";
             // 
             // uiTextBox_UpperLimit
             // 
-            this.uiTextBox_UpperLimit.Location = new System.Drawing.Point(288, 27);
+            this.uiTextBox_UpperLimit.Location = new System.Drawing.Point(270, 24);
             this.uiTextBox_UpperLimit.MaxLength = 8;
             this.uiTextBox_UpperLimit.Name = "uiTextBox_UpperLimit";
-            this.uiTextBox_UpperLimit.Size = new System.Drawing.Size(91, 20);
+            this.uiTextBox_UpperLimit.Size = new System.Drawing.Size(74, 20);
             this.uiTextBox_UpperLimit.TabIndex = 6;
             this.uiTextBox_UpperLimit.Text = "0";
             // 
@@ -121,7 +122,7 @@
             this.ui_ComboBox_SelectDataSets.FormattingEnabled = true;
             this.ui_ComboBox_SelectDataSets.Location = new System.Drawing.Point(116, 23);
             this.ui_ComboBox_SelectDataSets.Name = "ui_ComboBox_SelectDataSets";
-            this.ui_ComboBox_SelectDataSets.Size = new System.Drawing.Size(300, 21);
+            this.ui_ComboBox_SelectDataSets.Size = new System.Drawing.Size(229, 21);
             this.ui_ComboBox_SelectDataSets.TabIndex = 7;
             // 
             // variableBindingSource
@@ -141,18 +142,28 @@
             // 
             this.groupBox3.Controls.Add(this.ui_ComboBox_SelectDataSets);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(12, 43);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(422, 59);
+            this.groupBox3.Size = new System.Drawing.Size(357, 59);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dataset";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(327, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Each group of simultanious subsamples should be saved as variable";
             // 
             // ProcessCapabilityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 180);
+            this.ClientSize = new System.Drawing.Size(381, 210);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnOk);
@@ -170,6 +181,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -185,5 +197,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource variableBindingSource;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
     }
 }

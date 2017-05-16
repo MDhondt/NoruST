@@ -1,54 +1,82 @@
 ﻿using NoruST.Analyses;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using NoruST.Presenters;
+using NoruST.Domain;
+using System;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>Discriminant Analysis Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Thomas Van Rompaey</para>
-    /// <para>Edited by: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: Apr 23, 2016</para>
-    /// </summary>
-    public partial class DiscriminantAnalysisForm : ExtendedForm
-    {
-        #region Constructors
 
-        /// <summary>
-        /// Constructor of the <see cref="ScatterplotForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
+    public partial class DiscriminantAnalysisForm : Form
+    {
+
+        private DiscriminantAnalysisPresenter presenter;
+        private const string formTitle = "NoruST - Discriminant Analysis";
+
         public DiscriminantAnalysisForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, dgvDataSet, btnOk, btnCancel);
         }
 
-        #endregion
 
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="System.Windows.Forms.ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
+        public void setPresenter(DiscriminantAnalysisPresenter DiscriminantAnalysisPresenter)
         {
-            // Create a data table and add the required columns.
-            CreateDataTable(xy: DataTableColumn.Editable);
-
-            // Update the view with new data.
-            UpdateDataTable();
+            this.presenter = DiscriminantAnalysisPresenter;
+            bindModelToView();
+            selectDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// This adds extra functionality to the Ok <see cref="System.Windows.Forms.Button"/>
-        /// </summary>
-        public override bool OkButtonClick()
+        private void bindModelToView()
         {
-            return new DiscriminantAnalysis().Print(SelectedDataSet, DoIncludeX, DoIncludeY, txtProbability.Text, txtMisclassification0.Text, txtMisclassification1.Text);
+            lstDataSets.DataSource = presenter.dataSets();
+            lstDataSets.DisplayMember = "name";
+            //nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            //rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
+            lstDataSets.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedDataSet() == null) return;
+                dgvDataSet.DataSource = selectedDataSet().getVariables();
+            };
         }
 
-        #endregion
+        private DataSet selectedDataSet()
+        {
+            return (DataSet)lstDataSets.SelectedItem;
+        }
+
+        public void selectDataSet(DataSet dataSet)
+        {
+            lstDataSets.SelectedItem = null;
+            lstDataSets.SelectedItem = dataSet;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            List<Variable> variablesX = new List<Variable>();
+            List<Variable> variablesY = new List<Variable>();
+            foreach (DataGridViewRow row in dgvDataSet.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[dgv_VariablesX.Name].Value))
+                {
+                    variablesX.Add((Variable)row.DataBoundItem);
+                }
+                if (Convert.ToBoolean(row.Cells[dgv_VariablesY.Name].Value))
+                {
+                    variablesY.Add((Variable)row.DataBoundItem);
+                }
+            }
+
+            bool check = presenter.checkInput(selectedDataSet(), variablesX, variablesY, txtProbability.Text, txtMisclassification0.Text, txtMisclassification1.Text);
+            if (check)
+            {
+                Close();
+            }
+        }
     }
 }

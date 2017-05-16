@@ -1,54 +1,81 @@
-﻿using NoruST.Analyses;
+﻿using System;
+using System.Windows.Forms;
+using NoruST.Forms;
+using NoruST.Presenters;
+using NoruST.Domain;
+using System.Collections.Generic;
 
 namespace NoruST.Forms
 {
-    /// <summary>
-    /// <para>Logistic Regression Form.</para>
-    /// <para>Version: 1.0</para>
-    /// <para>&#160;</para>
-    /// <para>Author: Thomas Van Rompaey</para>
-    /// <para>Edited by: Frederik Van de Velde</para>
-    /// <para>&#160;</para>
-    /// <para>Last Updated: May 05, 2016</para>
-    /// </summary>
-    public partial class LogisticRegressionForm : ExtendedForm
-    {
-        #region Constructors
 
-        /// <summary>
-        /// Constructor of the <see cref="LogisticRegressionForm"/> <see cref="System.Windows.Forms.Form"/>.
-        /// </summary>
+    public partial class LogisticRegressionForm : Form
+    {
+        private LogisticRegressionPresenter presenter;
+        private const string formTitle = "NoruST - Logistic Regression";
+
         public LogisticRegressionForm()
         {
             InitializeComponent();
-
-            InitializeView(lstDataSets, dgvDataSet, btnOk, btnCancel);
         }
 
-        #endregion
 
-        #region Overwritten Methods
-
-        /// <summary>
-        /// This adds extra functionality to the DataSet<see cref="System.Windows.Forms.ListBox"/>.
-        /// </summary>
-        public override void DataSetListSelectedIndexChanged()
+        public void setPresenter(LogisticRegressionPresenter LogisticRegressionFormPresenter)
         {
-            // Create a data table and add the required columns.
-            CreateDataTable(xy: DataTableColumn.Editable);
-
-            // Update the view with new data.
-            UpdateDataTable(checkX: DefaultCheck.Numeric, checkY: DefaultCheck.Numeric);
+            this.presenter = LogisticRegressionFormPresenter;
+            bindModelToView();
+            selectDataSet(selectedDataSet());
         }
 
-        /// <summary>
-        /// This adds extra functionality to the Ok <see cref="System.Windows.Forms.Button"/>
-        /// </summary>
-        public override bool OkButtonClick()
+        private void bindModelToView()
         {
-            return new LogisticRegression().Print(SelectedDataSet, DoIncludeX, DoIncludeY);
+            lstDataSets.DataSource = presenter.dataSets();
+            lstDataSets.DisplayMember = "name";
+            //nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            //rangeDataGridViewTextBoxColumn.DataPropertyName = "Range";
+            lstDataSets.SelectedIndexChanged += (obj, eventArgs) =>
+            {
+                if (selectedDataSet() == null) return;
+                dgvDataSet.DataSource = selectedDataSet().getVariables();
+            };
         }
 
-        #endregion
+        private DataSet selectedDataSet()
+        {
+            return (DataSet)lstDataSets.SelectedItem;
+        }
+
+        public void selectDataSet(DataSet dataSet)
+        {
+            lstDataSets.SelectedItem = null;
+            lstDataSets.SelectedItem = dataSet;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            List<Variable> variablesX = new List<Variable>();
+            List<Variable> variablesY = new List<Variable>();
+            foreach (DataGridViewRow row in dgvDataSet.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[dgv_VariablesX.Name].Value))
+                {
+                    variablesX.Add((Variable)row.DataBoundItem);
+                }
+                if (Convert.ToBoolean(row.Cells[dgv_VariablesY.Name].Value))
+                {
+                    variablesY.Add((Variable)row.DataBoundItem);
+                }
+            }
+
+            bool check = presenter.checkInput(selectedDataSet(), variablesX, variablesY);
+            if (check)
+            {
+                Close();
+            }
+        }
     }
 }

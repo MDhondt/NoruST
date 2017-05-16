@@ -39,12 +39,12 @@ namespace NoruST.Presenters
 
         public bool checkInput(List<Variable> variables, DataSet selectedDataSet, bool rdbMean, bool rdbMedian, bool rdbCustomValue, string CustomCutoffValue)
         {
-            if (variables.Count == 0) return false;
+            if (variables.Count == 0) return false; // wanneer de gebruiker geen variabele geselecteerd heeft, stop functie
             
             _Worksheet worksheet = WorksheetHelper.NewWorksheet("Runs test");
             int column = 1;
             int row = 2;
-            worksheet.Cells[row, column] = "Runs test for randomness";
+            worksheet.Cells[row, column] = "Runs test for randomness"; // schrijf strings naar worksheet 
             worksheet.Cells[row++, column] = "Observations";
             if (rdbMean) worksheet.Cells[row++, column] = "Mean";
             if (rdbMedian) worksheet.Cells[row++, column] = "Median";
@@ -60,32 +60,32 @@ namespace NoruST.Presenters
 
             row = 1;
             column = 2;
-            foreach (Variable variable in variables)
+            foreach (Variable variable in variables) // deze loop wordt herhaald voor elke geselecteerde variabele van datagridview
             {
-                worksheet.Cells[row++, column] = variable.name;
-                var range = variable.getRange().Address(true, true, true);
-                worksheet.Cells[row++, column] = selectedDataSet.rangeSize();
-                var ntotal = selectedDataSet.rangeSize();
-                if (rdbMean) worksheet.Cells[row++, column] = "=AVERAGE(" + range + ")";
-                if (rdbMedian) worksheet.Cells[row++, column] = "=MEDIAN(" + range + ")";
+                worksheet.Cells[row++, column] = variable.name; // schrijf naam variabele naar worksheet
+                var range = variable.getRange().Address(true, true, true); // sla range variabele op in "range"
+                worksheet.Cells[row++, column] = selectedDataSet.rangeSize(); // schrijf de hoeveelheid gegevens in de variabele naar worksheet
+                var ntotal = selectedDataSet.rangeSize(); 
+                if (rdbMean) worksheet.Cells[row++, column] = "=AVERAGE(" + range + ")"; // schrijf afhankelijk van de gebruikersinput de cutoffvalue naar worksheet
+                if (rdbMedian) worksheet.Cells[row++, column] = "=MEDIAN(" + range + ")"; 
                 if (rdbCustomValue) worksheet.Cells[row++, column] = CustomCutoffValue;
-                var cutoffValue = (double)worksheet.Cells[row-1, column].Value;
-                int amountOfRuns = calculateRuns(worksheet, selectedDataSet, variable.getRange(), cutoffValue);
-                worksheet.WriteFunction(row++, column, "COUNTIF(" + range + ",\"<\"&" + AddressConverter.CellAddress(row - 2, column) + ")");
-                worksheet.WriteFunction(row++, column, "COUNTIF(" + range + ",\">\"&" + AddressConverter.CellAddress(row - 3, column) + ")");
-                worksheet.Cells[row++, column] = amountOfRuns;
-                worksheet.WriteFunction(row++, column, "(2*" + AddressConverter.CellAddress(row - 4, column) + "*" + AddressConverter.CellAddress(row - 3, column) + ")/(" + AddressConverter.CellAddress(row - 6, column) + ")");
+                var cutoffValue = (double)worksheet.Cells[row-1, column].Value; // lees de cutoffvalue vanuit excel en sla ze op in variabele 'cutoffvalue'
+                int amountOfRuns = calculateRuns(worksheet, selectedDataSet, variable.getRange(), cutoffValue); // roep functie calculateRuns aan en sla het resultaat op in amountofruns
+                worksheet.WriteFunction(row++, column, "COUNTIF(" + range + ",\"<\"&" + AddressConverter.CellAddress(row - 2, column) + ")"); // schrijf functie voor het berekenen van #above cutoff naar worksheet
+                worksheet.WriteFunction(row++, column, "COUNTIF(" + range + ",\">\"&" + AddressConverter.CellAddress(row - 3, column) + ")"); // schrijf functie voor het berekenen van #below cutoff naar worksheet
+                worksheet.Cells[row++, column] = amountOfRuns; // schrijf het resultaat van functie calculate Runs naar worksheet
+                worksheet.WriteFunction(row++, column, "(2*" + AddressConverter.CellAddress(row - 4, column) + "*" + AddressConverter.CellAddress(row - 3, column) + ")/(" + AddressConverter.CellAddress(row - 6, column) + ")"); // schrijf overige functies naar worksheet
                 worksheet.WriteFunction(row++, column, "SQRT(((" + AddressConverter.CellAddress(row - 2, column) + "-1)*(" + AddressConverter.CellAddress(row - 2, column) + "-2))/" + AddressConverter.CellAddress(row - 7, column) + ")");
                 worksheet.WriteFunction(row++, column, "(" + AddressConverter.CellAddress(row - 4, column) + "-" + AddressConverter.CellAddress(row - 3, column) + ")/" + AddressConverter.CellAddress(row - 2, column));
                 worksheet.WriteFunction(row++, column, "2*(1-NORMSDIST(ABS(" + AddressConverter.CellAddress(row - 2, column) + ")))");
-                ((Range)worksheet.Cells[row, column]).EntireColumn.AutoFit();
+                ((Range)worksheet.Cells[row, column]).EntireColumn.AutoFit(); 
                 row = 1;
                 column++;
             }
             return true;
         }
 
-        private int calculateRuns(_Worksheet sheet, DataSet dataSet, Range range, double cutoff)
+        private int calculateRuns(_Worksheet sheet, DataSet dataSet, Range range, double cutoff) // functie die het aantal runs bepaalt
         {
             int runs = 1;
             double[,] array = RangeHelper.To2DDoubleArray(range);

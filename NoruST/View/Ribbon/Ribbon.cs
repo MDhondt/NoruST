@@ -17,6 +17,8 @@ namespace NoruST
         private OneVariableSummaryPresenter oneVariableSummaryPresenter;
         private RunsTestForRandomnessPresenter runsTestForRandomnessPresenter;
         private ForecastPresenter forecastPresenter;
+        private DiscriminantAnalysisPresenter discriminantAnalysisPresenter;
+        private LogisticRegressionPresenter logisticRegressionPresenter;
         private CorrelationCovarianceForm correlationCovarianceForm;
         private HistogramPresenter histogramPresenter;
         private ScatterPlotPresenter scatterPlotPresenter;
@@ -48,6 +50,8 @@ namespace NoruST
             oneWayAnovaPresenter = new OneWayAnovaPresenter(dataSetManagerPresenter);
             runsTestForRandomnessPresenter = new RunsTestForRandomnessPresenter(dataSetManagerPresenter);
             forecastPresenter = new ForecastPresenter(dataSetManagerPresenter);
+            discriminantAnalysisPresenter = new DiscriminantAnalysisPresenter(dataSetManagerPresenter);
+            logisticRegressionPresenter = new LogisticRegressionPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -62,8 +66,8 @@ namespace NoruST
             btnAnova.Click += delegate { oneWayAnovaPresenter.openView(); };
             btnRunsTestForRandomness.Click += delegate { runsTestForRandomnessPresenter.openView(); };
             btnForecast.Click += delegate { forecastPresenter.openView(); };
-            btnLogisticRegression.Click += delegate { logisticRegressionForm = logisticRegressionForm.createAndOrShowForm(); };
-            btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisForm = discriminantAnalysisForm.createAndOrShowForm(); };
+            btnLogisticRegression.Click += delegate { logisticRegressionPresenter.openView();  };
+            btnDiscriminantAnalysis.Click += delegate { discriminantAnalysisPresenter.openView(); };
             btnXRChart.Click += delegate { xrChartPresenter.openView(); };
             btnPChart.Click += delegate { pChartPresenter.openView(); };
             btnProcessCapability.Click += delegate { processCapabilityPresenter.openView(); };

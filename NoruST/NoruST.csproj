@@ -35,7 +35,7 @@
     <PublishUrl>C:\Users\anddaem\Desktop\KULeuven\Masterthesis\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.370</ApplicationVersion>
+    <ApplicationVersion>1.0.0.378</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -339,10 +339,12 @@
     <Compile Include="Models\DataManagerModel.cs" />
     <Compile Include="Models\DataSetManagerModel.cs" />
     <Compile Include="Models\DummyModel.cs" />
+    <Compile Include="Models\DiscriminantAnalysisModel.cs" />
     <Compile Include="Models\HistogramModel.cs" />
     <Compile Include="Models\LagModel.cs" />
     <Compile Include="Models\OneVariableSummaryModel.cs" />
     <Compile Include="Models\OneWayAnovaModel.cs" />
+    <Compile Include="Models\LogisticRegressionModel.cs" />
     <Compile Include="Models\SampleSizeEstimationModel.cs" />
     <Compile Include="Models\SummaryStatistics.cs" />
     <Compile Include="Helpers\AddressConverter.cs" />
@@ -368,10 +370,12 @@
     <Compile Include="Presenters\OneWayAnovaPresenter.cs" />
     <Compile Include="Presenters\PChartPresenter.cs" />
     <Compile Include="Presenters\ProcessCapabilityPresenter.cs" />
+    <Compile Include="Presenters\LogisticRegressionPresenter.cs" />
     <Compile Include="Presenters\SampleSizeEstimationPresenter.cs" />
     <Compile Include="Presenters\ScatterPlotPresenter.cs" />
     <Compile Include="Presenters\RunTestForRandomnessPresenter.cs" />
     <Compile Include="Presenters\ForecastPresenter.cs" />
+    <Compile Include="Presenters\DiscriminantAnalysisPresenter.cs" />
     <Compile Include="Presenters\TimeSeriesGraphPresenter.cs" />
     <Compile Include="Presenters\XRChartPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

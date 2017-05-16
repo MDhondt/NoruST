@@ -83,6 +83,7 @@ namespace NoruST.Forms
             uiTextbox_PlotStartIndex.Text = "0";
             uiTextbox_PlotStopIndex.Text = "0";
         }
+
     }
 }
 
