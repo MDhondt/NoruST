@@ -52,23 +52,23 @@ namespace NoruST.Presenters
                 if (rdbAllObservations)
                 {
                     startindex = 0;
-                    stopindex = dataSet.amountOfVariables()-1;
+                    stopindex = dataSet.amountOfVariables()-2;
                 }
 
                 if (rdbObservationsInRange && stopindex >= dataSet.amountOfVariables())
                 {
-                    stopindex = dataSet.amountOfVariables() - 1;
+                    stopindex = dataSet.amountOfVariables() - 2;
                 }
 
                 if (rdbPlotAllObservations)
                 {
                     plotstartindex = 0;
-                    plotstopindex = dataSet.amountOfVariables() - 1;
+                    plotstopindex = dataSet.amountOfVariables() -2;
                 }
 
                 if (rdbPlotRange && plotstopindex >= dataSet.amountOfVariables())
                 {
-                    plotstopindex = dataSet.amountOfVariables() - 1;
+                    plotstopindex = dataSet.amountOfVariables() - 2;
                 }
 
                 _Worksheet sheet = WorksheetHelper.NewWorksheet("P Chart");
@@ -87,8 +87,8 @@ namespace NoruST.Presenters
             int index = 0;
             int row = 1;
             int column = 1;
-            double[] pValues = new double[dataSet.amountOfVariables()];
-            double[] averageOfPValues = new double[dataSet.amountOfVariables()];
+            double[] pValues = new double[dataSet.amountOfVariables()-1];
+            double[] averageOfPValues = new double[dataSet.amountOfVariables()-1];
             double[] pValuesInRange = new double[stopindex - startindex+1];
             double[] pChartUpperControlLimit = new double[dataSet.amountOfVariables()];
             double[] pChartLowerControlLimit = new double[dataSet.amountOfVariables()];
@@ -97,23 +97,21 @@ namespace NoruST.Presenters
             sheet.Cells[row, column + 1] = "Observation";
             sheet.Cells[row, column + 2] = "Average";
             
-            for(index = 0; index < dataSet.amountOfVariables(); index ++)
+            for(index = 1; index < dataSet.amountOfVariables(); index ++)
             {
                 row++;
-                sheet.Cells[row, column] = index;
+                sheet.Cells[row, column] = index-1;
                 sheet.Cells[row, column + 1] = dataSet.getVariables()[index].name;
                 sheet.Cells[row, column + 2] = "=AVERAGE("+ dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
                 var cellValue = (double)(sheet.Cells[row, column + 2] as Range).Value;
                 if (cellValue < -214682680) cellValue = 0; // if cellValue is the result of a division by 0, set value to 0
-                pValues[index] = cellValue;
+                pValues[index-1] = cellValue;
                 if(cellValue > 1)
                 {
                     MessageBox.Show("Cannot generate P-Chart; Data in "+ dataSet.Name + " contains samples greater than 1");
                     return;
                 }
             }
-
-
 
             for (index = startindex; index <= stopindex; index++)
             {
@@ -122,7 +120,7 @@ namespace NoruST.Presenters
 
             double pChartCorrection = Math.Pow(((pValuesInRange.Average() * (1 - pValuesInRange.Average())) / dataSet.rangeSize()), (0.3333333));
 
-            for (index = 0; index < dataSet.amountOfVariables(); index++)
+            for (index = 0; index < dataSet.amountOfVariables()-1; index++)
             {
                 averageOfPValues[index] = pValuesInRange.Average();
                 pChartUpperControlLimit[index] = pValues.Average() + pChartCorrection;

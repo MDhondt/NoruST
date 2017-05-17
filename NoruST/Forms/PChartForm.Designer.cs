@@ -269,9 +269,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(39, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(327, 13);
+            this.label2.Size = new System.Drawing.Size(331, 13);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Each group of simultanious subsamples should be saved as variable";
+            this.label2.Text = "Each group of simultaneous subsamples should be saved as variable";
             // 
             // PChartForm
             // 

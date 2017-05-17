@@ -54,23 +54,23 @@ namespace NoruST.Presenters
                 if (rdbAllObservations)
                 {
                     startindex = 0;
-                    stopindex = dataSet.amountOfVariables()-1;
+                    stopindex = dataSet.amountOfVariables()-2;
                 }
                 
                 if (rdbObservationsInRange && stopindex >= dataSet.amountOfVariables())
                 {
-                    stopindex = dataSet.amountOfVariables()-1;
+                    stopindex = dataSet.amountOfVariables()-2;
                 }
 
                 if (rdbPlotAllObservations)
                 {
-                    plotstartindex = 0;
-                    plotstopindex = dataSet.amountOfVariables() - 1;
+                    plotstartindex = 0 ;
+                    plotstopindex = dataSet.amountOfVariables() -2 ;
                 }
 
                 if (rdbPlotObservationsInRange && plotstopindex >= dataSet.amountOfVariables())
                 {
-                    plotstopindex = dataSet.amountOfVariables() - 1;
+                    plotstopindex = dataSet.amountOfVariables() - 2;
                 }
 
                 _Worksheet sheet = WorksheetHelper.NewWorksheet("XR Chart");
@@ -112,10 +112,10 @@ namespace NoruST.Presenters
             sheet.Cells[row, column + 4] = "Min";
             sheet.Cells[row, column + 5] = "R";
 
-            for (index = 0; index < dataSet.amountOfVariables(); index++)
+            for (index = 1; index < dataSet.amountOfVariables(); index++)
             {
                 row++;
-                sheet.Cells[row, column] = index;
+                sheet.Cells[row, column] = index-1;
                 sheet.Cells[row, column + 1] = dataSet.getVariables()[index].name;
                 sheet.Cells[row, column + 2] = "=AVERAGE(" + dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
                 sheet.Cells[row, column + 3] = "=MAX(" + dataSet.getWorksheet().Name + "!" + dataSet.getVariables()[index].Range + ")";
@@ -123,9 +123,9 @@ namespace NoruST.Presenters
                 sheet.Cells[row, column + 5] = (double)(sheet.Cells[row, column + 3] as Range).Value - (double)(sheet.Cells[row, column + 4] as Range).Value;
                 var cellValue = (double)sheet.Cells[row, column + 2].Value;
                 if (cellValue < -214682680) cellValue = 0; // if cellValue is the result of a division by 0, set value to 0
-                averages[index] = cellValue;
+                averages[index-1] = cellValue;
                 cellValue = (double)(sheet.Cells[row, column + 5] as Range).Value;
-                Rvalues[index] = cellValue;
+                Rvalues[index-1] = cellValue;
             }
 
             for(index = startindex; index <= stopindex; index++)

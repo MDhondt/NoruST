@@ -154,9 +154,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(26, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(327, 13);
+            this.label1.Size = new System.Drawing.Size(331, 13);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Each group of simultanious subsamples should be saved as variable";
+            this.label1.Text = "Each group of simultaneous subsamples should be saved as variable";
             // 
             // ProcessCapabilityForm
             // 
