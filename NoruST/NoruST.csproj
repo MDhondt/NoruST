@@ -345,6 +345,7 @@
     <Compile Include="Models\OneVariableSummaryModel.cs" />
     <Compile Include="Models\OneWayAnovaModel.cs" />
     <Compile Include="Models\LogisticRegressionModel.cs" />
+    <Compile Include="Models\RegressionModel.cs" />
     <Compile Include="Models\SampleSizeEstimationModel.cs" />
     <Compile Include="Models\SummaryStatistics.cs" />
     <Compile Include="Helpers\AddressConverter.cs" />
@@ -372,6 +373,7 @@
     <Compile Include="Presenters\PChartPresenter.cs" />
     <Compile Include="Presenters\ProcessCapabilityPresenter.cs" />
     <Compile Include="Presenters\LogisticRegressionPresenter.cs" />
+    <Compile Include="Presenters\RegressionPresenter.cs" />
     <Compile Include="Presenters\SampleSizeEstimationPresenter.cs" />
     <Compile Include="Presenters\ScatterPlotPresenter.cs" />
     <Compile Include="Presenters\RunTestForRandomnessPresenter.cs" />
@@ -543,10 +545,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>NoruST_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>NoruST_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D151C23CF83D772E19347C01A730439AE0F6F134</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>87736A39E1BA86E63847901BF990527118AE6CAE</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

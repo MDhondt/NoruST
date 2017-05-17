@@ -25,10 +25,10 @@ namespace NoruST
         private SampleSizeEstimationPresenter sampleSizeEstimationPresenter;
         private OneWayAnovaPresenter oneWayAnovaPresenter;
         private CorrelationCovariancePresenter correlationCovariancePresenter;
+        private RegressionPresenter regressionPresenter;
         private TimeSeriesGraphForm timeSeriesGraphForm;
         private RunsTestForRandomnessForm runsTestForRandomnessForm;
         private ForecastForm forecastForm;
-        private RegressionForm regressionForm;
         private LogisticRegressionForm logisticRegressionForm;
         private DiscriminantAnalysisForm discriminantAnalysisForm;
 
@@ -53,6 +53,7 @@ namespace NoruST
             forecastPresenter = new ForecastPresenter(dataSetManagerPresenter);
             discriminantAnalysisPresenter = new DiscriminantAnalysisPresenter(dataSetManagerPresenter);
             logisticRegressionPresenter = new LogisticRegressionPresenter(dataSetManagerPresenter);
+            regressionPresenter = new RegressionPresenter(dataSetManagerPresenter);
 
             // Add Event Handlers for the click events of the buttons.
             btnDataSetManager.Click += delegate { dataSetManagerPresenter.openDataSetManager(); };
@@ -73,7 +74,7 @@ namespace NoruST
             btnPChart.Click += delegate { pChartPresenter.openView(); };
             btnProcessCapability.Click += delegate { processCapabilityPresenter.openView(); };
             btnTimeSeriesGraph.Click += delegate { timeSeriesGraphPresenter.openView(); };
-            btnSimpleRegression.Click += delegate { regressionForm = regressionForm.createAndOrShowForm(); };
+            btnSimpleRegression.Click += delegate { regressionPresenter.openView(); };
         }
     }
 }

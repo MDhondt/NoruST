@@ -69,6 +69,11 @@ namespace NoruST.Domain
             return rangeLayout == COLUMNS ? variables[0].getRange().Rows.Count : variables[0].getRange().Columns.Count;
         }
 
+        public dynamic[] getValuesArray(Variable variable)
+        {
+            return variable.getValuesArray(rangeLayout);
+        }
+
         public void addLags(Variable variable, int numberOfLags)
         {
             for (int i = 1; i <= numberOfLags; i++)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Office.Interop.Excel;
 
 namespace NoruST.Domain
@@ -21,6 +22,28 @@ namespace NoruST.Domain
         public Range getRange()
         {
             return range;
+        }
+
+        public dynamic[] getValuesArray(RangeLayout rangeLayout)
+        {
+            var valuesList = new List<dynamic>();
+            if (rangeLayout == RangeLayout.COLUMNS)
+            {
+                for (int row = 0; row < range.Rows.Count; row++)
+                {
+                    var value = ((Range)worksheet.Cells[range.Row + row, range.Column]).Value2;
+                    valuesList.Add(value);
+                }
+            }
+            else
+            {
+                for (int column = 0; column < range.Columns.Count; column++)
+                {
+                    var value = ((Range)worksheet.Cells[range.Row, range.Column + column]).Value2;
+                    valuesList.Add(value);
+                }
+            }
+            return valuesList.ToArray();
         }
     }
 }
