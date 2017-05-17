@@ -6,8 +6,7 @@ using NoruST.Domain;
 using System.Collections.Generic;
 
 namespace NoruST.Forms
-{
-
+{ 
     public partial class LogisticRegressionForm : Form
     {
         private LogisticRegressionPresenter presenter;

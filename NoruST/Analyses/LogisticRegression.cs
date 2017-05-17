@@ -36,7 +36,7 @@ namespace NoruST.Analyses
             // declare function to use function of excel
             var functions = Globals.ExcelAddIn.Application.WorksheetFunction;
 
-
+   
             var valuesArraysX = new List<Models.Data>();
             var valuesArraysY = new List<Models.Data>();
             var sheet = WorksheetHelper.NewWorksheet("Logistic Regression");
@@ -184,7 +184,6 @@ namespace NoruST.Analyses
                 for (var j = 0; j < valuesArraysX.Count; j++)
                 {
                     sheet.Cells[dataName + 1 + i, 2 + j] = valuesArraysX[j].GetValuesList()[i];
-
                 }
                 var prob = 1 / (1 + Math.Exp(-expThetaX[0, i]));
                 sheet.Cells[dataName + 1 + i, probName] = prob;

@@ -87,6 +87,7 @@ namespace NoruST.Presenters
 
         public void generateXRChart(int startindex, int stopindex, int plotstartindex, int plotstopindex, DataSet dataSet,int offset, _Worksheet sheet)
         {
+            // declaration of variables
             int index = 0;
             int row = 1;
             int column = 1;
@@ -105,6 +106,7 @@ namespace NoruST.Presenters
             double[] xChartConstants = new double[25] { 0.0, 1.880, 1.023, 0.729, 0.577, 0.483, 0.419, 0.373, 0.337, 0.308, 0.285, 0.266, 0.249, 0.235, 0.223, 0.212, 0.203, 0.194, 0.187, 0.180, 0.173, 0.167, 0.162, 0.157, 0.153 };
             double[] rChartConstants1 = new double[25] { 0, 0, 0, 0, 0, 0, 0.076, 0.136, 0.184, 0.223, 0.256, 0.283, 0.307, 0.328, 0.347, 0.363, 0.378, 0.391, 0.403, 0.415, 0.425, 0.434, 0.443, 0.451, 0.459 };
             double[] rChartConstants2 = new double[25] { 0, 3.267, 2.574, 2.282, 2.114, 2.004, 1.924, 1.864, 1.816, 1.777, 1.744, 1.717, 1.693, 1.672, 1.653, 1.637, 1.662, 1.607, 1.597, 1.585, 1.575, 1.566, 1.557, 1.548, 1.541 };
+            // write  labels to sheet
             sheet.Cells[row, column] = "Index";
             sheet.Cells[row, column + 1] = "Observation";
             sheet.Cells[row, column + 2] = "Average";
@@ -112,6 +114,7 @@ namespace NoruST.Presenters
             sheet.Cells[row, column + 4] = "Min";
             sheet.Cells[row, column + 5] = "R";
 
+            // write values to sheet
             for (index = 1; index < dataSet.amountOfVariables(); index++)
             {
                 row++;
@@ -127,23 +130,30 @@ namespace NoruST.Presenters
                 cellValue = (double)(sheet.Cells[row, column + 5] as Range).Value;
                 Rvalues[index-1] = cellValue;
             }
-
+            // make arrays for calculation within limits
             for(index = startindex; index <= stopindex; index++)
             {
                 RvaluesInRange[index-startindex] = Rvalues[index];
                 averageOfAveragesInRange[index-startindex] = averages[index];
             }
 
+            // create variable to limit amount of subsamples in 1 measurement to 25
+            int safe;
+            if (dataSet.rangeSize() > 24)
+            {
+                safe = 24;
+            }
+            else safe = dataSet.rangeSize();
             if (dataSet.getVariableNamesInFirstRowOrColumn())
             {
-                xControlLimitFactor = xChartConstants[dataSet.rangeSize() - 1];
-                rControlLimitFactor1 = rChartConstants1[dataSet.rangeSize() - 1];
-                rControlLimitFactor2 = rChartConstants2[dataSet.rangeSize() - 1];
+                xControlLimitFactor = xChartConstants[safe - 1];
+                rControlLimitFactor1 = rChartConstants1[safe - 1];
+                rControlLimitFactor2 = rChartConstants2[safe - 1];
             }
             else
-                xControlLimitFactor = xChartConstants[dataSet.rangeSize()];
-                rControlLimitFactor1 = rChartConstants1[dataSet.rangeSize()];
-                rControlLimitFactor2 = rChartConstants2[dataSet.rangeSize()];
+                xControlLimitFactor = xChartConstants[safe];
+                rControlLimitFactor1 = rChartConstants1[safe];
+                rControlLimitFactor2 = rChartConstants2[safe];
 
             for (index = 0; index < dataSet.amountOfVariables(); index++)
             {

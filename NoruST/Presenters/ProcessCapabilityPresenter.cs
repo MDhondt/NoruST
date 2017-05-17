@@ -99,14 +99,22 @@ namespace NoruST.Presenters
                 Rvalues[index-1] = cellValue;
             }
 
+            // create variable to limit amount of subsamples in 1 measurement to 25
+            int safe;
+            if (dataSet.rangeSize() > 24)
+            {
+                safe = 24;
+            }
+            else safe = dataSet.rangeSize();
+
             if (dataSet.getVariableNamesInFirstRowOrColumn())
             {
-                correctionFactor1 = constantC4[dataSet.rangeSize() - 1];
-                correctionFactor2 = constantD2[dataSet.rangeSize() - 1];
+                correctionFactor1 = constantC4[safe - 1];
+                correctionFactor2 = constantD2[safe - 1];
             }
             else
-                correctionFactor1 = constantC4[dataSet.rangeSize()];
-                correctionFactor2 = constantD2[dataSet.rangeSize()];
+                correctionFactor1 = constantC4[safe];
+                correctionFactor2 = constantD2[safe];
 
             double sigma = Rvalues.Average() / correctionFactor2;
             double Cp = (USL - LSL) / (6 * sigma);
