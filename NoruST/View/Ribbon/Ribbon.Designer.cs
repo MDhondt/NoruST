@@ -217,6 +217,7 @@
             this.btnInteractionplot.Label = "Interactionplot";
             this.btnInteractionplot.Name = "btnInteractionplot";
             this.btnInteractionplot.ShowImage = true;
+            this.btnInteractionplot.Visible = false;
             // 
             // separator2
             // 
@@ -245,12 +246,14 @@
             this.btnInteraction.Label = "Interaction";
             this.btnInteraction.Name = "btnInteraction";
             this.btnInteraction.ShowImage = true;
+            this.btnInteraction.Visible = false;
             // 
             // btnWhiteTest
             // 
             this.btnWhiteTest.Label = "White Test";
             this.btnWhiteTest.Name = "btnWhiteTest";
             this.btnWhiteTest.ShowImage = true;
+            this.btnWhiteTest.Visible = false;
             // 
             // btnSimpleRegression
             // 
