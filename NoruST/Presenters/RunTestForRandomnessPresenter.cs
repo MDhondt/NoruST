@@ -39,8 +39,11 @@ namespace NoruST.Presenters
 
         public bool checkInput(List<Variable> variables, DataSet selectedDataSet, bool rdbMean, bool rdbMedian, bool rdbCustomValue, string CustomCutoffValue)
         {
-            if (variables.Count == 0) return false; // wanneer de gebruiker geen variabele geselecteerd heeft, stop functie
-            
+            if (variables.Count == 0)
+            {
+                MessageBox.Show("Please correct all fields to generate Runs Test.");
+                return false; // wanneer de gebruiker geen variabele geselecteerd heeft, stop functie
+            }
             _Worksheet worksheet = WorksheetHelper.NewWorksheet("Runs test");
             int column = 1;
             int row = 2;
