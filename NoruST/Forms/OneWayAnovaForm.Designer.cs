@@ -78,7 +78,7 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.Size = new System.Drawing.Size(394, 316);
+            this.tlpForm.Size = new System.Drawing.Size(394, 317);
             this.tlpForm.TabIndex = 1;
             // 
             // nudConfidenceLevel
@@ -125,18 +125,18 @@
             // 
             this.uiButton_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.uiButton_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uiButton_Cancel.Location = new System.Drawing.Point(316, 288);
+            this.uiButton_Cancel.Location = new System.Drawing.Point(316, 289);
             this.uiButton_Cancel.Name = "uiButton_Cancel";
             this.uiButton_Cancel.Size = new System.Drawing.Size(75, 25);
             this.uiButton_Cancel.TabIndex = 33;
-            this.uiButton_Cancel.Text = "Annuleren";
+            this.uiButton_Cancel.Text = "Cancel";
             this.uiButton_Cancel.UseVisualStyleBackColor = true;
             this.uiButton_Cancel.Click += new System.EventHandler(this.uiButton_Cancel_Click);
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(235, 288);
+            this.btnOk.Location = new System.Drawing.Point(235, 289);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 32;
@@ -259,7 +259,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 316);
+            this.ClientSize = new System.Drawing.Size(394, 317);
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -267,7 +267,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(410, 355);
             this.Name = "OneWayAnovaForm";
-            this.Text = "NoruST - One-Way ANOVA";
+            this.Text = "One-Way ANOVA";
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudConfidenceLevel)).EndInit();

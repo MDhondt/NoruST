@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegressionForm));
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
+            this.uiDataGridView_Variables = new System.Windows.Forms.DataGridView();
+            this.uiDataGridViewColumn_VariableCheckX = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.uiDataGridViewColumn_VariableCheckY = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.lblVariable = new System.Windows.Forms.Label();
             this.lblDataSet = new System.Windows.Forms.Label();
@@ -44,14 +47,11 @@
             this.nudConfidenceLevel = new NoruST.Controls.PercentageNumericUpDown();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.uiDataGridView_Variables = new System.Windows.Forms.DataGridView();
-            this.uiDataGridViewColumn_VariableCheckX = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.uiDataGridViewColumn_VariableCheckY = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tlpForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).BeginInit();
             this.grpOptions.SuspendLayout();
             this.tlpOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudConfidenceLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpForm
@@ -80,8 +80,40 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpForm.Size = new System.Drawing.Size(594, 301);
+            this.tlpForm.Size = new System.Drawing.Size(594, 302);
             this.tlpForm.TabIndex = 22;
+            // 
+            // uiDataGridView_Variables
+            // 
+            this.uiDataGridView_Variables.AllowUserToAddRows = false;
+            this.uiDataGridView_Variables.AllowUserToDeleteRows = false;
+            this.uiDataGridView_Variables.AllowUserToResizeColumns = false;
+            this.uiDataGridView_Variables.AllowUserToResizeRows = false;
+            this.uiDataGridView_Variables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.uiDataGridView_Variables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.uiDataGridView_Variables.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.uiDataGridViewColumn_VariableCheckX,
+            this.uiDataGridViewColumn_VariableCheckY});
+            this.tlpForm.SetColumnSpan(this.uiDataGridView_Variables, 3);
+            this.uiDataGridView_Variables.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiDataGridView_Variables.Location = new System.Drawing.Point(63, 30);
+            this.uiDataGridView_Variables.Name = "uiDataGridView_Variables";
+            this.uiDataGridView_Variables.RowHeadersVisible = false;
+            this.uiDataGridView_Variables.Size = new System.Drawing.Size(528, 132);
+            this.uiDataGridView_Variables.TabIndex = 38;
+            // 
+            // uiDataGridViewColumn_VariableCheckX
+            // 
+            this.uiDataGridViewColumn_VariableCheckX.HeaderText = "I";
+            this.uiDataGridViewColumn_VariableCheckX.Name = "uiDataGridViewColumn_VariableCheckX";
+            this.uiDataGridViewColumn_VariableCheckX.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // uiDataGridViewColumn_VariableCheckY
+            // 
+            this.uiDataGridViewColumn_VariableCheckY.HeaderText = "D";
+            this.uiDataGridViewColumn_VariableCheckY.Name = "uiDataGridViewColumn_VariableCheckY";
+            this.uiDataGridViewColumn_VariableCheckY.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.uiDataGridViewColumn_VariableCheckY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // label1
             // 
@@ -248,7 +280,7 @@
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOk.Location = new System.Drawing.Point(435, 270);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 28);
+            this.btnOk.Size = new System.Drawing.Size(75, 29);
             this.btnOk.TabIndex = 17;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -260,63 +292,31 @@
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCancel.Location = new System.Drawing.Point(516, 270);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 28);
+            this.btnCancel.Size = new System.Drawing.Size(75, 29);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // uiDataGridView_Variables
-            // 
-            this.uiDataGridView_Variables.AllowUserToAddRows = false;
-            this.uiDataGridView_Variables.AllowUserToDeleteRows = false;
-            this.uiDataGridView_Variables.AllowUserToResizeColumns = false;
-            this.uiDataGridView_Variables.AllowUserToResizeRows = false;
-            this.uiDataGridView_Variables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.uiDataGridView_Variables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.uiDataGridView_Variables.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.uiDataGridViewColumn_VariableCheckX,
-            this.uiDataGridViewColumn_VariableCheckY});
-            this.tlpForm.SetColumnSpan(this.uiDataGridView_Variables, 3);
-            this.uiDataGridView_Variables.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiDataGridView_Variables.Location = new System.Drawing.Point(63, 30);
-            this.uiDataGridView_Variables.Name = "uiDataGridView_Variables";
-            this.uiDataGridView_Variables.RowHeadersVisible = false;
-            this.uiDataGridView_Variables.Size = new System.Drawing.Size(528, 132);
-            this.uiDataGridView_Variables.TabIndex = 38;
-            // 
-            // uiDataGridViewColumn_VariableCheckX
-            // 
-            this.uiDataGridViewColumn_VariableCheckX.HeaderText = "I";
-            this.uiDataGridViewColumn_VariableCheckX.Name = "uiDataGridViewColumn_VariableCheckX";
-            this.uiDataGridViewColumn_VariableCheckX.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // uiDataGridViewColumn_VariableCheckY
-            // 
-            this.uiDataGridViewColumn_VariableCheckY.HeaderText = "D";
-            this.uiDataGridViewColumn_VariableCheckY.Name = "uiDataGridViewColumn_VariableCheckY";
-            this.uiDataGridViewColumn_VariableCheckY.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.uiDataGridViewColumn_VariableCheckY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // RegressionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 301);
+            this.ClientSize = new System.Drawing.Size(594, 302);
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(610, 340);
             this.MinimumSize = new System.Drawing.Size(610, 340);
             this.Name = "RegressionForm";
-            this.Text = "NoruST - Regression";
+            this.Text = "Regression";
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).EndInit();
             this.grpOptions.ResumeLayout(false);
             this.grpOptions.PerformLayout();
             this.tlpOptions.ResumeLayout(false);
             this.tlpOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudConfidenceLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

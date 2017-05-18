@@ -75,14 +75,14 @@
             this.tlpForm.RowCount = 2;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.Size = new System.Drawing.Size(434, 181);
+            this.tlpForm.Size = new System.Drawing.Size(434, 182);
             this.tlpForm.TabIndex = 0;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(356, 153);
+            this.btnCancel.Location = new System.Drawing.Point(356, 154);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 25);
             this.btnCancel.TabIndex = 19;
@@ -93,7 +93,7 @@
             // btnOk
             // 
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOk.Location = new System.Drawing.Point(275, 153);
+            this.btnOk.Location = new System.Drawing.Point(275, 154);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 18;
@@ -116,7 +116,7 @@
             this.tlpGroupBoxes.Name = "tlpGroupBoxes";
             this.tlpGroupBoxes.RowCount = 1;
             this.tlpGroupBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGroupBoxes.Size = new System.Drawing.Size(428, 144);
+            this.tlpGroupBoxes.Size = new System.Drawing.Size(428, 145);
             this.tlpGroupBoxes.TabIndex = 20;
             // 
             // grpEstimate
@@ -127,7 +127,7 @@
             this.grpEstimate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpEstimate.Location = new System.Drawing.Point(3, 3);
             this.grpEstimate.Name = "grpEstimate";
-            this.grpEstimate.Size = new System.Drawing.Size(154, 138);
+            this.grpEstimate.Size = new System.Drawing.Size(154, 139);
             this.grpEstimate.TabIndex = 0;
             this.grpEstimate.TabStop = false;
             this.grpEstimate.Text = "Estimate";
@@ -151,7 +151,7 @@
             this.tlpEstimate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpEstimate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpEstimate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpEstimate.Size = new System.Drawing.Size(148, 119);
+            this.tlpEstimate.Size = new System.Drawing.Size(148, 120);
             this.tlpEstimate.TabIndex = 1;
             // 
             // rdbMean
@@ -215,7 +215,7 @@
             this.grpSecifications.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpSecifications.Location = new System.Drawing.Point(163, 3);
             this.grpSecifications.Name = "grpSecifications";
-            this.grpSecifications.Size = new System.Drawing.Size(262, 138);
+            this.grpSecifications.Size = new System.Drawing.Size(262, 139);
             this.grpSecifications.TabIndex = 1;
             this.grpSecifications.TabStop = false;
             this.grpSecifications.Text = "Specifications";
@@ -244,7 +244,7 @@
             this.tlpSpecifications.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpSpecifications.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpSpecifications.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpSpecifications.Size = new System.Drawing.Size(256, 119);
+            this.tlpSpecifications.Size = new System.Drawing.Size(256, 120);
             this.tlpSpecifications.TabIndex = 0;
             // 
             // lblConfidenceLevel
@@ -337,7 +337,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 181);
+            this.ClientSize = new System.Drawing.Size(434, 182);
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -345,7 +345,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 220);
             this.Name = "SampleSizeEstimationForm";
-            this.Text = "NoruST - Sample Size Estimation";
+            this.Text = "Sample Size Estimation";
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();
             this.tlpGroupBoxes.ResumeLayout(false);

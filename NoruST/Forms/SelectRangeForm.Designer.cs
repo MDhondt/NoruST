@@ -39,9 +39,9 @@
             this.lblInfo.AutoSize = true;
             this.lblInfo.Location = new System.Drawing.Point(12, 9);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(106, 13);
+            this.lblInfo.Size = new System.Drawing.Size(70, 13);
             this.lblInfo.TabIndex = 0;
-            this.lblInfo.Text = "Selecteer een range:";
+            this.lblInfo.Text = "Select range:";
             // 
             // uiTextBox_Range
             // 
@@ -67,7 +67,7 @@
             this.uiButton_Cancel.Name = "uiButton_Cancel";
             this.uiButton_Cancel.Size = new System.Drawing.Size(75, 23);
             this.uiButton_Cancel.TabIndex = 3;
-            this.uiButton_Cancel.Text = "Annuleren";
+            this.uiButton_Cancel.Text = "Cancel";
             this.uiButton_Cancel.UseVisualStyleBackColor = true;
             this.uiButton_Cancel.Click += new System.EventHandler(this.uiButton_Cancel_Click);
             // 
@@ -77,7 +77,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.uiButton_Cancel;
-            this.ClientSize = new System.Drawing.Size(284, 81);
+            this.ClientSize = new System.Drawing.Size(284, 82);
             this.Controls.Add(this.uiButton_Cancel);
             this.Controls.Add(this.uiButton_Ok);
             this.Controls.Add(this.uiTextBox_Range);
@@ -90,7 +90,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "NoruST - Data Set Manager";
+            this.Text = "Data Set Manager";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -125,7 +125,7 @@ namespace NoruST.Forms
             // 
             // uiDataGridViewColumn_VariableName
             // 
-            this.uiDataGridViewColumn_VariableName.HeaderText = "Naam";
+            this.uiDataGridViewColumn_VariableName.HeaderText = "Name";
             this.uiDataGridViewColumn_VariableName.Name = "uiDataGridViewColumn_VariableName";
             // 
             // uiDataGridViewColumn_VariableRange
@@ -340,7 +340,7 @@ namespace NoruST.Forms
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "DataSetManagerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "NoruST - Data Set Manager";
+            this.Text = "Data Set Manager";
             this.gbxDataSet.ResumeLayout(false);
             this.gbxDataSet.PerformLayout();
             this.tlpDataSet.ResumeLayout(false);
@@ -371,11 +371,11 @@ namespace NoruST.Forms
         private System.Windows.Forms.Button uiButton_Delete;
         private System.Windows.Forms.TableLayoutPanel tlpButtons;
         private System.Windows.Forms.Button uiButton_New;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uiDataGridViewColumn_VariableName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uiDataGridViewColumn_VariableRange;
         private System.Windows.Forms.BindingSource variableBindingSource;
         private System.Windows.Forms.Label lblRange;
         private System.Windows.Forms.Button uiButton_Range;
         private System.Windows.Forms.TextBox uiTextBox_DataSetRange;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uiDataGridViewColumn_VariableName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uiDataGridViewColumn_VariableRange;
     }
 }

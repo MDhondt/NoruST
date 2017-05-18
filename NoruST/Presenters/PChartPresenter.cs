@@ -167,5 +167,6 @@ namespace NoruST.Presenters
                 UCLseries.XValues = ArrayIndex;
                 LCLseries.XValues = ArrayIndex;
         }
+
     }
 }

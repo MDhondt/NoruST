@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScatterplotForm));
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
-            this.lblDataSet = new System.Windows.Forms.Label();
-            this.uiComboBox_DataSets = new System.Windows.Forms.ComboBox();
-            this.lblVariable = new System.Windows.Forms.Label();
-            this.uiDataGridView_Variables = new System.Windows.Forms.DataGridView();
-            this.btnOk = new System.Windows.Forms.Button();
             this.uiButton_Cancel = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.uiDataGridView_Variables = new System.Windows.Forms.DataGridView();
             this.uiDataGridViewColumn_VariableCheckX = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.uiDataGridViewColumn_VariableCheckY = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lblVariable = new System.Windows.Forms.Label();
+            this.uiComboBox_DataSets = new System.Windows.Forms.ComboBox();
+            this.lblDataSet = new System.Windows.Forms.Label();
             this.tlpForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).BeginInit();
             this.SuspendLayout();
@@ -64,46 +64,31 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpForm.Size = new System.Drawing.Size(334, 201);
+            this.tlpForm.Size = new System.Drawing.Size(334, 202);
             this.tlpForm.TabIndex = 18;
             // 
-            // lblDataSet
+            // uiButton_Cancel
             // 
-            this.lblDataSet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDataSet.AutoSize = true;
-            this.lblDataSet.Location = new System.Drawing.Point(5, 5);
-            this.lblDataSet.Margin = new System.Windows.Forms.Padding(5);
-            this.lblDataSet.Name = "lblDataSet";
-            this.lblDataSet.Size = new System.Drawing.Size(50, 17);
-            this.lblDataSet.TabIndex = 22;
-            this.lblDataSet.Text = "Data set";
-            this.lblDataSet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiButton_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiButton_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.uiButton_Cancel.Location = new System.Drawing.Point(256, 174);
+            this.uiButton_Cancel.Name = "uiButton_Cancel";
+            this.uiButton_Cancel.Size = new System.Drawing.Size(75, 25);
+            this.uiButton_Cancel.TabIndex = 30;
+            this.uiButton_Cancel.Text = "Cancel";
+            this.uiButton_Cancel.UseVisualStyleBackColor = true;
+            this.uiButton_Cancel.Click += new System.EventHandler(this.uiButton_Cancel_Click);
             // 
-            // uiComboBox_DataSets
+            // btnOk
             // 
-            this.tlpForm.SetColumnSpan(this.uiComboBox_DataSets, 3);
-            this.uiComboBox_DataSets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiComboBox_DataSets.FormattingEnabled = true;
-            this.uiComboBox_DataSets.Location = new System.Drawing.Point(65, 3);
-            this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
-            this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
-            this.uiComboBox_DataSets.Size = new System.Drawing.Size(266, 21);
-            this.uiComboBox_DataSets.TabIndex = 26;
-            // 
-            // lblVariable
-            // 
-            this.lblVariable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVariable.AutoSize = true;
-            this.lblVariable.Location = new System.Drawing.Point(5, 32);
-            this.lblVariable.Margin = new System.Windows.Forms.Padding(5);
-            this.lblVariable.Name = "lblVariable";
-            this.lblVariable.Size = new System.Drawing.Size(50, 13);
-            this.lblVariable.TabIndex = 27;
-            this.lblVariable.Text = "Variables";
-            this.lblVariable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOk.Location = new System.Drawing.Point(175, 174);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 25);
+            this.btnOk.TabIndex = 29;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // uiDataGridView_Variables
             // 
@@ -124,29 +109,6 @@
             this.uiDataGridView_Variables.Size = new System.Drawing.Size(268, 132);
             this.uiDataGridView_Variables.TabIndex = 28;
             // 
-            // btnOk
-            // 
-            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(175, 173);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 25);
-            this.btnOk.TabIndex = 29;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // uiButton_Cancel
-            // 
-            this.uiButton_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiButton_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uiButton_Cancel.Location = new System.Drawing.Point(256, 173);
-            this.uiButton_Cancel.Name = "uiButton_Cancel";
-            this.uiButton_Cancel.Size = new System.Drawing.Size(75, 25);
-            this.uiButton_Cancel.TabIndex = 30;
-            this.uiButton_Cancel.Text = "Annuleren";
-            this.uiButton_Cancel.UseVisualStyleBackColor = true;
-            this.uiButton_Cancel.Click += new System.EventHandler(this.uiButton_Cancel_Click);
-            // 
             // uiDataGridViewColumn_VariableCheckX
             // 
             this.uiDataGridViewColumn_VariableCheckX.HeaderText = "X";
@@ -160,11 +122,49 @@
             this.uiDataGridViewColumn_VariableCheckY.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.uiDataGridViewColumn_VariableCheckY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // lblVariable
+            // 
+            this.lblVariable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVariable.AutoSize = true;
+            this.lblVariable.Location = new System.Drawing.Point(5, 32);
+            this.lblVariable.Margin = new System.Windows.Forms.Padding(5);
+            this.lblVariable.Name = "lblVariable";
+            this.lblVariable.Size = new System.Drawing.Size(50, 13);
+            this.lblVariable.TabIndex = 27;
+            this.lblVariable.Text = "Variables";
+            this.lblVariable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiComboBox_DataSets
+            // 
+            this.tlpForm.SetColumnSpan(this.uiComboBox_DataSets, 3);
+            this.uiComboBox_DataSets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiComboBox_DataSets.FormattingEnabled = true;
+            this.uiComboBox_DataSets.Location = new System.Drawing.Point(65, 3);
+            this.uiComboBox_DataSets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
+            this.uiComboBox_DataSets.Name = "uiComboBox_DataSets";
+            this.uiComboBox_DataSets.Size = new System.Drawing.Size(266, 21);
+            this.uiComboBox_DataSets.TabIndex = 26;
+            // 
+            // lblDataSet
+            // 
+            this.lblDataSet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDataSet.AutoSize = true;
+            this.lblDataSet.Location = new System.Drawing.Point(5, 5);
+            this.lblDataSet.Margin = new System.Windows.Forms.Padding(5);
+            this.lblDataSet.Name = "lblDataSet";
+            this.lblDataSet.Size = new System.Drawing.Size(50, 17);
+            this.lblDataSet.TabIndex = 22;
+            this.lblDataSet.Text = "Data set";
+            this.lblDataSet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ScatterplotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 201);
+            this.ClientSize = new System.Drawing.Size(334, 202);
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -173,7 +173,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(350, 240);
             this.Name = "ScatterplotForm";
-            this.Text = "NoruST - Scatterplot";
+            this.Text = "Scatterplot";
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).EndInit();

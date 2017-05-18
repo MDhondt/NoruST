@@ -64,25 +64,25 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpForm.Size = new System.Drawing.Size(334, 201);
+            this.tlpForm.Size = new System.Drawing.Size(334, 202);
             this.tlpForm.TabIndex = 0;
             // 
             // uiButton_Cancel
             // 
             this.uiButton_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.uiButton_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uiButton_Cancel.Location = new System.Drawing.Point(256, 173);
+            this.uiButton_Cancel.Location = new System.Drawing.Point(256, 174);
             this.uiButton_Cancel.Name = "uiButton_Cancel";
             this.uiButton_Cancel.Size = new System.Drawing.Size(75, 25);
             this.uiButton_Cancel.TabIndex = 33;
-            this.uiButton_Cancel.Text = "Annuleren";
+            this.uiButton_Cancel.Text = "Cancel";
             this.uiButton_Cancel.UseVisualStyleBackColor = true;
             this.uiButton_Cancel.Click += new System.EventHandler(this.uiButton_Cancel_Click);
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(175, 173);
+            this.btnOk.Location = new System.Drawing.Point(175, 174);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 32;
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 201);
+            this.ClientSize = new System.Drawing.Size(334, 202);
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -165,7 +165,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(350, 240);
             this.Name = "BoxWhiskerPlotForm";
-            this.Text = "NoruST - Box-Whisker Plot";
+            this.Text = "Box-Whisker Plot";
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).EndInit();

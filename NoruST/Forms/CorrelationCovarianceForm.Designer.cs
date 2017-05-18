@@ -73,7 +73,7 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpForm.Size = new System.Drawing.Size(349, 261);
+            this.tlpForm.Size = new System.Drawing.Size(349, 262);
             this.tlpForm.TabIndex = 20;
             // 
             // label2
@@ -93,18 +93,18 @@
             // 
             this.uiButton_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.uiButton_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uiButton_Cancel.Location = new System.Drawing.Point(271, 233);
+            this.uiButton_Cancel.Location = new System.Drawing.Point(271, 234);
             this.uiButton_Cancel.Name = "uiButton_Cancel";
             this.uiButton_Cancel.Size = new System.Drawing.Size(75, 25);
             this.uiButton_Cancel.TabIndex = 43;
-            this.uiButton_Cancel.Text = "Annuleren";
+            this.uiButton_Cancel.Text = "Cancel";
             this.uiButton_Cancel.UseVisualStyleBackColor = true;
             this.uiButton_Cancel.Click += new System.EventHandler(this.uiButton_Cancel_Click);
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(190, 233);
+            this.btnOk.Location = new System.Drawing.Point(190, 234);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 42;
@@ -215,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 261);
+            this.ClientSize = new System.Drawing.Size(349, 262);
             this.Controls.Add(this.tlpForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -224,7 +224,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(365, 300);
             this.Name = "CorrelationCovarianceForm";
-            this.Text = "NoruST - Correlation & Covariance";
+            this.Text = "Correlation & Covariance";
             this.tlpForm.ResumeLayout(false);
             this.tlpForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView_Variables)).EndInit();

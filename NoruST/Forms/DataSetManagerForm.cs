@@ -12,7 +12,7 @@ namespace NoruST.Forms
 {
     public partial class DataSetManagerForm : Form
     {
-        private const string formTitle = "NoruST - Data Set Manager";
+        private const string formTitle = "Data Set Manager";
 
         private DataSetManagerPresenter presenter;
         private SelectRangeForm selectRangeForm;
@@ -82,16 +82,16 @@ namespace NoruST.Forms
 
         public static bool ignoreIntersection(DataSet dataSet)
         {
-            string message = "De geselecteerde range maakt reeds deel uit van data set '" + dataSet.Name +"'." +
+            string message = "The selected range is a part of '" + dataSet.Name +"'." +
                              Environment.NewLine + Environment.NewLine + 
-                             "Wilt U van de huidige selectie een nieuwe data set maken?";
+                             "Would you like to make a new dataset from the selected range?";
             DialogResult dialogResult = MessageBox.Show(message, formTitle, YesNo, Warning);
             return dialogResult != Yes;
         }
 
         public static bool addNewDataSet(Range range)
         {
-            string message = "Wilt U de range " + range.Address(true, true) + " toevoegen als data set?";
+            string message = "Would you like to add the range " + range.Address(true, true) + " to the data set?";
             DialogResult dialogResult = MessageBox.Show(message, formTitle, YesNo, Question);
             return dialogResult == Yes;
         }
