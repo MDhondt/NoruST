@@ -114,15 +114,15 @@
             // 
             // dgv_VariablesY
             // 
-            this.dgv_VariablesY.HeaderText = "Y";
+            this.dgv_VariablesY.HeaderText = "D";
             this.dgv_VariablesY.Name = "dgv_VariablesY";
-            this.dgv_VariablesY.Width = 20;
+            this.dgv_VariablesY.Width = 21;
             // 
             // dgv_VariablesX
             // 
-            this.dgv_VariablesX.HeaderText = "X";
+            this.dgv_VariablesX.HeaderText = "I";
             this.dgv_VariablesX.Name = "dgv_VariablesX";
-            this.dgv_VariablesX.Width = 20;
+            this.dgv_VariablesX.Width = 16;
             // 
             // LogisticRegressionForm
             // 

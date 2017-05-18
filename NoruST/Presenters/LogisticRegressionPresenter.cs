@@ -38,9 +38,9 @@ namespace NoruST.Presenters
             return dataSetPresenter.getModel().getDataSets();
         }
 
-        public bool checkInput(DataSet dataSet, List<Variable> variables_x , List<Variable> variables_y)
+        public bool checkInput(DataSet dataSet, List<Variable> independentVariables , Variable dependentVariable)
         {
-            if (dataSet == null || variables_x.Count() == 0 || variables_y.Count() == 0 || variables_y.Count() > 1)
+            if (dataSet == null || independentVariables.Count() == 0)
             {
                 MessageBox.Show(" Please correct all fields to perform logistic regression. Make sure that only one independent variable is selected.");
                 return false;
@@ -49,46 +49,27 @@ namespace NoruST.Presenters
             var functions = Globals.ExcelAddIn.Application.WorksheetFunction;
             var sheet = WorksheetHelper.NewWorksheet("Logistic Regression");
 
-            var matrixX = Matrix<double>.Build.Dense(dataSet.rangeSize(), variables_x.Count());
-            var matrixY = Matrix<double>.Build.Dense(dataSet.rangeSize(), variables_y.Count());
-
-
-            foreach (Variable variableX in variables_x)
+            var matrixX = Matrix<double>.Build.Dense(dataSet.rangeSize(), independentVariables.Count + 1);
+            for (var i = 0; i < dataSet.rangeSize(); i++)
             {
-                int matrixindex_x = 0;
-                double[,] array = RangeHelper.To2DDoubleArray(variableX.getRange());
-                double[] array2 = new double[array.Length];
-                for (int i = 0; i < array.Length; i++)
+                matrixX[i, 0] = 1;
+                for (var j = 0; j < independentVariables.Count; j++)
                 {
-                    array2[i] = array[i, 0];
+                    matrixX[i, j + 1] = dataSet.getValuesArray(independentVariables[j])[i];
                 }
-                for (var i = 0; i<dataSet.rangeSize(); i++)
-                {
-                    matrixX[i, matrixindex_x] = array2[i];
-                }
-                matrixindex_x++;
             }
 
-            foreach (Variable variableY in variables_y)
+            var matrixY = Matrix<double>.Build.Dense(dataSet.rangeSize(), 1);
+            for (var i = 0; i < dataSet.rangeSize(); i++)
             {
-                int matrixindex_y = 0;
-                double[,] array = RangeHelper.To2DDoubleArray(variableY.getRange());
-                double[] array3 = new double[array.Length];
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array3[i] = array[i, 0];
-                }
-                for (var i = 0; i < dataSet.rangeSize(); i++)
-                {
-                    matrixY[i, matrixindex_y] = array3[i];
-                }
-                matrixindex_y++;
+                matrixY[i, 0] = dataSet.getValuesArray(dependentVariable)[i];
             }
 
 
-                // calculate theta iteratively using newton's method, starting from zero matrix
-                var startTheta = Matrix<double>.Build.Dense(variables_x.Count, 1);
+            // calculate theta iteratively using newton's method, starting from zero matrix
+            var startTheta = Matrix<double>.Build.Dense(independentVariables.Count + 1 , 1);
                 var theta = NewtonsMethod(matrixX, matrixY, startTheta);
+
 
                 // calculate classification matrix
                 var classificationMatrix = CalculateClassificationMatrix(matrixX, matrixY, theta);
@@ -118,10 +99,10 @@ namespace NoruST.Presenters
                 const int pValueName = waldValueName + 1;
                 const int lowerLimitName = pValueName + 1;
                 const int upperLimitName = lowerLimitName + 1;
-                var classificationMatrixName = name + 3 + variables_x.Count;
+                var classificationMatrixName = name + 3 + independentVariables.Count;
                 var summaryClassificationName = classificationMatrixName + 4;
                 var dataName = summaryClassificationName + 5;
-                var probName = variables_x.Count + 2;
+                var probName = independentVariables.Count + 2;
 
                 // names of variables on sheet
                 sheet.Cells[title, 1] = "Logistic Regression";
@@ -140,9 +121,9 @@ namespace NoruST.Presenters
                 sheet.Cells[name, lowerLimitName] = "Lower Limit (95%)";
                 sheet.Cells[name, upperLimitName] = "Upper Limit (95%)";
 
-                for (var i = 0; i < variables_x.Count; i++)
+                for (var i = 0; i < independentVariables.Count; i++)
                 {
-                    sheet.Cells[name + i + 2, 1] = variables_x[i].name;
+                    sheet.Cells[name + i + 2, 1] = independentVariables[i].name;
                 }
 
                 sheet.Cells[classificationMatrixName, 1] = "Classification Matrix";
@@ -165,20 +146,20 @@ namespace NoruST.Presenters
             ((Range)sheet.Cells[9, 1]).EntireRow.AutoFit();
 
             sheet.Cells[dataName, 1] = "";
-                for (var i = 0; i < variables_x.Count; i++)
+                for (var i = 0; i < independentVariables.Count; i++)
                 {
-                    sheet.Cells[dataName, 2 + i] = variables_x[i].name;
+                    sheet.Cells[dataName, 2 + i] = independentVariables[i].name;
                 }
                 sheet.Cells[dataName, probName] = "Probability";
                 sheet.Cells[dataName, probName + 1] = "Forecast";
                 sheet.Cells[dataName, probName + 2] = "Class";
 
                 for (var i = 0; i < dataSet.rangeSize(); i++)
-                { //hier zit ergens het probleem
+                { 
                     sheet.Cells[dataName + 1 + i, 1] = i + 1;
-                    for (var j = 0; j < variables_x.Count; j++)
+                    for (var j = 0; j < independentVariables.Count; j++)
                     {
-                        sheet.Cells[dataName + 1 + i, 2 + j] = matrixX[j, i];
+                        sheet.Cells[dataName + 1 + i, 2 + j] = matrixX[i, j+1];
                     }
                     var prob = 1 / (1 + Math.Exp(-expThetaX[0, i]));
                     sheet.Cells[dataName + 1 + i, probName] = prob;
@@ -186,11 +167,11 @@ namespace NoruST.Presenters
                         sheet.Cells[dataName + 1 + i, probName + 1] = 1;
                     else
                         sheet.Cells[dataName + 1 + i, probName + 1] = 0;
-                    sheet.Cells[dataName + 1 + i, probName + 2] = matrixY[0,i];
+                    sheet.Cells[dataName + 1 + i, probName + 2] = matrixY[i,0];
                 
             }
-            double dF = dataSet.rangeSize() - variables_x.Count() - 1;
-            
+            double dF = dataSet.rangeSize() - independentVariables.Count() - 1;
+
             // print out beta coefficients and std error of coefficient
             for (var i = 0; i < theta.RowCount; i++)
                 {
@@ -224,7 +205,7 @@ namespace NoruST.Presenters
                 for (var i = 0; i < dataSet.rangeSize(); i++)
                 {
                     var prob = 1 / (1 + Math.Exp(-expThetaX[0, i]));
-                    double yValue = matrixY[0, i] ;
+                    double yValue = matrixY[i, 0] ;
                     modelDeviance = modelDeviance + yValue * Math.Log(1 / prob) + (1 - yValue) * Math.Log(1 / (1 - prob));
                 }
 
@@ -240,10 +221,10 @@ namespace NoruST.Presenters
 
             private Matrix<double> NewtonsMethod(Matrix<double> matrixX, Matrix<double> matrixY, Matrix<double> theta)
             {
-                var matrixXX = matrixX.Transpose();
-                var matrixYY = matrixY.Transpose();
-                var row = matrixXX.RowCount;
-                var column = matrixXX.ColumnCount;
+            var matrixXX = matrixX.Transpose();
+            var matrixYY = matrixY.Transpose();
+            var row = matrixXX.RowCount;
+            var column = matrixXX.ColumnCount;
 
             var hTheta = Matrix<double>.Build.Dense(1, column);
             for (var j = 0; j < 50; j++)
@@ -251,25 +232,26 @@ namespace NoruST.Presenters
                 var expThetaX = theta.Transpose() * matrixXX;
                 var gradient = Matrix<double>.Build.Dense(row, 1);
                 var hessian = Matrix<double>.Build.Dense(row, row);
-                    for (var i = 0; i < column; i++)
-                    {
-                        hTheta[0, i] = 1 / (1 + Math.Exp(-expThetaX[0, i]));
-                        var gradientTemp = (hTheta[0, i] - matrixYY[0, i]) / column;
-                        var hessianTemp = hTheta[0, i] * (1 - hTheta[0, i]) / column;
 
-                        for (var k = 0; k < row; k++)
+                for (var i = 0; i < column; i++)
+                {
+                    hTheta[0, i] = 1 / (1 + Math.Exp(-expThetaX[0, i]));
+                    var gradientTemp = (hTheta[0, i] - matrixYY[0, i]) / column;
+                    var hessianTemp = hTheta[0, i] * (1 - hTheta[0, i]) / column;
+
+                    for (var k = 0; k < row; k++)
+                    {
+                        gradient[k, 0] = gradient[k, 0] + gradientTemp * matrixXX[k, i];
+                        for (var l = 0; l < row; l++)
                         {
-                            gradient[k, 0] = gradient[k, 0] + gradientTemp * matrixXX[k, i];
-                            for (var l = 0; l < row; l++)
-                            {
-                                hessian[k, l] = hessian[k, l] + hessianTemp * matrixXX[k, i] * matrixXX[l, i];
-                            }
+                            hessian[k, l] = hessian[k, l] + hessianTemp * matrixXX[k, i] * matrixXX[l, i];
                         }
                     }
-                    theta = theta - hessian.Inverse() * gradient;
                 }
-                return theta;
+                theta = theta - hessian.Inverse() * gradient;
             }
+            return theta;
+        }
             private int[] CalculateClassificationMatrix(Matrix<double> matrixX, Matrix<double> matrixY, Matrix<double> theta)
             {
                 var classificationMatrix = new[] { 0, 0, 0, 0 };
@@ -332,7 +314,6 @@ namespace NoruST.Presenters
                 return summaryClassificationPercentages;
             }
        
-        // einde copy oude code
 
     }
     
