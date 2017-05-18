@@ -80,7 +80,7 @@
             // 
             this.dgvDataSet.AllowUserToAddRows = false;
             this.dgvDataSet.AllowUserToDeleteRows = false;
-            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDataSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDataSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_VariablesX,
@@ -96,19 +96,17 @@
             // 
             // dgv_VariablesX
             // 
-            this.dgv_VariablesX.HeaderText = "X";
+            this.dgv_VariablesX.HeaderText = "I";
             this.dgv_VariablesX.Name = "dgv_VariablesX";
             this.dgv_VariablesX.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_VariablesX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgv_VariablesX.Width = 39;
             // 
             // dgv_VariablesY
             // 
-            this.dgv_VariablesY.HeaderText = "Y";
+            this.dgv_VariablesY.HeaderText = "D";
             this.dgv_VariablesY.Name = "dgv_VariablesY";
             this.dgv_VariablesY.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_VariablesY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgv_VariablesY.Width = 39;
             // 
             // grpOptions
             // 

@@ -121,7 +121,16 @@ namespace NoruST.Presenters
                 sheet.Cells[name, lowerLimitName] = "Lower Limit (95%)";
                 sheet.Cells[name, upperLimitName] = "Upper Limit (95%)";
 
-                for (var i = 0; i < independentVariables.Count; i++)
+            ((Range)sheet.Cells[name + 1, 1]).EntireColumn.AutoFit();
+            ((Range)sheet.Cells[name, betaCoeffName]).EntireColumn.AutoFit();
+            ((Range)sheet.Cells[name, stdErrorName]).EntireColumn.AutoFit();
+            ((Range)sheet.Cells[name, waldValueName]).EntireColumn.AutoFit();
+            ((Range)sheet.Cells[name, pValueName]).EntireColumn.AutoFit();
+            ((Range)sheet.Cells[name, lowerLimitName]).EntireColumn.AutoFit();
+            ((Range)sheet.Cells[name, upperLimitName]).EntireColumn.AutoFit();
+
+
+            for (var i = 0; i < independentVariables.Count; i++)
                 {
                     sheet.Cells[name + i + 2, 1] = independentVariables[i].name;
                 }

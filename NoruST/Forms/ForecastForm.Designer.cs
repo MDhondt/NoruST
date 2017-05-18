@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForecastForm));
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.dgvDataSet = new System.Windows.Forms.DataGridView();
-            this.dgvDataSet_Checked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.grpOptions = new System.Windows.Forms.GroupBox();
             this.tlpOptions = new System.Windows.Forms.TableLayoutPanel();
             this.nudSeasonalPeriod = new System.Windows.Forms.NumericUpDown();
@@ -58,6 +57,7 @@
             this.txtLevel = new System.Windows.Forms.TextBox();
             this.txtTrend = new System.Windows.Forms.TextBox();
             this.txtSeasonality = new System.Windows.Forms.TextBox();
+            this.dgvDataSet_Checked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tlpForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).BeginInit();
             this.grpOptions.SuspendLayout();
@@ -100,7 +100,7 @@
             // 
             this.dgvDataSet.AllowUserToAddRows = false;
             this.dgvDataSet.AllowUserToDeleteRows = false;
-            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDataSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDataSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvDataSet_Checked});
@@ -112,12 +112,6 @@
             this.dgvDataSet.RowHeadersVisible = false;
             this.dgvDataSet.Size = new System.Drawing.Size(378, 148);
             this.dgvDataSet.TabIndex = 14;
-            // 
-            // dgvDataSet_Checked
-            // 
-            this.dgvDataSet_Checked.HeaderText = "";
-            this.dgvDataSet_Checked.Name = "dgvDataSet_Checked";
-            this.dgvDataSet_Checked.Width = 5;
             // 
             // grpOptions
             // 
@@ -468,6 +462,11 @@
             this.txtSeasonality.Size = new System.Drawing.Size(80, 20);
             this.txtSeasonality.TabIndex = 51;
             this.txtSeasonality.Text = "0.1";
+            // 
+            // dgvDataSet_Checked
+            // 
+            this.dgvDataSet_Checked.HeaderText = "X";
+            this.dgvDataSet_Checked.Name = "dgvDataSet_Checked";
             // 
             // ForecastForm
             // 

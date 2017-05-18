@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogisticRegressionForm));
             this.btnOk = new System.Windows.Forms.Button();
             this.dgvDataSet = new System.Windows.Forms.DataGridView();
+            this.dgv_VariablesX = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgv_VariablesY = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lstDataSets = new System.Windows.Forms.ListBox();
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
-            this.dgv_VariablesY = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgv_VariablesX = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSet)).BeginInit();
             this.tlpForm.SuspendLayout();
             this.SuspendLayout();
@@ -54,11 +55,11 @@
             // 
             this.dgvDataSet.AllowUserToAddRows = false;
             this.dgvDataSet.AllowUserToDeleteRows = false;
-            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvDataSet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDataSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDataSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgv_VariablesY,
-            this.dgv_VariablesX});
+            this.dgv_VariablesX,
+            this.dgv_VariablesY});
             this.tlpForm.SetColumnSpan(this.dgvDataSet, 3);
             this.dgvDataSet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDataSet.Location = new System.Drawing.Point(3, 78);
@@ -67,6 +68,16 @@
             this.dgvDataSet.RowHeadersVisible = false;
             this.dgvDataSet.Size = new System.Drawing.Size(378, 250);
             this.dgvDataSet.TabIndex = 14;
+            // 
+            // dgv_VariablesX
+            // 
+            this.dgv_VariablesX.HeaderText = "I";
+            this.dgv_VariablesX.Name = "dgv_VariablesX";
+            // 
+            // dgv_VariablesY
+            // 
+            this.dgv_VariablesY.HeaderText = "D";
+            this.dgv_VariablesY.Name = "dgv_VariablesY";
             // 
             // btnCancel
             // 
@@ -112,18 +123,6 @@
             this.tlpForm.Size = new System.Drawing.Size(384, 362);
             this.tlpForm.TabIndex = 18;
             // 
-            // dgv_VariablesY
-            // 
-            this.dgv_VariablesY.HeaderText = "D";
-            this.dgv_VariablesY.Name = "dgv_VariablesY";
-            this.dgv_VariablesY.Width = 21;
-            // 
-            // dgv_VariablesX
-            // 
-            this.dgv_VariablesX.HeaderText = "I";
-            this.dgv_VariablesX.Name = "dgv_VariablesX";
-            this.dgv_VariablesX.Width = 16;
-            // 
             // LogisticRegressionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,6 +130,7 @@
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(384, 362);
             this.Controls.Add(this.tlpForm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "LogisticRegressionForm";
@@ -149,7 +149,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ListBox lstDataSets;
         private System.Windows.Forms.TableLayoutPanel tlpForm;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dgv_VariablesY;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgv_VariablesX;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgv_VariablesY;
     }
 }
